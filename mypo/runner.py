@@ -5,7 +5,7 @@ from .common import calc_fee
 from .common import safe_cast
 
 
-class Simulator(object):
+class Runner(object):
 
     def __init__(
             self,

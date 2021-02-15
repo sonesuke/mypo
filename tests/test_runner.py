@@ -1,7 +1,7 @@
 import numpy as np
 import numpy.testing as npt
 import os
-from mypo import Simulator
+from mypo import Runner
 from mypo import Rebalancer
 from mypo import Loader
 
@@ -9,7 +9,7 @@ TEST_DATA = os.path.join(os.path.dirname(__file__), 'data', 'test.bin')
 
 
 def test_simulator():
-    simulator = Simulator(
+    simulator = Runner(
         assets=np.array([1, 1]),
         rebalancer=Rebalancer(np.array([0.6, 0.4])),
         cash=0.5,
@@ -22,7 +22,7 @@ def test_simulator():
 
 
 def test_apply():
-    simulator = Simulator(
+    simulator = Runner(
         assets=np.array([1.2, 0.8]),
         rebalancer=Rebalancer(np.array([0.6, 0.4])),
         cash=0.5,
@@ -41,7 +41,7 @@ def test_apply():
 
 def test_run():
     loader = Loader.load(TEST_DATA)
-    simulator = Simulator(
+    simulator = Runner(
         assets=np.array([1.2, 0.8]),
         rebalancer=Rebalancer(np.array([0.8, 0.2])),
         cash=0.5,
