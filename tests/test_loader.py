@@ -1,24 +1,48 @@
-import numpy as np
+from mypo import Loader
+import pandas as pd
 import numpy.testing as npt
-from my_portfolio import rebalance
-from my_portfolio import calc_capital_gain_tax
-from my_portfolio import calc_fee
-from my_portfolio import calc_income_gain_tax
-from my_portfolio import Loader
+import os
+
+TEST_DATA = os.path.join(os.path.dirname(__file__), 'data', 'test.bin')
 
 
-def test_loader():
-    loader = Loader()
-    loader.get('VOO')
-    df = loader.get_market()
-    print(df)
-    assert False
-
-
-def test_loader_2():
+def test_save_load():
     loader = Loader()
     loader.get('VOO')
     loader.get('IEF')
+    loader.save(TEST_DATA)
+    loader = Loader.load(TEST_DATA)
+    index = loader.get_index()
+    assert index[0] == pd.Timestamp('2010-09-10')
+
+
+def test_index():
+    loader = Loader.load(TEST_DATA)
+    index = loader.get_index()
+    assert index[0] == pd.Timestamp('2010-09-10')
+
+
+def test_market():
+    loader = Loader.load(TEST_DATA)
     df = loader.get_market()
-    print(df)
-    assert False
+    npt.assert_almost_equal(
+        df['VOO'][0],
+        1.0045397455037965
+    )
+    npt.assert_almost_equal(
+        df['IEF'][0],
+        0.9971151743025434
+    )
+
+
+def test_dividends():
+    loader = Loader.load(TEST_DATA)
+    df = loader.get_price_dividend_yield()
+    npt.assert_almost_equal(
+        df['VOO'][0],
+        0
+    )
+    npt.assert_almost_equal(
+        df['IEF'][0],
+        0
+    )

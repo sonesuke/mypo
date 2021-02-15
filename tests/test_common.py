@@ -1,18 +1,8 @@
 import numpy as np
 import numpy.testing as npt
-from my_portfolio import rebalance
-from my_portfolio import calc_capital_gain_tax
-from my_portfolio import calc_fee
-from my_portfolio import calc_income_gain_tax
-
-
-def test_rebalance():
-    assets = np.array([1, 1])
-    weights = np.array([0.6, 0.4])
-    npt.assert_almost_equal(
-        rebalance(assets, weights),
-        np.array([0.2, -0.2])
-        )
+from mypo import calc_capital_gain_tax
+from mypo import calc_fee
+from mypo import calc_income_gain_tax
 
 
 def test_capital_gain_tax():

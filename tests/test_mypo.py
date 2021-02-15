@@ -1,4 +1,4 @@
-from my_portfolio import __version__
+from mypo import __version__
 
 
 def test_version():

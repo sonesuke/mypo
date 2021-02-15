@@ -1,6 +1,6 @@
 
 [tool.poetry]
-name = "my-portfolio"
+name = "mypo"
 version = "0.0.1"
 description = ""
 authors = [
@@ -10,8 +10,8 @@ authors = [
 license = "MIT"
 readme = "README.md"
 
-repository = "https://github.com/sonesuke/my-portfolio"
-homepage = "https://github.com/sonesuke/my-portfolio"
+repository = "https://github.com/sonesuke/mypo"
+homepage = "https://github.com/sonesuke/mypo"
 
 [tool.poetry.dependencies]
 python = "^3.9.1"

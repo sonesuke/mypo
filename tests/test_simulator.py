@@ -1,12 +1,17 @@
 import numpy as np
 import numpy.testing as npt
-from my_portfolio import Simulator
+import os
+from mypo import Simulator
+from mypo import Rebalancer
+from mypo import Loader
+
+TEST_DATA = os.path.join(os.path.dirname(__file__), 'data', 'test.bin')
 
 
 def test_simulator():
     simulator = Simulator(
         assets=np.array([1, 1]),
-        weights=np.array([0.6, 0.4]),
+        rebalancer=Rebalancer(np.array([0.6, 0.4])),
         cash=0.5,
         spending=0.06
     )
@@ -19,7 +24,7 @@ def test_simulator():
 def test_apply():
     simulator = Simulator(
         assets=np.array([1.2, 0.8]),
-        weights=np.array([0.6, 0.4]),
+        rebalancer=Rebalancer(np.array([0.6, 0.4])),
         cash=0.5,
         spending=0.06
     )
@@ -31,4 +36,24 @@ def test_apply():
     npt.assert_almost_equal(
         simulator.total_assets(),
         2.625068
+    )
+
+
+def test_run():
+    loader = Loader.load(TEST_DATA)
+    simulator = Simulator(
+        assets=np.array([1.2, 0.8]),
+        rebalancer=Rebalancer(np.array([0.8, 0.2])),
+        cash=0.5,
+        spending=0.06
+    )
+    simulator.run(
+        index=loader.get_index(),
+        market=loader.get_market(),
+        price_dividends_yield=loader.get_price_dividend_yield(),
+        expense_ratio=np.array([0.0007, 0.0007])
+    )
+    npt.assert_almost_equal(
+        simulator.total_assets(),
+        2.2437560
     )

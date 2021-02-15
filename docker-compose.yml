@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  portfolio:
+  mypo:
     build: ./
     volumes:
       - .:/app

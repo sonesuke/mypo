@@ -1,9 +1,8 @@
 import numpy as np
 
 
-def rebalance(assets, weight):
-    diff = weight * np.sum(assets) - assets
-    return diff
+def safe_cast(value):
+    return np.array(list(value))
 
 
 def calc_capital_gain_tax(initial_assets, assets, diff, tax_rate):

@@ -1,8 +1,8 @@
 import numpy as np
-from .rebalance import rebalance
-from .rebalance import calc_capital_gain_tax
-from .rebalance import calc_income_gain_tax
-from .rebalance import calc_fee
+from .common import calc_capital_gain_tax
+from .common import calc_income_gain_tax
+from .common import calc_fee
+from .common import safe_cast
 
 
 class Simulator(object):
@@ -10,13 +10,13 @@ class Simulator(object):
     def __init__(
             self,
             assets,
-            weights,
+            rebalancer,
             cash,
             spending
             ):
-        self.initial_assets = assets
-        self.assets = assets
-        self.weights = weights
+        self.assets = safe_cast(assets)
+        self.initial_assets = self.assets
+        self.rebalancer = rebalancer
         self.cash = cash
         self.spending = spending
         self.tax_rate = 0.2
@@ -26,9 +26,12 @@ class Simulator(object):
         return np.sum(self.assets) + self.cash
 
     def apply(self, market, price_dividends_yield, expense_ratio):
+        market = np.array(list(market))
+        price_dividends_yield = np.array(list(price_dividends_yield))
+        expense_ratio = np.array(list(expense_ratio))
 
         self.assets = self.assets * market
-        diff = rebalance(self.assets, self.weights)
+        diff = self.rebalancer.apply(self.assets)
 
         # process of capital gain
         capital_gain_tax = calc_capital_gain_tax(
@@ -55,3 +58,13 @@ class Simulator(object):
 
         # process of others
         self.assets = (1.0 - expense_ratio) * self.assets
+
+    def run(self, index, market, price_dividends_yield, expense_ratio):
+        markets = market.to_records(index=False)
+        price_dividends_yield = price_dividends_yield.to_records(index=False)
+        for i in range(len(index)):
+            self.apply(
+                markets[i],
+                price_dividends_yield[i],
+                expense_ratio
+            )
