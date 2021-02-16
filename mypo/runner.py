@@ -25,13 +25,13 @@ class Runner(object):
     def total_assets(self):
         return np.sum(self.assets) + self.cash
 
-    def apply(self, market, price_dividends_yield, expense_ratio):
+    def apply(self, index, market, price_dividends_yield, expense_ratio):
         market = np.array(list(market))
         price_dividends_yield = np.array(list(price_dividends_yield))
         expense_ratio = np.array(list(expense_ratio))
 
         self.assets = self.assets * market
-        diff = self.rebalancer.apply(self.assets)
+        diff = self.rebalancer.apply(index, self.assets, self.cash)
 
         # process of capital gain
         capital_gain_tax = calc_capital_gain_tax(
@@ -44,6 +44,7 @@ class Runner(object):
             diff,
             self.fee_rate)
         self.cash -= fee
+        self.cash -= np.sum(diff)
         self.assets += diff
 
         # process of income gain
@@ -64,6 +65,7 @@ class Runner(object):
         price_dividends_yield = price_dividends_yield.to_records(index=False)
         for i in range(len(index)):
             self.apply(
+                index[i],
                 markets[i],
                 price_dividends_yield[i],
                 expense_ratio
