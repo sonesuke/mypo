@@ -20,7 +20,6 @@ class Loader(object):
         ticker = ticker.upper()
         df = yf.Ticker(ticker).history(period='max')
         self.tickers[ticker] = normalized_raw(df)
-        return df
 
     def get_market(self):
         rs = [self.tickers[ticker][['r']] for ticker in self.tickers.keys()]

@@ -5,8 +5,8 @@ from datetime import date
 
 
 def test_rebalance():
-    assets = np.array([1, 1])
-    weights = np.array([0.6, 0.4])
+    assets = [1, 1]
+    weights = [0.6, 0.4]
     rebalancer = PlainRebalancer(
         weights=weights
     )
@@ -52,8 +52,8 @@ def test_rebalance_monthly_fire():
 
 
 def test_rebalance_monthly_not_fire():
-    assets = np.array([1.5, 1])
-    weights = np.array([0.3, 0.7])
+    assets = [1.5, 1]
+    weights = [0.3, 0.7]
     rebalancer = MonthlyRebalancer(
         weights=weights,
         old_month=2
