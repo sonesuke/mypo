@@ -1,1 +1,1 @@
-poetry update && poetry run pytest tests && poetry build
+poetry update && poetry run pytest tests && oetry config http-basic.pypi "__token__" "${PYPI_API_TOKEN}" &&	poetry publish --build
