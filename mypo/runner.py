@@ -60,13 +60,14 @@ class Runner(object):
         # process of others
         self.assets = (1.0 - expense_ratio) * self.assets
 
-    def run(self, market, price_dividends_yield, expense_ratio):
-        markets = market.to_records(index=False)
+    def run(self, market, expense_ratio):
+        index = market.get_index()
+        markets = market.get_prices().to_records(index=False)
+        price_dividends_yield = market.get_price_dividends_yield().to_records(index=False)
         expense_ratio = safe_cast(expense_ratio)
-        price_dividends_yield = price_dividends_yield.to_records(index=False)
-        for i in range(len(market)):
+        for i in range(len(markets)):
             self.apply(
-                market.index[i],
+                index[i],
                 markets[i],
                 price_dividends_yield[i],
                 expense_ratio

@@ -1,9 +1,9 @@
 import numpy.testing as npt
 import os
-from datetime import date
+import datetime
 from mypo import Runner
 from mypo import PlainRebalancer, MonthlyRebalancer
-from mypo import Loader
+from mypo import Market
 
 
 TEST_DATA = os.path.join(os.path.dirname(__file__), 'data', 'test.bin')
@@ -30,7 +30,7 @@ def test_apply():
         spending=0.06
     )
     runner.apply(
-        index=date.today(),
+        index=datetime.datetime(2021, 2, 17),
         market=[1.1, 0.9],
         price_dividends_yield=[0.05, 0.01],
         expense_ratio=[0.0007, 0.0007]
@@ -42,7 +42,8 @@ def test_apply():
 
 
 def test_run():
-    loader = Loader.load(TEST_DATA)
+    market = Market.load(TEST_DATA)
+    market.set_period_end(datetime.datetime(2021, 2, 16))
     runner = Runner(
         assets=[1.2, 0.8],
         rebalancer=PlainRebalancer([0.8, 0.2]),
@@ -50,8 +51,7 @@ def test_run():
         spending=0.06
     )
     runner.run(
-        market=loader.get_market(),
-        price_dividends_yield=loader.get_price_dividend_yield(),
+        market=market,
         expense_ratio=[0.0007, 0.0007]
     )
     npt.assert_almost_equal(
@@ -61,7 +61,8 @@ def test_run():
 
 
 def test_monthly_run():
-    loader = Loader.load(TEST_DATA)
+    market = Market.load(TEST_DATA)
+    market.set_period_end(datetime.datetime(2021, 2, 16))
     runner = Runner(
         assets=[1.2, 0.8],
         rebalancer=MonthlyRebalancer([0.8, 0.2]),
@@ -69,8 +70,7 @@ def test_monthly_run():
         spending=0.06
     )
     runner.run(
-        market=loader.get_market(),
-        price_dividends_yield=loader.get_price_dividend_yield(),
+        market=market,
         expense_ratio=[0.0007, 0.0007]
     )
     npt.assert_almost_equal(
