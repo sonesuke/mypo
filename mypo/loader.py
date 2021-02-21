@@ -22,9 +22,6 @@ class Loader(object):
         self.tickers[ticker] = normalized_raw(df)
         return df
 
-    def get_index(self):
-        return self.get_market().index
-
     def get_market(self):
         rs = [self.tickers[ticker][['r']] for ticker in self.tickers.keys()]
         df = pd.concat(rs, axis=1, join='inner')

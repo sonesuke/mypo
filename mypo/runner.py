@@ -60,12 +60,12 @@ class Runner(object):
         # process of others
         self.assets = (1.0 - expense_ratio) * self.assets
 
-    def run(self, index, market, price_dividends_yield, expense_ratio):
+    def run(self, market, price_dividends_yield, expense_ratio):
         markets = market.to_records(index=False)
         price_dividends_yield = price_dividends_yield.to_records(index=False)
-        for i in range(len(index)):
+        for i in range(len(market)):
             self.apply(
-                index[i],
+                market.index[i],
                 markets[i],
                 price_dividends_yield[i],
                 expense_ratio

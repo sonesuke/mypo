@@ -6,3 +6,6 @@ services:
     volumes:
       - .:/app
     working_dir: /app
+    ports:
+      - 8888:8888
+    command: ['bash', '/app/tutorial/start.sh']

@@ -12,13 +12,7 @@ def test_save_load():
     loader.get('IEF')
     loader.save(TEST_DATA)
     loader = Loader.load(TEST_DATA)
-    index = loader.get_index()
-    assert index[0] == pd.Timestamp('2010-09-10')
-
-
-def test_index():
-    loader = Loader.load(TEST_DATA)
-    index = loader.get_index()
+    index = loader.get_market().index
     assert index[0] == pd.Timestamp('2010-09-10')
 
 

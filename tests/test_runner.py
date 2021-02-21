@@ -51,7 +51,6 @@ def test_run():
         spending=0.06
     )
     runner.run(
-        index=loader.get_index(),
         market=loader.get_market(),
         price_dividends_yield=loader.get_price_dividend_yield(),
         expense_ratio=np.array([0.0007, 0.0007])
@@ -71,7 +70,6 @@ def test_monthly_run():
         spending=0.06
     )
     runner.run(
-        index=loader.get_index(),
         market=loader.get_market(),
         price_dividends_yield=loader.get_price_dividend_yield(),
         expense_ratio=np.array([0.0007, 0.0007])
