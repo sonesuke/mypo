@@ -16,7 +16,7 @@ jobs:
         shell: bash
         env:
           PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
-        run: docker-compose run mypo bash /app/build.sh
+        run: docker-compose run mypo bash /app/build.sh --token=${{ secrets.PYPI_API_TOKEN }}
 
       - name: Get the version
         id: get_version
