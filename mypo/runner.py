@@ -26,9 +26,9 @@ class Runner(object):
         return np.sum(self.assets) + self.cash
 
     def apply(self, index, market, price_dividends_yield, expense_ratio):
-        market = np.array(list(market))
-        price_dividends_yield = np.array(list(price_dividends_yield))
-        expense_ratio = np.array(list(expense_ratio))
+        market = safe_cast(market)
+        price_dividends_yield = safe_cast(price_dividends_yield)
+        expense_ratio = safe_cast(expense_ratio)
 
         self.assets = self.assets * market
         diff = self.rebalancer.apply(index, self.assets, self.cash)
@@ -60,12 +60,14 @@ class Runner(object):
         # process of others
         self.assets = (1.0 - expense_ratio) * self.assets
 
-    def run(self, market, price_dividends_yield, expense_ratio):
-        markets = market.to_records(index=False)
-        price_dividends_yield = price_dividends_yield.to_records(index=False)
-        for i in range(len(market)):
+    def run(self, market, expense_ratio):
+        index = market.get_index()
+        markets = market.get_prices().to_records(index=False)
+        price_dividends_yield = market.get_price_dividends_yield().to_records(index=False)
+        expense_ratio = safe_cast(expense_ratio)
+        for i in range(len(markets)):
             self.apply(
-                market.index[i],
+                index[i],
                 markets[i],
                 price_dividends_yield[i],
                 expense_ratio

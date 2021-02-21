@@ -1,7 +1,7 @@
 import yfinance as yf
-import pandas as pd
-import pickle
 from collections import OrderedDict
+from .market import Market
+import pandas as pd
 
 
 def normalized_raw(df):
@@ -19,26 +19,8 @@ class Loader(object):
     def get(self, ticker):
         ticker = ticker.upper()
         df = yf.Ticker(ticker).history(period='max')
+        df.index = pd.to_datetime(df.index)
         self.tickers[ticker] = normalized_raw(df)
-        return df
 
     def get_market(self):
-        rs = [self.tickers[ticker][['r']] for ticker in self.tickers.keys()]
-        df = pd.concat(rs, axis=1, join='inner')
-        df.columns = self.tickers.keys()
-        return df
-
-    def get_price_dividend_yield(self):
-        rs = [self.tickers[ticker][['ir']] for ticker in self.tickers.keys()]
-        df = pd.concat(rs, axis=1, join='inner')
-        df.columns = self.tickers.keys()
-        return df
-
-    def save(self, filepath):
-        with open(filepath, 'wb') as bin_file:
-            pickle.dump(self,  bin_file)
-
-    @classmethod
-    def load(cls, filepath):
-        with open(filepath, 'rb') as bin_file:
-            return pickle.load(bin_file)
+        return Market(self.tickers)
