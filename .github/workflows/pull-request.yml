@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build
+      - name: Test
         shell: bash
         run: docker-compose run mypo bash /app/scripts/test.sh
 
