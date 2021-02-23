@@ -1,38 +1,43 @@
+import datetime
+
 import numpy as np
+import numpy.typing as npt
+
 from .common import safe_cast
 
 
 class Rebalancer(object):
-
-    def __init__(self):
+    def __init__(self) -> None:
         pass
 
-    def apply(self, index, assets, cash):
+    def apply(self, index: datetime.datetime, assets: npt.ArrayLike, cash: np.float64) -> np.ndarray:
         pass
 
 
 class PlainRebalancer(Rebalancer):
+    weights: np.ndarray
 
-    def __init__(self, weights):
+    def __init__(self, weights: npt.ArrayLike) -> None:
         self.weights = safe_cast(weights)
 
-    def apply(self, index, assets, cash):
-        assets = safe_cast(assets)
-        diff = self.weights * np.sum(assets) - assets
+    def apply(self, index: datetime.datetime, assets: npt.ArrayLike, cash: np.float64) -> np.ndarray:
+        diff: np.ndarray = self.weights * np.sum(assets) - safe_cast(assets)
         return diff
 
 
 class MonthlyRebalancer(Rebalancer):
+    old_month: int
 
-    def __init__(self, weights, old_month=0):
+    def __init__(self, weights: npt.ArrayLike, old_month: int = 0) -> None:
         self.old_month = old_month
         self.weights = safe_cast(weights)
 
-    def apply(self, index, assets, cash):
+    def apply(self, index: datetime.datetime, assets: npt.ArrayLike, cash: np.float64) -> np.ndarray:
         assets = safe_cast(assets)
         if self.old_month != index.month:
             self.old_month = index.month
-            diff = self.weights * np.sum(assets) - assets
+            diff: np.ndarray = self.weights * np.sum(assets) - assets
             return diff
         else:
-            return assets - assets
+            zero: np.ndarray = assets - assets
+            return zero
