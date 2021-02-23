@@ -1,5 +1,6 @@
 import datetime
 import os
+import pandas as pd
 
 import numpy.testing as npt
 
@@ -38,3 +39,12 @@ def test_monthly_run():
     runner = Runner(assets=[1.2, 0.8], rebalancer=MonthlyRebalancer([0.8, 0.2]), cash=0.5, spending=0.06)
     runner.run(market=market, expense_ratio=[0.0007, 0.0007])
     npt.assert_almost_equal(runner.total_assets(), 2.1252432)
+
+
+def test_report():
+    market = Market.load(TEST_DATA)
+    market.set_period_end(datetime.datetime(2021, 2, 16))
+    runner = Runner(assets=[1.2, 0.8], rebalancer=PlainRebalancer([0.8, 0.2]), cash=0.5, spending=0.06)
+    runner.run(market=market, expense_ratio=[0.0007, 0.0007])
+    report = runner.report()
+    assert report.index[0] == pd.Timestamp("2010-09-10")
