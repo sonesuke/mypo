@@ -16,7 +16,7 @@ jobs:
 
       - name: Build
         shell: bash
-        run: docker-compose run mypo bash /scripts/build.sh
+        run: docker-compose run mypo bash /app/scripts/build.sh
 
       - name: Get the version
         id: get_version
