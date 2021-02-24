@@ -1,5 +1,3 @@
-"""Simulation by market data."""
-
 import datetime
 
 import numpy as np
@@ -87,13 +85,14 @@ class Runner(object):
         expense_ratio
             Expense ratio of holding assets.
         """
+        previous_assets = np.sum(self.assets)
         market = safe_cast(market)
         price_dividends_yield = safe_cast(price_dividends_yield)
         expense_ratio = safe_cast(expense_ratio)
 
         # apply market prices
-        self._assets = self._assets * market
-        diff = self._rebalancer.apply(index, self._assets, self._cash)
+        self.assets = self.assets * market
+        diff = self.rebalancer.apply(index, self.assets, self.cash)
         deal: np.float64 = np.abs(diff)
 
         # process of capital gain
@@ -114,10 +113,8 @@ class Runner(object):
         self._assets = (1.0 - expense_ratio) * self._assets
 
         # record to reporter
-        capital_gain: np.float64 = np.float64(np.sum(self._assets))
-        self._reporter.record(
-            index, capital_gain, income_gain, self._cash, deal, fee, capital_gain_tax, income_gain_tax
-        )
+        capital_gain: np.float64 = np.float64(np.sum(self._assets) - previous_assets)
+        self.reporter.record(index, capital_gain, income_gain, self._cash, deal, fee, capital_gain_tax, income_gain_tax)
 
     def run(self, market: Market, expense_ratio: npt.ArrayLike) -> None:
         """

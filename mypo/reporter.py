@@ -1,9 +1,7 @@
-"""Reporter class of simulation."""
-import datetime
 from typing import List
-
 import numpy as np
 import pandas as pd
+import datetime
 
 
 class Reporter(object):
