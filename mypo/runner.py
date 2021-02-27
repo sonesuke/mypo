@@ -116,7 +116,9 @@ class Runner(object):
 
         # record to reporter
         capital_gain: np.float64 = np.float64(np.sum(self._assets) - previous_assets)
-        self._reporter.record(index, capital_gain, income_gain, self._cash, deal, fee, capital_gain_tax, income_gain_tax)
+        self._reporter.record(
+            index, capital_gain, income_gain, self._cash, deal, fee, capital_gain_tax, income_gain_tax
+        )
 
     def run(self, market: Market, expense_ratio: npt.ArrayLike) -> None:
         """
