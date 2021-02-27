@@ -1,8 +1,8 @@
 import datetime
 import os
-import pandas as pd
 
 import numpy.testing as npt
+import pandas as pd
 
 from mypo import Market, MonthlyRebalancer, PlainRebalancer, Runner
 
