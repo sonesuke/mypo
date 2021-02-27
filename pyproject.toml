@@ -31,7 +31,6 @@ isort = "^5.7.0"
 flake8-docstrings = "^1.5.0"
 flake8 = "^3.8.4"
 
-
 [build-system]
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
