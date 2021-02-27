@@ -1,11 +1,12 @@
+"""Simulation."""
+
 import datetime
 
 import numpy as np
 import numpy.typing as npt
 import pandas as pd
 
-from .common import (calc_capital_gain_tax, calc_fee, calc_income_gain_tax,
-                     safe_cast)
+from .common import calc_capital_gain_tax, calc_fee, calc_income_gain_tax, safe_cast
 from .market import Market
 from .rebalancer import Rebalancer
 from .reporter import Reporter
@@ -86,14 +87,14 @@ class Runner(object):
         expense_ratio
             Expense ratio of holding assets.
         """
-        previous_assets = np.sum(self.assets)
+        previous_assets = np.sum(self._assets)
         market = safe_cast(market)
         price_dividends_yield = safe_cast(price_dividends_yield)
         expense_ratio = safe_cast(expense_ratio)
 
         # apply market prices
-        self.assets = self.assets * market
-        diff = self.rebalancer.apply(index, self.assets, self.cash)
+        self._assets = self._assets * market
+        diff = self._rebalancer.apply(index, self._assets, self._cash)
         deal: np.float64 = np.abs(diff)
 
         # process of capital gain
@@ -115,7 +116,7 @@ class Runner(object):
 
         # record to reporter
         capital_gain: np.float64 = np.float64(np.sum(self._assets) - previous_assets)
-        self.reporter.record(index, capital_gain, income_gain, self._cash, deal, fee, capital_gain_tax, income_gain_tax)
+        self._reporter.record(index, capital_gain, income_gain, self._cash, deal, fee, capital_gain_tax, income_gain_tax)
 
     def run(self, market: Market, expense_ratio: npt.ArrayLike) -> None:
         """
