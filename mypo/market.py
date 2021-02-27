@@ -71,7 +71,7 @@ class Market(object):
         """
         rs = [self._tickers[ticker][["r"]] for ticker in self._tickers.keys()]
         df = pd.concat(rs, axis=1, join="inner")
-        df = df[df.index < self.period_end]
+        df = df[df.index < self._period_end]
         return df.index
 
     def get_prices(self) -> pd.DataFrame:

@@ -1,7 +1,10 @@
+"""Simulation by market data."""
+
 import datetime
 
 import numpy as np
 import numpy.typing as npt
+import pandas as pd
 
 from .common import calc_capital_gain_tax, calc_fee, calc_income_gain_tax, safe_cast
 from .market import Market
@@ -93,7 +96,6 @@ class Runner(object):
         diff = self._rebalancer.apply(index, self._assets, self._cash)
         deal: np.float64 = np.abs(diff)
 
-
         # process of capital gain
         capital_gain_tax = calc_capital_gain_tax(self._initial_assets, self._assets, diff, self._tax_rate)
         self._cash -= capital_gain_tax
@@ -113,7 +115,9 @@ class Runner(object):
 
         # record to reporter
         capital_gain: np.float64 = np.float64(np.sum(self._assets))
-        self._reporter.record(index, capital_gain, income_gain, self._cash, deal, fee, capital_gain_tax, income_gain_tax)
+        self._reporter.record(
+            index, capital_gain, income_gain, self._cash, deal, fee, capital_gain_tax, income_gain_tax
+        )
 
     def run(self, market: Market, expense_ratio: npt.ArrayLike) -> None:
         """
