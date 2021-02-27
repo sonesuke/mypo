@@ -1,4 +1,4 @@
-"""Simulation by market data."""
+"""Simulation."""
 
 import datetime
 
@@ -87,6 +87,7 @@ class Runner(object):
         expense_ratio
             Expense ratio of holding assets.
         """
+        previous_assets = np.sum(self._assets)
         market = safe_cast(market)
         price_dividends_yield = safe_cast(price_dividends_yield)
         expense_ratio = safe_cast(expense_ratio)
@@ -114,7 +115,7 @@ class Runner(object):
         self._assets = (1.0 - expense_ratio) * self._assets
 
         # record to reporter
-        capital_gain: np.float64 = np.float64(np.sum(self._assets))
+        capital_gain: np.float64 = np.float64(np.sum(self._assets) - previous_assets)
         self._reporter.record(
             index, capital_gain, income_gain, self._cash, deal, fee, capital_gain_tax, income_gain_tax
         )
