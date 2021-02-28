@@ -49,6 +49,7 @@ class PlainRebalancer(Rebalancer):
         weights
             Weight for applying rebalance.
         """
+        super().__init__()
         self._weights = safe_cast(weights)
 
     def apply(self, index: datetime.datetime, assets: npt.ArrayLike, cash: np.float64) -> np.ndarray:
@@ -91,6 +92,7 @@ class MonthlyRebalancer(Rebalancer):
         old_month
             Previous month.
         """
+        super().__init__()
         self.old_month = old_month
         self.weights = safe_cast(weights)
 
