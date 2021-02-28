@@ -31,7 +31,6 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: ${{ github.ref }}
           draft: false
-          prerelease: true
 
       - name: Upload Release Asset
         id: upload-release-asset
