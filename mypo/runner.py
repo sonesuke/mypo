@@ -164,9 +164,6 @@ class Runner(object):
         ----------
         market
             Market data.
-
-        expense_ratio
-            Expense ratio of holding stocks.
         """
         index = market.get_index()
         markets = market.get_prices().to_records(index=False)
