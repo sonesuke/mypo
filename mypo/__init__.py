@@ -9,3 +9,4 @@ from .optimizer import MinimumVarianceOptimizer
 from .rebalancer import MonthlyRebalancer, PlainRebalancer, ThresholdRebalancer
 from .reporter import Reporter
 from .runner import Runner
+from .settings import Settings

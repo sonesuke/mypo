@@ -10,6 +10,7 @@ from .common import calc_capital_gain_tax, calc_fee, calc_income_gain_tax, safe_
 from .market import Market
 from .rebalancer import Rebalancer
 from .reporter import Reporter
+from .settings import Settings
 
 WEEK_DAYS = int(365 * 5 / 7)
 
@@ -22,16 +23,14 @@ class Runner(object):
     _rebalancer: Rebalancer
     _reporter: Reporter
     _cash: np.float64
-    _tax_rate: np.float64
-    _spending: np.float64
-    _fee_rate: np.float64
+    _settings: Settings
 
     def __init__(
         self,
         assets: npt.ArrayLike,
         rebalancer: Rebalancer,
         cash: np.float64,
-        spending: np.float64,
+        settings: Settings
     ):
         """
         Construct this object.
@@ -55,9 +54,7 @@ class Runner(object):
         self._rebalancer = rebalancer
         self._reporter = Reporter()
         self._cash = cash
-        self._spending = spending
-        self._tax_rate = 0.2  # type: ignore
-        self._fee_rate = 0.005  # type: ignore
+        self._settings = settings
         self._reporter.record(
             pd.NaT,
             self.total_assets(),
@@ -116,10 +113,10 @@ class Runner(object):
 
         # process of capital gain
         capital_gain_tax = calc_capital_gain_tax(
-            self._averagel_assets_price, self._assets, diff, self._tax_rate
+            self._averagel_assets_price, self._assets, diff, self._settings.tax_rate
         )
         self._cash -= capital_gain_tax
-        fee = calc_fee(diff, self._fee_rate)
+        fee = calc_fee(diff, self._settings.fee_rate)
         self._cash -= fee
         self._cash -= np.float64(np.sum(diff))
         self._assets += diff
@@ -131,7 +128,7 @@ class Runner(object):
         # process of income gain
         income_gain = np.sum(self._assets * price_dividends_yield)
         income_gain_tax = calc_income_gain_tax(
-            self._assets, price_dividends_yield, self._tax_rate
+            self._assets, price_dividends_yield, self._settings.tax_rate
         )
         self._cash += income_gain
         self._cash -= income_gain_tax
