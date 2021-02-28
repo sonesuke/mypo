@@ -13,7 +13,9 @@ class Rebalancer(object):
     def __init__(self) -> None:
         pass
 
-    def apply(self, index: datetime.datetime, assets: npt.ArrayLike, cash: np.float64) -> np.ndarray:
+    def apply(
+        self, index: datetime.datetime, assets: npt.ArrayLike, cash: np.float64
+    ) -> np.ndarray:
         """
         Apply rebalance strategy to current situation.
 
@@ -52,7 +54,9 @@ class PlainRebalancer(Rebalancer):
         super().__init__()
         self._weights = safe_cast(weights)
 
-    def apply(self, index: datetime.datetime, assets: npt.ArrayLike, cash: np.float64) -> np.ndarray:
+    def apply(
+        self, index: datetime.datetime, assets: npt.ArrayLike, cash: np.float64
+    ) -> np.ndarray:
         """
         Apply rebalance strategy to current situation.
 
@@ -97,7 +101,9 @@ class MonthlyRebalancer(Rebalancer):
         self._old_month = old_month
         self._weights = safe_cast(weights)
 
-    def apply(self, index: datetime.datetime, assets: npt.ArrayLike, cash: np.float64) -> np.ndarray:
+    def apply(
+        self, index: datetime.datetime, assets: npt.ArrayLike, cash: np.float64
+    ) -> np.ndarray:
         """
         Apply rebalance strategy to current situation.
 
@@ -132,7 +138,9 @@ class ThresholdRebalancer(Rebalancer):
     _threshold: np.float64
     _weights: np.ndarray
 
-    def __init__(self, weights: npt.ArrayLike, threshold: np.float64 = np.float64(0.05)) -> None:
+    def __init__(
+        self, weights: npt.ArrayLike, threshold: np.float64 = np.float64(0.05)
+    ) -> None:
         """
         Construct object.
 
@@ -149,7 +157,9 @@ class ThresholdRebalancer(Rebalancer):
         self._threshold = threshold
         self._weights = safe_cast(weights)
 
-    def apply(self, index: datetime.datetime, assets: npt.ArrayLike, cash: np.float64) -> np.ndarray:
+    def apply(
+        self, index: datetime.datetime, assets: npt.ArrayLike, cash: np.float64
+    ) -> np.ndarray:
         """
         Apply rebalance strategy to current situation.
 

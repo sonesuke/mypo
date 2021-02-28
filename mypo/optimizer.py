@@ -55,5 +55,7 @@ class MinimumVarianceOptimizer(Optimizer):
         cons = [{"type": "eq", "fun": lambda x: np.sum(x) - 1}]
         bounds = [[0.0, 1.0] for i in range(n)]
 
-        minout = minimize(fn, x, args=(Q), method="SLSQP", bounds=bounds, constraints=cons)
+        minout = minimize(
+            fn, x, args=(Q), method="SLSQP", bounds=bounds, constraints=cons
+        )
         return safe_cast(minout.x)
