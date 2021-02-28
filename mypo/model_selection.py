@@ -1,12 +1,12 @@
 """Utility functions for model selection."""
-from typing import List, Tuple
+from typing import List, Tuple, Callable
 
 from .market import Market
 
 
 def split_n_periods(market: Market, n: int, train_span: int = None) -> Tuple[List[Market], List[Market]]:
     """
-    Split market to n perods.
+    Split market to n periods.
 
     Parameters
     ----------
@@ -36,3 +36,4 @@ def split_n_periods(market: Market, n: int, train_span: int = None) -> Tuple[Lis
         eval_market += [market.extract(index[start_eval_index:start_eval_index + eval_span])]
 
     return train_market, eval_market
+
