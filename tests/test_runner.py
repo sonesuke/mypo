@@ -27,24 +27,24 @@ def test_apply():
 
 def test_run():
     market = Market.load(TEST_DATA)
-    market.set_period_end(datetime.datetime(2021, 2, 16))
+    market = market.extract(market.get_index()[:100])
     runner = Runner(assets=[1.2, 0.8], rebalancer=PlainRebalancer([0.8, 0.2]), cash=0.5, spending=0.06)
-    runner.run(market=market, expense_ratio=[0.0007, 0.0007])
-    npt.assert_almost_equal(runner.total_assets(), 2.2437560)
+    runner.run(market=market)
+    npt.assert_almost_equal(runner.total_assets(), 2.72299964)
 
 
 def test_monthly_run():
     market = Market.load(TEST_DATA)
-    market.set_period_end(datetime.datetime(2021, 2, 16))
+    market = market.extract(market.get_index()[:100])
     runner = Runner(assets=[1.2, 0.8], rebalancer=MonthlyRebalancer([0.8, 0.2]), cash=0.5, spending=0.06)
-    runner.run(market=market, expense_ratio=[0.0007, 0.0007])
-    npt.assert_almost_equal(runner.total_assets(), 2.1252432)
+    runner.run(market=market)
+    npt.assert_almost_equal(runner.total_assets(), 2.71613503)
 
 
 def test_report():
     market = Market.load(TEST_DATA)
-    market.set_period_end(datetime.datetime(2021, 2, 16))
+    market = market.extract(market.get_index()[:100])
     runner = Runner(assets=[1.2, 0.8], rebalancer=PlainRebalancer([0.8, 0.2]), cash=0.5, spending=0.06)
-    runner.run(market=market, expense_ratio=[0.0007, 0.0007])
+    runner.run(market=market)
     report = runner.report()
     assert report.index[0] == pd.Timestamp("2010-09-10")

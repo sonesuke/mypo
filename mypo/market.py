@@ -2,22 +2,24 @@
 
 from __future__ import annotations
 
-import datetime
 import pickle
 from typing import Dict
 
 import pandas as pd
+import numpy as np
+
+from .common import safe_cast
 
 
 class Market(object):
     """Market class for store and loading stock prices data."""
 
     _tickers: Dict[str, pd.DataFrame]
-    _period_end: datetime.datetime
+    _expense_ratio: Dict[str, float]
 
-    def __init__(self, tickers: Dict[str, pd.DataFrame]):
+    def __init__(self, tickers: Dict[str, pd.DataFrame], expense_ratio: Dict[str, float]):
         self._tickers = tickers
-        self._period_end = datetime.datetime.now()
+        self._expense_ratio = expense_ratio
 
     def save(self, filepath: str) -> None:
         """
@@ -50,16 +52,24 @@ class Market(object):
             value: Market = pickle.load(bin_file)
             return value
 
-    def set_period_end(self, date: datetime.datetime) -> None:
+    def extract(self, index: pd.Series) -> Market:
         """
-        Set the end of period.
+        Extract market data.
 
         Parameters
         ----------
-        date
-            end date of period.
+        index
+            Index what you want to extract.
+
+        Returns
+        -------
+            Extracted Data
         """
-        self._period_end = date
+        return Market(
+            tickers={ticker: data.loc[index] for ticker, data in self._tickers.items()},
+            expense_ratio=self._expense_ratio
+        )
+
 
     def get_index(self) -> pd.Series:
         """
@@ -71,7 +81,6 @@ class Market(object):
         """
         rs = [self._tickers[ticker][["r"]] for ticker in self._tickers.keys()]
         df = pd.concat(rs, axis=1, join="inner")
-        df = df[df.index < self._period_end]
         return df.index
 
     def get_prices(self) -> pd.DataFrame:
@@ -84,7 +93,6 @@ class Market(object):
         """
         rs = [self._tickers[ticker][["r"]] for ticker in self._tickers.keys()]
         df = pd.concat(rs, axis=1, join="inner")
-        df = df[df.index < self._period_end]
         df.columns = self._tickers.keys()
         return df
 
@@ -98,6 +106,16 @@ class Market(object):
         """
         rs = [self._tickers[ticker][["ir"]] for ticker in self._tickers.keys()]
         df = pd.concat(rs, axis=1, join="inner")
-        df = df[df.index < self._period_end]
         df.columns = self._tickers.keys()
         return df
+
+    def get_expense_ratio(self) -> np.ndarray:
+        """
+        Get expense ratio
+
+        Returns
+        -------
+        Expense ratio
+        """
+        rs = [self._expense_ratio[ticker] for ticker in self._tickers.keys()]
+        return safe_cast(rs)

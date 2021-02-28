@@ -120,7 +120,7 @@ class Runner(object):
             index, capital_gain, income_gain, self._cash, deal, fee, capital_gain_tax, income_gain_tax
         )
 
-    def run(self, market: Market, expense_ratio: npt.ArrayLike) -> None:
+    def run(self, market: Market) -> None:
         """
         Run simulation.
 
@@ -135,7 +135,7 @@ class Runner(object):
         index = market.get_index()
         markets = market.get_prices().to_records(index=False)
         price_dividends_yield = market.get_price_dividends_yield().to_records(index=False)
-        expense_ratio = safe_cast(expense_ratio)
+        expense_ratio = market.get_expense_ratio()
         for i in range(len(markets)):
             self.apply(index[i], markets[i], price_dividends_yield[i], expense_ratio)
 
