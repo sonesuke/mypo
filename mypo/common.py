@@ -30,7 +30,10 @@ def safe_cast(value: Any) -> np.ndarray:
 
 
 def calc_capital_gain_tax(
-    initial_assets: npt.ArrayLike, assets: npt.ArrayLike, diff: npt.ArrayLike, tax_rate: np.float64
+    initial_assets: npt.ArrayLike,
+    assets: npt.ArrayLike,
+    diff: npt.ArrayLike,
+    tax_rate: np.float64,
 ) -> np.float64:
     """
     Calculate capital gain from market data and assets.

@@ -17,7 +17,9 @@ class Market(object):
     _tickers: Dict[str, pd.DataFrame]
     _expense_ratio: Dict[str, float]
 
-    def __init__(self, tickers: Dict[str, pd.DataFrame], expense_ratio: Dict[str, float]):
+    def __init__(
+        self, tickers: Dict[str, pd.DataFrame], expense_ratio: Dict[str, float]
+    ):
         self._tickers = tickers
         self._expense_ratio = expense_ratio
 
