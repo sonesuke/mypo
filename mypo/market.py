@@ -5,8 +5,8 @@ from __future__ import annotations
 import pickle
 from typing import Dict
 
-import pandas as pd
 import numpy as np
+import pandas as pd
 
 from .common import safe_cast
 
@@ -67,9 +67,8 @@ class Market(object):
         """
         return Market(
             tickers={ticker: data.loc[index] for ticker, data in self._tickers.items()},
-            expense_ratio=self._expense_ratio
+            expense_ratio=self._expense_ratio,
         )
-
 
     def get_index(self) -> pd.Series:
         """
@@ -111,7 +110,7 @@ class Market(object):
 
     def get_expense_ratio(self) -> np.ndarray:
         """
-        Get expense ratio
+        Get expense ratio.
 
         Returns
         -------
