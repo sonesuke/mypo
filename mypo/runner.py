@@ -11,7 +11,6 @@ from .market import Market
 from .rebalancer import Rebalancer
 from .reporter import Reporter
 
-
 WEEK_DAYS = int(365 * 5 / 7)
 
 

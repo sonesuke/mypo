@@ -1,12 +1,11 @@
 import os
 
-from mypo import Market, split_n_periods
 from mypo import (
-    MinimumVarianceOptimizer,
-    ThresholdRebalancer,
-    Runner,
-    negative_total_return,
+    Market,
+    split_n_periods,
 )
+
+from mypo.loss_function import negative_total_return
 
 TEST_DATA = os.path.join(os.path.dirname(__file__), "data", "test.bin")
 

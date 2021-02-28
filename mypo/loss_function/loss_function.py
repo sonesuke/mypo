@@ -34,18 +34,15 @@ def max_drawdown(report: pd.DataFrame) -> np.float64:
         Negative tatal return.
     """
     total_assets = list(report["total_assets"])
-    minimum_return = 1e6
-    r = 1.0
-    previous_assets = total_assets[0]
+    max_assets = total_assets[0]
+    minimum_drawdown = np.float64(1e6)
     for a in total_assets:
-        this_return = a / previous_assets
-        if this_return > 1.0:
-            r = 1.0
-        else:
-            r *= this_return
-        if r < minimum_return:
-            minimum_return = r
-    return np.float64(minimum_return)
+        if a >= max_assets:
+            max_assets = a
+        this_drawdown = a / max_assets
+        if this_drawdown < minimum_drawdown:
+            minimum_drawdown = this_drawdown
+    return np.float64(np.min(minimum_drawdown))
 
 
 def max_drawdown_span(report: pd.DataFrame) -> int:
@@ -64,11 +61,15 @@ def max_drawdown_span(report: pd.DataFrame) -> int:
     total_assets = list(report["total_assets"])
     max_assets = total_assets[0]
     not_update_max_of_asset = 0
+    drawdown_span = 0
     for a in total_assets:
-        if a > max_assets:
+        if a >= max_assets:
             not_update_max_of_asset = 0
             max_assets = a
         else:
             not_update_max_of_asset += 1
 
-    return not_update_max_of_asset
+        if not_update_max_of_asset > drawdown_span:
+            drawdown_span = not_update_max_of_asset
+
+    return drawdown_span
