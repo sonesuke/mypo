@@ -1,11 +1,8 @@
 import datetime
-import os
 
 import pandas as pd
 
 from mypo import Reporter
-
-TEST_DATA = os.path.join(os.path.dirname(__file__), "data", "test.bin")
 
 
 def test_report():
