@@ -51,6 +51,6 @@ def test_rebalance_threshold_fire():
 def test_rebalance_threshold_not_fire():
     assets = [1.5, 1]
     weights = [0.3, 0.7]
-    rebalancer = ThresholdRebalancer(weights=weights, threashold=0.5)
+    rebalancer = ThresholdRebalancer(weights=weights, threshold=0.5)
     diff = rebalancer.apply(date(2021, 2, 15), assets, 0.5)
     npt.assert_almost_equal(np.sum(np.abs(diff)), 0)
