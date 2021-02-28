@@ -1,1 +1,5 @@
-poetry install && poetry run jupyter notebook --ip=* --allow-root
+#!/bin/bash
+
+set -eu
+poetry install
+poetry run jupyter notebook --ip=* --allow-root

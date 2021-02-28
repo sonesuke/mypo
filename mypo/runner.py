@@ -6,7 +6,8 @@ import numpy as np
 import numpy.typing as npt
 import pandas as pd
 
-from .common import calc_capital_gain_tax, calc_fee, calc_income_gain_tax, safe_cast
+from .common import (calc_capital_gain_tax, calc_fee, calc_income_gain_tax,
+                     safe_cast)
 from .market import Market
 from .rebalancer import Rebalancer
 from .reporter import Reporter
