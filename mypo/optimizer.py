@@ -35,7 +35,7 @@ class MinimumVarianceOptimizer(Optimizer):
         self._historical_data = market.get_prices()
         self._span = span
 
-    def optimize_weight(self) -> np.ndarray:
+    def optimize_weight(self, minimum_return: float = None) -> np.ndarray:
         """
         Optimize weights.
 
@@ -54,8 +54,16 @@ class MinimumVarianceOptimizer(Optimizer):
             return ret
 
         cons = [{"type": "eq", "fun": lambda x: np.sum(x) - 1}]
-        bounds = [[0.0, 1.0] for i in range(n)]
+        if minimum_return is not None:
+            ret = np.prod(prices, axis=0)
+            cons += [
+                {
+                    "type": "ineq",
+                    "fun": lambda x: np.dot(ret, x) - (1.0 + minimum_return),
+                }
+            ]
 
+        bounds = [[0.0, 1.0] for i in range(n)]
         minout = minimize(
             fn, x, args=(Q), method="SLSQP", bounds=bounds, constraints=cons
         )
