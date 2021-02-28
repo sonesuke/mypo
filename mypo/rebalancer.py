@@ -129,10 +129,10 @@ class MonthlyRebalancer(Rebalancer):
 class ThresholdRebalancer(Rebalancer):
     """Weighted rebalance strategy by monthly applying."""
 
-    _threashold: np.float64
+    _threshold: np.float64
     _weights: np.ndarray
 
-    def __init__(self, weights: npt.ArrayLike, threashold: np.float64 = 0.05) -> None:
+    def __init__(self, weights: npt.ArrayLike, threshold: np.float64 = np.float64(0.05)) -> None:
         """
         Construct object.
 
@@ -141,11 +141,12 @@ class ThresholdRebalancer(Rebalancer):
         weights
             Weight for applying rebalance.
 
-        old_month
-            Previous month.
+        threshold
+            Threshold of fire.
+
         """
         super().__init__()
-        self._threashold = threashold
+        self._threshold = threshold
         self._weights = safe_cast(weights)
 
     def apply(self, index: datetime.datetime, assets: npt.ArrayLike, cash: np.float64) -> np.ndarray:
@@ -168,7 +169,7 @@ class ThresholdRebalancer(Rebalancer):
         Deal
         """
         assets = safe_cast(assets)
-        if np.max(np.abs(assets / np.sum(assets) - self._weights)) > self._threashold:
+        if np.max(np.abs(assets / np.sum(assets) - self._weights)) > self._threshold:
             diff: np.ndarray = self._weights * np.sum(assets) - assets
             return diff
         else:
