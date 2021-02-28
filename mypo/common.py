@@ -30,8 +30,8 @@ def safe_cast(value: Any) -> np.ndarray:
 
 
 def calc_capital_gain_tax(
-    initial_assets: npt.ArrayLike,
-    assets: npt.ArrayLike,
+    average_asset_prices: npt.ArrayLike,
+    prices: npt.ArrayLike,
     diff: npt.ArrayLike,
     tax_rate: np.float64,
 ) -> np.float64:
@@ -40,10 +40,10 @@ def calc_capital_gain_tax(
 
     Parameters
     ----------
-    initial_assets
-        Initial assets when investment started.
+    average_asset_prices
+        average assets from investment started.
 
-    assets
+    prices
         Current assets.
 
     diff
@@ -56,11 +56,11 @@ def calc_capital_gain_tax(
     -------
     capital_gain_tax
     """
-    initial_assets = safe_cast(initial_assets)
-    assets = safe_cast(assets)
+    average_asset_prices = safe_cast(average_asset_prices)
+    prices = safe_cast(prices)
     diff = safe_cast(diff)
     deal_sell = np.where(diff > 0, 0, diff)
-    unrealized_gain = assets - initial_assets
+    unrealized_gain = prices - average_asset_prices
     plus_unrealized_gain = np.where(unrealized_gain > 0, unrealized_gain, 0)
     capital_gain_tax: np.float64 = np.sum(plus_unrealized_gain * deal_sell * tax_rate)
     return capital_gain_tax

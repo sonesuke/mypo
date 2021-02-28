@@ -10,17 +10,19 @@ class Reporter(object):
     """Reporter class of simulation."""
 
     _index: List[datetime.datetime]
+    _total_assets: List[np.float64]
     _capital_gain: List[np.float64]
-    _income_gain: List[np.float64] = []
-    _cash: List[np.float64] = []
-    _deal: List[np.float64] = []
-    _fee: List[np.float64] = []
-    _capital_gain_tax: List[np.float64] = []
-    _income_gain_tax: List[np.float64] = []
+    _income_gain: List[np.float64]
+    _cash: List[np.float64]
+    _deal: List[np.float64]
+    _fee: List[np.float64]
+    _capital_gain_tax: List[np.float64]
+    _income_gain_tax: List[np.float64]
 
     def __init__(self) -> None:
         """Construct this object."""
         self._index = []
+        self._total_assets = []
         self._capital_gain = []
         self._income_gain = []
         self._cash = []
@@ -32,6 +34,7 @@ class Reporter(object):
     def record(
         self,
         index: datetime.datetime,
+        total_assets: np.float64,
         capital_gain: np.float64,
         income_gain: np.float64,
         cash: np.float64,
@@ -47,6 +50,9 @@ class Reporter(object):
         ----------
         index
             Current date.
+
+        total_assets
+            Current total assets.
 
         capital_gain
             Current capital gain.
@@ -70,6 +76,7 @@ class Reporter(object):
             Current income gain tax.
         """
         self._index += [index]
+        self._total_assets += [total_assets]
         self._capital_gain += [capital_gain]
         self._income_gain += [income_gain]
         self._cash += [cash]
@@ -88,6 +95,7 @@ class Reporter(object):
         """
         return pd.DataFrame(
             {
+                "total_assets": self._total_assets,
                 "capital_gain": self._capital_gain,
                 "income_gain": self._income_gain,
                 "cash": self._cash,

@@ -12,11 +12,14 @@ from .rebalancer import Rebalancer
 from .reporter import Reporter
 
 
+WEEK_DAYS = int(365 * 5 / 7)
+
+
 class Runner(object):
     """Runner of simulation."""
 
     _assets: np.ndarray
-    _initial_assets: np.ndarray
+    _averagel_assets_price: np.ndarray
     _rebalancer: Rebalancer
     _reporter: Reporter
     _cash: np.float64
@@ -49,15 +52,24 @@ class Runner(object):
             Monthly spending.
         """
         self._assets = safe_cast(assets)
-        self._initial_assets = self._assets
-        self.assets = safe_cast(assets)
-        self.initial_assets = self.assets
+        self._averagel_assets_price = np.ones(len(self._assets))
         self._rebalancer = rebalancer
         self._reporter = Reporter()
         self._cash = cash
         self._spending = spending
         self._tax_rate = 0.2  # type: ignore
         self._fee_rate = 0.005  # type: ignore
+        self._reporter.record(
+            pd.NaT,
+            self.total_assets(),
+            1.0,  # type: ignore
+            0.0,  # type: ignore
+            self._cash,
+            0.0,  # type: ignore
+            0.0,  # type: ignore
+            0.0,  # type: ignore
+            0.0,  # type: ignore
+        )
 
     def total_assets(self) -> np.float64:
         """
@@ -72,7 +84,7 @@ class Runner(object):
     def apply(
         self,
         index: datetime.datetime,
-        market: npt.ArrayLike,
+        prices: npt.ArrayLike,
         price_dividends_yield: npt.ArrayLike,
         expense_ratio: npt.ArrayLike,
     ) -> None:
@@ -84,7 +96,7 @@ class Runner(object):
         index
             Current date.
 
-        market
+        prices
             Current market situation.
 
         price_dividends_yield
@@ -94,24 +106,28 @@ class Runner(object):
             Expense ratio of holding assets.
         """
         previous_assets = np.sum(self._assets)
-        market = safe_cast(market)
+        prices = safe_cast(prices)
         price_dividends_yield = safe_cast(price_dividends_yield)
         expense_ratio = safe_cast(expense_ratio)
 
         # apply market prices
-        self._assets = self._assets * market
+        self._assets = self._assets * prices
         diff = self._rebalancer.apply(index, self._assets, self._cash)
         deal: np.float64 = np.abs(diff)
 
         # process of capital gain
         capital_gain_tax = calc_capital_gain_tax(
-            self._initial_assets, self._assets, diff, self._tax_rate
+            self._averagel_assets_price, self._assets, diff, self._tax_rate
         )
         self._cash -= capital_gain_tax
         fee = calc_fee(diff, self._fee_rate)
         self._cash -= fee
         self._cash -= np.float64(np.sum(diff))
         self._assets += diff
+        trading_prices = np.where(diff > 0, prices, self._averagel_assets_price)
+        self._averagel_assets_price = (
+            self._averagel_assets_price * previous_assets + diff * trading_prices
+        ) / self._assets
 
         # process of income gain
         income_gain = np.sum(self._assets * price_dividends_yield)
@@ -122,12 +138,15 @@ class Runner(object):
         self._cash -= income_gain_tax
 
         # process of others
-        self._assets = (1.0 - expense_ratio) * self._assets
+        self._assets = (1.0 - expense_ratio / WEEK_DAYS) * self._assets
 
         # record to reporter
-        capital_gain: np.float64 = np.float64(np.sum(self._assets) - previous_assets)
+        capital_gain: np.float64 = np.float64(
+            np.sum(self._assets) / np.sum(previous_assets)
+        )
         self._reporter.record(
             index,
+            self.total_assets(),
             capital_gain,
             income_gain,
             self._cash,
