@@ -26,7 +26,7 @@ class MinimumVarianceOptimizer(Optimizer):
 
         Parameters
         ----------
-        historical_data
+        market
             Past market stock prices.
 
         span
