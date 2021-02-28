@@ -5,6 +5,7 @@ import pandas as pd
 from scipy.optimize import minimize
 
 from .common import safe_cast
+from .market import Market
 
 
 class Optimizer(object):
@@ -19,7 +20,7 @@ class MinimumVarianceOptimizer(Optimizer):
     _historical_data: pd.DataFrame
     _span: int
 
-    def __init__(self, historical_data: pd.DataFrame, span: int = 260):
+    def __init__(self, market: Market, span: int = 260):
         """
         Construct this object.
 
@@ -31,7 +32,7 @@ class MinimumVarianceOptimizer(Optimizer):
         span
             Span for evaluation.
         """
-        self._historical_data = historical_data
+        self._historical_data = market.get_prices()
         self._span = span
 
     def optimize_weight(self) -> np.ndarray:
