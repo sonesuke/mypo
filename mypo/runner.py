@@ -30,7 +30,7 @@ class Runner(object):
         assets: npt.ArrayLike,
         rebalancer: Rebalancer,
         cash: np.float64,
-        settings: Settings
+        settings: Settings,
     ):
         """
         Construct this object.
