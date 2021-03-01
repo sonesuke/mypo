@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 
 
-def negative_total_return(report: pd.DataFrame) -> np.float64:
+def total_return(report: pd.DataFrame) -> np.float64:
     """
     Get negative total return.
 
@@ -14,10 +14,29 @@ def negative_total_return(report: pd.DataFrame) -> np.float64:
 
     Returns
     -------
-        Negative tatal return.
+        total return.
     """
     total_assets = report["total_assets"]
-    return -np.float64(total_assets[len(total_assets) - 1] / total_assets[0])
+    return np.float64(total_assets[len(total_assets) - 1] / total_assets[0])
+
+
+def annual_total_return(report: pd.DataFrame, frequency: int = 252) -> np.float64:
+    """
+    Get negative total return.
+
+    Parameters
+    ----------
+    report
+        Result of simulation.
+
+    frequency
+        counts of trading days in a year.
+
+    Returns
+    -------
+        yearly return.
+    """
+    return total_return(report) ** (frequency / (len(report) - 1))
 
 
 def max_drawdown(report: pd.DataFrame) -> np.float64:
