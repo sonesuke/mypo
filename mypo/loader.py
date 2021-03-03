@@ -15,27 +15,6 @@ import yfinance as yf
 from .market import Market
 
 
-def normalized_raw(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Normalize stock price data.
-
-    Parameters
-    ----------
-    df
-        raw stock price data.
-
-    Returns
-    -------
-    out: pandas.DataFrame
-
-    """
-    out: pd.DataFrame = df.copy()
-    out["r"] = out["Close"].pct_change() + 1.0
-    out.dropna(inplace=True)
-    out["ir"] = out["Dividends"] / out["Close"]
-    return out
-
-
 class Loader(object):
     """Loader class for downloading stock."""
 
@@ -66,7 +45,7 @@ class Loader(object):
         ticker = ticker.upper()
         df = yf.Ticker(ticker).history(period="max")
         df.index = pd.to_datetime(df.index)
-        self._tickers[ticker] = normalized_raw(df)
+        self._tickers[ticker] = df
         self._expense_ratio[ticker] = expense_ratio
 
     def get_market(self) -> Market:
