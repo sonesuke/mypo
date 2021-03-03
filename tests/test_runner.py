@@ -49,4 +49,4 @@ def test_run_and_report():
     )
     runner.run(market=market)
     report = runner.report()
-    assert report.index[1] == pd.Timestamp("2010-09-10")
+    assert report.index[1] == pd.Timestamp("2010-09-09")

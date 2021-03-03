@@ -80,7 +80,7 @@ class Market(object):
         -------
         index date
         """
-        rs = [self._tickers[ticker][["r"]] for ticker in self._tickers.keys()]
+        rs = [self._tickers[ticker][["Close"]] for ticker in self._tickers.keys()]
         df = pd.concat(rs, axis=1, join="inner")
         return df.index
 
@@ -92,8 +92,11 @@ class Market(object):
         -------
         Price data
         """
-        rs = [self._tickers[ticker][["r"]] for ticker in self._tickers.keys()]
+        rs = [self._tickers[ticker][["Close"]] for ticker in self._tickers.keys()]
         df = pd.concat(rs, axis=1, join="inner")
+        for c in df.columns:
+            df[c] = df[c].pct_change() + 1.0
+        df.fillna(1.0, inplace=True)
         df.columns = self._tickers.keys()
         return df
 
@@ -105,7 +108,10 @@ class Market(object):
         -------
         price dividends yield data
         """
-        rs = [self._tickers[ticker][["ir"]] for ticker in self._tickers.keys()]
+        rs = [
+            self._tickers[ticker]["Dividends"] / self._tickers[ticker]["Close"]
+            for ticker in self._tickers.keys()
+        ]
         df = pd.concat(rs, axis=1, join="inner")
         df.columns = self._tickers.keys()
         return df

@@ -56,6 +56,7 @@ class MinimumVarianceOptimizer(Optimizer):
         cons = [{"type": "eq", "fun": lambda x: np.sum(x) - 1}]
         if minimum_return is not None:
             ret = np.prod(prices, axis=0)
+            print(ret)
             cons += [
                 {
                     "type": "ineq",
