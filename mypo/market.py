@@ -108,7 +108,10 @@ class Market(object):
         -------
         price dividends yield data
         """
-        rs = [self._tickers[ticker]["Dividends"] / self._tickers[ticker]["Close"] for ticker in self._tickers.keys()]
+        rs = [
+            self._tickers[ticker]["Dividends"] / self._tickers[ticker]["Close"]
+            for ticker in self._tickers.keys()
+        ]
         df = pd.concat(rs, axis=1, join="inner")
         df.columns = self._tickers.keys()
         return df
