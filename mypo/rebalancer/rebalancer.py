@@ -4,7 +4,7 @@ import datetime
 import numpy as np
 import numpy.typing as npt
 
-from mypo.common import safe_cast
+from ..common import safe_cast
 
 
 class Rebalancer(object):
