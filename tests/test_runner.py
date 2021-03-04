@@ -4,7 +4,8 @@ import os
 import numpy.testing as npt
 import pandas as pd
 
-from mypo import Market, PlainRebalancer, Runner, Settings
+from mypo import Market, Runner, Settings
+from mypo.rebalancer import PlainRebalancer
 
 TEST_DATA = os.path.join(os.path.dirname(__file__), "data", "test.bin")
 
