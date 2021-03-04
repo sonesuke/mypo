@@ -3,7 +3,8 @@ import os
 
 import numpy.testing as npt
 
-from mypo import Market, MinimumVarianceOptimizer
+from mypo import Market
+from mypo.optimizer import MinimumVarianceOptimizer
 
 TEST_DATA = os.path.join(os.path.dirname(__file__), "data", "test.bin")
 

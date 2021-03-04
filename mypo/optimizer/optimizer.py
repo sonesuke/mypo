@@ -4,8 +4,8 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import minimize
 
-from .common import safe_cast
-from .market import Market
+from ..common import safe_cast
+from ..market import Market
 
 
 class Optimizer(object):
