@@ -7,5 +7,5 @@ then
   exit 1
 fi
 sed -e "s/__version__ = \".*\"/__version__ = \"${1}\"/" -i /app/mypo/__init__.py
-sed -e "s/version = \".*\"/version = \"${1}\"/" -i /app/pyproject.toml
+poetry version ${1}
 sed -e "s/assert __version__ == \".*\"/assert __version__ == \"${1}\"/" -i /app/tests/test_mypo.py
