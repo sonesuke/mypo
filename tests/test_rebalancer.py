@@ -3,7 +3,7 @@ from datetime import date
 import numpy as np
 import numpy.testing as npt
 
-from mypo import MonthlyRebalancer, PlainRebalancer, ThresholdRebalancer
+from mypo.rebalancer import MonthlyRebalancer, PlainRebalancer, ThresholdRebalancer
 
 
 def test_rebalance():
