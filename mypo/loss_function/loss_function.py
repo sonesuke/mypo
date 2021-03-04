@@ -51,8 +51,10 @@ def max_drawdown_span(report: pd.DataFrame) -> int:
         Negative tatal return.
     """
     df = report[["total_assets"]].copy()
-    df["draw_down"] = df["total_assets"] < df["total_assets"].cummax()
-    ret: int = np.max(
-        df.groupby((df["draw_down"] != df["draw_down"].shift()).cumsum()).cumcount() + 1
+    df["max_total"] = df["total_assets"] < df["total_assets"].cummax()
+    df["continuous"] = (
+        df.groupby((df["max_total"] != df["max_total"].shift()).cumsum()).cumcount() + 1
     )
+    df = df[df["max_total"]]
+    ret: int = np.max(df["continuous"])
     return ret
