@@ -2,4 +2,4 @@
 
 set -eu
 poetry install
-poetry run jupyter notebook --ip=* --allow-root
+jupyter notebook --ip=* --allow-root --NotebookApp.token=$JUPYTER_TOKEN

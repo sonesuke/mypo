@@ -1,5 +1,6 @@
 """Parameters for runner."""
 from dataclasses import dataclass
+
 import numpy as np
 
 

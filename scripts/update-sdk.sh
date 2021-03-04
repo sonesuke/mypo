@@ -2,4 +2,4 @@
 
 set -eu
 poetry update
-poetry export --without-hashes --output requirements.txt
+poetry export --without-hashes --dev --output requirements.txt
