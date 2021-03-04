@@ -40,7 +40,7 @@ def test_max_drawdown():
 
 
 def test_max_drawdown_span():
-    total_assets = [1.0, 0.9, 0.9, 0.9, 1.25, 1.1, 0.9, 0.9]
+    total_assets = [1.0, 0.9, 0.9, 0.9, 1.1, 1.1, 0.9, 0.9, 1.2, 1.2, 1.2, 1.2]
     zeros = np.zeros(len(total_assets))
     report = pd.DataFrame(
         {
