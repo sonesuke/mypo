@@ -3,4 +3,5 @@
 set -eu
 poetry install
 sphinx-apidoc -f -o ./docs .
-sphinx-build -b singlehtml ./docs ./docs/_build
+cd docs
+make html
