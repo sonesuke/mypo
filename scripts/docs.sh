@@ -1,4 +1,5 @@
-set -eu
+#!/bin/bash
 
-sphinx-apidoc -f -o ./docs .
+set -eu
+poetry install
 sphinx-build -b singlehtml ./docs ./docs/_build
