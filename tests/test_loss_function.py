@@ -2,7 +2,7 @@ import numpy as np
 import numpy.testing as npt
 import pandas as pd
 
-from mypo.loss_function import max_drawdown, max_drawdown_span, negative_total_return
+from mypo.loss_function import max_drawdown, max_drawdown_span, total_return
 
 
 def test_negative_total_return():
@@ -18,7 +18,7 @@ def test_negative_total_return():
             "income_gain_tax": [0.1, 0.1],
         }
     )
-    npt.assert_almost_equal(negative_total_return(report), -1.25)
+    npt.assert_almost_equal(total_return(report), 1.25)
 
 
 def test_max_drawdown():

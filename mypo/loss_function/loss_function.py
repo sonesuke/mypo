@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 
 
-def negative_total_return(report: pd.DataFrame) -> np.float64:
+def total_return(report: pd.DataFrame) -> np.float64:
     """
     Get negative total return.
 
@@ -17,7 +17,7 @@ def negative_total_return(report: pd.DataFrame) -> np.float64:
         Negative tatal return.
     """
     total_assets = report["total_assets"]
-    return -np.float64(total_assets[len(total_assets) - 1] / total_assets[0])
+    return np.float64(total_assets[len(total_assets) - 1] / total_assets[0])
 
 
 def max_drawdown(report: pd.DataFrame) -> np.float64:
