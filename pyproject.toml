@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mypo"
-version = "0.0.21"
+version = "0.0.31"
 description = ""
 authors = [
     "sonesuke <iamsonesuke@gmail.com>"
