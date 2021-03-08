@@ -42,3 +42,8 @@ jobs:
           asset_name: mypo-${{ steps.get_version.outputs.VERSION }}-py3-none-any.whl
           asset_content_type: application/zip
 
+      - name: Deploy documentation
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/_build
