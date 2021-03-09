@@ -1,3 +1,3 @@
 # flake8: noqa
 
-from .optimizer import MinimumVarianceOptimizer
+from .optimizer import MinimumVarianceOptimizer, SharpRatioOptimizer
