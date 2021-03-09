@@ -98,7 +98,7 @@ class SharpRatioOptimizer(Optimizer):
         self._span = span
 
     def optimize_weight(
-        self, risk_free_rate: Optional[np.float64] = np.float64(0.02)
+        self, risk_free_rate: np.float64 = np.float64(0.02)
     ) -> np.ndarray:
         """
         Optimize weights.
