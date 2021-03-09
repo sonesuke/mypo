@@ -124,7 +124,7 @@ class SharpRatioOptimizer(Optimizer):
         def fn(
             x: np.ndarray, R: np.ndarray, Q: np.ndarray, risk_free_rate: np.float64
         ) -> np.float64:
-            ret: np.float64 = (np.dot(x, R) - risk_free_rate) / np.dot(
+            ret: np.float64 = (np.dot(x, R) - (1.0 + risk_free_rate)) / np.dot(
                 np.dot(x, Q), x.T
             )
             return -ret
