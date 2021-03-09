@@ -1,4 +1,5 @@
 """Loss functions."""
+
 import numpy as np
 import pandas as pd
 
@@ -14,10 +15,30 @@ def total_return(report: pd.DataFrame) -> np.float64:
 
     Returns
     -------
-        Negative tatal return.
+        total return.
     """
     total_assets = report["total_assets"]
     return np.float64(total_assets[len(total_assets) - 1] / total_assets[0])
+
+
+def yearly_total_return(report: pd.DataFrame, frequency: int = 252) -> np.float64:
+    """
+    Get negative total return.
+
+    Parameters
+    ----------
+    report
+        Result of simulation.
+
+    frequency
+        The count of days of trading.
+
+    Returns
+    -------
+        yearly total return.
+    """
+    print(len(report))
+    return total_return(report) ** (frequency / len(report))
 
 
 def max_drawdown(report: pd.DataFrame) -> np.float64:
