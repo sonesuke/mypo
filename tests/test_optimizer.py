@@ -29,5 +29,5 @@ def test_minimum_sharp_ratio_optimizer():
     market = Market.load(TEST_DATA)
     market = market.extract(market.get_index()[:300])
     optimizer = SharpRatioOptimizer(market)
-    weights = optimizer.optimize_weight()
-    npt.assert_almost_equal(weights, [0.2493479, 0.7506521])
+    weights = optimizer.optimize_weight(risk_free_rate=0.001)
+    npt.assert_almost_equal(weights, [1, 0])
