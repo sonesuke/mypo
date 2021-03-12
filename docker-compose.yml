@@ -2,7 +2,7 @@ version: '3'
 
 services:
   mypo:
-    build: ./
+    image: 'ghcr.io/sonesuke/mypo:latest'
     volumes:
       - .:/app
     working_dir: /app
