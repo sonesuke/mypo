@@ -48,11 +48,14 @@
 <code class="sig-name descname"><span class="pre">optimize_weight</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">minimum_return</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#mypo.optimizer.optimizer.MinimumVarianceOptimizer.optimize_weight" title="Permalink to this definition">¶</a></dt>
 <dd><p>Optimize weights.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p></p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>minimum_return</strong> – Add minimum return constraints.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>Optimized weights</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Optimized weights</p>
 </dd>
 </dl>
 </dd></dl>
@@ -64,6 +67,30 @@
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mypo.optimizer.optimizer.</span></code><code class="sig-name descname"><span class="pre">Optimizer</span></code><a class="headerlink" href="#mypo.optimizer.optimizer.Optimizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Base Optimizer.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="mypo.optimizer.optimizer.SharpRatioOptimizer">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mypo.optimizer.optimizer.</span></code><code class="sig-name descname"><span class="pre">SharpRatioOptimizer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">market</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="mypo.html#mypo.market.Market" title="mypo.market.Market"><span class="pre">mypo.market.Market</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">span</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">260</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mypo.optimizer.optimizer.SharpRatioOptimizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mypo.optimizer.optimizer.Optimizer" title="mypo.optimizer.optimizer.Optimizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">mypo.optimizer.optimizer.Optimizer</span></code></a></p>
+<p>Minimum variance optimizer.</p>
+<dl class="py method">
+<dt id="mypo.optimizer.optimizer.SharpRatioOptimizer.optimize_weight">
+<code class="sig-name descname"><span class="pre">optimize_weight</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">risk_free_rate</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.float64</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.02</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#mypo.optimizer.optimizer.SharpRatioOptimizer.optimize_weight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Optimize weights.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>risk_free_rate</strong> – Risk free rate</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Optimized weights</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </div>

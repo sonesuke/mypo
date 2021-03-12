@@ -73,8 +73,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="mypo.loss_function.loss_function.negative_total_return">
-<code class="sig-prename descclassname"><span class="pre">mypo.loss_function.loss_function.</span></code><code class="sig-name descname"><span class="pre">negative_total_return</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.float64</span><a class="headerlink" href="#mypo.loss_function.loss_function.negative_total_return" title="Permalink to this definition">¶</a></dt>
+<dt id="mypo.loss_function.loss_function.total_return">
+<code class="sig-prename descclassname"><span class="pre">mypo.loss_function.loss_function.</span></code><code class="sig-name descname"><span class="pre">total_return</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.float64</span><a class="headerlink" href="#mypo.loss_function.loss_function.total_return" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get negative total return.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -84,7 +84,27 @@
 <dd class="field-even"><p></p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Negative tatal return.</p>
+<dd class="field-odd"><p>total return.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="mypo.loss_function.loss_function.yearly_total_return">
+<code class="sig-prename descclassname"><span class="pre">mypo.loss_function.loss_function.</span></code><code class="sig-name descname"><span class="pre">yearly_total_return</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">252</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.float64</span><a class="headerlink" href="#mypo.loss_function.loss_function.yearly_total_return" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get negative total return.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>report</strong> – Result of simulation.</p></li>
+<li><p><strong>frequency</strong> – The count of days of trading.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>yearly total return.</p>
 </dd>
 </dl>
 </dd></dl>
