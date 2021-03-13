@@ -8,7 +8,7 @@ from typing import Dict
 import numpy as np
 import pandas as pd
 
-from .common import safe_cast
+from mypo.common import safe_cast
 
 
 class Market(object):

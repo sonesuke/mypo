@@ -12,7 +12,7 @@ from typing import Dict
 import pandas as pd
 import yfinance as yf
 
-from .market import Market
+from mypo.market import Market
 
 
 class Loader(object):
