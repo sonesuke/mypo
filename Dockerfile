@@ -8,5 +8,5 @@ RUN apt update && \
 ADD poetry.toml /
 ADD pyproject.toml /
 
-RUN pip install poetry
-    && poetry install --no-root
+RUN pip install poetry && \
+    poetry install --no-root
