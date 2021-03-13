@@ -39,7 +39,7 @@ jobs:
 
       - name: Build
         shell: bash
-        run: docker-compose run mypo bash /app/scripts/build.sh
+        run: docker-compose run mypo bash /app/scripts/build.sh ${{ steps.get_version.outputs.VERSION }}
 
 
       - name: Create release
