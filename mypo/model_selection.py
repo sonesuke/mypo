@@ -1,7 +1,7 @@
 """Utility functions for model selection."""
 from typing import List, Tuple
 
-from .market import Market
+from mypo.market import Market
 
 
 def split_n_periods(

@@ -6,12 +6,11 @@ import numpy as np
 import numpy.typing as npt
 import pandas as pd
 
+from mypo.common import calc_capital_gain_tax, calc_fee, calc_income_gain_tax, safe_cast
+from mypo.market import Market
 from mypo.rebalancer.rebalancer import Rebalancer
-
-from .common import calc_capital_gain_tax, calc_fee, calc_income_gain_tax, safe_cast
-from .market import Market
-from .reporter import Reporter
-from .settings import Settings
+from mypo.reporter import Reporter
+from mypo.settings import Settings
 
 WEEK_DAYS = int(365 * 5 / 7)
 
