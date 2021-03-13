@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mypo"
-version = "0.0.39"
+version = "0.0.40"
 description = ""
 authors = [
     "sonesuke <iamsonesuke@gmail.com>"
@@ -13,7 +13,7 @@ repository = "https://github.com/sonesuke/mypo"
 homepage = "https://github.com/sonesuke/mypo"
 
 [tool.poetry.dependencies]
-python = "^3.9.1"
+python = "^3.9.2"
 pandas = "^1.2.2"
 yfinance = "^0.1.55"
 numpy = "^1.20.1"
