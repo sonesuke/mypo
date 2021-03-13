@@ -1,6 +1,7 @@
 FROM amd64/python:3.9.2-slim-buster
 
-RUN curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+ADD https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py /get-poetry.py
+RUN python get-poetry.py
 ENV PATH $PATH:/root/.poetry/bin
 ENV SHELL /bin/bash
 
