@@ -2,4 +2,4 @@ from mypo import __version__
 
 
 def test_version():
-    assert __version__ == "0.0.40"
+    assert __version__ == "0.0.42"

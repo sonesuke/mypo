@@ -1,5 +1,5 @@
 # flake8: noqa
-__version__ = "0.0.40"
+__version__ = "0.0.42"
 
 from .common import calc_capital_gain_tax, calc_fee, calc_income_gain_tax
 from .loader import Loader
