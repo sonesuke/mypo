@@ -6,10 +6,8 @@ on:
       - '[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
-    env:
-      PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
 
     steps:
       - uses: actions/checkout@v2
@@ -28,7 +26,7 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GHCR_TOKEN }}
 
-      - name: Build and push
+      - name: Build and push image
         uses: docker/build-push-action@v2
         with:
           context: .
@@ -37,10 +35,11 @@ jobs:
             ghcr.io/${{ github.repository_owner }}/mypo:latest
             ghcr.io/${{ github.repository_owner }}/mypo:${{ steps.get_version.outputs.VERSION }}
 
-      - name: Build
+      - name: Build and test artifacts
         shell: bash
+        env:
+          PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
         run: docker-compose run mypo bash /app/scripts/build.sh ${{ steps.get_version.outputs.VERSION }}
-
 
       - name: Create release
         id: create_release
@@ -51,7 +50,7 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: ${{ github.ref }}
 
-      - name: Upload Release Asset
+      - name: Upload the artifacts
         id: upload-release-asset
         uses: actions/upload-release-asset@v1.0.1
         env:
