@@ -6,6 +6,7 @@ from scipy.optimize import minimize
 
 from mypo.common import safe_cast
 from mypo.market import Market
+from mypo.optimizer.covariance_model import CovarianceModel, covariance
 from mypo.optimizer.optimizer import Optimizer
 
 
@@ -15,7 +16,12 @@ class MinimumVarianceOptimizer(Optimizer):
     _historical_data: pd.DataFrame
     _span: int
 
-    def __init__(self, market: Market, span: int = 260):
+    def __init__(
+        self,
+        market: Market,
+        span: int = 260,
+        covariance_model: CovarianceModel = covariance,
+    ):
         """
         Construct this object.
 
@@ -29,6 +35,7 @@ class MinimumVarianceOptimizer(Optimizer):
         """
         self._historical_data = market.get_prices()
         self._span = span
+        self._covariance_model = covariance_model
 
     def optimize_weight(self, minimum_return: float = None) -> np.ndarray:
         """
@@ -44,9 +51,8 @@ class MinimumVarianceOptimizer(Optimizer):
         Optimized weights
         """
         prices = self._historical_data.tail(n=self._span).to_numpy()
-        Q = np.cov(prices.T)
-        Q = Q / np.max(np.abs(Q))
-        n = Q.shape[0]
+        Q = self._covariance_model(prices)
+        n = len(self._historical_data.columns)
         x = np.ones(n) / n
 
         def fn(x: np.ndarray, Q: np.ndarray) -> np.float64:
