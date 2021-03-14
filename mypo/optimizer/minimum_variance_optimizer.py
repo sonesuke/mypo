@@ -37,7 +37,7 @@ class MinimumVarianceOptimizer(Optimizer):
         Parameters
         ----------
         minimum_return
-            Add minimum return constraints.
+            Add yearly minimum return constraints.
 
         Returns
         -------
@@ -55,12 +55,12 @@ class MinimumVarianceOptimizer(Optimizer):
 
         cons = [{"type": "eq", "fun": lambda x: np.sum(x) - 1}]
         if minimum_return is not None:
-            ret = np.prod(prices, axis=0)
-            print(ret)
+            ret = np.prod(1.0 + prices, axis=0)
+            r = (1.0 + minimum_return) ** (float(len(prices)) / 252)
             cons += [
                 {
                     "type": "ineq",
-                    "fun": lambda x: np.dot(ret, x) - (1.0 + minimum_return),
+                    "fun": lambda x: np.dot(ret, x) - r,
                 }
             ]
 

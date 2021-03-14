@@ -94,9 +94,8 @@ class Market(object):
         """
         rs = [self._tickers[ticker][["Close"]] for ticker in self._tickers.keys()]
         df = pd.concat(rs, axis=1, join="inner")
-        for c in df.columns:
-            df[c] = df[c].pct_change() + 1.0
-        df.fillna(1.0, inplace=True)
+        df = df.pct_change(axis=0)
+        df.dropna(inplace=True)
         df.columns = self._tickers.keys()
         return df
 
