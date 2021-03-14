@@ -4,7 +4,11 @@ import os
 import numpy.testing as npt
 
 from mypo import Market
-from mypo.optimizer import MinimumVarianceOptimizer, SharpRatioOptimizer
+from mypo.optimizer import (
+    MinimumVarianceOptimizer,
+    SharpRatioOptimizer,
+    semi_covariance,
+)
 
 TEST_DATA = os.path.join(os.path.dirname(__file__), "data", "test.bin")
 
@@ -31,3 +35,11 @@ def test_minimum_sharp_ratio_optimizer():
     optimizer = SharpRatioOptimizer(market)
     weights = optimizer.optimize_weight(risk_free_rate=0.02)
     npt.assert_almost_equal(weights, [1, 0])
+
+
+def test_semi_minimum_variance_optimizer():
+    market = Market.load(TEST_DATA)
+    market = market.extract(market.get_index()[:300])
+    optimizer = MinimumVarianceOptimizer(market, covariance_model=semi_covariance)
+    weights = optimizer.optimize_weight()
+    npt.assert_almost_equal(weights, [0.1689367, 0.8310633])
