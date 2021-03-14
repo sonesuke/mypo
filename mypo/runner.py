@@ -107,7 +107,7 @@ class Runner(object):
         expense_ratio = safe_cast(expense_ratio)
 
         # apply market prices
-        self._assets = self._assets * prices
+        self._assets = self._assets * (1.0 + prices)
         diff = self._rebalancer.apply(index, self._assets, self._cash)
         deal: np.float64 = np.abs(diff)
 
@@ -117,10 +117,9 @@ class Runner(object):
         )
         self._cash -= capital_gain_tax
         fee = calc_fee(diff, self._settings.fee_rate)
-        self._cash -= fee
-        self._cash -= np.float64(np.sum(diff))
+        self._cash -= np.float64(np.sum(diff) + fee)
         self._assets += diff
-        trading_prices = np.where(diff > 0, prices, self._averagel_assets_price)
+        trading_prices = np.where(diff > 0, 1.0 + prices, self._averagel_assets_price)
         self._averagel_assets_price = (
             self._averagel_assets_price * previous_assets + diff * trading_prices
         ) / self._assets
