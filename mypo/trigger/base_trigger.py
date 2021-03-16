@@ -5,15 +5,16 @@ import numpy as np
 import numpy.typing as npt
 
 
-class Rebalancer(object):
-    """Interface class of Rebalance stragegy class."""
+class BaseTrigger(object):
+    """Weighted rebalance strategy by monthly applying."""
 
-    def __init__(self) -> None:
-        pass
-
-    def apply(
-        self, index: datetime.datetime, assets: npt.ArrayLike, cash: np.float64
-    ) -> np.ndarray:
+    def is_fire(
+        self,
+        index: datetime.datetime,
+        assets: npt.ArrayLike,
+        cash: np.float64,
+        weights: npt.ArrayLike,
+    ) -> bool:
         """
         Apply rebalance strategy to current situation.
 
@@ -27,6 +28,9 @@ class Rebalancer(object):
 
         cash
             Current cash for applying rebalance.
+
+        weights
+            Weight of assets.
 
         Returns
         -------
