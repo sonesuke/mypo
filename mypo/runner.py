@@ -8,7 +8,7 @@ import pandas as pd
 
 from mypo.common import calc_capital_gain_tax, calc_fee, calc_income_gain_tax, safe_cast
 from mypo.market import Market
-from mypo.rebalancer.rebalancer import Rebalancer
+from mypo.rebalancer.base_rebalancer import BaseRebalancer
 from mypo.reporter import Reporter
 from mypo.settings import Settings
 
@@ -20,7 +20,7 @@ class Runner(object):
 
     _assets: np.ndarray
     _averagel_assets_price: np.ndarray
-    _rebalancer: Rebalancer
+    _rebalancer: BaseRebalancer
     _reporter: Reporter
     _cash: np.float64
     _settings: Settings
@@ -28,7 +28,7 @@ class Runner(object):
     def __init__(
         self,
         assets: npt.ArrayLike,
-        rebalancer: Rebalancer,
+        rebalancer: BaseRebalancer,
         cash: np.float64,
         settings: Settings,
     ):
