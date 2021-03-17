@@ -21,7 +21,7 @@ def covariance(prices: np.ndarray) -> np.ndarray:
 
     """
     Q = np.cov(prices.T)
-    return np.array(Q / np.max(np.abs(Q)))
+    return np.array(Q)
 
 
 def semi_covariance(prices: np.ndarray) -> np.ndarray:
@@ -39,4 +39,4 @@ def semi_covariance(prices: np.ndarray) -> np.ndarray:
 
     """
     Q = np.cov(np.where(prices.T < 0, prices.T, 0.0))
-    return np.array(Q / np.max(np.abs(Q)))
+    return np.array(Q)
