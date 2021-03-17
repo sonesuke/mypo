@@ -5,6 +5,7 @@ import pandas as pd
 from scipy.optimize import minimize
 
 from mypo.common import safe_cast
+from mypo.indicator import sharp_ratio
 from mypo.market import Market
 from mypo.optimizer import Optimizer
 
@@ -58,10 +59,9 @@ class SharpRatioOptimizer(Optimizer):
             Q: np.ndarray,
             daily_risk_free_rate: np.float64,
         ) -> np.float64:
-            ret: np.float64 = (np.dot(x, R) - daily_risk_free_rate) / np.dot(
-                np.dot(x, Q), x.T
+            return -sharp_ratio(
+                np.dot(x, R), np.dot(np.dot(x, Q), x.T), daily_risk_free_rate
             )
-            return -ret
 
         cons = [{"type": "eq", "fun": lambda x: np.sum(x) - 1}]
         bounds = [[0.0, 1.0] for i in range(n)]
