@@ -1,6 +1,6 @@
 # flake8: noqa
 
-from .loss_function import (
+from .indicators import (
     max_drawdown,
     max_drawdown_span,
     total_return,

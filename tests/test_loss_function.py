@@ -2,7 +2,7 @@ import numpy as np
 import numpy.testing as npt
 import pandas as pd
 
-from mypo.loss_function import (
+from mypo.indicator import (
     max_drawdown,
     max_drawdown_span,
     total_return,
