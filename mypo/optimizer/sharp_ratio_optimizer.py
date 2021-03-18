@@ -5,9 +5,9 @@ import pandas as pd
 from scipy.optimize import minimize
 
 from mypo.common import safe_cast
-from mypo.indicator import sharp_ratio
 from mypo.market import Market
 from mypo.optimizer import Optimizer
+from mypo.optimizer.objective import sharp_ratio
 
 
 class SharpRatioOptimizer(Optimizer):
@@ -16,7 +16,12 @@ class SharpRatioOptimizer(Optimizer):
     _historical_data: pd.DataFrame
     _span: int
 
-    def __init__(self, market: Market, span: int = 260):
+    def __init__(
+        self,
+        market: Market,
+        risk_free_rate: np.float64 = np.float64(0.02),
+        span: int = 260,
+    ):
         """
         Construct this object.
 
@@ -24,23 +29,19 @@ class SharpRatioOptimizer(Optimizer):
         ----------
         market
             Past market stock prices.
+        risk_free_rate
+            Risk free rate
 
         span
             Span for evaluation.
         """
         self._historical_data = market.get_prices()
+        self._risk_free_rate = risk_free_rate
         self._span = span
 
-    def optimize_weight(
-        self, risk_free_rate: np.float64 = np.float64(0.02)
-    ) -> np.ndarray:
+    def optimize_weight(self) -> np.ndarray:
         """
         Optimize weights.
-
-        Parameters
-        ----------
-        risk_free_rate
-            Risk free rate
 
         Returns
         -------
@@ -51,7 +52,7 @@ class SharpRatioOptimizer(Optimizer):
         R = prices.mean(axis=0).T
         n = Q.shape[0]
         x = np.ones(n) / n
-        daily_risk_free_rate = (1.0 + risk_free_rate) ** (1 / 252) - 1.0
+        daily_risk_free_rate = (1.0 + self._risk_free_rate) ** (1 / 252) - 1.0
 
         def fn(
             x: np.ndarray,

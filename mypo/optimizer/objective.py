@@ -40,3 +40,24 @@ def semi_covariance(prices: np.ndarray) -> np.ndarray:
     """
     Q = np.cov(np.where(prices.T < 0, prices.T, 0.0))
     return np.array(Q)
+
+
+def sharp_ratio(r: np.float64, q: np.float64, risk_free_rate: np.float64) -> np.float64:
+    """
+    Calculate Sharp ratio.
+
+    Parameters
+    ----------
+    r
+        Return
+    q
+        Variance
+    risk_free_rate
+        Risk free rate
+
+    Returns
+    -------
+    Sharp ratio.
+
+    """
+    return (r - risk_free_rate) / q

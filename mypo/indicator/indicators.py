@@ -79,24 +79,3 @@ def max_drawdown_span(report: pd.DataFrame) -> int:
     df = df[df["max_total"]]
     ret: int = np.max(df["continuous"])
     return ret
-
-
-def sharp_ratio(r: np.float64, q: np.float64, risk_free_rate: np.float64) -> np.float64:
-    """
-    Calculate Sharp ratio.
-
-    Parameters
-    ----------
-    r
-        Return
-    q
-        Variance
-    risk_free_rate
-        Rsik free rate
-
-    Returns
-    -------
-    Sharp ratio.
-
-    """
-    return (r - risk_free_rate) / q
