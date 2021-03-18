@@ -13,6 +13,13 @@ Welcome to mypo's documentation!
    main
 
 
+Tutorial
+========
+.. toctree::
+   :glob:
+
+   tutorial/tutorial
+
 
 Indices and tables
 ==================

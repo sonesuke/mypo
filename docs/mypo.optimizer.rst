@@ -12,6 +12,14 @@ mypo.optimizer.minimum\_variance\_optimizer module
    :undoc-members:
    :show-inheritance:
 
+mypo.optimizer.objective module
+-------------------------------
+
+.. automodule:: mypo.optimizer.objective
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 mypo.optimizer.optimizer module
 -------------------------------
 
