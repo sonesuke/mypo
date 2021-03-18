@@ -12,6 +12,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" />
    
@@ -35,10 +36,12 @@
 
 <div class="genindex-jumpbox">
  <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
  | <a href="#C"><strong>C</strong></a>
  | <a href="#E"><strong>E</strong></a>
  | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
+ | <a href="#I"><strong>I</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#O"><strong>O</strong></a>
@@ -52,18 +55,28 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="mypo.rebalancer.html#mypo.rebalancer.monthly_rebalancer.MonthlyRebalancer.apply">apply() (mypo.rebalancer.monthly_rebalancer.MonthlyRebalancer method)</a>
+      <li><a href="mypo.trigger.html#mypo.trigger.always_trigger.AlwaysTrigger">AlwaysTrigger (class in mypo.trigger.always_trigger)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="mypo.rebalancer.html#mypo.rebalancer.base_rebalancer.BaseRebalancer.apply">apply() (mypo.rebalancer.base_rebalancer.BaseRebalancer method)</a>
 
       <ul>
-        <li><a href="mypo.rebalancer.html#mypo.rebalancer.plain_rebalancer.PlainRebalancer.apply">(mypo.rebalancer.plain_rebalancer.PlainRebalancer method)</a>
-</li>
-        <li><a href="mypo.rebalancer.html#mypo.rebalancer.rebalancer.Rebalancer.apply">(mypo.rebalancer.rebalancer.Rebalancer method)</a>
-</li>
-        <li><a href="mypo.rebalancer.html#mypo.rebalancer.threshold_rebalancer.ThresholdRebalancer.apply">(mypo.rebalancer.threshold_rebalancer.ThresholdRebalancer method)</a>
-</li>
         <li><a href="mypo.html#mypo.runner.Runner.apply">(mypo.runner.Runner method)</a>
 </li>
       </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="mypo.rebalancer.html#mypo.rebalancer.base_rebalancer.BaseRebalancer">BaseRebalancer (class in mypo.rebalancer.base_rebalancer)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="mypo.trigger.html#mypo.trigger.base_trigger.BaseTrigger">BaseTrigger (class in mypo.trigger.base_trigger)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -72,11 +85,13 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="mypo.html#mypo.common.calc_capital_gain_tax">calc_capital_gain_tax() (in module mypo.common)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="mypo.html#mypo.common.calc_fee">calc_fee() (in module mypo.common)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="mypo.html#mypo.common.calc_income_gain_tax">calc_income_gain_tax() (in module mypo.common)</a>
+</li>
+      <li><a href="mypo.optimizer.html#mypo.optimizer.objective.covariance">covariance() (in module mypo.optimizer.objective)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -117,6 +132,22 @@
   </ul></td>
 </tr></table>
 
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="mypo.trigger.html#mypo.trigger.always_trigger.AlwaysTrigger.is_fire">is_fire() (mypo.trigger.always_trigger.AlwaysTrigger method)</a>
+
+      <ul>
+        <li><a href="mypo.trigger.html#mypo.trigger.base_trigger.BaseTrigger.is_fire">(mypo.trigger.base_trigger.BaseTrigger method)</a>
+</li>
+        <li><a href="mypo.trigger.html#mypo.trigger.monthly_trigger.MonthlyTrigger.is_fire">(mypo.trigger.monthly_trigger.MonthlyTrigger method)</a>
+</li>
+        <li><a href="mypo.trigger.html#mypo.trigger.threshold_trigger.ThresholdTrigger.is_fire">(mypo.trigger.threshold_trigger.ThresholdTrigger method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -134,16 +165,12 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="mypo.html#mypo.market.Market">Market (class in mypo.market)</a>
 </li>
-      <li><a href="mypo.loss_function.html#mypo.loss_function.loss_function.max_drawdown">max_drawdown() (in module mypo.loss_function.loss_function)</a>
+      <li><a href="mypo.indicator.html#mypo.indicator.indicators.max_drawdown">max_drawdown() (in module mypo.indicator.indicators)</a>
 </li>
-      <li><a href="mypo.loss_function.html#mypo.loss_function.loss_function.max_drawdown_span">max_drawdown_span() (in module mypo.loss_function.loss_function)</a>
+      <li><a href="mypo.indicator.html#mypo.indicator.indicators.max_drawdown_span">max_drawdown_span() (in module mypo.indicator.indicators)</a>
 </li>
       <li><a href="mypo.optimizer.html#mypo.optimizer.minimum_variance_optimizer.MinimumVarianceOptimizer">MinimumVarianceOptimizer (class in mypo.optimizer.minimum_variance_optimizer)</a>
-
-      <ul>
-        <li><a href="mypo.optimizer.html#mypo.optimizer.sharp_ratio_optimizer.MinimumVarianceOptimizer">(class in mypo.optimizer.sharp_ratio_optimizer)</a>
 </li>
-      </ul></li>
       <li>
     module
 
@@ -152,11 +179,11 @@
 </li>
         <li><a href="mypo.html#module-mypo.common">mypo.common</a>
 </li>
+        <li><a href="mypo.indicator.html#module-mypo.indicator">mypo.indicator</a>
+</li>
+        <li><a href="mypo.indicator.html#module-mypo.indicator.indicators">mypo.indicator.indicators</a>
+</li>
         <li><a href="mypo.html#module-mypo.loader">mypo.loader</a>
-</li>
-        <li><a href="mypo.loss_function.html#module-mypo.loss_function">mypo.loss_function</a>
-</li>
-        <li><a href="mypo.loss_function.html#module-mypo.loss_function.loss_function">mypo.loss_function.loss_function</a>
 </li>
         <li><a href="mypo.html#module-mypo.market">mypo.market</a>
 </li>
@@ -166,17 +193,19 @@
 </li>
         <li><a href="mypo.optimizer.html#module-mypo.optimizer.minimum_variance_optimizer">mypo.optimizer.minimum_variance_optimizer</a>
 </li>
+        <li><a href="mypo.optimizer.html#module-mypo.optimizer.objective">mypo.optimizer.objective</a>
+</li>
         <li><a href="mypo.optimizer.html#module-mypo.optimizer.optimizer">mypo.optimizer.optimizer</a>
 </li>
         <li><a href="mypo.optimizer.html#module-mypo.optimizer.sharp_ratio_optimizer">mypo.optimizer.sharp_ratio_optimizer</a>
 </li>
         <li><a href="mypo.rebalancer.html#module-mypo.rebalancer">mypo.rebalancer</a>
 </li>
+        <li><a href="mypo.rebalancer.html#module-mypo.rebalancer.base_rebalancer">mypo.rebalancer.base_rebalancer</a>
+</li>
         <li><a href="mypo.rebalancer.html#module-mypo.rebalancer.monthly_rebalancer">mypo.rebalancer.monthly_rebalancer</a>
 </li>
         <li><a href="mypo.rebalancer.html#module-mypo.rebalancer.plain_rebalancer">mypo.rebalancer.plain_rebalancer</a>
-</li>
-        <li><a href="mypo.rebalancer.html#module-mypo.rebalancer.rebalancer">mypo.rebalancer.rebalancer</a>
 </li>
         <li><a href="mypo.rebalancer.html#module-mypo.rebalancer.threshold_rebalancer">mypo.rebalancer.threshold_rebalancer</a>
 </li>
@@ -186,8 +215,20 @@
 </li>
         <li><a href="mypo.html#module-mypo.settings">mypo.settings</a>
 </li>
+        <li><a href="mypo.trigger.html#module-mypo.trigger">mypo.trigger</a>
+</li>
+        <li><a href="mypo.trigger.html#module-mypo.trigger.always_trigger">mypo.trigger.always_trigger</a>
+</li>
+        <li><a href="mypo.trigger.html#module-mypo.trigger.base_trigger">mypo.trigger.base_trigger</a>
+</li>
+        <li><a href="mypo.trigger.html#module-mypo.trigger.monthly_trigger">mypo.trigger.monthly_trigger</a>
+</li>
+        <li><a href="mypo.trigger.html#module-mypo.trigger.threshold_trigger">mypo.trigger.threshold_trigger</a>
+</li>
       </ul></li>
       <li><a href="mypo.rebalancer.html#mypo.rebalancer.monthly_rebalancer.MonthlyRebalancer">MonthlyRebalancer (class in mypo.rebalancer.monthly_rebalancer)</a>
+</li>
+      <li><a href="mypo.trigger.html#mypo.trigger.monthly_trigger.MonthlyTrigger">MonthlyTrigger (class in mypo.trigger.monthly_trigger)</a>
 </li>
       <li>
     mypo
@@ -204,6 +245,20 @@
 </li>
       </ul></li>
       <li>
+    mypo.indicator
+
+      <ul>
+        <li><a href="mypo.indicator.html#module-mypo.indicator">module</a>
+</li>
+      </ul></li>
+      <li>
+    mypo.indicator.indicators
+
+      <ul>
+        <li><a href="mypo.indicator.html#module-mypo.indicator.indicators">module</a>
+</li>
+      </ul></li>
+      <li>
     mypo.loader
 
       <ul>
@@ -212,20 +267,6 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li>
-    mypo.loss_function
-
-      <ul>
-        <li><a href="mypo.loss_function.html#module-mypo.loss_function">module</a>
-</li>
-      </ul></li>
-      <li>
-    mypo.loss_function.loss_function
-
-      <ul>
-        <li><a href="mypo.loss_function.html#module-mypo.loss_function.loss_function">module</a>
-</li>
-      </ul></li>
       <li>
     mypo.market
 
@@ -255,6 +296,13 @@
 </li>
       </ul></li>
       <li>
+    mypo.optimizer.objective
+
+      <ul>
+        <li><a href="mypo.optimizer.html#module-mypo.optimizer.objective">module</a>
+</li>
+      </ul></li>
+      <li>
     mypo.optimizer.optimizer
 
       <ul>
@@ -276,6 +324,13 @@
 </li>
       </ul></li>
       <li>
+    mypo.rebalancer.base_rebalancer
+
+      <ul>
+        <li><a href="mypo.rebalancer.html#module-mypo.rebalancer.base_rebalancer">module</a>
+</li>
+      </ul></li>
+      <li>
     mypo.rebalancer.monthly_rebalancer
 
       <ul>
@@ -287,13 +342,6 @@
 
       <ul>
         <li><a href="mypo.rebalancer.html#module-mypo.rebalancer.plain_rebalancer">module</a>
-</li>
-      </ul></li>
-      <li>
-    mypo.rebalancer.rebalancer
-
-      <ul>
-        <li><a href="mypo.rebalancer.html#module-mypo.rebalancer.rebalancer">module</a>
 </li>
       </ul></li>
       <li>
@@ -324,6 +372,41 @@
         <li><a href="mypo.html#module-mypo.settings">module</a>
 </li>
       </ul></li>
+      <li>
+    mypo.trigger
+
+      <ul>
+        <li><a href="mypo.trigger.html#module-mypo.trigger">module</a>
+</li>
+      </ul></li>
+      <li>
+    mypo.trigger.always_trigger
+
+      <ul>
+        <li><a href="mypo.trigger.html#module-mypo.trigger.always_trigger">module</a>
+</li>
+      </ul></li>
+      <li>
+    mypo.trigger.base_trigger
+
+      <ul>
+        <li><a href="mypo.trigger.html#module-mypo.trigger.base_trigger">module</a>
+</li>
+      </ul></li>
+      <li>
+    mypo.trigger.monthly_trigger
+
+      <ul>
+        <li><a href="mypo.trigger.html#module-mypo.trigger.monthly_trigger">module</a>
+</li>
+      </ul></li>
+      <li>
+    mypo.trigger.threshold_trigger
+
+      <ul>
+        <li><a href="mypo.trigger.html#module-mypo.trigger.threshold_trigger">module</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -333,8 +416,6 @@
       <li><a href="mypo.optimizer.html#mypo.optimizer.minimum_variance_optimizer.MinimumVarianceOptimizer.optimize_weight">optimize_weight() (mypo.optimizer.minimum_variance_optimizer.MinimumVarianceOptimizer method)</a>
 
       <ul>
-        <li><a href="mypo.optimizer.html#mypo.optimizer.sharp_ratio_optimizer.MinimumVarianceOptimizer.optimize_weight">(mypo.optimizer.sharp_ratio_optimizer.MinimumVarianceOptimizer method)</a>
-</li>
         <li><a href="mypo.optimizer.html#mypo.optimizer.sharp_ratio_optimizer.SharpRatioOptimizer.optimize_weight">(mypo.optimizer.sharp_ratio_optimizer.SharpRatioOptimizer method)</a>
 </li>
       </ul></li>
@@ -356,8 +437,6 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="mypo.rebalancer.html#mypo.rebalancer.rebalancer.Rebalancer">Rebalancer (class in mypo.rebalancer.rebalancer)</a>
-</li>
       <li><a href="mypo.html#mypo.reporter.Reporter.record">record() (mypo.reporter.Reporter method)</a>
 </li>
       <li><a href="mypo.html#mypo.reporter.Reporter.report">report() (mypo.reporter.Reporter method)</a>
@@ -384,10 +463,14 @@
 </li>
       <li><a href="mypo.html#mypo.market.Market.save">save() (mypo.market.Market method)</a>
 </li>
+      <li><a href="mypo.optimizer.html#mypo.optimizer.objective.semi_covariance">semi_covariance() (in module mypo.optimizer.objective)</a>
+</li>
       <li><a href="mypo.html#mypo.settings.Settings">Settings (class in mypo.settings)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="mypo.optimizer.html#mypo.optimizer.objective.sharp_ratio">sharp_ratio() (in module mypo.optimizer.objective)</a>
+</li>
       <li><a href="mypo.optimizer.html#mypo.optimizer.sharp_ratio_optimizer.SharpRatioOptimizer">SharpRatioOptimizer (class in mypo.optimizer.sharp_ratio_optimizer)</a>
 </li>
       <li><a href="mypo.html#mypo.settings.Settings.spending">spending (mypo.settings.Settings attribute)</a>
@@ -406,9 +489,11 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="mypo.trigger.html#mypo.trigger.threshold_trigger.ThresholdTrigger">ThresholdTrigger (class in mypo.trigger.threshold_trigger)</a>
+</li>
       <li><a href="mypo.html#mypo.runner.Runner.total_assets">total_assets() (mypo.runner.Runner method)</a>
 </li>
-      <li><a href="mypo.loss_function.html#mypo.loss_function.loss_function.total_return">total_return() (in module mypo.loss_function.loss_function)</a>
+      <li><a href="mypo.indicator.html#mypo.indicator.indicators.total_return">total_return() (in module mypo.indicator.indicators)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -416,7 +501,7 @@
 <h2 id="Y">Y</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="mypo.loss_function.html#mypo.loss_function.loss_function.yearly_total_return">yearly_total_return() (in module mypo.loss_function.loss_function)</a>
+      <li><a href="mypo.indicator.html#mypo.indicator.indicators.yearly_total_return">yearly_total_return() (in module mypo.indicator.indicators)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -439,6 +524,13 @@
 
 
 <h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="main.html">mypo package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/tutorial.html">titled</a></li>
+</ul>
 
 <div class="relations">
 <h3>Related Topics</h3>

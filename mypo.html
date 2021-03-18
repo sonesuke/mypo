@@ -12,6 +12,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
    
@@ -36,15 +37,16 @@
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="mypo.loss_function.html">mypo.loss_function package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="mypo.loss_function.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mypo.loss_function.html#module-mypo.loss_function.loss_function">mypo.loss_function.loss_function module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mypo.loss_function.html#module-mypo.loss_function">Module contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mypo.indicator.html">mypo.indicator package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mypo.indicator.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mypo.indicator.html#module-mypo.indicator.indicators">mypo.indicator.indicators module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mypo.indicator.html#module-mypo.indicator">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="mypo.optimizer.html">mypo.optimizer package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="mypo.optimizer.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mypo.optimizer.html#module-mypo.optimizer.minimum_variance_optimizer">mypo.optimizer.minimum_variance_optimizer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mypo.optimizer.html#module-mypo.optimizer.objective">mypo.optimizer.objective module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mypo.optimizer.html#module-mypo.optimizer.optimizer">mypo.optimizer.optimizer module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mypo.optimizer.html#module-mypo.optimizer.sharp_ratio_optimizer">mypo.optimizer.sharp_ratio_optimizer module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mypo.optimizer.html#module-mypo.optimizer">Module contents</a></li>
@@ -52,11 +54,20 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="mypo.rebalancer.html">mypo.rebalancer package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="mypo.rebalancer.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mypo.rebalancer.html#module-mypo.rebalancer.base_rebalancer">mypo.rebalancer.base_rebalancer module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mypo.rebalancer.html#module-mypo.rebalancer.monthly_rebalancer">mypo.rebalancer.monthly_rebalancer module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mypo.rebalancer.html#module-mypo.rebalancer.plain_rebalancer">mypo.rebalancer.plain_rebalancer module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mypo.rebalancer.html#module-mypo.rebalancer.rebalancer">mypo.rebalancer.rebalancer module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mypo.rebalancer.html#module-mypo.rebalancer.threshold_rebalancer">mypo.rebalancer.threshold_rebalancer module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mypo.rebalancer.html#module-mypo.rebalancer">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mypo.trigger.html">mypo.trigger package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mypo.trigger.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mypo.trigger.html#module-mypo.trigger.always_trigger">mypo.trigger.always_trigger module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mypo.trigger.html#module-mypo.trigger.base_trigger">mypo.trigger.base_trigger module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mypo.trigger.html#module-mypo.trigger.monthly_trigger">mypo.trigger.monthly_trigger module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mypo.trigger.html#module-mypo.trigger.threshold_trigger">mypo.trigger.threshold_trigger module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mypo.trigger.html#module-mypo.trigger">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -384,7 +395,7 @@
 <p>Simulation.</p>
 <dl class="py class">
 <dt id="mypo.runner.Runner">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mypo.runner.</span></code><code class="sig-name descname"><span class="pre">Runner</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assets</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">complex</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">bytes</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.generic</span><span class="p"><span class="pre">,</span> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">complex</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">bytes</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.generic</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.typing._array_like._SupportsArray</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rebalancer</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="mypo.rebalancer.html#mypo.rebalancer.rebalancer.Rebalancer" title="mypo.rebalancer.rebalancer.Rebalancer"><span class="pre">mypo.rebalancer.rebalancer.Rebalancer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cash</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.float64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#mypo.settings.Settings" title="mypo.settings.Settings"><span class="pre">mypo.settings.Settings</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mypo.runner.Runner" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mypo.runner.</span></code><code class="sig-name descname"><span class="pre">Runner</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assets</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">complex</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">bytes</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.generic</span><span class="p"><span class="pre">,</span> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">complex</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">bytes</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.generic</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.typing._array_like._SupportsArray</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rebalancer</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="mypo.rebalancer.html#mypo.rebalancer.base_rebalancer.BaseRebalancer" title="mypo.rebalancer.base_rebalancer.BaseRebalancer"><span class="pre">mypo.rebalancer.base_rebalancer.BaseRebalancer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cash</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.float64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#mypo.settings.Settings" title="mypo.settings.Settings"><span class="pre">mypo.settings.Settings</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mypo.runner.Runner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Runner of simulation.</p>
 <dl class="py method">
@@ -493,6 +504,13 @@
 
 
 <h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="main.html">mypo package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/tutorial.html">titled</a></li>
+</ul>
 
 <div class="relations">
 <h3>Related Topics</h3>

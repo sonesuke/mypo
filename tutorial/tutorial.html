@@ -1,0 +1,820 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>titled &#8212; mypo  documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="mypo package" href="../main.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="section" id="titled">
+<h1>titled<a class="headerlink" href="#titled" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">mypo</span>
+<span class="kn">from</span> <span class="nn">mypo</span> <span class="kn">import</span> <span class="n">split_n_periods</span><span class="p">,</span> <span class="n">Runner</span><span class="p">,</span> <span class="n">Settings</span>
+<span class="kn">from</span> <span class="nn">mypo.rebalancer</span> <span class="kn">import</span> <span class="n">PlainRebalancer</span>
+<span class="kn">from</span> <span class="nn">mypo.optimizer</span> <span class="kn">import</span> <span class="n">MinimumVarianceOptimizer</span><span class="p">,</span> <span class="n">SharpRatioOptimizer</span><span class="p">,</span> <span class="n">semi_covariance</span>
+<span class="kn">from</span> <span class="nn">mypo.indicator</span> <span class="kn">import</span> <span class="n">yearly_total_return</span><span class="p">,</span> <span class="n">max_drawdown</span><span class="p">,</span> <span class="n">max_drawdown_span</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mypo</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.0.0
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">loader</span> <span class="o">=</span> <span class="n">mypo</span><span class="o">.</span><span class="n">Loader</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">loader</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;VOO&#39;</span><span class="p">,</span> <span class="mf">0.0003</span><span class="p">)</span>
+<span class="n">loader</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;IEF&#39;</span><span class="p">,</span> <span class="mf">0.0015</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">market</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">get_market</span><span class="p">()</span>
+<span class="n">trains</span><span class="p">,</span> <span class="n">evals</span> <span class="o">=</span> <span class="n">split_n_periods</span><span class="p">(</span><span class="n">market</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">train_span</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">train</span><span class="p">,</span> <span class="nb">eval</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">trains</span><span class="p">,</span> <span class="n">evals</span><span class="p">):</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">MinimumVarianceOptimizer</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
+    <span class="n">weights</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">optimize_weight</span><span class="p">()</span>
+
+    <span class="n">settings</span> <span class="o">=</span> <span class="n">Settings</span><span class="p">(</span><span class="n">tax_rate</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span> <span class="n">fee_rate</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">spending</span><span class="o">=</span><span class="mf">0.06</span><span class="p">)</span>
+
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">mypo</span><span class="o">.</span><span class="n">Runner</span><span class="p">(</span>
+        <span class="n">assets</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]),</span>
+        <span class="n">rebalancer</span><span class="o">=</span><span class="n">PlainRebalancer</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">),</span>
+        <span class="n">cash</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">settings</span><span class="o">=</span><span class="n">settings</span>
+    <span class="p">)</span>
+
+    <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+        <span class="n">market</span><span class="o">=</span><span class="nb">eval</span>
+    <span class="p">)</span>
+    <span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">yearly_total_return</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown_span</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.33139919 0.66860081]
+122
+1.1627086486042428
+0.9796472721789398
+19
+[0.22107913 0.77892087]
+122
+1.1245855742874666
+0.9865525830443621
+27
+[0.23743096 0.76256904]
+122
+1.1209838339251308
+0.9856610877253217
+37
+[0.2483981 0.7516019]
+122
+1.0854460512026762
+0.9843400539942805
+22
+[0.25621736 0.74378264]
+122
+1.0720919933124724
+0.9723036218682535
+83
+[0.26044584 0.73955416]
+122
+1.1169264321811978
+0.991798243632087
+28
+[0.24797608 0.75202392]
+122
+1.1262741043530844
+0.9886348591371406
+26
+[0.23756622 0.76243378]
+122
+1.0887964957893075
+0.9827477571993122
+30
+[0.25480991 0.74519009]
+122
+1.0890225823477846
+0.980865713253007
+44
+[0.22467473 0.77532527]
+122
+1.109697181840246
+0.9887404818218538
+39
+[0.17323664 0.82676336]
+122
+1.081853536842775
+0.9867328991796572
+74
+[0.20869994 0.79130006]
+122
+1.053352907468192
+0.9730849235756872
+82
+[0.30388888 0.69611112]
+122
+1.097879458182179
+0.9892644104619236
+23
+[0.34404181 0.65595819]
+122
+1.038256813109431
+0.967422864800311
+49
+[0.14880802 0.85119198]
+122
+1.0674017844154224
+0.9876398870145746
+28
+[0.1422653 0.8577347]
+122
+1.1676863707692944
+0.993017243035748
+30
+[0.13654982 0.86345018]
+122
+1.1914830146670476
+0.9801572813591536
+19
+[0.19124237 0.80875763]
+122
+1.0828989921985737
+0.9636897442906137
+32
+[0.16191208 0.83808792]
+122
+1.251898403726868
+0.9896154131480168
+17
+[0.12398284 0.87601716]
+122
+0.995724739580368
+0.9721009402107658
+50
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">train</span><span class="p">,</span> <span class="nb">eval</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">trains</span><span class="p">,</span> <span class="n">evals</span><span class="p">):</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">MinimumVarianceOptimizer</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">covariance_model</span><span class="o">=</span><span class="n">semi_covariance</span><span class="p">)</span>
+    <span class="n">weights</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">optimize_weight</span><span class="p">()</span>
+
+    <span class="n">settings</span> <span class="o">=</span> <span class="n">Settings</span><span class="p">(</span><span class="n">tax_rate</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span> <span class="n">fee_rate</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">spending</span><span class="o">=</span><span class="mf">0.06</span><span class="p">)</span>
+
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">mypo</span><span class="o">.</span><span class="n">Runner</span><span class="p">(</span>
+        <span class="n">assets</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]),</span>
+        <span class="n">rebalancer</span><span class="o">=</span><span class="n">PlainRebalancer</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">),</span>
+        <span class="n">cash</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">settings</span><span class="o">=</span><span class="n">settings</span>
+    <span class="p">)</span>
+
+    <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+        <span class="n">market</span><span class="o">=</span><span class="nb">eval</span>
+    <span class="p">)</span>
+    <span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">yearly_total_return</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown_span</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.32432593 0.67567407]
+122
+1.1648914345780546
+0.9808328623271731
+19
+[0.13172534 0.86827466]
+122
+1.1166103640779037
+0.9827329099896529
+27
+[0.17425283 0.82574717]
+122
+1.1191010087068174
+0.9860649947055996
+36
+[0.21398585 0.78601415]
+122
+1.0768229870193529
+0.9827991099400409
+22
+[0.23792008 0.76207992]
+122
+1.0687265485786626
+0.9715097107451159
+91
+[0.28226434 0.71773566]
+122
+1.1164186606153388
+0.9916588512838246
+25
+[0.22393655 0.77606345]
+122
+1.1259759259021491
+0.9884731962854769
+26
+[0.17061115 0.82938885]
+122
+1.0924037671303906
+0.9793026151419248
+34
+[0.21935952 0.78064048]
+122
+1.0919471039184672
+0.983407375360742
+44
+[0.18828015 0.81171985]
+122
+1.1150763001711388
+0.9891377916795772
+36
+[0.12539474 0.87460526]
+122
+1.081958219358049
+0.9857925058452571
+74
+[0.1326722 0.8673278]
+122
+1.0430727753827047
+0.9663662353547018
+115
+[0.34798732 0.65201268]
+122
+1.1014958208867913
+0.989374586115702
+17
+[0.26908074 0.73091926]
+122
+1.0361071801353567
+0.9729962252340061
+49
+[0.0729948 0.9270052]
+122
+1.057215291025007
+0.9871141820457734
+32
+[0.07673781 0.92326219]
+122
+1.1841451372451128
+0.9927322401339228
+18
+[0.08131734 0.91868266]
+122
+1.1978371721454162
+0.977715647997269
+19
+[0.12150637 0.87849363]
+122
+1.1065894027244128
+0.9715212697820953
+61
+[0.05939607 0.94060393]
+122
+1.1922846160176475
+0.9906546115494554
+25
+[0.03731212 0.96268788]
+122
+0.9716117103792975
+0.9627335431262221
+108
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">train</span><span class="p">,</span> <span class="nb">eval</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">trains</span><span class="p">,</span> <span class="n">evals</span><span class="p">):</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">SharpRatioOptimizer</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
+    <span class="n">weights</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">optimize_weight</span><span class="p">()</span>
+
+    <span class="n">settings</span> <span class="o">=</span> <span class="n">Settings</span><span class="p">(</span><span class="n">tax_rate</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span> <span class="n">fee_rate</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">spending</span><span class="o">=</span><span class="mf">0.06</span><span class="p">)</span>
+
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">mypo</span><span class="o">.</span><span class="n">Runner</span><span class="p">(</span>
+        <span class="n">assets</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]),</span>
+        <span class="n">rebalancer</span><span class="o">=</span><span class="n">PlainRebalancer</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">),</span>
+        <span class="n">cash</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">settings</span><span class="o">=</span><span class="n">settings</span>
+    <span class="p">)</span>
+
+    <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+        <span class="n">market</span><span class="o">=</span><span class="nb">eval</span>
+    <span class="p">)</span>
+    <span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">yearly_total_return</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown_span</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.43047419 0.56952581]
+122
+1.1313959337897423
+0.9623998179484686
+31
+[0.19756335 0.80243665]
+122
+1.1225209877348594
+0.9855554481254232
+27
+[0.25225496 0.74774504]
+122
+1.1213980607950946
+0.9855640783376598
+40
+[0.25443883 0.74556117]
+122
+1.0869646427799307
+0.9846110384745386
+22
+[0.38019006 0.61980994]
+122
+1.0950496590853396
+0.9705383540870922
+40
+[0.59678831 0.40321169]
+122
+1.1067739430534276
+0.9803264888801708
+18
+[0.36772275 0.63227725]
+122
+1.1274458199770663
+0.988107692229984
+26
+[0.29877121 0.70122879]
+122
+1.0852900647251154
+0.9838704678497845
+14
+[0.30950942 0.69049058]
+122
+1.0843167991080038
+0.9760763141732788
+43
+[0.60757766 0.39242234]
+122
+1.0493671169689998
+0.95474363059916
+71
+[0.14117791 0.85882209]
+122
+1.0819269258245254
+0.9861033876170618
+74
+[0.25610966 0.74389034]
+122
+1.059787191841317
+0.9764172520935556
+78
+[0.74060832 0.25939168]
+122
+1.1479512849716604
+0.9887920124873364
+17
+[0.42035834 0.57964166]
+122
+1.0401722490671506
+0.9616962104561605
+49
+[0.68228593 0.31771407]
+122
+1.1485764057516412
+0.9822587670417074
+16
+[0.59961032 0.40038968]
+122
+1.0479853248919502
+0.9199977989439677
+92
+[0.12661123 0.87338877]
+122
+1.1926389823698778
+0.9797171618855305
+19
+[0.19479317 0.80520683]
+122
+1.0816789338901653
+0.9632897873289569
+32
+[0.13751262 0.86248738]
+122
+1.2376038956138862
+0.9909430986932063
+19
+[0.13053986 0.86946014]
+122
+0.9975685469530167
+0.9723633515602157
+50
+</pre></div></div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">mypo</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../main.html">mypo package</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">titled</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../main.html" title="previous chapter">mypo package</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, sonesuke.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/tutorial/tutorial.ipynb.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

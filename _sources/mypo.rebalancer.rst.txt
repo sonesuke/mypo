@@ -4,6 +4,14 @@ mypo.rebalancer package
 Submodules
 ----------
 
+mypo.rebalancer.base\_rebalancer module
+---------------------------------------
+
+.. automodule:: mypo.rebalancer.base_rebalancer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 mypo.rebalancer.monthly\_rebalancer module
 ------------------------------------------
 
@@ -16,14 +24,6 @@ mypo.rebalancer.plain\_rebalancer module
 ----------------------------------------
 
 .. automodule:: mypo.rebalancer.plain_rebalancer
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-mypo.rebalancer.rebalancer module
----------------------------------
-
-.. automodule:: mypo.rebalancer.rebalancer
    :members:
    :undoc-members:
    :show-inheritance:
