@@ -1,4 +1,4 @@
-FROM amd64/python:3.9.2-slim-buster
+FROM python:3.9.2-slim-buster
 
 RUN apt update && \
     apt install -y make && \

@@ -10,6 +10,7 @@ Subpackages
    mypo.loss_function
    mypo.optimizer
    mypo.rebalancer
+   mypo.trigger
 
 Submodules
 ----------
