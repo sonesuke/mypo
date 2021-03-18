@@ -4,18 +4,18 @@ mypo.optimizer package
 Submodules
 ----------
 
-mypo.optimizer.covariance\_model module
----------------------------------------
-
-.. automodule:: mypo.optimizer.covariance_model
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 mypo.optimizer.minimum\_variance\_optimizer module
 --------------------------------------------------
 
 .. automodule:: mypo.optimizer.minimum_variance_optimizer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+mypo.optimizer.objective module
+-------------------------------
+
+.. automodule:: mypo.optimizer.objective
    :members:
    :undoc-members:
    :show-inheritance:

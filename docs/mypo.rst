@@ -7,7 +7,7 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   mypo.loss_function
+   mypo.indicator
    mypo.optimizer
    mypo.rebalancer
    mypo.trigger

@@ -18,7 +18,7 @@ Tutorial
 .. toctree::
    :glob:
 
-   tutorial/*
+   tutorial/tutorial
 
 
 Indices and tables
