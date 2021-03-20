@@ -35,7 +35,7 @@ class SharpRatioOptimizer(Optimizer):
         span
             Span for evaluation.
         """
-        self._historical_data = market.get_prices()
+        self._historical_data = market.get_rate_of_change()
         self._risk_free_rate = risk_free_rate
         self._span = span
 
