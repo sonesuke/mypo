@@ -10,4 +10,4 @@ class NoRebalancer(BaseRebalancer):
 
     def __init__(self) -> None:
         """Construct object."""
-        super().__init__(trigger=NoTrigger(), weights=np.zeros(1))
+        super().__init__(trigger=NoTrigger(), weights=np.ones(1))

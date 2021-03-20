@@ -34,10 +34,14 @@ class BaseRebalancer(object):
         Returns:
             Deal
         """
+        assets = safe_cast(assets)
         if self._trigger.is_fire(index, assets, cash, self._weights):
-            return self._rebalance(safe_cast(assets))
+            diff = self._rebalance(assets)
         else:
-            return self._do_nothing(safe_cast(assets))
+            diff = self._do_nothing(assets)
+        if cash < 0 and np.sum(assets + diff) > 0:
+            diff = diff - np.abs(cash) * self._weights
+        return diff
 
     def _rebalance(self, assets: np.ndarray) -> np.ndarray:
         diff: np.ndarray = self._weights * np.sum(assets) - assets

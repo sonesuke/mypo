@@ -123,6 +123,7 @@ class Runner(object):
 
         # process of others
         self._assets = (1.0 - expense_ratio / WEEK_DAYS) * self._assets
+        deal = np.max([np.sum(np.where(deal > 0, deal, 0)), np.sum(np.where(deal < 0, -deal, 0))])
 
         # record to reporter
         self._reporter.record(
@@ -131,7 +132,7 @@ class Runner(object):
             capital_gain,
             income_gain,
             self._cash,
-            np.sum(np.abs(deal)) / 2,
+            deal,
             fee,
             capital_gain_tax,
             income_gain_tax,
