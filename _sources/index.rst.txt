@@ -18,6 +18,8 @@ Tutorial
 .. toctree::
    :glob:
 
+   tutorial/withdraw
+   tutorial/explore_market_data
    tutorial/tutorial
 
 

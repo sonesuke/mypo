@@ -34,7 +34,7 @@
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="mypo package" href="../main.html" />
+    <link rel="prev" title="Explore market data." href="explore_market_data.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
   </head>
@@ -59,6 +59,12 @@
         <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../main.html">
   mypo package
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="explore_market_data.html">
+  Explore market data.
  </a>
 </li>
 
@@ -368,7 +374,7 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="titled">
 <h1>titled<a class="headerlink" href="#titled" title="Permalink to this headline">¶</a></h1>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -391,7 +397,7 @@ div.rendered_html tbody tr:hover {
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -400,7 +406,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -410,7 +416,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -420,7 +426,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -428,13 +434,10 @@ div.rendered_html tbody tr:hover {
     <span class="n">optimizer</span> <span class="o">=</span> <span class="n">MinimumVarianceOptimizer</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
     <span class="n">weights</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">optimize_weight</span><span class="p">()</span>
 
-    <span class="n">settings</span> <span class="o">=</span> <span class="n">Settings</span><span class="p">(</span><span class="n">tax_rate</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span> <span class="n">fee_rate</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">spending</span><span class="o">=</span><span class="mf">0.06</span><span class="p">)</span>
-
     <span class="n">runner</span> <span class="o">=</span> <span class="n">mypo</span><span class="o">.</span><span class="n">Runner</span><span class="p">(</span>
         <span class="n">assets</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]),</span>
         <span class="n">rebalancer</span><span class="o">=</span><span class="n">PlainRebalancer</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">),</span>
-        <span class="n">cash</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-        <span class="n">settings</span><span class="o">=</span><span class="n">settings</span>
+        <span class="n">cash</span><span class="o">=</span><span class="mf">0.5</span>
     <span class="p">)</span>
 
     <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
@@ -556,7 +559,7 @@ div.rendered_html tbody tr:hover {
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -564,13 +567,10 @@ div.rendered_html tbody tr:hover {
     <span class="n">optimizer</span> <span class="o">=</span> <span class="n">MinimumVarianceOptimizer</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">covariance_model</span><span class="o">=</span><span class="n">semi_covariance</span><span class="p">)</span>
     <span class="n">weights</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">optimize_weight</span><span class="p">()</span>
 
-    <span class="n">settings</span> <span class="o">=</span> <span class="n">Settings</span><span class="p">(</span><span class="n">tax_rate</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span> <span class="n">fee_rate</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">spending</span><span class="o">=</span><span class="mf">0.06</span><span class="p">)</span>
-
     <span class="n">runner</span> <span class="o">=</span> <span class="n">mypo</span><span class="o">.</span><span class="n">Runner</span><span class="p">(</span>
         <span class="n">assets</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]),</span>
         <span class="n">rebalancer</span><span class="o">=</span><span class="n">PlainRebalancer</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">),</span>
-        <span class="n">cash</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-        <span class="n">settings</span><span class="o">=</span><span class="n">settings</span>
+        <span class="n">cash</span><span class="o">=</span><span class="mf">0.5</span>
     <span class="p">)</span>
 
     <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
@@ -692,7 +692,7 @@ div.rendered_html tbody tr:hover {
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -700,13 +700,10 @@ div.rendered_html tbody tr:hover {
     <span class="n">optimizer</span> <span class="o">=</span> <span class="n">SharpRatioOptimizer</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
     <span class="n">weights</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">optimize_weight</span><span class="p">()</span>
 
-    <span class="n">settings</span> <span class="o">=</span> <span class="n">Settings</span><span class="p">(</span><span class="n">tax_rate</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span> <span class="n">fee_rate</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">spending</span><span class="o">=</span><span class="mf">0.06</span><span class="p">)</span>
-
     <span class="n">runner</span> <span class="o">=</span> <span class="n">mypo</span><span class="o">.</span><span class="n">Runner</span><span class="p">(</span>
         <span class="n">assets</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]),</span>
         <span class="n">rebalancer</span><span class="o">=</span><span class="n">PlainRebalancer</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">),</span>
-        <span class="n">cash</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-        <span class="n">settings</span><span class="o">=</span><span class="n">settings</span>
+        <span class="n">cash</span><span class="o">=</span><span class="mf">0.5</span>
     <span class="p">)</span>
 
     <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
@@ -837,7 +834,7 @@ div.rendered_html tbody tr:hover {
               
               <div class='prev-next-bottom'>
                 
-    <a class='left-prev' id="prev-link" href="../main.html" title="previous page">mypo package</a>
+    <a class='left-prev' id="prev-link" href="explore_market_data.html" title="previous page">Explore market data.</a>
 
               </div>
               

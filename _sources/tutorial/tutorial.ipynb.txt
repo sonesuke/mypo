@@ -2,25 +2,26 @@
  "cells": [
   {
    "cell_type": "markdown",
+   "id": "yellow-recommendation",
+   "metadata": {
+    "collapsed": false
+   },
    "source": [
     "titled\n",
     "=====\n",
     "\n"
-   ],
-   "metadata": {
-    "collapsed": false
-   }
+   ]
   },
   {
    "cell_type": "code",
-   "execution_count": 8,
+   "execution_count": 1,
    "id": "painted-recipe",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-18T13:57:12.780182Z",
-     "iopub.status.busy": "2021-03-18T13:57:12.766085Z",
-     "iopub.status.idle": "2021-03-18T13:57:14.532264Z",
-     "shell.execute_reply": "2021-03-18T13:57:14.530349Z"
+     "iopub.execute_input": "2021-03-20T08:37:44.454020Z",
+     "iopub.status.busy": "2021-03-20T08:37:44.440267Z",
+     "iopub.status.idle": "2021-03-20T08:37:46.178615Z",
+     "shell.execute_reply": "2021-03-20T08:37:46.180273Z"
     }
    },
    "outputs": [
@@ -44,14 +45,14 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 9,
+   "execution_count": 2,
    "id": "attached-berkeley",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-18T13:57:14.545796Z",
-     "iopub.status.busy": "2021-03-18T13:57:14.543560Z",
-     "iopub.status.idle": "2021-03-18T13:57:14.548361Z",
-     "shell.execute_reply": "2021-03-18T13:57:14.550010Z"
+     "iopub.execute_input": "2021-03-20T08:37:46.192670Z",
+     "iopub.status.busy": "2021-03-20T08:37:46.190609Z",
+     "iopub.status.idle": "2021-03-20T08:37:46.197048Z",
+     "shell.execute_reply": "2021-03-20T08:37:46.195219Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -64,14 +65,14 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 10,
+   "execution_count": 3,
    "id": "secure-packet",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-18T13:57:14.582266Z",
-     "iopub.status.busy": "2021-03-18T13:57:14.565704Z",
-     "iopub.status.idle": "2021-03-18T13:57:16.105220Z",
-     "shell.execute_reply": "2021-03-18T13:57:16.106876Z"
+     "iopub.execute_input": "2021-03-20T08:37:46.212451Z",
+     "iopub.status.busy": "2021-03-20T08:37:46.209461Z",
+     "iopub.status.idle": "2021-03-20T08:37:47.631881Z",
+     "shell.execute_reply": "2021-03-20T08:37:47.633460Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -85,14 +86,14 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 11,
+   "execution_count": 4,
    "id": "floppy-communications",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-18T13:57:16.124909Z",
-     "iopub.status.busy": "2021-03-18T13:57:16.121253Z",
-     "iopub.status.idle": "2021-03-18T13:57:16.214545Z",
-     "shell.execute_reply": "2021-03-18T13:57:16.212528Z"
+     "iopub.execute_input": "2021-03-20T08:37:47.650692Z",
+     "iopub.status.busy": "2021-03-20T08:37:47.646419Z",
+     "iopub.status.idle": "2021-03-20T08:37:47.743510Z",
+     "shell.execute_reply": "2021-03-20T08:37:47.741510Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -106,14 +107,14 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 12,
+   "execution_count": 5,
    "id": "thirty-purple",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-18T13:57:16.248083Z",
-     "iopub.status.busy": "2021-03-18T13:57:16.235113Z",
-     "iopub.status.idle": "2021-03-18T13:57:19.706276Z",
-     "shell.execute_reply": "2021-03-18T13:57:19.704263Z"
+     "iopub.execute_input": "2021-03-20T08:37:47.765700Z",
+     "iopub.status.busy": "2021-03-20T08:37:47.763324Z",
+     "iopub.status.idle": "2021-03-20T08:37:51.302051Z",
+     "shell.execute_reply": "2021-03-20T08:37:51.303678Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -232,13 +233,10 @@
     "    optimizer = MinimumVarianceOptimizer(train)\n",
     "    weights = optimizer.optimize_weight()\n",
     "    \n",
-    "    settings = Settings(tax_rate=0.20, fee_rate=0.005, spending=0.06)\n",
-    "    \n",
     "    runner = mypo.Runner(\n",
     "        assets=np.array([1.2, 0.8]),\n",
     "        rebalancer=PlainRebalancer(weights=weights),\n",
-    "        cash=0.5,\n",
-    "        settings=settings\n",
+    "        cash=0.5\n",
     "    )\n",
     "\n",
     "    runner.run(\n",
@@ -253,14 +251,14 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 13,
+   "execution_count": 6,
    "id": "awful-arbitration",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-18T13:57:19.733974Z",
-     "iopub.status.busy": "2021-03-18T13:57:19.731839Z",
-     "iopub.status.idle": "2021-03-18T13:57:23.167969Z",
-     "shell.execute_reply": "2021-03-18T13:57:23.169670Z"
+     "iopub.execute_input": "2021-03-20T08:37:51.337143Z",
+     "iopub.status.busy": "2021-03-20T08:37:51.323137Z",
+     "iopub.status.idle": "2021-03-20T08:37:54.788941Z",
+     "shell.execute_reply": "2021-03-20T08:37:54.787288Z"
     }
    },
    "outputs": [
@@ -376,13 +374,10 @@
     "    optimizer = MinimumVarianceOptimizer(train, covariance_model=semi_covariance)\n",
     "    weights = optimizer.optimize_weight()\n",
     "    \n",
-    "    settings = Settings(tax_rate=0.20, fee_rate=0.005, spending=0.06)\n",
-    "    \n",
     "    runner = mypo.Runner(\n",
     "        assets=np.array([1.2, 0.8]),\n",
     "        rebalancer=PlainRebalancer(weights=weights),\n",
-    "        cash=0.5,\n",
-    "        settings=settings\n",
+    "        cash=0.5\n",
     "    )\n",
     "\n",
     "    runner.run(\n",
@@ -397,14 +392,14 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 14,
+   "execution_count": 7,
    "id": "running-modeling",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-18T13:57:23.187865Z",
-     "iopub.status.busy": "2021-03-18T13:57:23.182544Z",
-     "iopub.status.idle": "2021-03-18T13:57:26.690412Z",
-     "shell.execute_reply": "2021-03-18T13:57:26.688655Z"
+     "iopub.execute_input": "2021-03-20T08:37:54.823678Z",
+     "iopub.status.busy": "2021-03-20T08:37:54.821295Z",
+     "iopub.status.idle": "2021-03-20T08:37:58.358361Z",
+     "shell.execute_reply": "2021-03-20T08:37:58.356722Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -523,13 +518,10 @@
     "    optimizer = SharpRatioOptimizer(train)\n",
     "    weights = optimizer.optimize_weight()\n",
     "\n",
-    "    settings = Settings(tax_rate=0.20, fee_rate=0.005, spending=0.06)\n",
-    "\n",
     "    runner = mypo.Runner(\n",
     "        assets=np.array([1.2, 0.8]),\n",
     "        rebalancer=PlainRebalancer(weights=weights),\n",
-    "        cash=0.5,\n",
-    "        settings=settings\n",
+    "        cash=0.5\n",
     "    )\n",
     "\n",
     "    runner.run(\n",
@@ -565,12 +557,12 @@
   "pycharm": {
    "stem_cell": {
     "cell_type": "raw",
-    "source": [
-     "\n"
-    ],
     "metadata": {
      "collapsed": false
-    }
+    },
+    "source": [
+     "\n"
+    ]
    }
   }
  },

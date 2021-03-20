@@ -62,6 +62,12 @@
 </li>
 
 <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="tutorial/explore_market_data.html">
+  Explore market data.
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="tutorial/tutorial.html">
   titled
  </a>
@@ -173,19 +179,15 @@
 <dt id="mypo.trigger.always_trigger.AlwaysTrigger.is_fire">
 <code class="sig-name descname"><span class="pre">is_fire</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">datetime.datetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assets</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">complex</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">bytes</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.generic</span><span class="p"><span class="pre">,</span> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">complex</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">bytes</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.generic</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.typing._array_like._SupportsArray</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cash</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.float64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">complex</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">bytes</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.generic</span><span class="p"><span class="pre">,</span> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">complex</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">bytes</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.generic</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.typing._array_like._SupportsArray</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#mypo.trigger.always_trigger.AlwaysTrigger.is_fire" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply rebalance strategy to current situation.</p>
+<p>Args:
+index: Current date for applying rebalance.</p>
+<blockquote>
+<div><p>assets: Current assets for applying rebalance.
+cash: Current cash for applying rebalance.
+weights: Weights of assets.</p>
+</div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>index</strong> – Current date for applying rebalance.</p></li>
-<li><p><strong>assets</strong> – Current assets for applying rebalance.</p></li>
-<li><p><strong>cash</strong> – Current cash for applying rebalance.</p></li>
-<li><p><strong>weights</strong> – weights of assets</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>Deal</p>
 </dd>
 </dl>
@@ -212,14 +214,11 @@
 <li><p><strong>index</strong> – Current date for applying rebalance.</p></li>
 <li><p><strong>assets</strong> – Current assets for applying rebalance.</p></li>
 <li><p><strong>cash</strong> – Current cash for applying rebalance.</p></li>
-<li><p><strong>weights</strong> – Weight of assets.</p></li>
+<li><p><strong>weights</strong> – Weights of assets.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Deal</p>
+<dd class="field-even"><p>Deal</p>
 </dd>
 </dl>
 </dd></dl>
@@ -249,10 +248,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Deal</p>
+<dd class="field-even"><p>Deal</p>
 </dd>
 </dl>
 </dd></dl>
@@ -282,10 +278,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Deal</p>
+<dd class="field-even"><p>Deal</p>
 </dd>
 </dl>
 </dd></dl>
@@ -315,10 +308,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Deal</p>
+<dd class="field-even"><p>Deal</p>
 </dd>
 </dl>
 </dd></dl>
