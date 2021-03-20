@@ -48,11 +48,45 @@ class Market(object):
         Returns
         -------
         Market object
-
         """
         with open(filepath, "rb") as bin_file:
             value: Market = pickle.load(bin_file)
             return value
+
+    @classmethod
+    def create(
+        cls, start_date: str, end_date: str, yearly_gain: float, ticker: str = "None"
+    ) -> Market:
+        """
+        Load market data from file.
+
+        Parameters
+        ----------
+        ticker
+            Ticker.
+        start_date
+            Start date.
+        end_date
+            End date.
+        yearly_gain
+            Yearly gain.
+
+        Returns
+        -------
+        Market object
+        """
+        index = pd.date_range(start_date, end_date, freq="D")
+        n = len(index)
+        daily_gain = (1.0 + yearly_gain) ** (1 / 365)
+        prices = np.ones(n) * (daily_gain ** np.arange(n))
+        return Market(
+            tickers={
+                ticker: pd.DataFrame(
+                    {"Close": prices, "Dividends": np.zeros(n)}, index=index
+                )
+            },
+            expense_ratio={ticker: 0.0},
+        )
 
     def extract(self, index: pd.Series) -> Market:
         """

@@ -9,8 +9,9 @@ import pandas as pd
 from mypo.common import calc_capital_gain_tax, calc_fee, calc_income_gain_tax, safe_cast
 from mypo.market import Market
 from mypo.rebalancer.base_rebalancer import BaseRebalancer
+from mypo.rebalancer.no_rebalancer import NoRebalancer
 from mypo.reporter import Reporter
-from mypo.settings import Settings
+from mypo.settings import DEFAULT_SETTINGS, Settings
 
 WEEK_DAYS = int(365 * 5 / 7)
 
@@ -19,18 +20,21 @@ class Runner(object):
     """Runner of simulation."""
 
     _assets: np.ndarray
-    _averagel_assets_price: np.ndarray
+    _average_assets_prices: np.ndarray
     _rebalancer: BaseRebalancer
     _reporter: Reporter
     _cash: np.float64
+    _withdraw: np.float64
     _settings: Settings
+    _month: int
 
     def __init__(
         self,
-        assets: npt.ArrayLike,
-        rebalancer: BaseRebalancer,
-        cash: np.float64,
-        settings: Settings,
+        assets: npt.ArrayLike = np.array([0]),
+        cash: np.float64 = np.float64(0),
+        withdraw: np.float64 = np.float64(0),
+        rebalancer: BaseRebalancer = NoRebalancer(),
+        settings: Settings = DEFAULT_SETTINGS,
     ):
         """
         Construct this object.
@@ -41,20 +45,25 @@ class Runner(object):
             Initial asset.
 
         rebalancer
-            Reblance strategy.
+            Rebalance strategy.
 
         cash
             Initial cash.
 
-        spending
-            Monthly spending.
+        withdraw
+            Withdraw.
+
+        settings
+            Settings.
         """
         self._assets = safe_cast(assets)
-        self._averagel_assets_price = np.ones(len(self._assets))
+        self._average_assets_prices = np.ones(len(self._assets))
         self._rebalancer = rebalancer
         self._reporter = Reporter()
         self._cash = cash
+        self._withdraw = withdraw
         self._settings = settings
+        self._month = 0
         self._reporter.record(
             pd.NaT,
             self.total_assets(),
@@ -106,6 +115,11 @@ class Runner(object):
         price_dividends_yield = safe_cast(price_dividends_yield)
         expense_ratio = safe_cast(expense_ratio)
 
+        # apply withdraw
+        if self._month != index.month:
+            self._cash -= self._withdraw / 12
+        self._month = index.month
+
         # apply market prices
         self._assets = self._assets * (1.0 + prices)
         diff = self._rebalancer.apply(index, self._assets, self._cash)
@@ -113,16 +127,19 @@ class Runner(object):
 
         # process of capital gain
         capital_gain_tax = calc_capital_gain_tax(
-            self._averagel_assets_price, self._assets, diff, self._settings.tax_rate
+            self._average_assets_prices, self._assets, diff, self._settings.tax_rate
         )
         self._cash -= capital_gain_tax
         fee = calc_fee(diff, self._settings.fee_rate)
         self._cash -= np.float64(np.sum(diff) + fee)
         self._assets += diff
-        trading_prices = np.where(diff > 0, 1.0 + prices, self._averagel_assets_price)
-        self._averagel_assets_price = (
-            self._averagel_assets_price * previous_assets + diff * trading_prices
-        ) / self._assets
+        trading_prices = np.where(diff > 0, 1.0 + prices, self._average_assets_prices)
+        self._average_assets_prices = np.where(
+            self._assets != 0,
+            (self._average_assets_prices * previous_assets + diff * trading_prices)
+            / self._assets,
+            self._assets,
+        )
 
         # process of income gain
         income_gain = np.sum(self._assets * price_dividends_yield)

@@ -7,8 +7,8 @@ import numpy.typing as npt
 from mypo.trigger.base_trigger import BaseTrigger
 
 
-class AlwaysTrigger(BaseTrigger):
-    """Always fire trigger."""
+class NoTrigger(BaseTrigger):
+    """Never fire trigger."""
 
     def __init__(self) -> None:
         """Construct object."""
@@ -42,4 +42,4 @@ class AlwaysTrigger(BaseTrigger):
         -------
         Deal
         """
-        return True
+        return False
