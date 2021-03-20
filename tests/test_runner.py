@@ -28,7 +28,7 @@ def test_apply():
         price_dividends_yield=[0.05, 0.01],
         expense_ratio=[0.0007, 0.0007],
     )
-    npt.assert_almost_equal(runner.total_assets(), 2.6303305)
+    npt.assert_almost_equal(runner.total_assets(), 2.624186507)
 
 
 def test_run_and_report():
