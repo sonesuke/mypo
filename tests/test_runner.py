@@ -4,7 +4,7 @@ import os
 import numpy.testing as npt
 import pandas as pd
 
-from mypo import Market, Runner, Settings
+from mypo import Market, Runner
 from mypo.rebalancer import PlainRebalancer
 
 TEST_DATA = os.path.join(os.path.dirname(__file__), "data", "test.bin")
@@ -20,7 +20,7 @@ def test_apply():
         assets=[1.2, 0.8],
         rebalancer=PlainRebalancer([0.6, 0.4]),
         cash=0.5,
-        withdraw=0.00,
+        withdraw=0.0,
     )
     runner.apply(
         index=datetime.datetime(2021, 2, 17),
@@ -42,4 +42,4 @@ def test_run_and_report():
     )
     runner.run(market=market)
     report = runner.report()
-    assert report.index[1] == pd.Timestamp("2010-09-09")
+    assert report.index[0] == pd.Timestamp("2010-09-09")

@@ -1,6 +1,7 @@
 """Simulation."""
 
 import datetime
+from typing import List
 
 import numpy as np
 import numpy.typing as npt
@@ -30,9 +31,9 @@ class Runner(object):
 
     def __init__(
         self,
-        assets: npt.ArrayLike = np.array([0]),
-        cash: np.float64 = np.float64(0),
-        withdraw: np.float64 = np.float64(0),
+        assets: List[float] = None,
+        cash: float = 0.0,
+        withdraw: float = 0.0,
         rebalancer: BaseRebalancer = NoRebalancer(),
         settings: Settings = DEFAULT_SETTINGS,
     ):
@@ -45,25 +46,16 @@ class Runner(object):
             withdraw: Withdraw.
             settings: Settings.
         """
+        if assets is None:
+            assets = [1e-23]
         self._assets = safe_cast(assets)
         self._average_assets_prices = np.ones(len(self._assets))
         self._rebalancer = rebalancer
         self._reporter = Reporter()
-        self._cash = cash
-        self._withdraw = withdraw
+        self._cash = np.float64(cash)
+        self._withdraw = np.float64(withdraw)
         self._settings = settings
         self._month = 0
-        self._reporter.record(
-            pd.NaT,
-            self.total_assets(),
-            1.0,  # type: ignore
-            0.0,  # type: ignore
-            self._cash,
-            0.0,  # type: ignore
-            0.0,  # type: ignore
-            0.0,  # type: ignore
-            0.0,  # type: ignore
-        )
 
     def total_assets(self) -> np.float64:
         """Get current total assets. Total asset is addition of stock assets and cash.
@@ -100,6 +92,11 @@ class Runner(object):
 
         # apply market prices
         self._assets = self._assets * (1.0 + prices)
+        capital_gain: np.float64 = np.float64(
+            np.where(np.sum(previous_assets) > 0, np.sum(self._assets) / np.sum(previous_assets), 1.0) - 1.0
+        )
+
+        # rebalance assets
         diff = self._rebalancer.apply(index, self._assets, self._cash)
         deal: np.float64 = np.abs(diff)
 
@@ -128,14 +125,13 @@ class Runner(object):
         self._assets = (1.0 - expense_ratio / WEEK_DAYS) * self._assets
 
         # record to reporter
-        capital_gain: np.float64 = np.float64(np.sum(self._assets) / np.sum(previous_assets))
         self._reporter.record(
             index,
             self.total_assets(),
             capital_gain,
             income_gain,
             self._cash,
-            deal,
+            np.sum(np.abs(deal)) / 2,
             fee,
             capital_gain_tax,
             income_gain_tax,
