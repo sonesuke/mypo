@@ -47,7 +47,7 @@ class Runner(object):
             settings: Settings.
         """
         if assets is None:
-            assets = [0.0]
+            assets = [1e-23]
         self._assets = safe_cast(assets)
         self._average_assets_prices = np.ones(len(self._assets))
         self._rebalancer = rebalancer
@@ -93,7 +93,7 @@ class Runner(object):
         # apply market prices
         self._assets = self._assets * (1.0 + prices)
         capital_gain: np.float64 = np.float64(
-            np.where(np.sum(previous_assets) > 0, np.sum(self._assets) / np.sum(previous_assets), 0.0)
+            np.where(np.sum(previous_assets) > 0, np.sum(self._assets) / np.sum(previous_assets), 1.0) - 1.0
         )
 
         # rebalance assets

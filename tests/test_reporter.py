@@ -32,8 +32,6 @@ def test_run_and_report():
     runner = Runner(cash=initial_cash, withdraw=withdraw)
     runner.run(market=market)
     df = runner.report()
-    print(df)
-    print(df.columns)
     npt.assert_almost_equal(initial_cash - df["total_assets"].min(), withdraw)
     assert not df.isnull().to_numpy().any()
     npt.assert_almost_equal(df["capital_gain"].sum(), 0)
