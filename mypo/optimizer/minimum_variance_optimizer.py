@@ -34,7 +34,7 @@ class MinimumVarianceOptimizer(Optimizer):
         span
             Span for evaluation.
         """
-        self._historical_data = market.get_prices()
+        self._historical_data = market.get_rate_of_change()
         self._span = span
         self._covariance_model = covariance_model
         self._minimum_return = minimum_return

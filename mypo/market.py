@@ -80,20 +80,44 @@ class Market(object):
         -------
         index date
         """
-        rs = [self._tickers[ticker][["Close"]] for ticker in self._tickers.keys()]
-        df = pd.concat(rs, axis=1, join="inner")
+        df = self.get_raw()
         return df.index
 
-    def get_prices(self) -> pd.DataFrame:
+    def get_raw(self) -> pd.DataFrame:
         """
         Get price data from stored market data.
 
         Returns
         -------
-        Price data
+        Prices
         """
         rs = [self._tickers[ticker][["Close"]] for ticker in self._tickers.keys()]
         df = pd.concat(rs, axis=1, join="inner")
+        df.columns = self._tickers.keys()
+        return df
+
+    def get_normalized_prices(self) -> pd.DataFrame:
+        """
+        Get normalized prices.
+
+        Returns
+        -------
+        Normalized prices
+        """
+        df = self.get_raw()
+        for c in df.columns:
+            df[c] = df[c] / df[c][0]
+        return df
+
+    def get_rate_of_change(self) -> pd.DataFrame:
+        """
+        Get rate of change of prices.
+
+        Returns
+        -------
+        Rate of change
+        """
+        df = self.get_raw()
         df = df.pct_change(axis=0)
         df.dropna(inplace=True)
         df.columns = self._tickers.keys()
@@ -101,7 +125,7 @@ class Market(object):
 
     def get_price_dividends_yield(self) -> pd.DataFrame:
         """
-        Get price dividends yield from stored market data.
+        Get price dividends yield.
 
         Returns
         -------

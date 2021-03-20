@@ -161,7 +161,7 @@ class Runner(object):
             Market data.
         """
         index = market.get_index()
-        markets = market.get_prices().to_records(index=False)
+        markets = market.get_rate_of_change().to_records(index=False)
         price_dividends_yield = market.get_price_dividends_yield().to_records(
             index=False
         )
