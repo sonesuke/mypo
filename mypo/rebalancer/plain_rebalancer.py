@@ -9,12 +9,9 @@ class PlainRebalancer(BaseRebalancer):
     """Simple weighted rebalance strategy."""
 
     def __init__(self, weights: npt.ArrayLike) -> None:
-        """
-        Construct object.
+        """Construct object.
 
-        Parameters
-        ----------
-        weights
-            Weight for applying rebalance.
+        Args:
+            weights: Weight for applying rebalance.
         """
         super().__init__(trigger=AlwaysTrigger(), weights=weights)

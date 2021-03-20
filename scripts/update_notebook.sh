@@ -1,1 +1,1 @@
-jupyter nbconvert --execute  /app/tutorial/*.ipynb --to notebook --inplace
+jupyter nbconvert --execute  /app/docs/tutorial/*.ipynb --to notebook --inplace

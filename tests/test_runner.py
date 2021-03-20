@@ -11,9 +11,7 @@ TEST_DATA = os.path.join(os.path.dirname(__file__), "data", "test.bin")
 
 
 def test_simulator():
-    runner = Runner(
-        assets=[1, 1], rebalancer=PlainRebalancer([0.6, 0.4]), cash=0.5, withdraw=0.06
-    )
+    runner = Runner(assets=[1, 1], rebalancer=PlainRebalancer([0.6, 0.4]), cash=0.5, withdraw=0.06)
     npt.assert_almost_equal(runner.total_assets(), 2.5)
 
 

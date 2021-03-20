@@ -4,7 +4,6 @@ import datetime
 import numpy as np
 import numpy.typing as npt
 
-from mypo.common import safe_cast
 from mypo.trigger.base_trigger import BaseTrigger
 
 
@@ -15,13 +14,10 @@ class MonthlyTrigger(BaseTrigger):
     _weights: np.ndarray
 
     def __init__(self, old_month: int = 0) -> None:
-        """
-        Construct object.
+        """Construct object.
 
-        Parameters
-        ----------
-        old_month
-            Previous month.
+        Args:
+        old_month: Previous month.
         """
         super().__init__()
         self._old_month = old_month
@@ -33,28 +29,17 @@ class MonthlyTrigger(BaseTrigger):
         cash: np.float64,
         weights: npt.ArrayLike,
     ) -> bool:
+        """Apply rebalance strategy to current situation.
+
+        Args:
+            index: Current date for applying rebalance.
+            assets: Current assets for applying rebalance.
+            cash: Current cash for applying rebalance.
+            weights: Weights of assets.
+
+        Returns:
+            Deal
         """
-        Apply rebalance strategy to current situation.
-
-        Parameters
-        ----------
-        index
-            Current date for applying rebalance.
-
-        assets
-            Current assets for applying rebalance.
-
-        cash
-            Current cash for applying rebalance.
-
-        weights
-            Weights of assets.
-
-        Returns
-        -------
-        Deal
-        """
-        assets = safe_cast(assets)
         if self._old_month != index.month:
             self._old_month = index.month
             return True

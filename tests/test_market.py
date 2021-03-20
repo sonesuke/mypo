@@ -43,9 +43,7 @@ def test_dividends():
 
 
 def test_make_market():
-    market = Market.create(
-        ticker="NONE", start_date="2021-01-01", end_date="2021-12-31", yearly_gain=0.01
-    )
+    market = Market.create(ticker="NONE", start_date="2021-01-01", end_date="2021-12-31", yearly_gain=0.01)
     df = market.get_raw()
     assert df.index[0] == pd.Timestamp("2021-01-01")
     assert df.index[-1] == pd.Timestamp("2021-12-31")

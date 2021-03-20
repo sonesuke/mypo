@@ -5,4 +5,4 @@ isort .
 black .
 flake8 .
 mypy .
-pytest tests
+pytest

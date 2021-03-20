@@ -13,6 +13,4 @@ class Settings:
     fee_rate: np.float64
 
 
-DEFAULT_SETTINGS: Final[Settings] = Settings(
-    tax_rate=np.float64(0.20), fee_rate=np.float64(0.005)
-)
+DEFAULT_SETTINGS: Final[Settings] = Settings(tax_rate=np.float64(0.20), fee_rate=np.float64(0.005))
