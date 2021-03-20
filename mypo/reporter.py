@@ -43,37 +43,18 @@ class Reporter(object):
         capital_gain_tax: np.float64,
         income_gain_tax: np.float64,
     ) -> None:
-        """
-        Record current situation.
+        """Record current situation.
 
-        Parameters
-        ----------
-        index
-            Current date.
-
-        total_assets
-            Current total assets.
-
-        capital_gain
-            Current capital gain.
-
-        income_gain
-            Current income gain.
-
-        cash
-            Current cash.
-
-        deal
-            Current deal.
-
-        fee
-            Current fee.
-
-        capital_gain_tax
-            Current capital gain tax.
-
-        income_gain_tax
-            Current income gain tax.
+        Args:
+            index: Current date.
+            total_assets: Current total assets.
+            capital_gain: Current capital gain.
+            income_gain: Current income gain.
+            cash: Current cash.
+            deal: Current deal.
+            fee: Current fee.
+            capital_gain_tax: Current capital gain tax.
+            income_gain_tax: Current income gain tax.
         """
         self._index += [index]
         self._total_assets += [total_assets]
@@ -86,12 +67,10 @@ class Reporter(object):
         self._income_gain_tax += [income_gain_tax]
 
     def report(self) -> pd.DataFrame:
-        """
-        Report the result.
+        """Report the result.
 
-        Returns
-        -------
-        result
+        Returns:
+            result
         """
         return pd.DataFrame(
             {

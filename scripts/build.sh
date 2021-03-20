@@ -18,7 +18,7 @@ poetry install
 # test
 flake8 .
 mypy .
-pytest tests
+pytest
 
 # build and publish
 poetry config http-basic.pypi "__token__" "${PYPI_API_TOKEN}"

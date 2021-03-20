@@ -1,5 +1,4 @@
-"""
-Loader class for downloading stock data.
+"""Loader class for downloading stock data.
 
 Download stock data from yahoo finance.
 
@@ -22,25 +21,19 @@ class Loader(object):
     _expense_ratio: Dict[str, float]
 
     def __init__(self) -> None:
+        """Construct this object."""
         self._tickers = OrderedDict()
         self._expense_ratio = OrderedDict()
 
     def get(self, ticker: str, expense_ratio: float = 0.0) -> None:
-        """
-        Get stock data of specified ticker.
+        """Get stock data of specified ticker.
 
-        Parameters
-        ----------
-        ticker
-            Ticker that you want to download stock data.
+        Args:
+            ticker: Ticker that you want to download stock data.
+            expense_ratio: Expense ratio of ticker. The default value is 0.0.
 
-        expense_ratio
-            Expense ratio of ticker. The default value is 0.0.
-
-        Returns
-        -------
-        Nothing
-
+        Returns:
+            Nothing
         """
         ticker = ticker.upper()
         df = yf.Ticker(ticker).history(period="max")
@@ -49,11 +42,9 @@ class Loader(object):
         self._expense_ratio[ticker] = expense_ratio
 
     def get_market(self) -> Market:
-        """
-        Get Market data.
+        """Get Market data.
 
-        Returns
-        -------
-        Market data
+        Returns:
+            Market data
         """
         return Market(self._tickers, self._expense_ratio)

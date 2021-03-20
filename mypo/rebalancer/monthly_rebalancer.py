@@ -15,16 +15,11 @@ class MonthlyRebalancer(BaseRebalancer):
     _weights: np.ndarray
 
     def __init__(self, weights: npt.ArrayLike, old_month: int = 0) -> None:
-        """
-        Construct object.
+        """Construct object.
 
-        Parameters
-        ----------
-        weights
-            Weight for applying rebalance.
-
-        old_month
-            Previous month.
+        Args:
+            weights: Weight for applying rebalance.
+            old_month: Previous month.
         """
         super().__init__(trigger=MonthlyTrigger(old_month), weights=weights)
         self._old_month = old_month

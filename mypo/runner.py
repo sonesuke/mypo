@@ -36,25 +36,14 @@ class Runner(object):
         rebalancer: BaseRebalancer = NoRebalancer(),
         settings: Settings = DEFAULT_SETTINGS,
     ):
-        """
-        Construct this object.
+        """Construct this object.
 
-        Parameters
-        ----------
-        assets
-            Initial asset.
-
-        rebalancer
-            Rebalance strategy.
-
-        cash
-            Initial cash.
-
-        withdraw
-            Withdraw.
-
-        settings
-            Settings.
+        Args:
+            assets: Initial asset.
+            rebalancer: Rebalance strategy.
+            cash: Initial cash.
+            withdraw: Withdraw.
+            settings: Settings.
         """
         self._assets = safe_cast(assets)
         self._average_assets_prices = np.ones(len(self._assets))
@@ -77,12 +66,10 @@ class Runner(object):
         )
 
     def total_assets(self) -> np.float64:
-        """
-        Get current total assets. Total asset is addition of stock assets and cash.
+        """Get current total assets. Total asset is addition of stock assets and cash.
 
-        Returns
-        -------
-        Total assets.
+        Returns:
+            Total assets.
         """
         return np.float64(np.sum(self._assets) + self._cash)
 
@@ -93,22 +80,13 @@ class Runner(object):
         price_dividends_yield: npt.ArrayLike,
         expense_ratio: npt.ArrayLike,
     ) -> None:
-        """
-        Apply current market situation.
+        """Apply current market situation.
 
-        Parameters
-        ----------
-        index
-            Current date.
-
-        prices
-            Current market situation.
-
-        price_dividends_yield
-            Current dividends yield this date.
-
-        expense_ratio
-            Expense ratio of holding assets.
+        Args:
+            index: Current date.
+            prices: Current market situation.
+            price_dividends_yield: Current dividends yield this date.
+            expense_ratio: Expense ratio of holding assets.
         """
         previous_assets = np.sum(self._assets)
         prices = safe_cast(prices)
@@ -136,16 +114,13 @@ class Runner(object):
         trading_prices = np.where(diff > 0, 1.0 + prices, self._average_assets_prices)
         self._average_assets_prices = np.where(
             self._assets != 0,
-            (self._average_assets_prices * previous_assets + diff * trading_prices)
-            / self._assets,
+            (self._average_assets_prices * previous_assets + diff * trading_prices) / self._assets,
             self._assets,
         )
 
         # process of income gain
         income_gain = np.sum(self._assets * price_dividends_yield)
-        income_gain_tax = calc_income_gain_tax(
-            self._assets, price_dividends_yield, self._settings.tax_rate
-        )
+        income_gain_tax = calc_income_gain_tax(self._assets, price_dividends_yield, self._settings.tax_rate)
         self._cash += income_gain
         self._cash -= income_gain_tax
 
@@ -153,9 +128,7 @@ class Runner(object):
         self._assets = (1.0 - expense_ratio / WEEK_DAYS) * self._assets
 
         # record to reporter
-        capital_gain: np.float64 = np.float64(
-            np.sum(self._assets) / np.sum(previous_assets)
-        )
+        capital_gain: np.float64 = np.float64(np.sum(self._assets) / np.sum(previous_assets))
         self._reporter.record(
             index,
             self.total_assets(),
@@ -169,29 +142,22 @@ class Runner(object):
         )
 
     def run(self, market: Market) -> None:
-        """
-        Run simulation.
+        """Run simulation.
 
-        Parameters
-        ----------
-        market
-            Market data.
+        Args:
+            market: Market data.
         """
         index = market.get_index()
         markets = market.get_rate_of_change().to_records(index=False)
-        price_dividends_yield = market.get_price_dividends_yield().to_records(
-            index=False
-        )
+        price_dividends_yield = market.get_price_dividends_yield().to_records(index=False)
         expense_ratio = market.get_expense_ratio()
         for i in range(len(markets)):
             self.apply(index[i], markets[i], price_dividends_yield[i], expense_ratio)
 
     def report(self) -> pd.DataFrame:
-        """
-        Report simulation.
+        """Report simulation.
 
-        Returns
-        -------
-        result
+        Returns:
+            result
         """
         return self._reporter.report()

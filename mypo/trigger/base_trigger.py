@@ -15,25 +15,15 @@ class BaseTrigger(object):
         cash: np.float64,
         weights: npt.ArrayLike,
     ) -> bool:
+        """Apply rebalance strategy to current situation.
+
+        Args:
+            index: Current date for applying rebalance.
+            assets: Current assets for applying rebalance.
+            cash: Current cash for applying rebalance.
+            weights: Weights of assets.
+
+        Returns:
+            Deal
         """
-        Apply rebalance strategy to current situation.
-
-        Parameters
-        ----------
-        index
-            Current date for applying rebalance.
-
-        assets
-            Current assets for applying rebalance.
-
-        cash
-            Current cash for applying rebalance.
-
-        weights
-            Weight of assets.
-
-        Returns
-        -------
-        Deal
-        """
-        pass
+        pass  # pragma: no cover

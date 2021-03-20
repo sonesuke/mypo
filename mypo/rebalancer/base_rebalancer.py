@@ -14,29 +14,25 @@ class BaseRebalancer(object):
     _trigger: BaseTrigger
 
     def __init__(self, trigger: BaseTrigger, weights: npt.ArrayLike) -> None:
+        """Construct object.
+
+        Args:
+            trigger: Trigger.
+            weights: Weight for rebalance.
+        """
         self._trigger = trigger
         self._weights = safe_cast(weights)
 
-    def apply(
-        self, index: datetime.datetime, assets: npt.ArrayLike, cash: np.float64
-    ) -> np.ndarray:
-        """
-        Apply rebalance strategy to current situation.
+    def apply(self, index: datetime.datetime, assets: npt.ArrayLike, cash: np.float64) -> np.ndarray:
+        """Apply rebalance strategy to current situation.
 
-        Parameters
-        ----------
-        index
-            Current date for applying rebalance.
+        Args:
+            index: Current date for applying rebalance.
+            assets: Current assets for applying rebalance.
+            cash: Current cash for applying rebalance.
 
-        assets
-            Current assets for applying rebalance.
-
-        cash
-            Current cash for applying rebalance.
-
-        Returns
-        -------
-        Deal
+        Returns:
+            Deal
         """
         if self._trigger.is_fire(index, assets, cash, self._weights):
             return self._rebalance(safe_cast(assets))

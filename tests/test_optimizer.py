@@ -4,11 +4,7 @@ import os
 import numpy.testing as npt
 
 from mypo import Market
-from mypo.optimizer import (
-    MinimumVarianceOptimizer,
-    SharpRatioOptimizer,
-    semi_covariance,
-)
+from mypo.optimizer import MinimumVarianceOptimizer, SharpRatioOptimizer, semi_covariance
 
 TEST_DATA = os.path.join(os.path.dirname(__file__), "data", "test.bin")
 

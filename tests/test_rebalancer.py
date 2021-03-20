@@ -3,7 +3,7 @@ from datetime import date
 import numpy as np
 import numpy.testing as npt
 
-from mypo.rebalancer import MonthlyRebalancer, PlainRebalancer, ThresholdRebalancer
+from mypo.rebalancer import MonthlyRebalancer, NoRebalancer, PlainRebalancer, ThresholdRebalancer
 
 
 def test_rebalance():
@@ -52,5 +52,12 @@ def test_rebalance_threshold_not_fire():
     assets = [1.5, 1]
     weights = [0.3, 0.7]
     rebalancer = ThresholdRebalancer(weights=weights, threshold=0.5)
+    diff = rebalancer.apply(date(2021, 2, 15), assets, 0.5)
+    npt.assert_almost_equal(np.sum(np.abs(diff)), 0)
+
+
+def test_rebalance_no():
+    assets = [1.5, 1]
+    rebalancer = NoRebalancer()
     diff = rebalancer.apply(date(2021, 2, 15), assets, 0.5)
     npt.assert_almost_equal(np.sum(np.abs(diff)), 0)

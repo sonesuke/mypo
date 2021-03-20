@@ -15,14 +15,10 @@ class ThresholdTrigger(BaseTrigger):
     _weights: np.ndarray
 
     def __init__(self, threshold: np.float64 = np.float64(0.05)) -> None:
-        """
-        Construct object.
+        """Construct object.
 
-        Parameters
-        ----------
-        threshold
-            Threshold of fire.
-
+        Args:
+            threshold: Threshold of fire.
         """
         self._threshold = threshold
 
@@ -33,26 +29,16 @@ class ThresholdTrigger(BaseTrigger):
         cash: np.float64,
         weights: npt.ArrayLike,
     ) -> bool:
-        """
-        Apply rebalance strategy to current situation.
+        """Apply rebalance strategy to current situation.
 
-        Parameters
-        ----------
-        index
-            Current date for applying rebalance.
+        Args:
+            index: Current date for applying rebalance.
+            assets: Current assets for applying rebalance.
+            cash: Current cash for applying rebalance.
+            weights: Weights of assets.
 
-        assets
-            Current assets for applying rebalance.
-
-        cash
-            Current cash for applying rebalance.
-
-        weights
-            Weights of assets.
-
-        Returns
-        -------
-        Deal
+        Returns:
+            Deal
         """
         assets = safe_cast(assets)
         if np.max(np.abs(assets / np.sum(assets) - weights)) > self._threshold:

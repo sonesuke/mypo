@@ -9,12 +9,5 @@ class NoRebalancer(BaseRebalancer):
     """Simple weighted rebalance strategy."""
 
     def __init__(self) -> None:
-        """
-        Construct object.
-
-        Parameters
-        ----------
-        weights
-            Weight for applying rebalance.
-        """
+        """Construct object."""
         super().__init__(trigger=NoTrigger(), weights=np.zeros(1))

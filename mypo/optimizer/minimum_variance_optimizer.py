@@ -23,16 +23,13 @@ class MinimumVarianceOptimizer(Optimizer):
         covariance_model: CovarianceModel = covariance,
         minimum_return: float = None,
     ):
-        """
-        Construct this object.
+        """Construct this object.
 
-        Parameters
-        ----------
-        market
-            Past market stock prices.
-
-        span
-            Span for evaluation.
+        Args:
+            market: Past market stock prices.
+            span: Span for evaluation.
+            covariance_model: Covariance mode.
+            minimum_return: Minimum return.
         """
         self._historical_data = market.get_rate_of_change()
         self._span = span
@@ -40,12 +37,10 @@ class MinimumVarianceOptimizer(Optimizer):
         self._minimum_return = minimum_return
 
     def optimize_weight(self) -> np.ndarray:
-        """
-        Optimize weights.
+        """Optimize weights.
 
-        Returns
-        -------
-        Optimized weights
+        Returns:
+            Optimized weights
         """
         prices = self._historical_data.tail(n=self._span).to_numpy()
         Q = self._covariance_model(prices)
@@ -70,7 +65,5 @@ class MinimumVarianceOptimizer(Optimizer):
             ]
 
         bounds = [[0.0, 1.0] for i in range(n)]
-        minout = minimize(
-            fn, x, args=(Q), method="SLSQP", bounds=bounds, constraints=cons
-        )
+        minout = minimize(fn, x, args=(Q), method="SLSQP", bounds=bounds, constraints=cons)
         return safe_cast(minout.x)
