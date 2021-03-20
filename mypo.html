@@ -196,6 +196,7 @@
 <li class="toctree-l2"><a class="reference internal" href="mypo.rebalancer.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mypo.rebalancer.html#module-mypo.rebalancer.base_rebalancer">mypo.rebalancer.base_rebalancer module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mypo.rebalancer.html#module-mypo.rebalancer.monthly_rebalancer">mypo.rebalancer.monthly_rebalancer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mypo.rebalancer.html#module-mypo.rebalancer.no_rebalancer">mypo.rebalancer.no_rebalancer module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mypo.rebalancer.html#module-mypo.rebalancer.plain_rebalancer">mypo.rebalancer.plain_rebalancer module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mypo.rebalancer.html#module-mypo.rebalancer.threshold_rebalancer">mypo.rebalancer.threshold_rebalancer module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mypo.rebalancer.html#module-mypo.rebalancer">Module contents</a></li>
@@ -206,6 +207,7 @@
 <li class="toctree-l2"><a class="reference internal" href="mypo.trigger.html#module-mypo.trigger.always_trigger">mypo.trigger.always_trigger module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mypo.trigger.html#module-mypo.trigger.base_trigger">mypo.trigger.base_trigger module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mypo.trigger.html#module-mypo.trigger.monthly_trigger">mypo.trigger.monthly_trigger module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mypo.trigger.html#module-mypo.trigger.no_trigger">mypo.trigger.no_trigger module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mypo.trigger.html#module-mypo.trigger.threshold_trigger">mypo.trigger.threshold_trigger module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mypo.trigger.html#module-mypo.trigger">Module contents</a></li>
 </ul>
@@ -356,6 +358,28 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Market class for store and loading stock prices data.</p>
 <dl class="py method">
+<dt id="mypo.market.Market.create">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_date</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yearly_gain</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticker</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'None'</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#mypo.market.Market" title="mypo.market.Market"><span class="pre">mypo.market.Market</span></a><a class="headerlink" href="#mypo.market.Market.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load market data from file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ticker</strong> – Ticker.</p></li>
+<li><p><strong>start_date</strong> – Start date.</p></li>
+<li><p><strong>end_date</strong> – End date.</p></li>
+<li><p><strong>yearly_gain</strong> – Yearly gain.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Market object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="mypo.market.Market.extract">
 <code class="sig-name descname"><span class="pre">extract</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.series.Series</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#mypo.market.Market" title="mypo.market.Market"><span class="pre">mypo.market.Market</span></a><a class="headerlink" href="#mypo.market.Market.extract" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract market data.</p>
@@ -401,9 +425,23 @@
 </dd></dl>
 
 <dl class="py method">
+<dt id="mypo.market.Market.get_normalized_prices">
+<code class="sig-name descname"><span class="pre">get_normalized_prices</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">pandas.core.frame.DataFrame</span><a class="headerlink" href="#mypo.market.Market.get_normalized_prices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get normalized prices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Normalized prices</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="mypo.market.Market.get_price_dividends_yield">
 <code class="sig-name descname"><span class="pre">get_price_dividends_yield</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">pandas.core.frame.DataFrame</span><a class="headerlink" href="#mypo.market.Market.get_price_dividends_yield" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get price dividends yield from stored market data.</p>
+<dd><p>Get price dividends yield.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p></p>
@@ -415,15 +453,29 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="mypo.market.Market.get_prices">
-<code class="sig-name descname"><span class="pre">get_prices</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">pandas.core.frame.DataFrame</span><a class="headerlink" href="#mypo.market.Market.get_prices" title="Permalink to this definition">¶</a></dt>
+<dt id="mypo.market.Market.get_rate_of_change">
+<code class="sig-name descname"><span class="pre">get_rate_of_change</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">pandas.core.frame.DataFrame</span><a class="headerlink" href="#mypo.market.Market.get_rate_of_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get rate of change of prices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Rate of change</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mypo.market.Market.get_raw">
+<code class="sig-name descname"><span class="pre">get_raw</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">pandas.core.frame.DataFrame</span><a class="headerlink" href="#mypo.market.Market.get_raw" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get price data from stored market data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p></p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>Price data</p>
+<dd class="field-even"><p>Prices</p>
 </dd>
 </dl>
 </dd></dl>
@@ -535,7 +587,7 @@
 <p>Simulation.</p>
 <dl class="py class">
 <dt id="mypo.runner.Runner">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mypo.runner.</span></code><code class="sig-name descname"><span class="pre">Runner</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assets</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">complex</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">bytes</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.generic</span><span class="p"><span class="pre">,</span> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">complex</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">bytes</span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.generic</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">numpy.typing._array_like._SupportsArray</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rebalancer</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="mypo.rebalancer.html#mypo.rebalancer.base_rebalancer.BaseRebalancer" title="mypo.rebalancer.base_rebalancer.BaseRebalancer"><span class="pre">mypo.rebalancer.base_rebalancer.BaseRebalancer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cash</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.float64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#mypo.settings.Settings" title="mypo.settings.Settings"><span class="pre">mypo.settings.Settings</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mypo.runner.Runner" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mypo.runner.</span></code><code class="sig-name descname"><span class="pre">Runner</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">assets:</span> <span class="pre">Union[int,</span> <span class="pre">float,</span> <span class="pre">complex,</span> <span class="pre">str,</span> <span class="pre">bytes,</span> <span class="pre">numpy.generic,</span> <span class="pre">Sequence[Union[int,</span> <span class="pre">float,</span> <span class="pre">complex,</span> <span class="pre">str,</span> <span class="pre">bytes,</span> <span class="pre">numpy.generic]],</span> <span class="pre">Sequence[Sequence[Any]],</span> <span class="pre">numpy.typing._array_like._SupportsArray]</span> <span class="pre">=</span> <span class="pre">array([0]),</span> <span class="pre">cash:</span> <span class="pre">numpy.float64</span> <span class="pre">=</span> <span class="pre">0.0,</span> <span class="pre">withdraw:</span> <span class="pre">numpy.float64</span> <span class="pre">=</span> <span class="pre">0.0,</span> <span class="pre">rebalancer:</span> <span class="pre">mypo.rebalancer.base_rebalancer.BaseRebalancer</span> <span class="pre">=</span> <span class="pre">&lt;mypo.rebalancer.no_rebalancer.NoRebalancer</span> <span class="pre">object&gt;,</span> <span class="pre">settings:</span> <span class="pre">mypo.settings.Settings</span> <span class="pre">=</span> <span class="pre">Settings(tax_rate=0.2,</span> <span class="pre">fee_rate=0.005)</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mypo.runner.Runner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Runner of simulation.</p>
 <dl class="py method">
@@ -601,17 +653,12 @@
 <p>Parameters for runner.</p>
 <dl class="py class">
 <dt id="mypo.settings.Settings">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mypo.settings.</span></code><code class="sig-name descname"><span class="pre">Settings</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spending</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.float64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tax_rate</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.float64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fee_rate</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.float64</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mypo.settings.Settings" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mypo.settings.</span></code><code class="sig-name descname"><span class="pre">Settings</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tax_rate</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.float64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fee_rate</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.float64</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mypo.settings.Settings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Settings for runner.</p>
 <dl class="py attribute">
 <dt id="mypo.settings.Settings.fee_rate">
 <code class="sig-name descname"><span class="pre">fee_rate</span></code><em class="property"><span class="pre">:</span> <span class="pre">numpy.float64</span></em><a class="headerlink" href="#mypo.settings.Settings.fee_rate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="mypo.settings.Settings.spending">
-<code class="sig-name descname"><span class="pre">spending</span></code><em class="property"><span class="pre">:</span> <span class="pre">numpy.float64</span></em><a class="headerlink" href="#mypo.settings.Settings.spending" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">

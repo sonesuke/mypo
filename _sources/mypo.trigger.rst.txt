@@ -28,6 +28,14 @@ mypo.trigger.monthly\_trigger module
    :undoc-members:
    :show-inheritance:
 
+mypo.trigger.no\_trigger module
+-------------------------------
+
+.. automodule:: mypo.trigger.no_trigger
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 mypo.trigger.threshold\_trigger module
 --------------------------------------
 
