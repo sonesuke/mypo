@@ -54,7 +54,6 @@ def test_run_and_report_run_out_cash():
     runner.run(market=market)
     df = runner.report()
     assert not df.isnull().to_numpy().any()
-    df.to_csv("out.csv")
     npt.assert_almost_equal(df["total_assets"].min(), 0)
     npt.assert_almost_equal(df["cash"].min(), 0)
     npt.assert_almost_equal(df["capital_gain"].sum(), 0)
