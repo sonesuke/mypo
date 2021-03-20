@@ -1,5 +1,6 @@
 """Parameters for runner."""
 from dataclasses import dataclass
+from typing import Final
 
 import numpy as np
 
@@ -8,6 +9,10 @@ import numpy as np
 class Settings:
     """Settings for runner."""
 
-    spending: np.float64
     tax_rate: np.float64
     fee_rate: np.float64
+
+
+DEFAULT_SETTINGS: Final[Settings] = Settings(
+    tax_rate=np.float64(0.20), fee_rate=np.float64(0.005)
+)
