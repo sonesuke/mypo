@@ -92,8 +92,8 @@ class Runner(object):
 
         # apply market prices
         self._assets = self._assets * (1.0 + prices)
-        capital_gain: np.float64 = np.where(
-            np.sum(previous_assets) > 0, np.float64(np.sum(self._assets) / np.sum(previous_assets)), 0.0
+        capital_gain: np.float64 = np.float64(
+            np.where(np.sum(previous_assets) > 0, np.sum(self._assets) / np.sum(previous_assets), 0.0)
         )
 
         # rebalance assets
