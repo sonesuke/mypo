@@ -20,7 +20,7 @@ Tutorial
 
    tutorial/withdraw
    tutorial/explore_market_data
-   tutorial/tutorial
+   tutorial/optimizer
 
 
 Indices and tables

@@ -74,8 +74,8 @@
 </li>
 
 <li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="tutorial/tutorial.html">
-  titled
+ <a class="reference internal nav-link" href="tutorial/optimizer.html">
+  Optimize the portfolio.
  </a>
 </li>
 
@@ -538,6 +538,20 @@
 </dd></dl>
 
 <dl class="py method">
+<dt id="mypo.market.Market.resample">
+<code class="sig-name descname"><span class="pre">resample</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#mypo.market.SamplingMethod" title="mypo.market.SamplingMethod"><span class="pre">mypo.market.SamplingMethod</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#mypo.market.Market" title="mypo.market.Market"><span class="pre">mypo.market.Market</span></a><a class="headerlink" href="#mypo.market.Market.resample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resample market data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>method</strong> – Frequency of sampling.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Resampled data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="mypo.market.Market.save">
 <code class="sig-name descname"><span class="pre">save</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#mypo.market.Market.save" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save market data to file.</p>
@@ -547,6 +561,23 @@
 </dd>
 </dl>
 </dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="mypo.market.SamplingMethod">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mypo.market.</span></code><code class="sig-name descname"><span class="pre">SamplingMethod</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mypo.market.SamplingMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Enum of method for resampling.</p>
+<dl class="py attribute">
+<dt id="mypo.market.SamplingMethod.MONTH">
+<code class="sig-name descname"><span class="pre">MONTH</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'M'</span></em><a class="headerlink" href="#mypo.market.SamplingMethod.MONTH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="mypo.market.SamplingMethod.YEAR">
+<code class="sig-name descname"><span class="pre">YEAR</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'Y'</span></em><a class="headerlink" href="#mypo.market.SamplingMethod.YEAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -651,13 +682,14 @@
 
 <dl class="py method">
 <dt id="mypo.runner.Runner.run">
-<code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">market</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#mypo.market.Market" title="mypo.market.Market"><span class="pre">mypo.market.Market</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_span</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#mypo.runner.Runner.run" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">market</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#mypo.market.Market" title="mypo.market.Market"><span class="pre">mypo.market.Market</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_span</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#mypo.runner.Runner.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run simulation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>market</strong> – Market data.</p></li>
 <li><p><strong>train_span</strong> – Periods of training span.</p></li>
+<li><p><strong>verbose</strong> – Show progress.</p></li>
 </ul>
 </dd>
 </dl>
