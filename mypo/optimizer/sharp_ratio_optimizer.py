@@ -1,45 +1,46 @@
 """Optimizer for weights of portfolio."""
 
 import numpy as np
-import pandas as pd
 from scipy.optimize import minimize
 
 from mypo.common import safe_cast
 from mypo.market import Market
-from mypo.optimizer import Optimizer
+from mypo.optimizer import BaseOptimizer
 from mypo.optimizer.objective import sharp_ratio
 
 
-class SharpRatioOptimizer(Optimizer):
+class SharpRatioOptimizer(BaseOptimizer):
     """Minimum variance optimizer."""
 
-    _historical_data: pd.DataFrame
     _span: int
+    _risk_free_rate: float
 
     def __init__(
         self,
-        market: Market,
-        risk_free_rate: np.float64 = np.float64(0.02),
+        risk_free_rate: float = 0.02,
         span: int = 260,
     ):
         """Construct this object.
 
         Args:
-            market: Past market stock prices.
             risk_free_rate: Risk free rate
             span: Span for evaluation.
         """
-        self._historical_data = market.get_rate_of_change()
         self._risk_free_rate = risk_free_rate
         self._span = span
+        super().__init__()
 
-    def optimize_weight(self) -> np.ndarray:
+    def optimize(self, market: Market) -> None:
         """Optimize weights.
+
+        Args:
+            market: Past market stock prices.
 
         Returns:
             Optimized weights
         """
-        prices = self._historical_data.tail(n=self._span).to_numpy()
+        historical_data = market.get_rate_of_change()
+        prices = historical_data.tail(n=self._span).to_numpy()
         Q = np.cov(prices.T)
         R = prices.mean(axis=0).T
         n = Q.shape[0]
@@ -64,4 +65,4 @@ class SharpRatioOptimizer(Optimizer):
             bounds=bounds,
             constraints=cons,
         )
-        return safe_cast(minout.x)
+        self._weights = safe_cast(minout.x)

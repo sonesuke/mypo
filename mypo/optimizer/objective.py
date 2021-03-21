@@ -1,9 +1,6 @@
 """Covariance and semi-covariance."""
-from typing import Callable
 
 import numpy as np
-
-CovarianceModel = Callable[[np.ndarray], np.ndarray]
 
 
 def covariance(prices: np.ndarray) -> np.ndarray:

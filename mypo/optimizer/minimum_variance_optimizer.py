@@ -1,50 +1,51 @@
 """Optimizer for weights of portfolio."""
 
 import numpy as np
-import pandas as pd
 from scipy.optimize import minimize
 
 from mypo.common import safe_cast
 from mypo.market import Market
-from mypo.optimizer.objective import CovarianceModel, covariance
-from mypo.optimizer.optimizer import Optimizer
+from mypo.optimizer.base_optimizer import BaseOptimizer
+from mypo.optimizer.objective import covariance, semi_covariance
 
 
-class MinimumVarianceOptimizer(Optimizer):
+class MinimumVarianceOptimizer(BaseOptimizer):
     """Minimum variance optimizer."""
 
-    _historical_data: pd.DataFrame
+    _with_semi_covariance: bool
     _span: int
 
     def __init__(
         self,
-        market: Market,
         span: int = 260,
-        covariance_model: CovarianceModel = covariance,
+        with_semi_covariance: bool = False,
         minimum_return: float = None,
     ):
         """Construct this object.
 
         Args:
-            market: Past market stock prices.
             span: Span for evaluation.
-            covariance_model: Covariance mode.
+            with_semi_covariance: whether use semi covariance mode if it's Ture.
             minimum_return: Minimum return.
         """
-        self._historical_data = market.get_rate_of_change()
         self._span = span
-        self._covariance_model = covariance_model
+        self._with_semi_covariance = with_semi_covariance
         self._minimum_return = minimum_return
+        super().__init__()
 
-    def optimize_weight(self) -> np.ndarray:
+    def optimize(self, market: Market) -> None:
         """Optimize weights.
+
+        Args:
+            market: Past market stock prices.
 
         Returns:
             Optimized weights
         """
-        prices = self._historical_data.tail(n=self._span).to_numpy()
-        Q = self._covariance_model(prices)
-        n = len(self._historical_data.columns)
+        historical_data = market.get_rate_of_change()
+        prices = historical_data.tail(n=self._span).to_numpy()
+        Q = semi_covariance(prices) if self._with_semi_covariance else covariance(prices)
+        n = len(historical_data.columns)
         x = np.ones(n) / n
 
         def fn(x: np.ndarray, Q: np.ndarray) -> np.float64:
@@ -66,4 +67,4 @@ class MinimumVarianceOptimizer(Optimizer):
 
         bounds = [[0.0, 1.0] for i in range(n)]
         minout = minimize(fn, x, args=(Q), method="SLSQP", bounds=bounds, constraints=cons)
-        return safe_cast(minout.x)
+        self._weights = safe_cast(minout.x)

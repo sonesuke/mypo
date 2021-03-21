@@ -16,16 +16,20 @@ class Market(object):
 
     _tickers: Dict[str, pd.DataFrame]
     _expense_ratio: Dict[str, float]
+    _closes: pd.DataFrame
+    _price_dividends_yield: pd.DataFrame
 
-    def __init__(self, tickers: Dict[str, pd.DataFrame], expense_ratio: Dict[str, float]):
+    def __init__(self, closes: pd.DataFrame, price_dividends_yield: pd.DataFrame, expense_ratio: Dict[str, float]):
         """Construct this object.
 
         Args:
-            tickers: Tickers.
+            closes: Tickers.
+            price_dividends_yield: Price dividends yield.
             expense_ratio: Expense ratio.
         """
-        self._tickers = tickers
         self._expense_ratio = expense_ratio
+        self._closes = closes
+        self._price_dividends_yield = price_dividends_yield
 
     def save(self, filepath: str) -> None:
         """Save market data to file.
@@ -50,8 +54,8 @@ class Market(object):
             value: Market = pickle.load(bin_file)
             return value
 
-    @classmethod
-    def create(cls, start_date: str, end_date: str, yearly_gain: float, ticker: str = "None") -> Market:
+    @staticmethod
+    def create(start_date: str, end_date: str, yearly_gain: float, ticker: str = "None") -> Market:
         """Load market data from file.
 
         Args:
@@ -67,10 +71,51 @@ class Market(object):
         n = len(index)
         daily_gain = (1.0 + yearly_gain) ** (1 / 365)
         prices = np.ones(n) * (daily_gain ** np.arange(n))
-        return Market(
+        return Market.create_from_ticker(
             tickers={ticker: pd.DataFrame({"Close": prices, "Dividends": np.zeros(n)}, index=index)},
             expense_ratio={ticker: 0.0},
         )
+
+    @staticmethod
+    def create_from_ticker(tickers: Dict[str, pd.DataFrame], expense_ratio: Dict[str, float]) -> Market:
+        """Construct this object.
+
+        Args:
+            tickers: Tickers.
+            expense_ratio: Expense ratio.
+        """
+        return Market(
+            closes=Market.calc_raw(tickers),
+            price_dividends_yield=Market.calc_price_dividends_yield(tickers),
+            expense_ratio=expense_ratio,
+        )
+
+    @staticmethod
+    def calc_raw(tickers: Dict[str, pd.DataFrame]) -> pd.DataFrame:
+        """Get price data from stored market data.
+
+        Args:
+            tickers: Tickers
+
+        Returns:
+            Prices
+        """
+        rs = [tickers[ticker][["Close"]] for ticker in tickers.keys()]
+        df = pd.concat(rs, axis=1, join="inner")
+        df.columns = tickers.keys()
+        return df
+
+    @staticmethod
+    def calc_price_dividends_yield(tickers: Dict[str, pd.DataFrame]) -> pd.DataFrame:
+        """Get price dividends yield.
+
+        Returns:
+            price dividends yield data
+        """
+        rs = [tickers[ticker]["Dividends"] / tickers[ticker]["Close"] for ticker in tickers.keys()]
+        df = pd.concat(rs, axis=1, join="inner")
+        df.columns = tickers.keys()
+        return df
 
     def extract(self, index: pd.Series) -> Market:
         """Extract market data.
@@ -82,18 +127,10 @@ class Market(object):
             Extracted Data
         """
         return Market(
-            tickers={ticker: data.loc[index] for ticker, data in self._tickers.items()},
+            closes=self._closes.loc[index],
+            price_dividends_yield=self._price_dividends_yield.loc[index],
             expense_ratio=self._expense_ratio,
         )
-
-    def get_index(self) -> pd.Series:
-        """Get index date from stored market data.
-
-        Returns:
-            index date
-        """
-        df = self.get_raw()
-        return df.index
 
     def get_raw(self) -> pd.DataFrame:
         """Get price data from stored market data.
@@ -101,10 +138,23 @@ class Market(object):
         Returns:
             Prices
         """
-        rs = [self._tickers[ticker][["Close"]] for ticker in self._tickers.keys()]
-        df = pd.concat(rs, axis=1, join="inner")
-        df.columns = self._tickers.keys()
-        return df
+        return self._closes
+
+    def get_length(self) -> int:
+        """Get length.
+
+        Returns:
+            length.
+        """
+        return len(self.get_rate_of_change())
+
+    def get_index(self) -> pd.Index:
+        """Get index date from stored market data.
+
+        Returns:
+            index date
+        """
+        return self._closes.index
 
     def get_normalized_prices(self) -> pd.DataFrame:
         """Get normalized prices.
@@ -112,7 +162,7 @@ class Market(object):
         Returns:
             Normalized prices
         """
-        df = self.get_raw()
+        df = self._closes
         for c in df.columns:
             df[c] = df[c] / df[c][0]
         return df
@@ -123,10 +173,9 @@ class Market(object):
         Returns:
             Rate of change
         """
-        df = self.get_raw()
+        df = self._closes
         df = df.pct_change(axis=0)
         df.dropna(inplace=True)
-        df.columns = self._tickers.keys()
         return df
 
     def get_price_dividends_yield(self) -> pd.DataFrame:
@@ -135,10 +184,7 @@ class Market(object):
         Returns:
             price dividends yield data
         """
-        rs = [self._tickers[ticker]["Dividends"] / self._tickers[ticker]["Close"] for ticker in self._tickers.keys()]
-        df = pd.concat(rs, axis=1, join="inner")
-        df.columns = self._tickers.keys()
-        return df
+        return self._price_dividends_yield
 
     def get_expense_ratio(self) -> np.ndarray:
         """Get expense ratio.
@@ -146,5 +192,5 @@ class Market(object):
         Returns:
             Expense ratio
         """
-        rs = [self._expense_ratio[ticker] for ticker in self._tickers.keys()]
+        rs = [self._expense_ratio[ticker] for ticker in self._closes.columns]
         return safe_cast(rs)

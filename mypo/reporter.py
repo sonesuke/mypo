@@ -33,7 +33,7 @@ class Reporter(object):
 
     def record(
         self,
-        index: datetime.datetime,
+        at: datetime.datetime,
         total_assets: np.float64,
         capital_gain: np.float64,
         income_gain: np.float64,
@@ -46,7 +46,7 @@ class Reporter(object):
         """Record current situation.
 
         Args:
-            index: Current date.
+            at: Current date.
             total_assets: Current total assets.
             capital_gain: Current capital gain.
             income_gain: Current income gain.
@@ -56,7 +56,7 @@ class Reporter(object):
             capital_gain_tax: Current capital gain tax.
             income_gain_tax: Current income gain tax.
         """
-        self._index += [index]
+        self._index += [at]
         self._total_assets += [total_assets]
         self._capital_gain += [capital_gain]
         self._income_gain += [income_gain]

@@ -1,10 +1,8 @@
 """Simulation."""
 
-import datetime
 from typing import List
 
 import numpy as np
-import numpy.typing as npt
 import pandas as pd
 
 from mypo.common import calc_capital_gain_tax, calc_fee, calc_income_gain_tax, safe_cast
@@ -65,69 +63,53 @@ class Runner(object):
         """
         return np.float64(np.sum(self._assets) + self._cash)
 
-    def apply(
-        self,
-        index: datetime.datetime,
-        prices: npt.ArrayLike,
-        price_dividends_yield: npt.ArrayLike,
-        expense_ratio: npt.ArrayLike,
-    ) -> None:
+    def apply(self, market: Market, i: int) -> None:
         """Apply current market situation.
 
         Args:
-            index: Current date.
-            prices: Current market situation.
-            price_dividends_yield: Current dividends yield this date.
-            expense_ratio: Expense ratio of holding assets.
+            market: Market data.
+            i: Index.
         """
-        previous_assets = np.sum(self._assets)
+        at = market.get_index()[i]
+        prices = market.get_rate_of_change().to_records(index=False)[i]
+        price_dividends_yield = market.get_price_dividends_yield().to_records(index=False)[i]
+        expense_ratio = market.get_expense_ratio()
+
         prices = safe_cast(prices)
         price_dividends_yield = safe_cast(price_dividends_yield)
         expense_ratio = safe_cast(expense_ratio)
 
         # apply withdraw
-        if self._month != index.month:
+        if self._month != at.month:
             self._cash -= self._withdraw / 12
-        self._month = index.month
+        self._month = at.month
 
         # apply market prices
+        previous_assets = self._assets
         self._assets = self._assets * (1.0 + prices)
-        capital_gain: np.float64 = np.float64(
-            np.where(np.sum(previous_assets) > 0, np.sum(self._assets) / np.sum(previous_assets), 1.0) - 1.0
-        )
+        capital_gain = np.float64(self._assets.sum() - previous_assets.sum())
 
-        # rebalance assets
-        diff = self._rebalancer.apply(index, self._assets, self._cash)
-        deal: np.float64 = np.abs(diff)
-
-        # process of capital gain
-        capital_gain_tax = calc_capital_gain_tax(
-            self._average_assets_prices, self._assets, diff, self._settings.tax_rate
-        )
-        self._cash -= capital_gain_tax
-        fee = calc_fee(diff, self._settings.fee_rate)
-        self._cash -= np.float64(np.sum(diff) + fee)
+        diff = self._rebalancer.apply(at, market, self._assets, self._cash)
         self._assets += diff
-        trading_prices = np.where(diff > 0, 1.0 + prices, self._average_assets_prices)
-        self._average_assets_prices = np.where(
-            self._assets != 0,
-            (self._average_assets_prices * previous_assets + diff * trading_prices) / self._assets,
-            self._assets,
-        )
+        capital_gain_tax = calc_capital_gain_tax(self._average_assets_prices, prices, diff, self._settings)
+        fee = calc_fee(diff, self._settings)
 
         # process of income gain
-        income_gain = np.sum(self._assets * price_dividends_yield)
-        income_gain_tax = calc_income_gain_tax(self._assets, price_dividends_yield, self._settings.tax_rate)
-        self._cash += income_gain
-        self._cash -= income_gain_tax
+        income_gain = (self._assets * price_dividends_yield).sum()
+        income_gain_tax = calc_income_gain_tax(self._assets, price_dividends_yield, self._settings)
 
         # process of others
+        self._cash = self._cash + income_gain - income_gain_tax - diff.sum() - fee - capital_gain_tax
         self._assets = (1.0 - expense_ratio / WEEK_DAYS) * self._assets
-        deal = np.max([np.sum(np.where(deal > 0, deal, 0)), np.sum(np.where(deal < 0, -deal, 0))])
+        deal = np.max([diff.sum(where=diff > 0), -diff.sum(where=diff < 0)])
+        trading_prices = np.where(diff > 0, 1.0 + prices, self._average_assets_prices)
+        self._average_assets_prices = (
+            self._average_assets_prices * previous_assets + diff * trading_prices
+        ) / self._assets
 
         # record to reporter
         self._reporter.record(
-            index,
+            at,
             self.total_assets(),
             capital_gain,
             income_gain,
@@ -144,12 +126,8 @@ class Runner(object):
         Args:
             market: Market data.
         """
-        index = market.get_index()
-        markets = market.get_rate_of_change().to_records(index=False)
-        price_dividends_yield = market.get_price_dividends_yield().to_records(index=False)
-        expense_ratio = market.get_expense_ratio()
-        for i in range(len(markets)):
-            self.apply(index[i], markets[i], price_dividends_yield[i], expense_ratio)
+        for i in range(market.get_length()):
+            self.apply(market, i)
 
     def report(self) -> pd.DataFrame:
         """Report simulation.

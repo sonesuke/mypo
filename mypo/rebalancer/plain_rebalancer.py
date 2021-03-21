@@ -1,8 +1,10 @@
 """Rebalance strategies."""
+
 import numpy.typing as npt
 
-from mypo.rebalancer.base_rebalancer import BaseRebalancer
-from mypo.trigger.always_trigger import AlwaysTrigger
+from mypo.optimizer import NoOptimizer
+from mypo.rebalancer import BaseRebalancer
+from mypo.trigger import AlwaysTrigger
 
 
 class PlainRebalancer(BaseRebalancer):
@@ -12,6 +14,6 @@ class PlainRebalancer(BaseRebalancer):
         """Construct object.
 
         Args:
-            weights: Weight for applying rebalance.
+            weights: Weights.
         """
-        super().__init__(trigger=AlwaysTrigger(), weights=weights)
+        super().__init__(trigger=AlwaysTrigger(), optimizer=NoOptimizer(weights))
