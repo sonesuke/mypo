@@ -34,7 +34,6 @@
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Explore market data." href="explore_market_data.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
   </head>
@@ -56,30 +55,7 @@
     
     <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
       <ul id="navbar-main-elements" class="navbar-nav mr-auto">
-        <li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../main.html">
-  mypo package
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="withdraw.html">
-  Withdraw rate
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="explore_market_data.html">
-  Explore market data.
- </a>
-</li>
-
-<li class="toctree-l1 current active nav-item">
- <a class="current reference internal nav-link" href="#">
-  Optimize the portfolio.
- </a>
-</li>
-
+        
         
       </ul>
 
@@ -451,7 +427,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 2449/2449 [00:23&lt;00:00, 103.30it/s]
+100%|██████████| 2449/2449 [00:06&lt;00:00, 383.63it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -461,8 +437,8 @@ div.rendered_html tbody tr:hover {
 <div class="highlight"><pre>
 [0.39969727 0.60030273]
 2449
-1.1244309421670116
-0.8687862282993557
+1.1244309421746033
+0.8687862283155601
 229
 </pre></div></div>
 </div>
@@ -514,7 +490,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 2449/2449 [00:23&lt;00:00, 103.71it/s]
+100%|██████████| 2449/2449 [00:06&lt;00:00, 382.54it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -524,8 +500,8 @@ div.rendered_html tbody tr:hover {
 <div class="highlight"><pre>
 [0.29286514 0.70713486]
 2449
-1.1192116291996677
-0.8718641364434973
+1.1192116292181777
+0.871864136426645
 232
 </pre></div></div>
 </div>
@@ -577,7 +553,15 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 2449/2449 [00:24&lt;00:00, 100.71it/s]
+ 46%|████▌     | 1121/2449 [00:02&lt;00:03, 377.24it/s]/app/mypo/runner.py:108: RuntimeWarning: divide by zero encountered in true_divide
+  self._average_assets_prices = (
+/app/mypo/runner.py:109: RuntimeWarning: invalid value encountered in multiply
+  self._average_assets_prices * previous_assets + diff * trading_prices
+/app/mypo/runner.py:108: RuntimeWarning: divide by zero encountered in true_divide
+  self._average_assets_prices = (
+/app/mypo/runner.py:109: RuntimeWarning: invalid value encountered in multiply
+  self._average_assets_prices * previous_assets + diff * trading_prices
+100%|██████████| 2449/2449 [00:06&lt;00:00, 377.06it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -587,8 +571,8 @@ div.rendered_html tbody tr:hover {
 <div class="highlight"><pre>
 [0.50207728 0.49792272]
 2449
-1.1090173650578123
-0.8658416403371741
+1.1090166734491587
+0.8658416403187509
 318
 </pre></div></div>
 </div>
@@ -616,7 +600,6 @@ div.rendered_html tbody tr:hover {
               
               <div class='prev-next-bottom'>
                 
-    <a class='left-prev' id="prev-link" href="explore_market_data.html" title="previous page">Explore market data.</a>
 
               </div>
               
