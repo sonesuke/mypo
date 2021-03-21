@@ -33,6 +33,10 @@ User guide
 ==========
 This tutorial will be helpful for understanding the usage of this module.
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
 * :ref:`tutorial/withdraw`
 * :ref:`tutorial/explore_market_data`
 * :ref:`tutorial/optimizer`
