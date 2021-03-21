@@ -140,7 +140,7 @@ class Market(object):
         elif method == SamplingMethod.MONTH:
             rule = "M"
         else:
-            assert False
+            assert False # pragma: no cover
         df = self._closes.groupby(pd.Grouper(freq=rule)).sum()
         if method == SamplingMethod.YEAR:
             first = df.index[0] if self._closes.index.is_year_start[0] else df.index[1]
@@ -149,7 +149,7 @@ class Market(object):
             first = df.index[0] if self._closes.index.is_month_start[0] else df.index[1]
             last = df.index[-1] if self._closes.index.is_month_end[-1] else df.index[-2]
         else:
-            assert False
+            assert False # pragma: no cover
         return Market(
             closes=self._closes[first:last].resample(str(rule)).mean(),  # type: ignore
             price_dividends_yield=self._price_dividends_yield[first:last].resample(rule).sum(),  # type: ignore
