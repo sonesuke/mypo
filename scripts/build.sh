@@ -26,6 +26,7 @@ poetry build
 poetry publish
 
 # build documentation
+jupyter nbconvert --execute  /app/docs/tutorial/*.ipynb --to notebook --inplace
 cd docs
 make clean
 make html
