@@ -1,10 +1,8 @@
 """Simulation."""
 
-import datetime
 from typing import List
 
 import numpy as np
-import numpy.typing as npt
 import pandas as pd
 
 from mypo.common import calc_capital_gain_tax, calc_fee, calc_income_gain_tax, safe_cast
@@ -65,21 +63,18 @@ class Runner(object):
         """
         return np.float64(np.sum(self._assets) + self._cash)
 
-    def apply(
-        self,
-        index: datetime.datetime,
-        prices: npt.ArrayLike,
-        price_dividends_yield: npt.ArrayLike,
-        expense_ratio: npt.ArrayLike,
-    ) -> None:
+    def apply(self, market: Market, i: int) -> None:
         """Apply current market situation.
 
         Args:
-            index: Current date.
-            prices: Current market situation.
-            price_dividends_yield: Current dividends yield this date.
-            expense_ratio: Expense ratio of holding assets.
+            market: Market data.
+            i: Index.
         """
+        index = market.get_index()[i]
+        prices = market.get_rate_of_change().to_records(index=False)[i]
+        price_dividends_yield = market.get_price_dividends_yield().to_records(index=False)[i]
+        expense_ratio = market.get_expense_ratio()
+
         prices = safe_cast(prices)
         price_dividends_yield = safe_cast(price_dividends_yield)
         expense_ratio = safe_cast(expense_ratio)
@@ -131,12 +126,8 @@ class Runner(object):
         Args:
             market: Market data.
         """
-        index = market.get_index()
-        markets = market.get_rate_of_change().to_records(index=False)
-        price_dividends_yield = market.get_price_dividends_yield().to_records(index=False)
-        expense_ratio = market.get_expense_ratio()
-        for i in range(len(markets)):
-            self.apply(index[i], markets[i], price_dividends_yield[i], expense_ratio)
+        for i in range(market.get_length()):
+            self.apply(market, i)
 
     def report(self) -> pd.DataFrame:
         """Report simulation.

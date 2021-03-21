@@ -1,4 +1,3 @@
-import datetime
 import os
 
 import numpy.testing as npt
@@ -16,19 +15,16 @@ def test_simulator():
 
 
 def test_apply():
+    market = Market.load(TEST_DATA)
+    market = market.extract(market.get_index()[:100])
     runner = Runner(
         assets=[1.2, 0.8],
         rebalancer=PlainRebalancer([0.6, 0.4]),
         cash=0.5,
         withdraw=0.0,
     )
-    runner.apply(
-        index=datetime.datetime(2021, 2, 17),
-        prices=[0.1, -0.1],
-        price_dividends_yield=[0.05, 0.01],
-        expense_ratio=[0.0007, 0.0007],
-    )
-    npt.assert_almost_equal(runner.total_assets(), 2.624186507)
+    runner.apply(market, 0)
+    npt.assert_almost_equal(runner.total_assets(), 2.5031694536)
 
 
 def test_run_and_report():

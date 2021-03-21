@@ -16,6 +16,8 @@ class Market(object):
 
     _tickers: Dict[str, pd.DataFrame]
     _expense_ratio: Dict[str, float]
+    _closes: pd.DataFrame
+    _price_dividends_yield: pd.DataFrame
 
     def __init__(self, tickers: Dict[str, pd.DataFrame], expense_ratio: Dict[str, float]):
         """Construct this object.
@@ -26,6 +28,8 @@ class Market(object):
         """
         self._tickers = tickers
         self._expense_ratio = expense_ratio
+        self._closes = self.get_raw()
+        self._price_dividends_yield = self.calc_price_dividends_yield()
 
     def save(self, filepath: str) -> None:
         """Save market data to file.
@@ -86,14 +90,21 @@ class Market(object):
             expense_ratio=self._expense_ratio,
         )
 
-    def get_index(self) -> pd.Series:
+    def get_length(self) -> int:
+        """Get length.
+
+        Returns:
+            length.
+        """
+        return len(self.get_rate_of_change())
+
+    def get_index(self) -> pd.Index:
         """Get index date from stored market data.
 
         Returns:
             index date
         """
-        df = self.get_raw()
-        return df.index
+        return self._closes.index
 
     def get_raw(self) -> pd.DataFrame:
         """Get price data from stored market data.
@@ -112,7 +123,7 @@ class Market(object):
         Returns:
             Normalized prices
         """
-        df = self.get_raw()
+        df = self._closes
         for c in df.columns:
             df[c] = df[c] / df[c][0]
         return df
@@ -123,13 +134,13 @@ class Market(object):
         Returns:
             Rate of change
         """
-        df = self.get_raw()
+        df = self._closes
         df = df.pct_change(axis=0)
         df.dropna(inplace=True)
         df.columns = self._tickers.keys()
         return df
 
-    def get_price_dividends_yield(self) -> pd.DataFrame:
+    def calc_price_dividends_yield(self) -> pd.DataFrame:
         """Get price dividends yield.
 
         Returns:
@@ -139,6 +150,14 @@ class Market(object):
         df = pd.concat(rs, axis=1, join="inner")
         df.columns = self._tickers.keys()
         return df
+
+    def get_price_dividends_yield(self) -> pd.DataFrame:
+        """Get price dividends yield.
+
+        Returns:
+            price dividends yield data
+        """
+        return self._price_dividends_yield
 
     def get_expense_ratio(self) -> np.ndarray:
         """Get expense ratio.
