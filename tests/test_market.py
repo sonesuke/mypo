@@ -14,6 +14,17 @@ def test_save_load() -> None:
     assert index[0] == pd.Timestamp("2010-09-10")
 
 
+def test_get_first_date() -> None:
+    market = Market.load(TEST_DATA)
+    assert market.get_first_date() == pd.Timestamp("2010-09-09")
+
+
+def test_get_last_date() -> None:
+    market = Market.load(TEST_DATA)
+    market = market.extract(market.get_index()[:300])
+    assert market.get_last_date() == pd.Timestamp("2011-11-14")
+
+
 def test_rate_of_change() -> None:
     market = Market.load(TEST_DATA)
     df = market.get_rate_of_change()

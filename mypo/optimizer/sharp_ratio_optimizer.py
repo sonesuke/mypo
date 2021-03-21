@@ -1,5 +1,7 @@
 """Optimizer for weights of portfolio."""
 
+from datetime import datetime
+
 import numpy as np
 from scipy.optimize import minimize
 
@@ -30,16 +32,17 @@ class SharpRatioOptimizer(BaseOptimizer):
         self._span = span
         super().__init__()
 
-    def optimize(self, market: Market) -> None:
+    def optimize(self, market: Market, at: datetime) -> None:
         """Optimize weights.
 
         Args:
             market: Past market stock prices.
+            at: Current date.
 
         Returns:
             Optimized weights
         """
-        historical_data = market.get_rate_of_change()
+        historical_data = market.extract(market.get_index() < at).get_rate_of_change()
         prices = historical_data.tail(n=self._span).to_numpy()
         Q = np.cov(prices.T)
         R = prices.mean(axis=0).T
