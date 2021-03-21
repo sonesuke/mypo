@@ -1,5 +1,5 @@
-Welcome to mypo's documentation!
-================================
+mypo documentation
+==================
 
 mypo is a Python module for making strategy your portfolio and is distributed under the MIT license.
 
@@ -29,8 +29,8 @@ You can start quickly  by using docker image with the command.
 
 After starting Jupyter server, you can login it with the token. The default of token is '1111'.
 
-Tutorial
-========
+User guide
+==========
 This tutorial will be helpful for understanding the usage of this module.
 
 .. toctree::
@@ -40,13 +40,13 @@ This tutorial will be helpful for understanding the usage of this module.
 * :ref:`tutorial/explore_market_data`
 * :ref:`tutorial/optimizer`
 
+Development guide
+=================
+
+* :ref:`development`
+
 Indices and tables
 ==================
 
 * :ref:`modindex`
 * :ref:`genindex`
-
-Development
-===========
-
-* :ref:`development`
