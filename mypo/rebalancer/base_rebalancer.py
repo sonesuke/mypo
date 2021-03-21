@@ -1,5 +1,5 @@
 """Rebalance strategies."""
-import datetime
+from datetime import datetime
 
 import numpy as np
 import numpy.typing as npt
@@ -31,7 +31,7 @@ class BaseRebalancer(object):
         self._optimizer = optimizer
         self._do_re_optimize = do_re_optimize
 
-    def apply(self, at: datetime.datetime, market: Market, assets: npt.ArrayLike, cash: np.float64) -> np.ndarray:
+    def apply(self, at: datetime, market: Market, assets: npt.ArrayLike, cash: np.float64) -> np.ndarray:
         """Apply rebalance strategy to current situation.
 
         Args:
@@ -46,7 +46,7 @@ class BaseRebalancer(object):
         assets = safe_cast(assets)
         if self._trigger.is_fire(at, assets, cash, self._optimizer.get_weights()):
             if self._do_re_optimize:
-                self._optimizer.optimize(market.extract(market.get_index() < at))
+                self._optimizer.optimize(market, at)
             diff = self._rebalance(assets)
         else:
             diff = self._do_nothing(assets)

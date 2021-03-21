@@ -1,4 +1,6 @@
 """Optimizer for weights of portfolio."""
+from datetime import datetime
+
 import numpy.typing as npt
 
 from mypo import Market
@@ -16,10 +18,11 @@ class NoOptimizer(BaseOptimizer):
         """
         super().__init__(weights)
 
-    def optimize(self, market: Market) -> None:
+    def optimize(self, market: Market, at: datetime) -> None:
         """Optimize weights.
 
         Args:
             market: Market data.
+            at: Current date.
         """
         pass

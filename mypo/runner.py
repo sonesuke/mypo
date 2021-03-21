@@ -120,14 +120,15 @@ class Runner(object):
             income_gain_tax,
         )
 
-    def run(self, market: Market) -> None:
+    def run(self, market: Market, train_span: int = 0) -> None:
         """Run simulation.
 
         Args:
             market: Market data.
+            train_span: Periods of training span.
         """
-        for i in range(market.get_length()):
-            self.apply(market, i)
+        for i in range(market.get_length() - train_span):
+            self.apply(market, i + train_span)
 
     def report(self) -> pd.DataFrame:
         """Report simulation.

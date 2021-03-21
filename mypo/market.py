@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import pickle
+from datetime import datetime
 from typing import Dict
 
 import numpy as np
@@ -155,6 +156,24 @@ class Market(object):
             index date
         """
         return self._closes.index
+
+    def get_first_date(self) -> datetime:
+        """Get first date.
+
+        Returns:
+            First date.
+        """
+        first_date: datetime = self.get_index()[0]
+        return first_date
+
+    def get_last_date(self) -> datetime:
+        """Get Last date.
+
+        Returns:
+            Last date.
+        """
+        last_date: datetime = self.get_index()[-1]
+        return last_date
 
     def get_normalized_prices(self) -> pd.DataFrame:
         """Get normalized prices.
