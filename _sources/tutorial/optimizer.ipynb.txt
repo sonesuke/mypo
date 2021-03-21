@@ -18,10 +18,10 @@
    "id": "painted-recipe",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-21T11:50:13.857519Z",
-     "iopub.status.busy": "2021-03-21T11:50:13.856512Z",
-     "iopub.status.idle": "2021-03-21T11:50:14.339290Z",
-     "shell.execute_reply": "2021-03-21T11:50:14.339987Z"
+     "iopub.execute_input": "2021-03-21T12:16:31.565434Z",
+     "iopub.status.busy": "2021-03-21T12:16:31.564896Z",
+     "iopub.status.idle": "2021-03-21T12:16:32.081670Z",
+     "shell.execute_reply": "2021-03-21T12:16:32.082214Z"
     }
    },
    "outputs": [],
@@ -39,10 +39,10 @@
    "id": "attached-berkeley",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-21T11:50:14.343844Z",
-     "iopub.status.busy": "2021-03-21T11:50:14.343254Z",
-     "iopub.status.idle": "2021-03-21T11:50:14.346374Z",
-     "shell.execute_reply": "2021-03-21T11:50:14.347190Z"
+     "iopub.execute_input": "2021-03-21T12:16:32.086606Z",
+     "iopub.status.busy": "2021-03-21T12:16:32.086014Z",
+     "iopub.status.idle": "2021-03-21T12:16:32.089002Z",
+     "shell.execute_reply": "2021-03-21T12:16:32.089794Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -59,10 +59,10 @@
    "id": "secure-packet",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-21T11:50:14.352081Z",
-     "iopub.status.busy": "2021-03-21T11:50:14.351484Z",
-     "iopub.status.idle": "2021-03-21T11:50:14.711378Z",
-     "shell.execute_reply": "2021-03-21T11:50:14.710826Z"
+     "iopub.execute_input": "2021-03-21T12:16:32.093324Z",
+     "iopub.status.busy": "2021-03-21T12:16:32.092212Z",
+     "iopub.status.idle": "2021-03-21T12:16:32.536553Z",
+     "shell.execute_reply": "2021-03-21T12:16:32.537035Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -80,10 +80,10 @@
    "id": "floppy-communications",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-21T11:50:14.715826Z",
-     "iopub.status.busy": "2021-03-21T11:50:14.714904Z",
-     "iopub.status.idle": "2021-03-21T11:50:14.724142Z",
-     "shell.execute_reply": "2021-03-21T11:50:14.724602Z"
+     "iopub.execute_input": "2021-03-21T12:16:32.542542Z",
+     "iopub.status.busy": "2021-03-21T12:16:32.541532Z",
+     "iopub.status.idle": "2021-03-21T12:16:32.551624Z",
+     "shell.execute_reply": "2021-03-21T12:16:32.552283Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -100,10 +100,10 @@
    "id": "thirty-purple",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-21T11:50:14.732544Z",
-     "iopub.status.busy": "2021-03-21T11:50:14.731949Z",
-     "iopub.status.idle": "2021-03-21T11:50:23.130768Z",
-     "shell.execute_reply": "2021-03-21T11:50:23.130201Z"
+     "iopub.execute_input": "2021-03-21T12:16:32.561112Z",
+     "iopub.status.busy": "2021-03-21T12:16:32.560348Z",
+     "iopub.status.idle": "2021-03-21T12:16:40.077811Z",
+     "shell.execute_reply": "2021-03-21T12:16:40.078298Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -114,7 +114,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "100%|██████████| 2449/2449 [00:07<00:00, 317.48it/s]\n"
+      "100%|██████████| 2449/2449 [00:06<00:00, 358.08it/s]\n"
      ]
     },
     {
@@ -123,8 +123,8 @@
      "text": [
       "[0.39969727 0.60030273]\n",
       "2449\n",
-      "1.1244309421123664\n",
-      "0.8687862283219002\n",
+      "1.1244309421746033\n",
+      "0.8687862283155601\n",
       "229\n"
      ]
     },
@@ -178,10 +178,10 @@
    "id": "awful-arbitration",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-21T11:50:23.139015Z",
-     "iopub.status.busy": "2021-03-21T11:50:23.136061Z",
-     "iopub.status.idle": "2021-03-21T11:50:31.288267Z",
-     "shell.execute_reply": "2021-03-21T11:50:31.287697Z"
+     "iopub.execute_input": "2021-03-21T12:16:40.087356Z",
+     "iopub.status.busy": "2021-03-21T12:16:40.086334Z",
+     "iopub.status.idle": "2021-03-21T12:16:47.350501Z",
+     "shell.execute_reply": "2021-03-21T12:16:47.349958Z"
     }
    },
    "outputs": [
@@ -189,7 +189,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "100%|██████████| 2449/2449 [00:07<00:00, 316.92it/s]\n"
+      "100%|██████████| 2449/2449 [00:06<00:00, 356.45it/s]\n"
      ]
     },
     {
@@ -198,8 +198,8 @@
      "text": [
       "[0.29286514 0.70713486]\n",
       "2449\n",
-      "1.1192116291717584\n",
-      "0.8718641364521077\n",
+      "1.1192116292181777\n",
+      "0.871864136426645\n",
       "232\n"
      ]
     },
@@ -254,10 +254,10 @@
    "id": "running-modeling",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-21T11:50:31.298048Z",
-     "iopub.status.busy": "2021-03-21T11:50:31.296622Z",
-     "iopub.status.idle": "2021-03-21T11:50:39.717588Z",
-     "shell.execute_reply": "2021-03-21T11:50:39.716867Z"
+     "iopub.execute_input": "2021-03-21T12:16:47.358180Z",
+     "iopub.status.busy": "2021-03-21T12:16:47.357558Z",
+     "iopub.status.idle": "2021-03-21T12:16:54.872721Z",
+     "shell.execute_reply": "2021-03-21T12:16:54.873173Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -268,15 +268,15 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      " 45%|████▌     | 1114/2449 [00:03<00:04, 312.91it/s]/app/mypo/runner.py:108: RuntimeWarning: divide by zero encountered in true_divide\n",
+      " 46%|████▌     | 1120/2449 [00:03<00:03, 341.23it/s]/app/mypo/runner.py:108: RuntimeWarning: divide by zero encountered in true_divide\n",
       "  self._average_assets_prices = (\n",
       "/app/mypo/runner.py:109: RuntimeWarning: invalid value encountered in multiply\n",
       "  self._average_assets_prices * previous_assets + diff * trading_prices\n",
-      " 47%|████▋     | 1146/2449 [00:03<00:04, 309.73it/s]/app/mypo/runner.py:108: RuntimeWarning: divide by zero encountered in true_divide\n",
+      " 47%|████▋     | 1155/2449 [00:03<00:03, 342.77it/s]/app/mypo/runner.py:108: RuntimeWarning: divide by zero encountered in true_divide\n",
       "  self._average_assets_prices = (\n",
       "/app/mypo/runner.py:109: RuntimeWarning: invalid value encountered in multiply\n",
       "  self._average_assets_prices * previous_assets + diff * trading_prices\n",
-      "100%|██████████| 2449/2449 [00:07<00:00, 306.90it/s]\n"
+      "100%|██████████| 2449/2449 [00:07<00:00, 345.31it/s]\n"
      ]
     },
     {
@@ -285,8 +285,8 @@
      "text": [
       "[0.50207728 0.49792272]\n",
       "2449\n",
-      "1.109016673376836\n",
-      "0.8658416404092867\n",
+      "1.1090166734491587\n",
+      "0.8658416403187509\n",
       "318\n"
      ]
     },
