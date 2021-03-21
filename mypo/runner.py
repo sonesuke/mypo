@@ -1,6 +1,7 @@
 """Simulation."""
 
-from typing import List
+from collections.abc import Iterable
+from typing import Any, List
 
 import numpy as np
 import pandas as pd
