@@ -33,9 +33,6 @@ User guide
 ==========
 This tutorial will be helpful for understanding the usage of this module.
 
-.. toctree::
-   :glob:
-
 * :ref:`tutorial/withdraw`
 * :ref:`tutorial/explore_market_data`
 * :ref:`tutorial/optimizer`
