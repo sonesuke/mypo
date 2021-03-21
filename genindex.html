@@ -62,6 +62,12 @@
 </li>
 
 <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="tutorial/withdraw.html">
+  Withdraw rate
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="tutorial/explore_market_data.html">
   Explore market data.
  </a>
@@ -163,10 +169,12 @@
 <h2 id="B">B</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="mypo.rebalancer.html#mypo.rebalancer.base_rebalancer.BaseRebalancer">BaseRebalancer (class in mypo.rebalancer.base_rebalancer)</a>
+      <li><a href="mypo.optimizer.html#mypo.optimizer.base_optimizer.BaseOptimizer">BaseOptimizer (class in mypo.optimizer.base_optimizer)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="mypo.rebalancer.html#mypo.rebalancer.base_rebalancer.BaseRebalancer">BaseRebalancer (class in mypo.rebalancer.base_rebalancer)</a>
+</li>
       <li><a href="mypo.trigger.html#mypo.trigger.base_trigger.BaseTrigger">BaseTrigger (class in mypo.trigger.base_trigger)</a>
 </li>
   </ul></td>
@@ -179,13 +187,19 @@
 </li>
       <li><a href="mypo.html#mypo.common.calc_fee">calc_fee() (in module mypo.common)</a>
 </li>
+      <li><a href="mypo.html#mypo.common.calc_income_gain_tax">calc_income_gain_tax() (in module mypo.common)</a>
+</li>
+      <li><a href="mypo.html#mypo.market.Market.calc_price_dividends_yield">calc_price_dividends_yield() (mypo.market.Market static method)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="mypo.html#mypo.common.calc_income_gain_tax">calc_income_gain_tax() (in module mypo.common)</a>
+      <li><a href="mypo.html#mypo.market.Market.calc_raw">calc_raw() (mypo.market.Market static method)</a>
 </li>
       <li><a href="mypo.optimizer.html#mypo.optimizer.objective.covariance">covariance() (in module mypo.optimizer.objective)</a>
 </li>
-      <li><a href="mypo.html#mypo.market.Market.create">create() (mypo.market.Market class method)</a>
+      <li><a href="mypo.html#mypo.market.Market.create">create() (mypo.market.Market static method)</a>
+</li>
+      <li><a href="mypo.html#mypo.market.Market.create_from_ticker">create_from_ticker() (mypo.market.Market static method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -213,12 +227,18 @@
 </li>
       <li><a href="mypo.html#mypo.market.Market.get_expense_ratio">get_expense_ratio() (mypo.market.Market method)</a>
 </li>
+      <li><a href="mypo.html#mypo.market.Market.get_first_date">get_first_date() (mypo.market.Market method)</a>
+</li>
       <li><a href="mypo.html#mypo.market.Market.get_index">get_index() (mypo.market.Market method)</a>
 </li>
-      <li><a href="mypo.html#mypo.loader.Loader.get_market">get_market() (mypo.loader.Loader method)</a>
+      <li><a href="mypo.html#mypo.market.Market.get_last_date">get_last_date() (mypo.market.Market method)</a>
+</li>
+      <li><a href="mypo.html#mypo.market.Market.get_length">get_length() (mypo.market.Market method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="mypo.html#mypo.loader.Loader.get_market">get_market() (mypo.loader.Loader method)</a>
+</li>
       <li><a href="mypo.html#mypo.market.Market.get_normalized_prices">get_normalized_prices() (mypo.market.Market method)</a>
 </li>
       <li><a href="mypo.html#mypo.market.Market.get_price_dividends_yield">get_price_dividends_yield() (mypo.market.Market method)</a>
@@ -226,6 +246,8 @@
       <li><a href="mypo.html#mypo.market.Market.get_rate_of_change">get_rate_of_change() (mypo.market.Market method)</a>
 </li>
       <li><a href="mypo.html#mypo.market.Market.get_raw">get_raw() (mypo.market.Market method)</a>
+</li>
+      <li><a href="mypo.optimizer.html#mypo.optimizer.base_optimizer.BaseOptimizer.get_weights">get_weights() (mypo.optimizer.base_optimizer.BaseOptimizer method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -291,11 +313,13 @@
 </li>
         <li><a href="mypo.optimizer.html#module-mypo.optimizer">mypo.optimizer</a>
 </li>
+        <li><a href="mypo.optimizer.html#module-mypo.optimizer.base_optimizer">mypo.optimizer.base_optimizer</a>
+</li>
         <li><a href="mypo.optimizer.html#module-mypo.optimizer.minimum_variance_optimizer">mypo.optimizer.minimum_variance_optimizer</a>
 </li>
-        <li><a href="mypo.optimizer.html#module-mypo.optimizer.objective">mypo.optimizer.objective</a>
+        <li><a href="mypo.optimizer.html#module-mypo.optimizer.no_optimizer">mypo.optimizer.no_optimizer</a>
 </li>
-        <li><a href="mypo.optimizer.html#module-mypo.optimizer.optimizer">mypo.optimizer.optimizer</a>
+        <li><a href="mypo.optimizer.html#module-mypo.optimizer.objective">mypo.optimizer.objective</a>
 </li>
         <li><a href="mypo.optimizer.html#module-mypo.optimizer.sharp_ratio_optimizer">mypo.optimizer.sharp_ratio_optimizer</a>
 </li>
@@ -393,6 +417,13 @@
 </li>
       </ul></li>
       <li>
+    mypo.optimizer.base_optimizer
+
+      <ul>
+        <li><a href="mypo.optimizer.html#module-mypo.optimizer.base_optimizer">module</a>
+</li>
+      </ul></li>
+      <li>
     mypo.optimizer.minimum_variance_optimizer
 
       <ul>
@@ -400,17 +431,17 @@
 </li>
       </ul></li>
       <li>
+    mypo.optimizer.no_optimizer
+
+      <ul>
+        <li><a href="mypo.optimizer.html#module-mypo.optimizer.no_optimizer">module</a>
+</li>
+      </ul></li>
+      <li>
     mypo.optimizer.objective
 
       <ul>
         <li><a href="mypo.optimizer.html#module-mypo.optimizer.objective">module</a>
-</li>
-      </ul></li>
-      <li>
-    mypo.optimizer.optimizer
-
-      <ul>
-        <li><a href="mypo.optimizer.html#module-mypo.optimizer.optimizer">module</a>
 </li>
       </ul></li>
       <li>
@@ -531,10 +562,12 @@
 <h2 id="N">N</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="mypo.rebalancer.html#mypo.rebalancer.no_rebalancer.NoRebalancer">NoRebalancer (class in mypo.rebalancer.no_rebalancer)</a>
+      <li><a href="mypo.optimizer.html#mypo.optimizer.no_optimizer.NoOptimizer">NoOptimizer (class in mypo.optimizer.no_optimizer)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="mypo.rebalancer.html#mypo.rebalancer.no_rebalancer.NoRebalancer">NoRebalancer (class in mypo.rebalancer.no_rebalancer)</a>
+</li>
       <li><a href="mypo.trigger.html#mypo.trigger.no_trigger.NoTrigger">NoTrigger (class in mypo.trigger.no_trigger)</a>
 </li>
   </ul></td>
@@ -543,16 +576,16 @@
 <h2 id="O">O</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="mypo.optimizer.html#mypo.optimizer.minimum_variance_optimizer.MinimumVarianceOptimizer.optimize_weight">optimize_weight() (mypo.optimizer.minimum_variance_optimizer.MinimumVarianceOptimizer method)</a>
+      <li><a href="mypo.optimizer.html#mypo.optimizer.base_optimizer.BaseOptimizer.optimize">optimize() (mypo.optimizer.base_optimizer.BaseOptimizer method)</a>
 
       <ul>
-        <li><a href="mypo.optimizer.html#mypo.optimizer.sharp_ratio_optimizer.SharpRatioOptimizer.optimize_weight">(mypo.optimizer.sharp_ratio_optimizer.SharpRatioOptimizer method)</a>
+        <li><a href="mypo.optimizer.html#mypo.optimizer.minimum_variance_optimizer.MinimumVarianceOptimizer.optimize">(mypo.optimizer.minimum_variance_optimizer.MinimumVarianceOptimizer method)</a>
+</li>
+        <li><a href="mypo.optimizer.html#mypo.optimizer.no_optimizer.NoOptimizer.optimize">(mypo.optimizer.no_optimizer.NoOptimizer method)</a>
+</li>
+        <li><a href="mypo.optimizer.html#mypo.optimizer.sharp_ratio_optimizer.SharpRatioOptimizer.optimize">(mypo.optimizer.sharp_ratio_optimizer.SharpRatioOptimizer method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="mypo.optimizer.html#mypo.optimizer.optimizer.Optimizer">Optimizer (class in mypo.optimizer.optimizer)</a>
-</li>
   </ul></td>
 </tr></table>
 
@@ -658,7 +691,7 @@
   <div class="container">
     <p>
           &copy; Copyright 2021, sonesuke.<br/>
-        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.3.<br/>
     </p>
   </div>
 </footer>

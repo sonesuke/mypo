@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; mypo  documentation</title>
+    <title>Withdraw rate &#8212; mypo  documentation</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.101715efdecc9b59cb6e1ddfa685c31f.css" rel="stylesheet" />
@@ -63,6 +63,12 @@
  </a>
 </li>
 
+<li class="toctree-l1 current active nav-item">
+ <a class="current reference internal nav-link" href="#">
+  Withdraw rate
+ </a>
+</li>
+
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="explore_market_data.html">
   Explore market data.
@@ -106,14 +112,9 @@
           
           <div class="d-none d-xl-block col-xl-2 bd-toc">
               
-<div class="tocsection onthispage pt-5 pb-3">
-    <i class="fas fa-list"></i> On this page
-</div>
 
 <nav id="bd-toc-nav">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
+    
 </nav>
 
 
@@ -377,7 +378,8 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
-<p>Withdraw rate</p>
+<div class="section" id="Withdraw-rate">
+<h1>Withdraw rate<a class="headerlink" href="#Withdraw-rate" title="Permalink to this headline">¶</a></h1>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -402,7 +404,6 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">withdraw</span> <span class="o">=</span> <span class="mf">0.06</span>
-
 <span class="n">market</span> <span class="o">=</span> <span class="n">Market</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
     <span class="n">start_date</span><span class="o">=</span><span class="s2">&quot;2021-01-01&quot;</span><span class="p">,</span>
     <span class="n">end_date</span><span class="o">=</span><span class="s2">&quot;2071-01-01&quot;</span><span class="p">,</span>
@@ -414,14 +415,8 @@ div.rendered_html tbody tr:hover {
     <span class="n">withdraw</span><span class="o">=</span><span class="n">withdraw</span>
 <span class="p">)</span>
 
-<span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="n">market</span><span class="o">=</span><span class="n">market</span>
-<span class="p">)</span>
-
+<span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">market</span><span class="o">=</span><span class="n">market</span><span class="p">)</span>
 <span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
-
-
-
 </pre></div>
 </div>
 </div>
@@ -430,168 +425,43 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">display</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+            total_assets  capital_gain  income_gain   cash  deal  fee  \
+2021-01-01         0.495           0.0          0.0  0.495   0.0 -0.0
+2021-01-02         0.495           0.0          0.0  0.495   0.0 -0.0
+2021-01-03         0.495           0.0          0.0  0.495   0.0 -0.0
+2021-01-04         0.495           0.0          0.0  0.495   0.0 -0.0
+2021-01-05         0.495           0.0          0.0  0.495   0.0 -0.0
+...                  ...           ...          ...    ...   ...  ...
+2070-12-27        -2.500           0.0          0.0 -2.500   0.0 -0.0
+2070-12-28        -2.500           0.0          0.0 -2.500   0.0 -0.0
+2070-12-29        -2.500           0.0          0.0 -2.500   0.0 -0.0
+2070-12-30        -2.500           0.0          0.0 -2.500   0.0 -0.0
+2070-12-31        -2.500           0.0          0.0 -2.500   0.0 -0.0
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+            capital_gain_tax  income_gain_tax
+2021-01-01               0.0             -0.0
+2021-01-02               0.0             -0.0
+2021-01-03               0.0             -0.0
+2021-01-04               0.0             -0.0
+2021-01-05               0.0             -0.0
+...                      ...              ...
+2070-12-27               0.0             -0.0
+2070-12-28               0.0             -0.0
+2070-12-29               0.0             -0.0
+2070-12-30               0.0             -0.0
+2070-12-31               0.0             -0.0
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>total_assets</th>
-      <th>capital_gain</th>
-      <th>income_gain</th>
-      <th>cash</th>
-      <th>deal</th>
-      <th>fee</th>
-      <th>capital_gain_tax</th>
-      <th>income_gain_tax</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>NaT</th>
-      <td>0.500</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.500</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2021-01-01</th>
-      <td>0.495</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>0.495</td>
-      <td>[0.0]</td>
-      <td>-0.0</td>
-      <td>0.0</td>
-      <td>-0.0</td>
-    </tr>
-    <tr>
-      <th>2021-01-02</th>
-      <td>0.495</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>0.495</td>
-      <td>[0.0]</td>
-      <td>-0.0</td>
-      <td>0.0</td>
-      <td>-0.0</td>
-    </tr>
-    <tr>
-      <th>2021-01-03</th>
-      <td>0.495</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>0.495</td>
-      <td>[0.0]</td>
-      <td>-0.0</td>
-      <td>0.0</td>
-      <td>-0.0</td>
-    </tr>
-    <tr>
-      <th>2021-01-04</th>
-      <td>0.495</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>0.495</td>
-      <td>[0.0]</td>
-      <td>-0.0</td>
-      <td>0.0</td>
-      <td>-0.0</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>2070-12-27</th>
-      <td>-2.500</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>-2.500</td>
-      <td>[0.0]</td>
-      <td>-0.0</td>
-      <td>0.0</td>
-      <td>-0.0</td>
-    </tr>
-    <tr>
-      <th>2070-12-28</th>
-      <td>-2.500</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>-2.500</td>
-      <td>[0.0]</td>
-      <td>-0.0</td>
-      <td>0.0</td>
-      <td>-0.0</td>
-    </tr>
-    <tr>
-      <th>2070-12-29</th>
-      <td>-2.500</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>-2.500</td>
-      <td>[0.0]</td>
-      <td>-0.0</td>
-      <td>0.0</td>
-      <td>-0.0</td>
-    </tr>
-    <tr>
-      <th>2070-12-30</th>
-      <td>-2.500</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>-2.500</td>
-      <td>[0.0]</td>
-      <td>-0.0</td>
-      <td>0.0</td>
-      <td>-0.0</td>
-    </tr>
-    <tr>
-      <th>2070-12-31</th>
-      <td>-2.500</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>-2.500</td>
-      <td>[0.0]</td>
-      <td>-0.0</td>
-      <td>0.0</td>
-      <td>-0.0</td>
-    </tr>
-  </tbody>
-</table>
-<p>18263 rows × 8 columns</p>
-</div></div>
+[18262 rows x 8 columns]
+</pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -627,6 +497,107 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">withdraw</span> <span class="o">=</span> <span class="mf">0.06</span>
+<span class="n">market</span> <span class="o">=</span> <span class="n">Market</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+    <span class="n">start_date</span><span class="o">=</span><span class="s2">&quot;2021-01-01&quot;</span><span class="p">,</span>
+    <span class="n">end_date</span><span class="o">=</span><span class="s2">&quot;2071-01-01&quot;</span><span class="p">,</span>
+    <span class="n">yearly_gain</span><span class="o">=</span><span class="mf">0.04</span>
+<span class="p">)</span>
+
+<span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
+    <span class="n">assets</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span><span class="p">],</span>
+    <span class="n">cash</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">withdraw</span><span class="o">=</span><span class="n">withdraw</span>
+<span class="p">)</span>
+
+<span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">market</span><span class="o">=</span><span class="n">market</span><span class="p">)</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+            total_assets  capital_gain  income_gain      cash  deal  fee  \
+2021-01-01      1.495107      0.000107          0.0  0.495000   0.0 -0.0
+2021-01-02      1.495215      0.000107          0.0  0.495000   0.0 -0.0
+2021-01-03      1.495322      0.000107          0.0  0.495000   0.0 -0.0
+2021-01-04      1.495430      0.000107          0.0  0.495000   0.0 -0.0
+2021-01-05      1.495537      0.000108          0.0  0.495000   0.0 -0.0
+...                  ...           ...          ...       ...   ...  ...
+2070-12-27      0.821408      0.000088          0.0  0.000025   0.0 -0.0
+2070-12-28      0.821496      0.000088          0.0  0.000025   0.0 -0.0
+2070-12-29      0.821584      0.000088          0.0  0.000025   0.0 -0.0
+2070-12-30      0.821673      0.000088          0.0  0.000025   0.0 -0.0
+2070-12-31      0.821761      0.000088          0.0  0.000025   0.0 -0.0
+
+            capital_gain_tax  income_gain_tax
+2021-01-01               0.0             -0.0
+2021-01-02               0.0             -0.0
+2021-01-03               0.0             -0.0
+2021-01-04               0.0             -0.0
+2021-01-05               0.0             -0.0
+...                      ...              ...
+2070-12-27               0.0             -0.0
+2070-12-28               0.0             -0.0
+2070-12-29               0.0             -0.0
+2070-12-30               0.0             -0.0
+2070-12-31               0.0             -0.0
+
+[18262 rows x 8 columns]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">report</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_withdraw_9_1.png" src="../_images/tutorial_withdraw_9_1.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
 
 
               </div>
@@ -653,7 +624,7 @@ div.rendered_html tbody tr:hover {
   <div class="container">
     <p>
           &copy; Copyright 2021, sonesuke.<br/>
-        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.3.<br/>
     </p>
   </div>
 </footer>

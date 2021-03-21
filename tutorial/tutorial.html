@@ -63,6 +63,12 @@
 </li>
 
 <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="withdraw.html">
+  Withdraw rate
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="explore_market_data.html">
   Explore market data.
  </a>
@@ -373,35 +379,24 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="titled">
 <h1>titled<a class="headerlink" href="#titled" title="Permalink to this headline">¶</a></h1>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">mypo</span>
-<span class="kn">from</span> <span class="nn">mypo</span> <span class="kn">import</span> <span class="n">split_n_periods</span><span class="p">,</span> <span class="n">Runner</span><span class="p">,</span> <span class="n">Settings</span>
-<span class="kn">from</span> <span class="nn">mypo.rebalancer</span> <span class="kn">import</span> <span class="n">PlainRebalancer</span>
-<span class="kn">from</span> <span class="nn">mypo.optimizer</span> <span class="kn">import</span> <span class="n">MinimumVarianceOptimizer</span><span class="p">,</span> <span class="n">SharpRatioOptimizer</span><span class="p">,</span> <span class="n">semi_covariance</span>
+<span></span><span class="kn">from</span> <span class="nn">mypo</span> <span class="kn">import</span> <span class="n">split_n_periods</span><span class="p">,</span> <span class="n">Runner</span><span class="p">,</span> <span class="n">Loader</span>
+<span class="kn">from</span> <span class="nn">mypo.rebalancer</span> <span class="kn">import</span> <span class="n">MonthlyRebalancer</span>
+<span class="kn">from</span> <span class="nn">mypo.optimizer</span> <span class="kn">import</span> <span class="n">MinimumVarianceOptimizer</span><span class="p">,</span> <span class="n">SharpRatioOptimizer</span>
 <span class="kn">from</span> <span class="nn">mypo.indicator</span> <span class="kn">import</span> <span class="n">yearly_total_return</span><span class="p">,</span> <span class="n">max_drawdown</span><span class="p">,</span> <span class="n">max_drawdown_span</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mypo</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-0.0.0
-</pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">loader</span> <span class="o">=</span> <span class="n">mypo</span><span class="o">.</span><span class="n">Loader</span><span class="p">()</span>
+<span></span><span class="n">loader</span> <span class="o">=</span> <span class="n">Loader</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -421,7 +416,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">market</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">get_market</span><span class="p">()</span>
-<span class="n">trains</span><span class="p">,</span> <span class="n">evals</span> <span class="o">=</span> <span class="n">split_n_periods</span><span class="p">(</span><span class="n">market</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">train_span</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">trains</span><span class="p">,</span> <span class="n">validations</span> <span class="o">=</span> <span class="n">split_n_periods</span><span class="p">(</span><span class="n">market</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">train_span</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -430,21 +425,21 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">for</span> <span class="n">train</span><span class="p">,</span> <span class="nb">eval</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">trains</span><span class="p">,</span> <span class="n">evals</span><span class="p">):</span>
-    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">MinimumVarianceOptimizer</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
-    <span class="n">weights</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">optimize_weight</span><span class="p">()</span>
+<span></span><span class="k">for</span> <span class="n">train</span><span class="p">,</span> <span class="n">validation</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">trains</span><span class="p">,</span> <span class="n">validations</span><span class="p">):</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">MinimumVarianceOptimizer</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
 
-    <span class="n">runner</span> <span class="o">=</span> <span class="n">mypo</span><span class="o">.</span><span class="n">Runner</span><span class="p">(</span>
-        <span class="n">assets</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]),</span>
-        <span class="n">rebalancer</span><span class="o">=</span><span class="n">PlainRebalancer</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">),</span>
-        <span class="n">cash</span><span class="o">=</span><span class="mf">0.5</span>
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
+        <span class="n">assets</span><span class="o">=</span><span class="p">[</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">],</span>
+        <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">),</span>
+        <span class="n">cash</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
     <span class="p">)</span>
 
     <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-        <span class="n">market</span><span class="o">=</span><span class="nb">eval</span>
+        <span class="n">market</span><span class="o">=</span><span class="n">validation</span>
     <span class="p">)</span>
     <span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">optimizer</span><span class="o">.</span><span class="n">get_weights</span><span class="p">())</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">yearly_total_return</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown_span</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
@@ -457,104 +452,104 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 [0.69541797 0.30458203]
-122
-1.2626334823130851
-0.9440673589164427
-26
+121
+1.2354262283806383
+0.9464673897081262
+29
 [0.58617852 0.41382148]
-122
-1.2143281888173985
-0.9809440018114376
+121
+1.2207176356810807
+0.9809460619908367
 20
 [0.61337769 0.38662231]
-122
-1.1458109425091259
-0.9774277128892593
+121
+1.1232422658898324
+0.9763594529933229
 43
 [0.62894399 0.37105601]
-122
-1.1872115652890518
-0.9778429950381414
+121
+1.1773336670558707
+0.9781140796572918
 23
 [0.65184213 0.34815787]
-122
-1.0946823151604996
-0.9590274581908151
+121
+1.0790068609455319
+0.9592673970226614
 44
 [0.72087905 0.27912095]
-122
-1.1958155770507468
-0.9771632449600743
-17
+121
+1.194972871044022
+0.9778731648258272
+16
 [0.65773989 0.34226011]
-122
-1.2034236274051424
-0.9773269154356351
+121
+1.1812456709423769
+0.9771610529659246
 26
 [0.62127724 0.37872276]
-122
-1.0611201296635666
-0.957123681859432
+121
+1.0613943070915515
+0.9571060429302742
 34
 [0.6730811 0.3269189]
-122
-1.0904861770060015
-0.9390528327991673
-47
+121
+1.0637463091229498
+0.9398008874854706
+50
 [0.63378326 0.36621674]
-122
-1.1101395551449011
-0.9669379411627814
+121
+1.107286763436991
+0.9665442574052145
 36
 [0.5115294 0.4884706]
-122
-1.1362842584959139
-0.9635337655063908
+121
+1.1234073845888903
+0.9625816500225067
 59
 [0.57867566 0.42132434]
-122
-1.0969991660619935
-0.9625777108268551
+121
+1.0968384145598564
+0.9642851022645269
 46
 [0.78567299 0.21432701]
-122
-1.1720605861285047
-0.9860180353408964
-16
+121
+1.1713369377325282
+0.9858734739693259
+17
 [0.72783614 0.27216386]
-122
-1.0731320677987979
-0.9297861851453331
+121
+1.0563952723360812
+0.9294374123759996
 49
 [0.52950546 0.47049454]
-122
-1.0992204782732449
-0.9717282135850308
+121
+1.0937732847413053
+0.9717215036321755
 28
 [0.4851337 0.5148663]
-122
-1.1381155408304429
-0.9575808620856734
-76
+121
+1.148409297767534
+0.9593413261428808
+71
 [0.40277746 0.59722254]
-122
-1.3010825935845574
-0.9598602411362911
+121
+1.2807401851693534
+0.960436400214387
 19
 [0.49311775 0.50688225]
-122
-1.054134209306001
-0.9092695762529311
+121
+1.0205702884609567
+0.9059244303955677
 32
 [0.43846946 0.56153054]
-122
-1.5713099489498805
-0.9702714196840624
+121
+1.5362209647837584
+0.9695478788098636
 28
 [0.39614044 0.60385956]
-122
-0.9771456832779993
-0.9293529451889766
+121
+0.9530447622150124
+0.9285605535100646
 43
 </pre></div></div>
 </div>
@@ -563,21 +558,21 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">for</span> <span class="n">train</span><span class="p">,</span> <span class="nb">eval</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">trains</span><span class="p">,</span> <span class="n">evals</span><span class="p">):</span>
-    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">MinimumVarianceOptimizer</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">covariance_model</span><span class="o">=</span><span class="n">semi_covariance</span><span class="p">)</span>
-    <span class="n">weights</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">optimize_weight</span><span class="p">()</span>
+<span></span><span class="k">for</span> <span class="n">train</span><span class="p">,</span> <span class="n">validation</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">trains</span><span class="p">,</span> <span class="n">validations</span><span class="p">):</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">MinimumVarianceOptimizer</span><span class="p">(</span><span class="n">with_semi_covariance</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
 
-    <span class="n">runner</span> <span class="o">=</span> <span class="n">mypo</span><span class="o">.</span><span class="n">Runner</span><span class="p">(</span>
-        <span class="n">assets</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]),</span>
-        <span class="n">rebalancer</span><span class="o">=</span><span class="n">PlainRebalancer</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">),</span>
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
+        <span class="n">assets</span><span class="o">=</span><span class="p">[</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">],</span>
+        <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">),</span>
         <span class="n">cash</span><span class="o">=</span><span class="mf">0.5</span>
     <span class="p">)</span>
 
     <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-        <span class="n">market</span><span class="o">=</span><span class="nb">eval</span>
+        <span class="n">market</span><span class="o">=</span><span class="n">validation</span>
     <span class="p">)</span>
     <span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">optimizer</span><span class="o">.</span><span class="n">get_weights</span><span class="p">())</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">yearly_total_return</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown_span</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
@@ -590,105 +585,105 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 [0.7338018 0.2661982]
-122
-1.2209998617013256
-0.9341732373136284
+121
+1.1962561420108457
+0.9363721258602532
 37
 [0.54377823 0.45622177]
-122
-1.2151749173755906
-0.9771526894260425
+121
+1.2178219760880458
+0.9773854238999949
 28
 [0.59901408 0.40098592]
-122
-1.1448474924411844
-0.9773151874765038
+121
+1.1219494696363848
+0.9762307080064746
 43
 [0.66814927 0.33185073]
-122
-1.202512771423915
-0.9784540406855252
-15
+121
+1.192126346696165
+0.9787109102129424
+17
 [0.70727854 0.29272146]
-122
-1.1200126495007672
-0.9607126597548891
+121
+1.1037079118474384
+0.960568652454382
 44
 [0.78350636 0.21649364]
-122
-1.1806933569412505
-0.9735082372940715
+121
+1.178874878961032
+0.9741097677076949
 17
 [0.67542298 0.32457702]
-122
-1.202227667762399
-0.9776357629833206
+121
+1.1799389485530696
+0.9779931786803691
 26
 [0.5865816 0.4134184]
-122
-1.060951499619489
-0.9534801560975941
+121
+1.060189568426839
+0.9534357446171338
 34
 [0.71348278 0.28651722]
-122
-1.086058407659681
-0.9356002055777801
-47
+121
+1.0595948231674464
+0.9362910011642119
+50
 [0.63999502 0.36000498]
-122
-1.1085922650937146
-0.9663283207916513
+121
+1.105681497662802
+0.9662497671607646
 36
 [0.49491931 0.50508069]
-122
-1.1381305296553792
-0.9625062517384088
+121
+1.1238210402589803
+0.9615339554293661
 59
 [0.54131904 0.45868096]
-122
-1.0906494309099128
-0.957657185794555
-48
+121
+1.0872256712333783
+0.9593428959648113
+47
 [0.88358447 0.11641553]
-122
-1.1830553564700943
-0.9867794034408593
+121
+1.1813160229626232
+0.9866987719146818
 17
 [0.753531 0.246469]
-122
-1.0751760867240996
-0.9286888272686805
+121
+1.0583548101716145
+0.9283609160870618
 49
 [0.45899677 0.54100323]
-122
-1.0861998066207672
-0.9704934822537856
+121
+1.0747091607679373
+0.9704202865614442
 28
 [0.43452301 0.56547699]
-122
-1.1591939896586478
-0.9609514163749632
-63
+121
+1.1652700820888209
+0.9607414092721294
+62
 [0.34836551 0.65163449]
-122
-1.3224936108533452
-0.9545160512509742
+121
+1.2967696978506142
+0.9549358015337925
 19
 [0.44494929 0.55505071]
-122
-1.0783981660124555
-0.9127116979082514
+121
+1.0406985939290074
+0.9074125991791413
 35
 [0.3090024 0.6909976]
-122
-1.508169762306904
-0.963190293885612
+121
+1.4634794423193367
+0.9633754887641603
 47
 [0.27176023 0.72823977]
-122
-0.9263881022044631
-0.9141805535592625
-43
+121
+0.893913383197275
+0.9135688785207462
+48
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -696,21 +691,21 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">for</span> <span class="n">train</span><span class="p">,</span> <span class="nb">eval</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">trains</span><span class="p">,</span> <span class="n">evals</span><span class="p">):</span>
-    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">SharpRatioOptimizer</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
-    <span class="n">weights</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">optimize_weight</span><span class="p">()</span>
+<span></span><span class="k">for</span> <span class="n">train</span><span class="p">,</span> <span class="n">validation</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">trains</span><span class="p">,</span> <span class="n">validations</span><span class="p">):</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">SharpRatioOptimizer</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
 
-    <span class="n">runner</span> <span class="o">=</span> <span class="n">mypo</span><span class="o">.</span><span class="n">Runner</span><span class="p">(</span>
-        <span class="n">assets</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]),</span>
-        <span class="n">rebalancer</span><span class="o">=</span><span class="n">PlainRebalancer</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">),</span>
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
+        <span class="n">assets</span><span class="o">=</span><span class="p">[</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">],</span>
+        <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">),</span>
         <span class="n">cash</span><span class="o">=</span><span class="mf">0.5</span>
     <span class="p">)</span>
 
     <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-        <span class="n">market</span><span class="o">=</span><span class="nb">eval</span>
+        <span class="n">market</span><span class="o">=</span><span class="n">validation</span>
     <span class="p">)</span>
     <span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">optimizer</span><span class="o">.</span><span class="n">get_weights</span><span class="p">())</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">yearly_total_return</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown_span</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
@@ -725,104 +720,104 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 [0.78193637 0.21806363]
-122
-1.1698497776405505
-0.9218780456901512
-52
+121
+1.1483059718181035
+0.9237788704839504
+54
 [0.53075475 0.46924525]
-122
-1.2153662298289192
-0.9758342916698888
+121
+1.2168455000503255
+0.976169477735777
 28
 [0.60269073 0.39730927]
-122
-1.1448015634334325
-0.9773413303978159
+121
+1.1222862848890047
+0.976262706514137
 43
 [0.60400934 0.39599066]
-122
-1.1775300235765067
-0.9756759029198983
+121
+1.168008055695516
+0.9765768215936774
 23
 [0.73051888 0.26948112]
-122
-1.1307327734573251
-0.9608139428030237
+121
+1.1142093711415744
+0.960676969165357
 40
 [0.89848954 0.10151046]
-122
-1.152433450874723
-0.965156914261741
+121
+1.149052756847185
+0.965697352742591
 20
 [0.66579034 0.33420966]
-122
-1.2028827610605837
-0.9777035465501043
+121
+1.180651348881888
+0.9775398567274551
 26
 [0.61171418 0.38828582]
-122
-1.0606735048494322
-0.9561114753583249
+121
+1.0610794053810624
+0.9560921013170672
 34
 [0.66812235 0.33187765]
-122
-1.091011697317338
-0.939477310906374
-47
+121
+1.0642512264678157
+0.9402316715580871
+50
 [1. 0.]
-122
-1.0149313837781173
+121
+1.013032239802114
 0.9048071531102287
 80
 [0.4134406 0.5865594]
-122
-1.146851399152708
-0.9565717356456411
+121
+1.125665326032016
+0.955163304837096
 74
 [0.5762219 0.4237781]
-122
-1.0965837101655613
-0.9622535722927816
+121
+1.0962073467764746
+0.9639605016465788
 46
 [1.00000000e+00 7.16982029e-13]
-122
-1.1948187788528641
-0.9832025408904471
+121
+1.1929410029670668
+0.9832025408904437
 18
 [0.7373504 0.2626496]
-122
-1.0738957291190514
-0.929380388236722
+121
+1.0571226902040063
+0.9290390543112214
 49
 [0.80893999 0.19106001]
-122
-1.1729958968819214
-0.976802989542213
+121
+1.1711966608486064
+0.9767925206297166
 19
 [0.94246911 0.05753089]
-122
-0.982961662759814
-0.8577557462264169
 121
+0.9939800810018324
+0.8624600290307141
+120
 [0.34537161 0.65462839]
-122
-1.3236689669308739
-0.9542224992016215
+121
+1.297649860809939
+0.9546326538838394
 19
 [0.45832717 0.54167283]
-122
-1.0716901823715315
-0.9117617802598079
+121
+1.0351030239246122
+0.9070002999150389
 35
 [0.34948518 0.65051482]
-122
-1.5282361536008675
-0.9690272685442597
-42
+121
+1.4861215830611925
+0.9686238975527407
+44
 [0.37679504 0.62320496]
-122
-0.9690727498822508
-0.9270783267842009
+121
+0.9435862955534217
+0.9262333901823263
 43
 </pre></div></div>
 </div>
@@ -852,7 +847,7 @@ div.rendered_html tbody tr:hover {
   <div class="container">
     <p>
           &copy; Copyright 2021, sonesuke.<br/>
-        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.2.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.3.<br/>
     </p>
   </div>
 </footer>

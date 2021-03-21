@@ -4,6 +4,14 @@ mypo.optimizer package
 Submodules
 ----------
 
+mypo.optimizer.base\_optimizer module
+-------------------------------------
+
+.. automodule:: mypo.optimizer.base_optimizer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 mypo.optimizer.minimum\_variance\_optimizer module
 --------------------------------------------------
 
@@ -12,18 +20,18 @@ mypo.optimizer.minimum\_variance\_optimizer module
    :undoc-members:
    :show-inheritance:
 
-mypo.optimizer.objective module
--------------------------------
+mypo.optimizer.no\_optimizer module
+-----------------------------------
 
-.. automodule:: mypo.optimizer.objective
+.. automodule:: mypo.optimizer.no_optimizer
    :members:
    :undoc-members:
    :show-inheritance:
 
-mypo.optimizer.optimizer module
+mypo.optimizer.objective module
 -------------------------------
 
-.. automodule:: mypo.optimizer.optimizer
+.. automodule:: mypo.optimizer.objective
    :members:
    :undoc-members:
    :show-inheritance:
