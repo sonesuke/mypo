@@ -3,7 +3,7 @@ import os
 import numpy.testing as npt
 import pandas as pd
 
-from mypo import Market
+from mypo import Market, SamplingMethod
 
 TEST_DATA = os.path.join(os.path.dirname(__file__), "data", "test.bin")
 
@@ -63,3 +63,19 @@ def test_make_market() -> None:
 
     df = market.get_price_dividends_yield()
     npt.assert_almost_equal(df["NONE"].sum(), 0)
+
+
+def test_resample_yearly() -> None:
+    market = Market.load(TEST_DATA)
+    market = market.resample(method=SamplingMethod.YEAR)
+    df = market.get_raw()
+    npt.assert_almost_equal(df["VOO"][0], 106.9990716)
+    npt.assert_almost_equal(df["IEF"][0], 91.3255258)
+
+
+def test_resample_monthly() -> None:
+    market = Market.load(TEST_DATA)
+    market = market.resample(method=SamplingMethod.MONTH)
+    df = market.get_raw()
+    npt.assert_almost_equal(df["VOO"][0], 89.8804749)
+    npt.assert_almost_equal(df["IEF"][0], 80.4133776)

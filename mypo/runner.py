@@ -1,9 +1,11 @@
 """Simulation."""
 
-from typing import List
+from collections.abc import Iterable
+from typing import Any, List
 
 import numpy as np
 import pandas as pd
+from tqdm import tqdm
 
 from mypo.common import calc_capital_gain_tax, calc_fee, calc_income_gain_tax, safe_cast
 from mypo.market import Market
@@ -120,14 +122,21 @@ class Runner(object):
             income_gain_tax,
         )
 
-    def run(self, market: Market, train_span: int = 0) -> None:
+    def run(self, market: Market, train_span: int = 0, verbose: bool = False) -> None:
         """Run simulation.
 
         Args:
             market: Market data.
             train_span: Periods of training span.
+            verbose: Show progress.
         """
-        for i in range(train_span, market.get_length()):
+        target = range(train_span, market.get_length())
+
+        def wrap(x: Iterable[Any]) -> Iterable[Any]:
+            """Wrapper for tqdm."""
+            return tqdm(x) if verbose else x  # type: ignore
+
+        for i in wrap(target):
             self.apply(market, i)
 
     def report(self) -> pd.DataFrame:

@@ -3,7 +3,7 @@ __version__ = "0.0.0"  # refresh automatically by CI
 
 from .common import calc_capital_gain_tax, calc_fee, calc_income_gain_tax
 from .loader import Loader
-from .market import Market
+from .market import Market, SamplingMethod
 from .model_selection import split_n_periods
 from .reporter import Reporter
 from .runner import Runner
