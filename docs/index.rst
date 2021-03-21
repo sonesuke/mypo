@@ -17,7 +17,6 @@ You can install the latest this module with the command:
 
     pip install mypo
 
-
 Quick start
 ============
 
@@ -28,15 +27,20 @@ You can start quickly  by using docker image with the command.
     git clone https://github.com/sonesuke/mypo.git
     docker-compose up
 
-After starting Jupyter server. You can login it with the token. The default of token is '1111'.
-If you would like to refer some tutorials, please see :ref:`tutorial`.
+After starting Jupyter server, you can login it with the token. The default of token is '1111'.
+
+Tutorial
+========
+
+* :ref:`tutorial/withdraw`
+* :ref:`tutorial/explore_market_data`
+* :ref:`tutorial/optimizer`
 
 Indices and tables
 ==================
 
-* :ref:`genindex`
 * :ref:`modindex`
-
+* :ref:`genindex`
 
 Development
 ===========
