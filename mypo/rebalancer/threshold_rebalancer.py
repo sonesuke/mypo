@@ -12,11 +12,16 @@ class ThresholdRebalancer(BaseRebalancer):
 
     _threshold: np.float64
 
-    def __init__(self, optimizer: BaseOptimizer, threshold: np.float64 = np.float64(0.05)) -> None:
+    def __init__(
+        self, optimizer: BaseOptimizer, do_re_optimize: bool = False, threshold: np.float64 = np.float64(0.05)
+    ) -> None:
         """Construct object.
 
         Args:
             optimizer: Optimizer.
+            do_re_optimize: Re-optimize if it's True. The default is False.
             threshold: Threshold of fire.
         """
-        super().__init__(trigger=ThresholdTrigger(threshold=threshold), optimizer=optimizer)
+        super().__init__(
+            trigger=ThresholdTrigger(threshold=threshold), optimizer=optimizer, do_re_optimize=do_re_optimize
+        )

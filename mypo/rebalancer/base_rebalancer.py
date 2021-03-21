@@ -31,11 +31,11 @@ class BaseRebalancer(object):
         self._optimizer = optimizer
         self._do_re_optimize = do_re_optimize
 
-    def apply(self, index: datetime.datetime, market: Market, assets: npt.ArrayLike, cash: np.float64) -> np.ndarray:
+    def apply(self, at: datetime.datetime, market: Market, assets: npt.ArrayLike, cash: np.float64) -> np.ndarray:
         """Apply rebalance strategy to current situation.
 
         Args:
-            index: Current date for applying rebalance.
+            at: Current date for applying rebalance.
             market: Market data for all spans.
             assets: Current assets for applying rebalance.
             cash: Current cash for applying rebalance.
@@ -44,9 +44,9 @@ class BaseRebalancer(object):
             Deal
         """
         assets = safe_cast(assets)
-        if self._trigger.is_fire(index, assets, cash, self._optimizer.get_weights()):
+        if self._trigger.is_fire(at, assets, cash, self._optimizer.get_weights()):
             if self._do_re_optimize:
-                self._optimizer.optimize(market.extract(index))
+                self._optimizer.optimize(market.extract(market.get_index() < at))
             diff = self._rebalance(assets)
         else:
             diff = self._do_nothing(assets)

@@ -9,7 +9,7 @@ from mypo.optimizer.base_optimizer import BaseOptimizer
 from mypo.optimizer.objective import covariance, semi_covariance
 
 
-class MinimumVarianceBaseOptimizer(BaseOptimizer):
+class MinimumVarianceOptimizer(BaseOptimizer):
     """Minimum variance optimizer."""
 
     _with_semi_covariance: bool

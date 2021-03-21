@@ -9,7 +9,7 @@ from mypo.optimizer import BaseOptimizer
 from mypo.optimizer.objective import sharp_ratio
 
 
-class SharpRatioBaseOptimizer(BaseOptimizer):
+class SharpRatioOptimizer(BaseOptimizer):
     """Minimum variance optimizer."""
 
     _span: int

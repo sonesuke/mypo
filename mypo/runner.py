@@ -70,7 +70,7 @@ class Runner(object):
             market: Market data.
             i: Index.
         """
-        index = market.get_index()[i]
+        at = market.get_index()[i]
         prices = market.get_rate_of_change().to_records(index=False)[i]
         price_dividends_yield = market.get_price_dividends_yield().to_records(index=False)[i]
         expense_ratio = market.get_expense_ratio()
@@ -80,16 +80,16 @@ class Runner(object):
         expense_ratio = safe_cast(expense_ratio)
 
         # apply withdraw
-        if self._month != index.month:
+        if self._month != at.month:
             self._cash -= self._withdraw / 12
-        self._month = index.month
+        self._month = at.month
 
         # apply market prices
         previous_assets = self._assets
         self._assets = self._assets * (1.0 + prices)
         capital_gain = np.float64(self._assets.sum() - previous_assets.sum())
 
-        diff = self._rebalancer.apply(index, market, self._assets, self._cash)
+        diff = self._rebalancer.apply(at, market, self._assets, self._cash)
         self._assets += diff
         capital_gain_tax = calc_capital_gain_tax(self._average_assets_prices, prices, diff, self._settings)
         fee = calc_fee(diff, self._settings)
@@ -109,7 +109,7 @@ class Runner(object):
 
         # record to reporter
         self._reporter.record(
-            index,
+            at,
             self.total_assets(),
             capital_gain,
             income_gain,

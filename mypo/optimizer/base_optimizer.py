@@ -35,4 +35,4 @@ class BaseOptimizer(object):
         Args:
             market: Market data.
         """
-        pass
+        pass  # pragma: no cover
