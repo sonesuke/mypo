@@ -1,8 +1,8 @@
 """Rebalance strategies."""
-import numpy as np
 
-from mypo.rebalancer.base_rebalancer import BaseRebalancer
-from mypo.trigger.no_trigger import NoTrigger
+from mypo.optimizer import NoOptimizer
+from mypo.rebalancer import BaseRebalancer
+from mypo.trigger import NoTrigger
 
 
 class NoRebalancer(BaseRebalancer):
@@ -10,4 +10,4 @@ class NoRebalancer(BaseRebalancer):
 
     def __init__(self) -> None:
         """Construct object."""
-        super().__init__(trigger=NoTrigger(), weights=np.ones(1))
+        super().__init__(trigger=NoTrigger(), optimizer=NoOptimizer())

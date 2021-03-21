@@ -9,12 +9,12 @@ from mypo.rebalancer import PlainRebalancer
 TEST_DATA = os.path.join(os.path.dirname(__file__), "data", "test.bin")
 
 
-def test_simulator():
+def test_simulator() -> None:
     runner = Runner(assets=[1, 1], rebalancer=PlainRebalancer([0.6, 0.4]), cash=0.5, withdraw=0.06)
     npt.assert_almost_equal(runner.total_assets(), 2.5)
 
 
-def test_apply():
+def test_apply() -> None:
     market = Market.load(TEST_DATA)
     market = market.extract(market.get_index()[:100])
     runner = Runner(
@@ -27,7 +27,7 @@ def test_apply():
     npt.assert_almost_equal(runner.total_assets(), 2.5031694536)
 
 
-def test_run_and_report():
+def test_run_and_report() -> None:
     market = Market.load(TEST_DATA)
     market = market.extract(market.get_index()[:100])
     runner = Runner(

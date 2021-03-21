@@ -89,7 +89,7 @@ class Runner(object):
         self._assets = self._assets * (1.0 + prices)
         capital_gain = np.float64(self._assets.sum() - previous_assets.sum())
 
-        diff = self._rebalancer.apply(index, self._assets, self._cash)
+        diff = self._rebalancer.apply(index, market, self._assets, self._cash)
         self._assets += diff
         capital_gain_tax = calc_capital_gain_tax(self._average_assets_prices, prices, diff, self._settings)
         fee = calc_fee(diff, self._settings)

@@ -1,11 +1,10 @@
 """Rebalance strategies."""
 
 import numpy as np
-import numpy.typing as npt
 
-from mypo.common import safe_cast
-from mypo.rebalancer.base_rebalancer import BaseRebalancer
-from mypo.trigger.monthly_trigger import MonthlyTrigger
+from mypo.optimizer import BaseOptimizer
+from mypo.rebalancer import BaseRebalancer
+from mypo.trigger import MonthlyTrigger
 
 
 class MonthlyRebalancer(BaseRebalancer):
@@ -14,13 +13,12 @@ class MonthlyRebalancer(BaseRebalancer):
     _old_month: int
     _weights: np.ndarray
 
-    def __init__(self, weights: npt.ArrayLike, old_month: int = 0) -> None:
+    def __init__(self, optimizer: BaseOptimizer, old_month: int = 0) -> None:
         """Construct object.
 
         Args:
-            weights: Weight for applying rebalance.
+            optimizer: Optimizer.
             old_month: Previous month.
         """
-        super().__init__(trigger=MonthlyTrigger(old_month), weights=weights)
+        super().__init__(trigger=MonthlyTrigger(old_month), optimizer=optimizer)
         self._old_month = old_month
-        self._weights = safe_cast(weights)

@@ -7,7 +7,7 @@ import pandas as pd
 from mypo import Market, Reporter, Runner, Settings
 
 
-def test_report():
+def test_report() -> None:
     reporter = Reporter()
     reporter.record(
         datetime.datetime(2021, 2, 22),
@@ -24,7 +24,7 @@ def test_report():
     assert df.index[0] == pd.Timestamp("2021-02-22")
 
 
-def test_run_and_report():
+def test_run_and_report() -> None:
     market = Market.create(start_date="2021-01-01", end_date="2021-12-31", yearly_gain=0.00)
 
     initial_cash = 0.5
@@ -40,7 +40,7 @@ def test_run_and_report():
     npt.assert_almost_equal(df["fee"].sum(), 0)
 
 
-def test_run_and_report_run_out_cash():
+def test_run_and_report_run_out_cash() -> None:
     market = Market.create(start_date="2021-01-01", end_date="2021-12-31", yearly_gain=0.00)
 
     initial_cash = 0.6
