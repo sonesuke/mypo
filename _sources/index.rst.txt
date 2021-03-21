@@ -31,6 +31,10 @@ After starting Jupyter server, you can login it with the token. The default of t
 
 Tutorial
 ========
+This tutorial will be helpful for understanding the usage of this module.
+
+.. toctree::
+   :glob:
 
 * :ref:`tutorial/withdraw`
 * :ref:`tutorial/explore_market_data`
