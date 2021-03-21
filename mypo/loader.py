@@ -47,4 +47,4 @@ class Loader(object):
         Returns:
             Market data
         """
-        return Market(self._tickers, self._expense_ratio)
+        return Market.create_from_ticker(self._tickers, self._expense_ratio)
