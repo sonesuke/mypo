@@ -20,6 +20,14 @@ mypo.rebalancer.monthly\_rebalancer module
    :undoc-members:
    :show-inheritance:
 
+mypo.rebalancer.no\_rebalancer module
+-------------------------------------
+
+.. automodule:: mypo.rebalancer.no_rebalancer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 mypo.rebalancer.plain\_rebalancer module
 ----------------------------------------
 

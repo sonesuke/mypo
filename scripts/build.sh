@@ -26,7 +26,6 @@ poetry build
 poetry publish
 
 # build documentation
-sphinx-apidoc -f -o ./docs . ./tests
 cd docs
 make clean
 make html

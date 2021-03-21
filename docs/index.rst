@@ -1,31 +1,44 @@
-.. mypo documentation master file, created by
-   sphinx-quickstart on Sun Mar  7 09:48:25 2021.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 Welcome to mypo's documentation!
 ================================
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+mypo is a Python module for making strategy your portfolio and is distributed under the MIT license.
 
-   main
+The project was started in 2021 by sonesuke.
+
+Website: https://sonesuke.github.io/mypo/
 
 
-Tutorial
-========
-.. toctree::
-   :glob:
+Installation
+============
 
-   tutorial/withdraw
-   tutorial/explore_market_data
-   tutorial/optimizer
+You can install the latest this module with the command:
 
+.. code-block::
+
+    pip install mypo
+
+
+Quick start
+============
+
+You can start quickly  by using docker image with the command.
+
+.. code-block:: none
+
+    git clone https://github.com/sonesuke/mypo.git
+    docker-compose up
+
+After starting Jupyter server. You can login it with the token. The default of token is '1111'.
+If you would like to refer some tutorials, please see :ref:`tutorial`.
 
 Indices and tables
 ==================
 
 * :ref:`genindex`
 * :ref:`modindex`
-* :ref:`search`
+
+
+Development
+===========
+
+* :ref:`development`
