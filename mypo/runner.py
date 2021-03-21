@@ -127,8 +127,8 @@ class Runner(object):
             market: Market data.
             train_span: Periods of training span.
         """
-        for i in range(market.get_length() - train_span):
-            self.apply(market, i + train_span)
+        for i in range(train_span, market.get_length()):
+            self.apply(market, i)
 
     def report(self) -> pd.DataFrame:
         """Report simulation.
