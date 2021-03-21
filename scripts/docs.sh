@@ -2,7 +2,6 @@
 
 set -eu
 
-
 # install libraries
 poetry install
 
