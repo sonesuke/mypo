@@ -7,7 +7,7 @@ authors = [
 ]
 
 license = "MIT"
-readme = "README.md"
+readme = "docs/index.rst"
 
 repository = "https://github.com/sonesuke/mypo"
 homepage = "https://github.com/sonesuke/mypo"
