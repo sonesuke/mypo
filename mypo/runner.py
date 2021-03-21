@@ -98,15 +98,13 @@ class Runner(object):
         self._assets += diff
         capital_gain_tax = calc_capital_gain_tax(self._average_assets_prices, prices, diff, self._settings)
         fee = calc_fee(diff, self._settings)
-        self._cash -= np.float64(diff.sum(dtype=np.float64) + fee + capital_gain_tax)
 
         # process of income gain
         income_gain = (self._assets * price_dividends_yield).sum()
         income_gain_tax = calc_income_gain_tax(self._assets, price_dividends_yield, self._settings)
-        self._cash += income_gain
-        self._cash -= income_gain_tax
 
         # process of others
+        self._cash = self._cash + income_gain - income_gain_tax - diff.sum() - fee - capital_gain_tax
         self._assets = (1.0 - expense_ratio / WEEK_DAYS) * self._assets
         deal = np.max([diff.sum(where=diff > 0), -diff.sum(where=diff < 0)])
         trading_prices = np.where(diff > 0, 1.0 + prices, self._average_assets_prices)
