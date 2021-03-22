@@ -26,7 +26,7 @@ poetry build
 poetry publish
 
 # build documentation
-sphinx-apidoc -f -o ./docs . ./tests
+jupyter nbconvert --execute  /app/docs/tutorial/*.ipynb --to notebook --inplace
 cd docs
 make clean
 make html

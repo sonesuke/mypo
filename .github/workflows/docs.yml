@@ -1,0 +1,24 @@
+name: pull-request
+
+on:
+  push:
+    tags:
+      - 'docs.[0-9]+'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: deploy documentation
+        shell: bash
+        run: docker-compose run mypo bash /app/scripts/docs.sh
+
+      - name: Deploy documentation
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/_build/html
+
