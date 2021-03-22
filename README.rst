@@ -22,7 +22,7 @@ Quick start
 
 You can start quickly  by using docker image with the command.
 
-.. code-block:: none
+.. code-block::
 
     git clone https://github.com/sonesuke/mypo.git
     docker-compose up
@@ -35,9 +35,9 @@ This tutorial will be helpful for understanding the usage of this module.
 
 .. toctree::
 
-   tutorial/withdraw
-   tutorial/explore_market_data
-   tutorial/optimizer
+tutorial/withdraw
+tutorial/explore_market_data
+tutorial/optimizer
 
 Developer guide
 =================
@@ -55,8 +55,3 @@ You can check the latest source with the command:
     git clone https://github.com/sonesuke/mypo.git
 
 
-API reference
-=============
-
-* :ref:`modindex`
-* :ref:`genindex`
