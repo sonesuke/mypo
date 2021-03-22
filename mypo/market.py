@@ -135,24 +135,39 @@ class Market(object):
         Returns:
             Resampled data.
         """
+        market = self.trim(method)
         if method == SamplingMethod.YEAR:
             rule = "Y"
         elif method == SamplingMethod.MONTH:
             rule = "M"
         else:
             assert False  # pragma: no cover
-        df = self._closes.groupby(pd.Grouper(freq=rule)).sum()
+        return Market(
+            closes=market._closes.resample(str(rule)).mean(),  # type: ignore
+            price_dividends_yield=market._price_dividends_yield.resample(rule).sum(),  # type: ignore
+            expense_ratio=market._expense_ratio,
+        )
+
+    def trim(self, method: SamplingMethod) -> Market:
+        """Trim market data.
+
+        Args:
+            method: Frequency of sampling.
+
+        Returns:
+            Trim data.
+        """
         if method == SamplingMethod.YEAR:
+            df = self._closes.groupby(pd.Grouper(freq="Y")).sum()
             first = df.index[0] if self._closes.index.is_year_start[0] else df.index[1]
             last = df.index[-1] if self._closes.index.is_year_end[-1] else df.index[-2]
         elif method == SamplingMethod.MONTH:
+            df = self._closes.groupby(pd.Grouper(freq="M")).sum()
             first = df.index[0] if self._closes.index.is_month_start[0] else df.index[1]
             last = df.index[-1] if self._closes.index.is_month_end[-1] else df.index[-2]
-        else:
-            assert False  # pragma: no cover
         return Market(
-            closes=self._closes[first:last].resample(str(rule)).mean(),  # type: ignore
-            price_dividends_yield=self._price_dividends_yield[first:last].resample(rule).sum(),  # type: ignore
+            closes=self._closes[first:last],  # type: ignore
+            price_dividends_yield=self._price_dividends_yield[first:last],  # type: ignore
             expense_ratio=self._expense_ratio,
         )
 
