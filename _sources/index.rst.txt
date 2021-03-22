@@ -39,13 +39,24 @@ This tutorial will be helpful for understanding the usage of this module.
    tutorial/explore_market_data
    tutorial/optimizer
 
-Development guide
+Developer guide
 =================
 
-* :ref:`development`
+We welcome new contributors of all experience levels. The mypo community goals are to be helpful, welcoming and effective.
 
-Indices and tables
-==================
+
+Source code
+-----------
+
+You can check the latest source with the command:
+
+.. code-block:: none
+
+    git clone https://github.com/sonesuke/mypo.git
+
+
+API reference
+=============
 
 * :ref:`modindex`
 * :ref:`genindex`
