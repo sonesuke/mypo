@@ -49,8 +49,8 @@ class Market(object):
         with open(filepath, "wb") as bin_file:
             pickle.dump(self, bin_file)
 
-    @classmethod
-    def load(cls, filepath: str) -> Market:
+    @staticmethod
+    def load(filepath: str) -> Market:
         """Load market data from file.
 
         Args:
@@ -151,7 +151,7 @@ class Market(object):
         else:
             assert False  # pragma: no cover
         return Market(
-            closes=self._closes[first:last].resample(str(rule)).mean(),  # type: ignore
+            closes=self._closes[first:last].resample(str(rule)).last(),  # type: ignore
             price_dividends_yield=self._price_dividends_yield[first:last].resample(rule).sum(),  # type: ignore
             expense_ratio=self._expense_ratio,
         )

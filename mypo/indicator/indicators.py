@@ -27,7 +27,6 @@ def yearly_total_return(report: pd.DataFrame, frequency: int = 252) -> np.float6
     Returns:
         yearly total return.
     """
-    print(len(report))
     return total_return(report) ** (frequency / len(report))
 
 
