@@ -16,14 +16,14 @@
   {
    "cell_type": "code",
    "execution_count": 1,
-   "id": "trained-hospital",
+   "id": "approximate-catalog",
    "metadata": {
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2021-03-28T14:20:37.086035Z",
-     "iopub.status.busy": "2021-03-28T14:20:37.085518Z",
-     "iopub.status.idle": "2021-03-28T14:20:37.575236Z",
-     "shell.execute_reply": "2021-03-28T14:20:37.575687Z"
+     "iopub.execute_input": "2021-03-28T14:26:26.010676Z",
+     "iopub.status.busy": "2021-03-28T14:26:26.010091Z",
+     "iopub.status.idle": "2021-03-28T14:26:26.500278Z",
+     "shell.execute_reply": "2021-03-28T14:26:26.500758Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -38,14 +38,14 @@
   {
    "cell_type": "code",
    "execution_count": 2,
-   "id": "grateful-responsibility",
+   "id": "spare-clear",
    "metadata": {
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2021-03-28T14:20:37.578194Z",
-     "iopub.status.busy": "2021-03-28T14:20:37.577704Z",
-     "iopub.status.idle": "2021-03-28T14:20:38.345052Z",
-     "shell.execute_reply": "2021-03-28T14:20:38.344154Z"
+     "iopub.execute_input": "2021-03-28T14:26:26.504258Z",
+     "iopub.status.busy": "2021-03-28T14:26:26.503477Z",
+     "iopub.status.idle": "2021-03-28T14:26:26.893929Z",
+     "shell.execute_reply": "2021-03-28T14:26:26.892967Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -63,14 +63,14 @@
   {
    "cell_type": "code",
    "execution_count": 3,
-   "id": "exposed-signal",
+   "id": "altered-dispatch",
    "metadata": {
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2021-03-28T14:20:38.350797Z",
-     "iopub.status.busy": "2021-03-28T14:20:38.348331Z",
-     "iopub.status.idle": "2021-03-28T14:23:22.931662Z",
-     "shell.execute_reply": "2021-03-28T14:23:22.932073Z"
+     "iopub.execute_input": "2021-03-28T14:26:26.898183Z",
+     "iopub.status.busy": "2021-03-28T14:26:26.897593Z",
+     "iopub.status.idle": "2021-03-28T14:29:18.951322Z",
+     "shell.execute_reply": "2021-03-28T14:29:18.951765Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -162,7 +162,7 @@
        "            }\n",
        "        </style>\n",
        "      <progress value='1010' class='' max='1010' style='width:300px; height:20px; vertical-align: middle;'></progress>\n",
-       "      100.00% [1010/1010 00:07<00:00 Sampling chain 2, 0 divergences]\n",
+       "      100.00% [1010/1010 00:08<00:00 Sampling chain 2, 0 divergences]\n",
        "    </div>\n",
        "    "
       ],
@@ -193,10 +193,10 @@
    "id": "commercial-radio",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-28T14:23:22.936434Z",
-     "iopub.status.busy": "2021-03-28T14:23:22.935633Z",
-     "iopub.status.idle": "2021-03-28T14:23:22.975466Z",
-     "shell.execute_reply": "2021-03-28T14:23:22.975917Z"
+     "iopub.execute_input": "2021-03-28T14:29:18.956866Z",
+     "iopub.status.busy": "2021-03-28T14:29:18.955390Z",
+     "iopub.status.idle": "2021-03-28T14:29:19.000212Z",
+     "shell.execute_reply": "2021-03-28T14:29:19.000651Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -209,7 +209,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "frank-password",
+   "id": "gentle-victim",
    "metadata": {
     "collapsed": false,
     "pycharm": {
@@ -223,14 +223,14 @@
   {
    "cell_type": "code",
    "execution_count": 5,
-   "id": "finnish-deployment",
+   "id": "spiritual-scratch",
    "metadata": {
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2021-03-28T14:23:22.982187Z",
-     "iopub.status.busy": "2021-03-28T14:23:22.981660Z",
-     "iopub.status.idle": "2021-03-28T14:23:23.416412Z",
-     "shell.execute_reply": "2021-03-28T14:23:23.415615Z"
+     "iopub.execute_input": "2021-03-28T14:29:19.007554Z",
+     "iopub.status.busy": "2021-03-28T14:29:19.006815Z",
+     "iopub.status.idle": "2021-03-28T14:29:19.476010Z",
+     "shell.execute_reply": "2021-03-28T14:29:19.476430Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -288,7 +288,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "choice-fiber",
+   "id": "received-douglas",
    "metadata": {
     "collapsed": false
    },
@@ -302,10 +302,10 @@
    "id": "welcome-range",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-28T14:23:23.436768Z",
-     "iopub.status.busy": "2021-03-28T14:23:23.422425Z",
-     "iopub.status.idle": "2021-03-28T14:23:23.771509Z",
-     "shell.execute_reply": "2021-03-28T14:23:23.771024Z"
+     "iopub.execute_input": "2021-03-28T14:29:19.496495Z",
+     "iopub.status.busy": "2021-03-28T14:29:19.483380Z",
+     "iopub.status.idle": "2021-03-28T14:29:19.839229Z",
+     "shell.execute_reply": "2021-03-28T14:29:19.838737Z"
     }
    },
    "outputs": [
@@ -362,14 +362,14 @@
   {
    "cell_type": "code",
    "execution_count": 7,
-   "id": "inappropriate-duncan",
+   "id": "dimensional-subscription",
    "metadata": {
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2021-03-28T14:23:23.808897Z",
-     "iopub.status.busy": "2021-03-28T14:23:23.790053Z",
-     "iopub.status.idle": "2021-03-28T14:23:24.141953Z",
-     "shell.execute_reply": "2021-03-28T14:23:24.141229Z"
+     "iopub.execute_input": "2021-03-28T14:29:19.859062Z",
+     "iopub.status.busy": "2021-03-28T14:29:19.857248Z",
+     "iopub.status.idle": "2021-03-28T14:29:20.225572Z",
+     "shell.execute_reply": "2021-03-28T14:29:20.224975Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -429,14 +429,14 @@
   {
    "cell_type": "code",
    "execution_count": 8,
-   "id": "historical-tiger",
+   "id": "organized-adjustment",
    "metadata": {
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2021-03-28T14:23:24.161205Z",
-     "iopub.status.busy": "2021-03-28T14:23:24.148261Z",
-     "iopub.status.idle": "2021-03-28T14:23:24.526308Z",
-     "shell.execute_reply": "2021-03-28T14:23:24.525550Z"
+     "iopub.execute_input": "2021-03-28T14:29:20.246300Z",
+     "iopub.status.busy": "2021-03-28T14:29:20.244472Z",
+     "iopub.status.idle": "2021-03-28T14:29:20.612336Z",
+     "shell.execute_reply": "2021-03-28T14:29:20.611795Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -496,14 +496,14 @@
   {
    "cell_type": "code",
    "execution_count": 9,
-   "id": "gothic-belief",
+   "id": "great-condition",
    "metadata": {
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2021-03-28T14:23:24.547350Z",
-     "iopub.status.busy": "2021-03-28T14:23:24.545443Z",
-     "iopub.status.idle": "2021-03-28T14:23:25.041935Z",
-     "shell.execute_reply": "2021-03-28T14:23:25.041230Z"
+     "iopub.execute_input": "2021-03-28T14:29:20.633784Z",
+     "iopub.status.busy": "2021-03-28T14:29:20.631767Z",
+     "iopub.status.idle": "2021-03-28T14:29:21.136337Z",
+     "shell.execute_reply": "2021-03-28T14:29:21.135832Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -563,14 +563,14 @@
   {
    "cell_type": "code",
    "execution_count": 10,
-   "id": "precious-hamburg",
+   "id": "instrumental-intranet",
    "metadata": {
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2021-03-28T14:23:25.062760Z",
-     "iopub.status.busy": "2021-03-28T14:23:25.060959Z",
-     "iopub.status.idle": "2021-03-28T14:23:25.407105Z",
-     "shell.execute_reply": "2021-03-28T14:23:25.407472Z"
+     "iopub.execute_input": "2021-03-28T14:29:21.154871Z",
+     "iopub.status.busy": "2021-03-28T14:29:21.153368Z",
+     "iopub.status.idle": "2021-03-28T14:29:21.508184Z",
+     "shell.execute_reply": "2021-03-28T14:29:21.507689Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -630,14 +630,14 @@
   {
    "cell_type": "code",
    "execution_count": 11,
-   "id": "signal-occasions",
+   "id": "improving-synthetic",
    "metadata": {
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2021-03-28T14:23:25.425255Z",
-     "iopub.status.busy": "2021-03-28T14:23:25.413552Z",
-     "iopub.status.idle": "2021-03-28T14:23:25.751858Z",
-     "shell.execute_reply": "2021-03-28T14:23:25.752202Z"
+     "iopub.execute_input": "2021-03-28T14:29:21.530206Z",
+     "iopub.status.busy": "2021-03-28T14:29:21.527877Z",
+     "iopub.status.idle": "2021-03-28T14:29:21.870752Z",
+     "shell.execute_reply": "2021-03-28T14:29:21.870286Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -697,14 +697,14 @@
   {
    "cell_type": "code",
    "execution_count": 12,
-   "id": "brutal-albuquerque",
+   "id": "persistent-dinner",
    "metadata": {
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2021-03-28T14:23:25.770036Z",
-     "iopub.status.busy": "2021-03-28T14:23:25.758923Z",
-     "iopub.status.idle": "2021-03-28T14:23:26.115833Z",
-     "shell.execute_reply": "2021-03-28T14:23:26.116247Z"
+     "iopub.execute_input": "2021-03-28T14:29:21.889097Z",
+     "iopub.status.busy": "2021-03-28T14:29:21.876893Z",
+     "iopub.status.idle": "2021-03-28T14:29:22.257538Z",
+     "shell.execute_reply": "2021-03-28T14:29:22.257013Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -764,14 +764,14 @@
   {
    "cell_type": "code",
    "execution_count": 13,
-   "id": "focused-contract",
+   "id": "chief-principle",
    "metadata": {
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2021-03-28T14:23:26.159307Z",
-     "iopub.status.busy": "2021-03-28T14:23:26.150798Z",
-     "iopub.status.idle": "2021-03-28T14:23:26.479524Z",
-     "shell.execute_reply": "2021-03-28T14:23:26.478771Z"
+     "iopub.execute_input": "2021-03-28T14:29:22.266401Z",
+     "iopub.status.busy": "2021-03-28T14:29:22.265877Z",
+     "iopub.status.idle": "2021-03-28T14:29:22.617303Z",
+     "shell.execute_reply": "2021-03-28T14:29:22.616818Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -831,14 +831,14 @@
   {
    "cell_type": "code",
    "execution_count": 14,
-   "id": "bigger-valentine",
+   "id": "modular-character",
    "metadata": {
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2021-03-28T14:23:26.502544Z",
-     "iopub.status.busy": "2021-03-28T14:23:26.500597Z",
-     "iopub.status.idle": "2021-03-28T14:23:26.866503Z",
-     "shell.execute_reply": "2021-03-28T14:23:26.865659Z"
+     "iopub.execute_input": "2021-03-28T14:29:22.651312Z",
+     "iopub.status.busy": "2021-03-28T14:29:22.639287Z",
+     "iopub.status.idle": "2021-03-28T14:29:22.994788Z",
+     "shell.execute_reply": "2021-03-28T14:29:22.994304Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -898,14 +898,14 @@
   {
    "cell_type": "code",
    "execution_count": 15,
-   "id": "stainless-darkness",
+   "id": "impressed-standing",
    "metadata": {
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2021-03-28T14:23:27.026763Z",
-     "iopub.status.busy": "2021-03-28T14:23:26.872995Z",
-     "iopub.status.idle": "2021-03-28T14:23:27.350599Z",
-     "shell.execute_reply": "2021-03-28T14:23:27.351045Z"
+     "iopub.execute_input": "2021-03-28T14:29:23.139357Z",
+     "iopub.status.busy": "2021-03-28T14:29:23.137138Z",
+     "iopub.status.idle": "2021-03-28T14:29:23.507372Z",
+     "shell.execute_reply": "2021-03-28T14:29:23.506880Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -966,7 +966,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "id": "taken-vocabulary",
+   "id": "authorized-state",
    "metadata": {
     "collapsed": false,
     "pycharm": {
