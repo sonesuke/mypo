@@ -142,7 +142,7 @@ class Market(object):
         else:
             assert False  # pragma: no cover
         return Market(
-            closes=market._closes.resample(str(rule)).mean(),  # type: ignore
+            closes=market._closes.resample(str(rule)).last(),  # type: ignore
             price_dividends_yield=market._price_dividends_yield.resample(rule).sum(),  # type: ignore
             expense_ratio=market._expense_ratio,
         )
@@ -157,6 +157,13 @@ class Market(object):
             Trim data.
         """
         if method == SamplingMethod.YEAR:
+            rule = "Y"
+        elif method == SamplingMethod.MONTH:
+            rule = "M"
+        else:
+            assert False  # pragma: no cover
+        df = self._closes.groupby(pd.Grouper(freq=rule)).sum()
+        if method == SamplingMethod.YEAR:
             first = df.index[0] if self._closes.index.is_year_start[0] else df.index[1]
             last = df.index[-1] if self._closes.index.is_year_end[-1] else df.index[-2]
         elif method == SamplingMethod.MONTH:
@@ -165,8 +172,8 @@ class Market(object):
         else:
             assert False  # pragma: no cover
         return Market(
-            closes=self._closes[first:last].resample(str(rule)).last(),  # type: ignore
-            price_dividends_yield=self._price_dividends_yield[first:last].resample(rule).sum(),  # type: ignore
+            closes=self._closes[first:last],
+            price_dividends_yield=self._price_dividends_yield[first:last],
             expense_ratio=self._expense_ratio,
         )
 
