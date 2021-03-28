@@ -97,13 +97,13 @@ class Sampler(object):
         np.random.seed(seed=seed)
         for i in range(scenarios):
             mu = self._mu[i % count_of_mu]
-            cov = Sampler._get_symmetric(self._chol[i % count_of_mu], len(self._columns))
+            cov = Sampler._get_covariance(self._chol[i % count_of_mu], len(self._columns))
             prices = multivariate_normal(mu, cov, samples)
             ret += [pd.DataFrame(prices, columns=self._columns)]
         return ret
 
     @staticmethod
-    def _get_symmetric(elements: np.ndarray, n: int) -> np.ndarray:
+    def _get_covariance(elements: np.ndarray, n: int) -> np.ndarray:
         """Get symmetric matrix.
 
         Args:
@@ -118,6 +118,6 @@ class Sampler(object):
             element += [elements[i]]
             element += [0 for _ in range(i + 1, n)]
 
-        sym = np.array(element).reshape(2, 2)
-        ret: np.ndarray = sym + sym.T - np.diag(sym.diagonal())
+        lower = np.array(element).reshape(2, 2)
+        ret: np.ndarray = np.dot(lower, lower.T)
         return ret
