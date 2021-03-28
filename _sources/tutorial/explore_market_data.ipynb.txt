@@ -15,10 +15,10 @@
    "id": "painted-recipe",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-28T14:13:10.327363Z",
-     "iopub.status.busy": "2021-03-28T14:13:10.326774Z",
-     "iopub.status.idle": "2021-03-28T14:13:10.814988Z",
-     "shell.execute_reply": "2021-03-28T14:13:10.815799Z"
+     "iopub.execute_input": "2021-03-28T14:23:28.993161Z",
+     "iopub.status.busy": "2021-03-28T14:23:28.992605Z",
+     "iopub.status.idle": "2021-03-28T14:23:29.413064Z",
+     "shell.execute_reply": "2021-03-28T14:23:29.413536Z"
     }
    },
    "outputs": [],
@@ -32,10 +32,10 @@
    "id": "attached-berkeley",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-28T14:13:10.819402Z",
-     "iopub.status.busy": "2021-03-28T14:13:10.818184Z",
-     "iopub.status.idle": "2021-03-28T14:13:11.203222Z",
-     "shell.execute_reply": "2021-03-28T14:13:11.202465Z"
+     "iopub.execute_input": "2021-03-28T14:23:29.419178Z",
+     "iopub.status.busy": "2021-03-28T14:23:29.418675Z",
+     "iopub.status.idle": "2021-03-28T14:23:29.858385Z",
+     "shell.execute_reply": "2021-03-28T14:23:29.857045Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -54,10 +54,10 @@
    "id": "secure-packet",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-28T14:13:11.208422Z",
-     "iopub.status.busy": "2021-03-28T14:13:11.207598Z",
-     "iopub.status.idle": "2021-03-28T14:13:11.688159Z",
-     "shell.execute_reply": "2021-03-28T14:13:11.688702Z"
+     "iopub.execute_input": "2021-03-28T14:23:29.864147Z",
+     "iopub.status.busy": "2021-03-28T14:23:29.863279Z",
+     "iopub.status.idle": "2021-03-28T14:23:30.284881Z",
+     "shell.execute_reply": "2021-03-28T14:23:30.283763Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -99,10 +99,10 @@
    "metadata": {
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2021-03-28T14:13:11.695101Z",
-     "iopub.status.busy": "2021-03-28T14:13:11.693700Z",
-     "iopub.status.idle": "2021-03-28T14:13:11.697145Z",
-     "shell.execute_reply": "2021-03-28T14:13:11.696535Z"
+     "iopub.execute_input": "2021-03-28T14:23:30.291198Z",
+     "iopub.status.busy": "2021-03-28T14:23:30.290682Z",
+     "iopub.status.idle": "2021-03-28T14:23:30.294361Z",
+     "shell.execute_reply": "2021-03-28T14:23:30.294770Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -129,10 +129,10 @@
    "id": "floppy-communications",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-28T14:13:11.702196Z",
-     "iopub.status.busy": "2021-03-28T14:13:11.701540Z",
-     "iopub.status.idle": "2021-03-28T14:13:11.907551Z",
-     "shell.execute_reply": "2021-03-28T14:13:11.907069Z"
+     "iopub.execute_input": "2021-03-28T14:23:30.320331Z",
+     "iopub.status.busy": "2021-03-28T14:23:30.315502Z",
+     "iopub.status.idle": "2021-03-28T14:23:30.464701Z",
+     "shell.execute_reply": "2021-03-28T14:23:30.465337Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -173,10 +173,10 @@
    "metadata": {
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2021-03-28T14:13:11.941372Z",
-     "iopub.status.busy": "2021-03-28T14:13:11.913496Z",
-     "iopub.status.idle": "2021-03-28T14:13:12.120517Z",
-     "shell.execute_reply": "2021-03-28T14:13:12.121013Z"
+     "iopub.execute_input": "2021-03-28T14:23:30.470896Z",
+     "iopub.status.busy": "2021-03-28T14:23:30.468773Z",
+     "iopub.status.idle": "2021-03-28T14:23:30.631864Z",
+     "shell.execute_reply": "2021-03-28T14:23:30.632282Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -218,10 +218,10 @@
    "metadata": {
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2021-03-28T14:13:12.173798Z",
-     "iopub.status.busy": "2021-03-28T14:13:12.171998Z",
-     "iopub.status.idle": "2021-03-28T14:13:12.470549Z",
-     "shell.execute_reply": "2021-03-28T14:13:12.470018Z"
+     "iopub.execute_input": "2021-03-28T14:23:30.650453Z",
+     "iopub.status.busy": "2021-03-28T14:23:30.641951Z",
+     "iopub.status.idle": "2021-03-28T14:23:30.889610Z",
+     "shell.execute_reply": "2021-03-28T14:23:30.888883Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -272,10 +272,10 @@
    "metadata": {
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2021-03-28T14:13:12.478356Z",
-     "iopub.status.busy": "2021-03-28T14:13:12.477289Z",
-     "iopub.status.idle": "2021-03-28T14:13:12.496847Z",
-     "shell.execute_reply": "2021-03-28T14:13:12.496318Z"
+     "iopub.execute_input": "2021-03-28T14:23:30.896878Z",
+     "iopub.status.busy": "2021-03-28T14:23:30.895775Z",
+     "iopub.status.idle": "2021-03-28T14:23:30.910315Z",
+     "shell.execute_reply": "2021-03-28T14:23:30.909866Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -380,10 +380,10 @@
    "metadata": {
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2021-03-28T14:13:12.519715Z",
-     "iopub.status.busy": "2021-03-28T14:13:12.513649Z",
-     "iopub.status.idle": "2021-03-28T14:13:12.668883Z",
-     "shell.execute_reply": "2021-03-28T14:13:12.669302Z"
+     "iopub.execute_input": "2021-03-28T14:23:30.928116Z",
+     "iopub.status.busy": "2021-03-28T14:23:30.917164Z",
+     "iopub.status.idle": "2021-03-28T14:23:31.047964Z",
+     "shell.execute_reply": "2021-03-28T14:23:31.047520Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -427,10 +427,10 @@
    "metadata": {
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2021-03-28T14:13:12.677226Z",
-     "iopub.status.busy": "2021-03-28T14:13:12.672914Z",
-     "iopub.status.idle": "2021-03-28T14:13:12.681561Z",
-     "shell.execute_reply": "2021-03-28T14:13:12.682122Z"
+     "iopub.execute_input": "2021-03-28T14:23:31.051663Z",
+     "iopub.status.busy": "2021-03-28T14:23:31.051139Z",
+     "iopub.status.idle": "2021-03-28T14:23:31.059700Z",
+     "shell.execute_reply": "2021-03-28T14:23:31.059242Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -499,10 +499,10 @@
    "metadata": {
     "collapsed": false,
     "execution": {
-     "iopub.execute_input": "2021-03-28T14:13:12.686485Z",
-     "iopub.status.busy": "2021-03-28T14:13:12.685461Z",
-     "iopub.status.idle": "2021-03-28T14:13:12.713564Z",
-     "shell.execute_reply": "2021-03-28T14:13:12.714275Z"
+     "iopub.execute_input": "2021-03-28T14:23:31.066681Z",
+     "iopub.status.busy": "2021-03-28T14:23:31.062561Z",
+     "iopub.status.idle": "2021-03-28T14:23:31.088097Z",
+     "shell.execute_reply": "2021-03-28T14:23:31.085552Z"
     },
     "pycharm": {
      "name": "#%%\n"
