@@ -5,7 +5,7 @@ from __future__ import annotations
 import pickle
 from datetime import datetime
 from enum import Enum
-from typing import Dict
+from typing import Dict, List
 
 import numpy as np
 import pandas as pd
@@ -23,7 +23,6 @@ class SamplingMethod(Enum):
 class Market(object):
     """Market class for store and loading stock prices data."""
 
-    _tickers: Dict[str, pd.DataFrame]
     _expense_ratio: Dict[str, float]
     _closes: pd.DataFrame
     _price_dividends_yield: pd.DataFrame
@@ -49,8 +48,8 @@ class Market(object):
         with open(filepath, "wb") as bin_file:
             pickle.dump(self, bin_file)
 
-    @classmethod
-    def load(cls, filepath: str) -> Market:
+    @staticmethod
+    def load(filepath: str) -> Market:
         """Load market data from file.
 
         Args:
@@ -143,7 +142,7 @@ class Market(object):
         else:
             assert False  # pragma: no cover
         return Market(
-            closes=market._closes.resample(str(rule)).mean(),  # type: ignore
+            closes=market._closes.resample(str(rule)).last(),  # type: ignore
             price_dividends_yield=market._price_dividends_yield.resample(rule).sum(),  # type: ignore
             expense_ratio=market._expense_ratio,
         )
@@ -158,16 +157,23 @@ class Market(object):
             Trim data.
         """
         if method == SamplingMethod.YEAR:
-            df = self._closes.groupby(pd.Grouper(freq="Y")).sum()
+            rule = "Y"
+        elif method == SamplingMethod.MONTH:
+            rule = "M"
+        else:
+            assert False  # pragma: no cover
+        df = self._closes.groupby(pd.Grouper(freq=rule)).sum()
+        if method == SamplingMethod.YEAR:
             first = df.index[0] if self._closes.index.is_year_start[0] else df.index[1]
             last = df.index[-1] if self._closes.index.is_year_end[-1] else df.index[-2]
         elif method == SamplingMethod.MONTH:
-            df = self._closes.groupby(pd.Grouper(freq="M")).sum()
             first = df.index[0] if self._closes.index.is_month_start[0] else df.index[1]
             last = df.index[-1] if self._closes.index.is_month_end[-1] else df.index[-2]
+        else:
+            assert False  # pragma: no cover
         return Market(
-            closes=self._closes[first:last],  # type: ignore
-            price_dividends_yield=self._price_dividends_yield[first:last],  # type: ignore
+            closes=self._closes[first:last],
+            price_dividends_yield=self._price_dividends_yield[first:last],
             expense_ratio=self._expense_ratio,
         )
 
@@ -186,6 +192,36 @@ class Market(object):
             expense_ratio=self._expense_ratio,
         )
 
+    def tail(self, n: int) -> Market:
+        """Extract market data.
+
+        Args:
+            n: Last n records.
+
+        Returns:
+            Extracted Data
+        """
+        return Market(
+            closes=self._closes.loc[self._closes.tail(n).index],
+            price_dividends_yield=self._price_dividends_yield.loc[self._price_dividends_yield.tail(n).index],
+            expense_ratio=self._expense_ratio,
+        )
+
+    def head(self, n: int) -> Market:
+        """Extract market data.
+
+        Args:
+            n: First n records.
+
+        Returns:
+            Extracted Data
+        """
+        return Market(
+            closes=self._closes.loc[self._closes.head(n).index],
+            price_dividends_yield=self._price_dividends_yield.loc[self._price_dividends_yield.head(n).index],
+            expense_ratio=self._expense_ratio,
+        )
+
     def get_raw(self) -> pd.DataFrame:
         """Get price data from stored market data.
 
@@ -193,6 +229,14 @@ class Market(object):
             Prices
         """
         return self._closes
+
+    def get_tickers(self) -> List[str]:
+        """Get tickers.
+
+        Returns:
+            Tickers.
+        """
+        return list(self._closes.columns)
 
     def get_length(self) -> int:
         """Get length.

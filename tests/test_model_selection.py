@@ -7,7 +7,7 @@ TEST_DATA = os.path.join(os.path.dirname(__file__), "data", "test.bin")
 
 def test_split_n_periods() -> None:
     market = Market.load(TEST_DATA)
-    market = market.extract(market.get_index()[:90])
+    market = market.head(90)
     train, eval = split_n_periods(market=market, n=4, train_span=10)
 
     for t in train:
@@ -19,7 +19,7 @@ def test_split_n_periods() -> None:
 
 def test_split_n_periods_without_specified_train_span() -> None:
     market = Market.load(TEST_DATA)
-    market = market.extract(market.get_index()[:100])
+    market = market.head(100)
     train, eval = split_n_periods(market=market, n=4)
 
     for t in train:
