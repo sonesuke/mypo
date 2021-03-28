@@ -71,14 +71,14 @@ class Sampler(object):
             mu = pm.Normal("mu", mu=prior_mu, sigma=1, shape=n)
 
             sd_dist = pm.HalfCauchy.dist(beta=2.5)
-            low_triangular_cov = pm.LKJCholeskyCov("low_triangular_cov", n=n, eta=1, sd_dist=sd_dist)
+            lower_triangular_chol = pm.LKJCholeskyCov("lower_triangular_chol", n=n, eta=1, sd_dist=sd_dist)
 
-            chol = pm.expand_packed_triangular(n, low_triangular_cov, lower=True)
+            chol = pm.expand_packed_triangular(n, lower_triangular_chol, lower=True)
             pm.MvNormal("observed_returns", mu=mu, chol=chol, observed=observed)
 
-            trace = pm.sample(scenarios, pm.NUTS(), chains=3, return_inferencedata=False)
+            trace = pm.sample(scenarios, pm.NUTS(), chains=3, return_inferencedata=False, random_seed=32)
             self._mu = trace["mu"]
-            self._chol = trace["low_triangular_cov"]
+            self._chol = trace["lower_triangular_chol"]
             self._columns = list(observed.columns)
 
     def sample(self, scenarios: int, samples: int, seed: int = 32) -> List[pd.DataFrame]:
