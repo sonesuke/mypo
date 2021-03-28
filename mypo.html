@@ -518,8 +518,33 @@
 </dd></dl>
 
 <dl class="py method">
+<dt id="mypo.market.Market.get_tickers">
+<code class="sig-name descname"><span class="pre">get_tickers</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#mypo.market.Market.get_tickers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get tickers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Tickers.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mypo.market.Market.head">
+<code class="sig-name descname"><span class="pre">head</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#mypo.market.Market" title="mypo.market.Market"><span class="pre">mypo.market.Market</span></a><a class="headerlink" href="#mypo.market.Market.head" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract market data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> – First n records.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Extracted Data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="mypo.market.Market.load">
-<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">load</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#mypo.market.Market" title="mypo.market.Market"><span class="pre">mypo.market.Market</span></a><a class="headerlink" href="#mypo.market.Market.load" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">load</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#mypo.market.Market" title="mypo.market.Market"><span class="pre">mypo.market.Market</span></a><a class="headerlink" href="#mypo.market.Market.load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load market data from file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -552,6 +577,34 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>filepath</strong> – Path to file for storing data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mypo.market.Market.tail">
+<code class="sig-name descname"><span class="pre">tail</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#mypo.market.Market" title="mypo.market.Market"><span class="pre">mypo.market.Market</span></a><a class="headerlink" href="#mypo.market.Market.tail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract market data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> – Last n records.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Extracted Data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mypo.market.Market.trim">
+<code class="sig-name descname"><span class="pre">trim</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#mypo.market.SamplingMethod" title="mypo.market.SamplingMethod"><span class="pre">mypo.market.SamplingMethod</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#mypo.market.Market" title="mypo.market.Market"><span class="pre">mypo.market.Market</span></a><a class="headerlink" href="#mypo.market.Market.trim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trim market data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>method</strong> – Frequency of sampling.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Trim data.</p>
 </dd>
 </dl>
 </dd></dl>
