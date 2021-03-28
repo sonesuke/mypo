@@ -18,10 +18,10 @@
    "id": "painted-recipe",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-28T11:36:02.100447Z",
-     "iopub.status.busy": "2021-03-28T11:36:02.099424Z",
-     "iopub.status.idle": "2021-03-28T11:36:02.552773Z",
-     "shell.execute_reply": "2021-03-28T11:36:02.553329Z"
+     "iopub.execute_input": "2021-03-28T11:43:18.171423Z",
+     "iopub.status.busy": "2021-03-28T11:43:18.170899Z",
+     "iopub.status.idle": "2021-03-28T11:43:18.636608Z",
+     "shell.execute_reply": "2021-03-28T11:43:18.637417Z"
     }
    },
    "outputs": [],
@@ -39,10 +39,10 @@
    "id": "attached-berkeley",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-28T11:36:02.565566Z",
-     "iopub.status.busy": "2021-03-28T11:36:02.563667Z",
-     "iopub.status.idle": "2021-03-28T11:36:02.566608Z",
-     "shell.execute_reply": "2021-03-28T11:36:02.567409Z"
+     "iopub.execute_input": "2021-03-28T11:43:18.640938Z",
+     "iopub.status.busy": "2021-03-28T11:43:18.639832Z",
+     "iopub.status.idle": "2021-03-28T11:43:18.644068Z",
+     "shell.execute_reply": "2021-03-28T11:43:18.644856Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -59,10 +59,10 @@
    "id": "secure-packet",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-28T11:36:02.576532Z",
-     "iopub.status.busy": "2021-03-28T11:36:02.576018Z",
-     "iopub.status.idle": "2021-03-28T11:36:02.937349Z",
-     "shell.execute_reply": "2021-03-28T11:36:02.936831Z"
+     "iopub.execute_input": "2021-03-28T11:43:18.648226Z",
+     "iopub.status.busy": "2021-03-28T11:43:18.647150Z",
+     "iopub.status.idle": "2021-03-28T11:43:19.015565Z",
+     "shell.execute_reply": "2021-03-28T11:43:19.014971Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -80,10 +80,10 @@
    "id": "floppy-communications",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-28T11:36:02.943462Z",
-     "iopub.status.busy": "2021-03-28T11:36:02.941802Z",
-     "iopub.status.idle": "2021-03-28T11:36:02.950808Z",
-     "shell.execute_reply": "2021-03-28T11:36:02.949969Z"
+     "iopub.execute_input": "2021-03-28T11:43:19.023389Z",
+     "iopub.status.busy": "2021-03-28T11:43:19.022239Z",
+     "iopub.status.idle": "2021-03-28T11:43:19.031083Z",
+     "shell.execute_reply": "2021-03-28T11:43:19.031505Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -100,10 +100,10 @@
    "id": "thirty-purple",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-28T11:36:02.962645Z",
-     "iopub.status.busy": "2021-03-28T11:36:02.957812Z",
-     "iopub.status.idle": "2021-03-28T11:36:09.991050Z",
-     "shell.execute_reply": "2021-03-28T11:36:09.990551Z"
+     "iopub.execute_input": "2021-03-28T11:43:19.041579Z",
+     "iopub.status.busy": "2021-03-28T11:43:19.038304Z",
+     "iopub.status.idle": "2021-03-28T11:43:26.262926Z",
+     "shell.execute_reply": "2021-03-28T11:43:26.262434Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -114,7 +114,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "100%|██████████| 2454/2454 [00:06<00:00, 382.07it/s]\n"
+      "100%|██████████| 2454/2454 [00:06<00:00, 370.91it/s]\n"
      ]
     },
     {
@@ -177,10 +177,10 @@
    "id": "awful-arbitration",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-28T11:36:10.009845Z",
-     "iopub.status.busy": "2021-03-28T11:36:10.009041Z",
-     "iopub.status.idle": "2021-03-28T11:36:16.746154Z",
-     "shell.execute_reply": "2021-03-28T11:36:16.745400Z"
+     "iopub.execute_input": "2021-03-28T11:43:26.270542Z",
+     "iopub.status.busy": "2021-03-28T11:43:26.269581Z",
+     "iopub.status.idle": "2021-03-28T11:43:33.275163Z",
+     "shell.execute_reply": "2021-03-28T11:43:33.275590Z"
     }
    },
    "outputs": [
@@ -188,7 +188,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "100%|██████████| 2454/2454 [00:06<00:00, 383.28it/s]\n"
+      "100%|██████████| 2454/2454 [00:06<00:00, 368.53it/s]"
      ]
     },
     {
@@ -199,6 +199,13 @@
       "1.1205912436563183\n",
       "0.8718984537348183\n",
       "232\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "\n"
      ]
     },
     {
@@ -252,10 +259,10 @@
    "id": "running-modeling",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-28T11:36:16.753693Z",
-     "iopub.status.busy": "2021-03-28T11:36:16.752148Z",
-     "iopub.status.idle": "2021-03-28T11:36:23.596876Z",
-     "shell.execute_reply": "2021-03-28T11:36:23.597303Z"
+     "iopub.execute_input": "2021-03-28T11:43:33.284725Z",
+     "iopub.status.busy": "2021-03-28T11:43:33.282393Z",
+     "iopub.status.idle": "2021-03-28T11:43:40.377354Z",
+     "shell.execute_reply": "2021-03-28T11:43:40.376864Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -266,11 +273,11 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      " 46%|████▌     | 1121/2454 [00:02<00:03, 377.58it/s]/app/mypo/runner.py:108: RuntimeWarning: divide by zero encountered in true_divide\n",
+      " 46%|████▌     | 1117/2454 [00:03<00:03, 362.97it/s]/app/mypo/runner.py:108: RuntimeWarning: divide by zero encountered in true_divide\n",
       "  self._average_assets_prices = (\n",
       "/app/mypo/runner.py:109: RuntimeWarning: invalid value encountered in multiply\n",
       "  self._average_assets_prices * previous_assets + diff * trading_prices\n",
-      "100%|██████████| 2454/2454 [00:06<00:00, 377.97it/s]\n"
+      "100%|██████████| 2454/2454 [00:06<00:00, 364.37it/s]\n"
      ]
     },
     {
