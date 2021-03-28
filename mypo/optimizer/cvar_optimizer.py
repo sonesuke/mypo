@@ -1,6 +1,6 @@
 """Optimizer for weights of portfolio."""
-from typing import Optional, List
 from datetime import datetime
+from typing import List, Optional
 
 import numpy as np
 from scipy.optimize import minimize
@@ -16,14 +16,9 @@ class CVaROptimizer(BaseOptimizer):
 
     _span: int
     _scenarios: int
-    _sampler: Sampler
+    _sampler: Optional[Sampler]
 
-    def __init__(
-        self,
-        span: int = 260,
-        scenarios: int = 10,
-        sampler: Optional[Sampler] = None,
-    ):
+    def __init__(self, span: int = 260, scenarios: int = 10, sampler: Optional[Sampler] = None):
         """Construct this object.
 
         Args:
@@ -63,7 +58,7 @@ class CVaROptimizer(BaseOptimizer):
                     assets = (1.0 + scenario[i]) * assets
                     assets = x * np.sum(assets)
                 ret += [np.sum(assets)]
-            return np.mean(sorted(ret)[:take_bad_scenarios])
+            return np.float64(np.mean(np.array(sorted(ret)[:take_bad_scenarios])))
 
         cons = [{"type": "eq", "fun": lambda x: np.sum(x) - 1}]
         bounds = [[0.0, 1.0] for i in range(n)]

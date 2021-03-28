@@ -185,7 +185,7 @@ class Market(object):
             expense_ratio=self._expense_ratio,
         )
 
-    def tail(self, n:int) -> Market:
+    def tail(self, n: int) -> Market:
         """Extract market data.
 
         Args:
@@ -200,7 +200,7 @@ class Market(object):
             expense_ratio=self._expense_ratio,
         )
 
-    def head(self, n:int) -> Market:
+    def head(self, n: int) -> Market:
         """Extract market data.
 
         Args:

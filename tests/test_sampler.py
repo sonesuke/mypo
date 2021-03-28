@@ -1,7 +1,7 @@
 import os
 
-import pytest
 import numpy.testing as npt
+import pytest
 
 from mypo import Market
 from mypo.sampler import Sampler
@@ -23,5 +23,5 @@ def test_save_load() -> None:
 def test_sample() -> None:
     sampler = Sampler.load(MODEL_DATA)
     samples = sampler.sample(10, 100)
-    npt.assert_almost_equal(samples[0].mean(), [-0.0114186,  0.0020582])
+    npt.assert_almost_equal(samples[0].mean(), [-0.0114186, 0.0020582])
     npt.assert_almost_equal(samples[9].mean(), [0.0102163, 0.005347])

@@ -1,15 +1,16 @@
 import os
-import pytest
 
 import numpy.testing as npt
+import pytest
 
 from mypo import Market
-from mypo.optimizer import MinimumVarianceOptimizer, SharpRatioOptimizer, CVaROptimizer
+from mypo.optimizer import CVaROptimizer, MinimumVarianceOptimizer, SharpRatioOptimizer
 from mypo.sampler import Sampler
 
 skip_long_tests = pytest.mark.skipif(True, reason="This test takes long time.")
 TEST_DATA = os.path.join(os.path.dirname(__file__), "data", "test.bin")
 MODEL_DATA = os.path.join(os.path.dirname(__file__), "data", "sample.bin")
+
 
 def test_minimum_variance_optimizer() -> None:
     market = Market.load(TEST_DATA)
@@ -54,6 +55,7 @@ def test_cvar_optimizer() -> None:
     optimizer.optimize(market, market.get_last_date())
     weights = optimizer.get_weights()
     npt.assert_almost_equal(weights, [1, 0], decimal=5)
+
 
 @skip_long_tests
 def test_cvar_optimizer_with_sampling() -> None:
