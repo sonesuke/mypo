@@ -21,7 +21,7 @@ def test_get_first_date() -> None:
 
 def test_get_last_date() -> None:
     market = Market.load(TEST_DATA)
-    market = market.extract(market.get_index()[:300])
+    market = market.head(300)
     assert market.get_last_date() == pd.Timestamp("2011-11-14")
 
 

@@ -5,7 +5,7 @@ from __future__ import annotations
 import pickle
 from datetime import datetime
 from enum import Enum
-from typing import Dict
+from typing import Dict, List
 
 import numpy as np
 import pandas as pd
@@ -23,7 +23,6 @@ class SamplingMethod(Enum):
 class Market(object):
     """Market class for store and loading stock prices data."""
 
-    _tickers: Dict[str, pd.DataFrame]
     _expense_ratio: Dict[str, float]
     _closes: pd.DataFrame
     _price_dividends_yield: pd.DataFrame
@@ -186,6 +185,36 @@ class Market(object):
             expense_ratio=self._expense_ratio,
         )
 
+    def tail(self, n:int) -> Market:
+        """Extract market data.
+
+        Args:
+            n: Last n records.
+
+        Returns:
+            Extracted Data
+        """
+        return Market(
+            closes=self._closes.loc[self._closes.tail(n).index],
+            price_dividends_yield=self._price_dividends_yield.loc[self._price_dividends_yield.tail(n).index],
+            expense_ratio=self._expense_ratio,
+        )
+
+    def head(self, n:int) -> Market:
+        """Extract market data.
+
+        Args:
+            n: First n records.
+
+        Returns:
+            Extracted Data
+        """
+        return Market(
+            closes=self._closes.loc[self._closes.head(n).index],
+            price_dividends_yield=self._price_dividends_yield.loc[self._price_dividends_yield.head(n).index],
+            expense_ratio=self._expense_ratio,
+        )
+
     def get_raw(self) -> pd.DataFrame:
         """Get price data from stored market data.
 
@@ -193,6 +222,14 @@ class Market(object):
             Prices
         """
         return self._closes
+
+    def get_tickers(self) -> List[str]:
+        """Get tickers.
+
+        Returns:
+            Tickers.
+        """
+        return list(self._closes.columns)
 
     def get_length(self) -> int:
         """Get length.
