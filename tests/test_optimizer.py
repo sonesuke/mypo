@@ -64,5 +64,5 @@ def test_cvar_optimizer_with_sampling() -> None:
     optimizer = CVaROptimizer(scenarios=10)
     optimizer.optimize(market, market.get_last_date())
     weights = optimizer.get_weights()
-    npt.assert_almost_equal(weights, [1, 0], decimal=5)
+    npt.assert_almost_equal(weights, [0, 1], decimal=5)
     assert False

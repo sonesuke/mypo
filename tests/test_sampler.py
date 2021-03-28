@@ -15,7 +15,7 @@ MODEL_DATA = os.path.join(os.path.dirname(__file__), "data", "sample.bin")
 @skip_long_tests
 def test_save_load() -> None:
     market = Market.load(TEST_DATA)
-    market = market.extract(market.get_index()[:10])
+    market = market.head(10)
     sampler = Sampler(market, scenarios=5)
     sampler.save(MODEL_DATA)
 
@@ -23,5 +23,5 @@ def test_save_load() -> None:
 def test_sample() -> None:
     sampler = Sampler.load(MODEL_DATA)
     samples = sampler.sample(10, 100)
-    npt.assert_almost_equal(samples[0].mean(), [-0.0114186, 0.0020582])
-    npt.assert_almost_equal(samples[9].mean(), [0.0102163, 0.005347])
+    npt.assert_almost_equal(samples[0].mean(), [0.0050394, 0.0021269])
+    npt.assert_almost_equal(samples[9].mean(), [0.0017678, 0.0028698])
