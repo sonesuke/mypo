@@ -23,6 +23,7 @@ After starting Jupyter server, you can login it with the token. The default of t
 Important links
 ===============
 
+- Documentation: https://sonesuke.github.io/mypo
 - Official source code repo: https://github.com/sonesuke/mypo
 - Download releases: https://pypi.org/project/mypo/
 - Issue tracker: https://github.com/sonesuke/mypo/issues
