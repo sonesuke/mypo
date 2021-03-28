@@ -49,8 +49,8 @@ class Market(object):
         with open(filepath, "wb") as bin_file:
             pickle.dump(self, bin_file)
 
-    @classmethod
-    def load(cls, filepath: str) -> Market:
+    @staticmethod
+    def load(filepath: str) -> Market:
         """Load market data from file.
 
         Args:
@@ -158,16 +158,16 @@ class Market(object):
             Trim data.
         """
         if method == SamplingMethod.YEAR:
-            df = self._closes.groupby(pd.Grouper(freq="Y")).sum()
             first = df.index[0] if self._closes.index.is_year_start[0] else df.index[1]
             last = df.index[-1] if self._closes.index.is_year_end[-1] else df.index[-2]
         elif method == SamplingMethod.MONTH:
-            df = self._closes.groupby(pd.Grouper(freq="M")).sum()
             first = df.index[0] if self._closes.index.is_month_start[0] else df.index[1]
             last = df.index[-1] if self._closes.index.is_month_end[-1] else df.index[-2]
+        else:
+            assert False  # pragma: no cover
         return Market(
-            closes=self._closes[first:last],  # type: ignore
-            price_dividends_yield=self._price_dividends_yield[first:last],  # type: ignore
+            closes=self._closes[first:last].resample(str(rule)).last(),  # type: ignore
+            price_dividends_yield=self._price_dividends_yield[first:last].resample(rule).sum(),  # type: ignore
             expense_ratio=self._expense_ratio,
         )
 

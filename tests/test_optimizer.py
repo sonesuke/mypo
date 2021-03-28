@@ -23,7 +23,7 @@ def test_minimum_variance_optimizer_with_minimum_return() -> None:
     optimizer = MinimumVarianceOptimizer(minimum_return=0.10)
     optimizer.optimize(market, market.get_last_date())
     weights = optimizer.get_weights()
-    npt.assert_almost_equal(weights, [0.330534, 0.669466])
+    npt.assert_almost_equal(weights, [0.330534, 0.669466], decimal=5)
 
 
 def test_minimum_sharp_ratio_optimizer() -> None:
@@ -32,7 +32,7 @@ def test_minimum_sharp_ratio_optimizer() -> None:
     optimizer = SharpRatioOptimizer(risk_free_rate=0.02)
     optimizer.optimize(market, market.get_last_date())
     weights = optimizer.get_weights()
-    npt.assert_almost_equal(weights, [0.4380607, 0.5619393])
+    npt.assert_almost_equal(weights, [0.4380607, 0.5619393], decimal=5)
 
 
 def test_semi_minimum_variance_optimizer() -> None:
@@ -41,4 +41,4 @@ def test_semi_minimum_variance_optimizer() -> None:
     optimizer = MinimumVarianceOptimizer(with_semi_covariance=True)
     optimizer.optimize(market, market.get_last_date())
     weights = optimizer.get_weights()
-    npt.assert_almost_equal(weights, [0.3239604, 0.6760396])
+    npt.assert_almost_equal(weights, [0.3239604, 0.6760396], decimal=5)
