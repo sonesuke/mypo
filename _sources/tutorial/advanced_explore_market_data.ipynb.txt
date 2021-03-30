@@ -19,10 +19,10 @@
    "id": "complicated-personal",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-30T14:23:11.365528Z",
-     "iopub.status.busy": "2021-03-30T14:23:11.364945Z",
-     "iopub.status.idle": "2021-03-30T14:23:11.849389Z",
-     "shell.execute_reply": "2021-03-30T14:23:11.849819Z"
+     "iopub.execute_input": "2021-03-30T15:02:36.758253Z",
+     "iopub.status.busy": "2021-03-30T15:02:36.757472Z",
+     "iopub.status.idle": "2021-03-30T15:02:37.244425Z",
+     "shell.execute_reply": "2021-03-30T15:02:37.244942Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -40,10 +40,10 @@
    "id": "flying-penguin",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-30T14:23:11.857833Z",
-     "iopub.status.busy": "2021-03-30T14:23:11.856910Z",
-     "iopub.status.idle": "2021-03-30T14:23:12.408194Z",
-     "shell.execute_reply": "2021-03-30T14:23:12.407113Z"
+     "iopub.execute_input": "2021-03-30T15:02:37.248654Z",
+     "iopub.status.busy": "2021-03-30T15:02:37.247498Z",
+     "iopub.status.idle": "2021-03-30T15:02:37.656029Z",
+     "shell.execute_reply": "2021-03-30T15:02:37.655042Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -64,10 +64,10 @@
    "id": "hidden-dinner",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-30T14:23:12.413858Z",
-     "iopub.status.busy": "2021-03-30T14:23:12.411876Z",
-     "iopub.status.idle": "2021-03-30T14:26:20.067049Z",
-     "shell.execute_reply": "2021-03-30T14:26:20.067505Z"
+     "iopub.execute_input": "2021-03-30T15:02:37.662640Z",
+     "iopub.status.busy": "2021-03-30T15:02:37.660397Z",
+     "iopub.status.idle": "2021-03-30T15:06:05.890446Z",
+     "shell.execute_reply": "2021-03-30T15:06:05.891377Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -101,7 +101,7 @@
        "            }\n",
        "        </style>\n",
        "      <progress value='1100' class='' max='1100' style='width:300px; height:20px; vertical-align: middle;'></progress>\n",
-       "      100.00% [1100/1100 00:11<00:00 Sampling chain 0, 0 divergences]\n",
+       "      100.00% [1100/1100 00:12<00:00 Sampling chain 0, 0 divergences]\n",
        "    </div>\n",
        "    "
       ],
@@ -130,7 +130,7 @@
        "            }\n",
        "        </style>\n",
        "      <progress value='1100' class='' max='1100' style='width:300px; height:20px; vertical-align: middle;'></progress>\n",
-       "      100.00% [1100/1100 00:09<00:00 Sampling chain 1, 0 divergences]\n",
+       "      100.00% [1100/1100 00:10<00:00 Sampling chain 1, 0 divergences]\n",
        "    </div>\n",
        "    "
       ],
@@ -159,7 +159,7 @@
        "            }\n",
        "        </style>\n",
        "      <progress value='1100' class='' max='1100' style='width:300px; height:20px; vertical-align: middle;'></progress>\n",
-       "      100.00% [1100/1100 00:13<00:00 Sampling chain 2, 0 divergences]\n",
+       "      100.00% [1100/1100 00:14<00:00 Sampling chain 2, 0 divergences]\n",
        "    </div>\n",
        "    "
       ],
@@ -174,7 +174,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws total) took 35 seconds.\n"
+      "Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws total) took 38 seconds.\n"
      ]
     }
    ],
@@ -200,10 +200,10 @@
    "id": "hearing-norfolk",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-30T14:26:20.074681Z",
-     "iopub.status.busy": "2021-03-30T14:26:20.073715Z",
-     "iopub.status.idle": "2021-03-30T14:26:20.640705Z",
-     "shell.execute_reply": "2021-03-30T14:26:20.640225Z"
+     "iopub.execute_input": "2021-03-30T15:06:05.895857Z",
+     "iopub.status.busy": "2021-03-30T15:06:05.894611Z",
+     "iopub.status.idle": "2021-03-30T15:06:06.543578Z",
+     "shell.execute_reply": "2021-03-30T15:06:06.544136Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -214,7 +214,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "/usr/local/lib/python3.9/site-packages/pandas/plotting/_matplotlib/tools.py:400: MatplotlibDeprecationWarning: \n",
+      "/usr/local/lib/python3.7/site-packages/pandas/plotting/_matplotlib/tools.py:400: MatplotlibDeprecationWarning: \n",
       "The is_first_col function was deprecated in Matplotlib 3.4 and will be removed two minor releases later. Use ax.get_subplotspec().is_first_col() instead.\n",
       "  if ax.is_first_col():\n"
      ]
@@ -273,10 +273,10 @@
    "id": "welcome-range",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-30T14:26:20.645885Z",
-     "iopub.status.busy": "2021-03-30T14:26:20.645263Z",
-     "iopub.status.idle": "2021-03-30T14:26:21.158610Z",
-     "shell.execute_reply": "2021-03-30T14:26:21.158130Z"
+     "iopub.execute_input": "2021-03-30T15:06:06.549864Z",
+     "iopub.status.busy": "2021-03-30T15:06:06.548802Z",
+     "iopub.status.idle": "2021-03-30T15:06:07.113729Z",
+     "shell.execute_reply": "2021-03-30T15:06:07.113124Z"
     }
    },
    "outputs": [
@@ -284,7 +284,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "/usr/local/lib/python3.9/site-packages/pandas/plotting/_matplotlib/tools.py:400: MatplotlibDeprecationWarning: \n",
+      "/usr/local/lib/python3.7/site-packages/pandas/plotting/_matplotlib/tools.py:400: MatplotlibDeprecationWarning: \n",
       "The is_first_col function was deprecated in Matplotlib 3.4 and will be removed two minor releases later. Use ax.get_subplotspec().is_first_col() instead.\n",
       "  if ax.is_first_col():\n"
      ]
@@ -336,10 +336,10 @@
    "id": "bibliographic-future",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-30T14:26:21.166610Z",
-     "iopub.status.busy": "2021-03-30T14:26:21.163453Z",
-     "iopub.status.idle": "2021-03-30T14:26:21.676938Z",
-     "shell.execute_reply": "2021-03-30T14:26:21.677307Z"
+     "iopub.execute_input": "2021-03-30T15:06:07.121521Z",
+     "iopub.status.busy": "2021-03-30T15:06:07.120217Z",
+     "iopub.status.idle": "2021-03-30T15:06:07.886336Z",
+     "shell.execute_reply": "2021-03-30T15:06:07.884986Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -350,7 +350,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "/usr/local/lib/python3.9/site-packages/pandas/plotting/_matplotlib/tools.py:400: MatplotlibDeprecationWarning: \n",
+      "/usr/local/lib/python3.7/site-packages/pandas/plotting/_matplotlib/tools.py:400: MatplotlibDeprecationWarning: \n",
       "The is_first_col function was deprecated in Matplotlib 3.4 and will be removed two minor releases later. Use ax.get_subplotspec().is_first_col() instead.\n",
       "  if ax.is_first_col():\n"
      ]
@@ -402,10 +402,10 @@
    "id": "twenty-verification",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-30T14:26:21.690474Z",
-     "iopub.status.busy": "2021-03-30T14:26:21.681815Z",
-     "iopub.status.idle": "2021-03-30T14:26:22.200192Z",
-     "shell.execute_reply": "2021-03-30T14:26:22.200985Z"
+     "iopub.execute_input": "2021-03-30T15:06:07.891066Z",
+     "iopub.status.busy": "2021-03-30T15:06:07.890293Z",
+     "iopub.status.idle": "2021-03-30T15:06:08.450959Z",
+     "shell.execute_reply": "2021-03-30T15:06:08.449948Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -416,7 +416,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "/usr/local/lib/python3.9/site-packages/pandas/plotting/_matplotlib/tools.py:400: MatplotlibDeprecationWarning: \n",
+      "/usr/local/lib/python3.7/site-packages/pandas/plotting/_matplotlib/tools.py:400: MatplotlibDeprecationWarning: \n",
       "The is_first_col function was deprecated in Matplotlib 3.4 and will be removed two minor releases later. Use ax.get_subplotspec().is_first_col() instead.\n",
       "  if ax.is_first_col():\n"
      ]
@@ -468,10 +468,10 @@
    "id": "subject-sapphire",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-30T14:26:22.205455Z",
-     "iopub.status.busy": "2021-03-30T14:26:22.204942Z",
-     "iopub.status.idle": "2021-03-30T14:26:22.871970Z",
-     "shell.execute_reply": "2021-03-30T14:26:22.872713Z"
+     "iopub.execute_input": "2021-03-30T15:06:08.458419Z",
+     "iopub.status.busy": "2021-03-30T15:06:08.456002Z",
+     "iopub.status.idle": "2021-03-30T15:06:09.010559Z",
+     "shell.execute_reply": "2021-03-30T15:06:09.009933Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -482,7 +482,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "/usr/local/lib/python3.9/site-packages/pandas/plotting/_matplotlib/tools.py:400: MatplotlibDeprecationWarning: \n",
+      "/usr/local/lib/python3.7/site-packages/pandas/plotting/_matplotlib/tools.py:400: MatplotlibDeprecationWarning: \n",
       "The is_first_col function was deprecated in Matplotlib 3.4 and will be removed two minor releases later. Use ax.get_subplotspec().is_first_col() instead.\n",
       "  if ax.is_first_col():\n"
      ]
@@ -534,10 +534,10 @@
    "id": "greenhouse-somewhere",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-30T14:26:22.879561Z",
-     "iopub.status.busy": "2021-03-30T14:26:22.877741Z",
-     "iopub.status.idle": "2021-03-30T14:26:23.416504Z",
-     "shell.execute_reply": "2021-03-30T14:26:23.416022Z"
+     "iopub.execute_input": "2021-03-30T15:06:09.020214Z",
+     "iopub.status.busy": "2021-03-30T15:06:09.014605Z",
+     "iopub.status.idle": "2021-03-30T15:06:09.584630Z",
+     "shell.execute_reply": "2021-03-30T15:06:09.583457Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -548,7 +548,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "/usr/local/lib/python3.9/site-packages/pandas/plotting/_matplotlib/tools.py:400: MatplotlibDeprecationWarning: \n",
+      "/usr/local/lib/python3.7/site-packages/pandas/plotting/_matplotlib/tools.py:400: MatplotlibDeprecationWarning: \n",
       "The is_first_col function was deprecated in Matplotlib 3.4 and will be removed two minor releases later. Use ax.get_subplotspec().is_first_col() instead.\n",
       "  if ax.is_first_col():\n"
      ]
@@ -600,10 +600,10 @@
    "id": "grateful-intelligence",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-30T14:26:23.422561Z",
-     "iopub.status.busy": "2021-03-30T14:26:23.421962Z",
-     "iopub.status.idle": "2021-03-30T14:26:23.930762Z",
-     "shell.execute_reply": "2021-03-30T14:26:23.930216Z"
+     "iopub.execute_input": "2021-03-30T15:06:09.589959Z",
+     "iopub.status.busy": "2021-03-30T15:06:09.588854Z",
+     "iopub.status.idle": "2021-03-30T15:06:10.141083Z",
+     "shell.execute_reply": "2021-03-30T15:06:10.142008Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -614,7 +614,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "/usr/local/lib/python3.9/site-packages/pandas/plotting/_matplotlib/tools.py:400: MatplotlibDeprecationWarning: \n",
+      "/usr/local/lib/python3.7/site-packages/pandas/plotting/_matplotlib/tools.py:400: MatplotlibDeprecationWarning: \n",
       "The is_first_col function was deprecated in Matplotlib 3.4 and will be removed two minor releases later. Use ax.get_subplotspec().is_first_col() instead.\n",
       "  if ax.is_first_col():\n"
      ]
@@ -666,10 +666,10 @@
    "id": "agricultural-telescope",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-30T14:26:23.941626Z",
-     "iopub.status.busy": "2021-03-30T14:26:23.936347Z",
-     "iopub.status.idle": "2021-03-30T14:26:24.449278Z",
-     "shell.execute_reply": "2021-03-30T14:26:24.448620Z"
+     "iopub.execute_input": "2021-03-30T15:06:10.149020Z",
+     "iopub.status.busy": "2021-03-30T15:06:10.148354Z",
+     "iopub.status.idle": "2021-03-30T15:06:10.859701Z",
+     "shell.execute_reply": "2021-03-30T15:06:10.860318Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -680,7 +680,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "/usr/local/lib/python3.9/site-packages/pandas/plotting/_matplotlib/tools.py:400: MatplotlibDeprecationWarning: \n",
+      "/usr/local/lib/python3.7/site-packages/pandas/plotting/_matplotlib/tools.py:400: MatplotlibDeprecationWarning: \n",
       "The is_first_col function was deprecated in Matplotlib 3.4 and will be removed two minor releases later. Use ax.get_subplotspec().is_first_col() instead.\n",
       "  if ax.is_first_col():\n"
      ]
@@ -732,10 +732,10 @@
    "id": "piano-radiation",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-30T14:26:24.459143Z",
-     "iopub.status.busy": "2021-03-30T14:26:24.457849Z",
-     "iopub.status.idle": "2021-03-30T14:26:24.973746Z",
-     "shell.execute_reply": "2021-03-30T14:26:24.972990Z"
+     "iopub.execute_input": "2021-03-30T15:06:10.874246Z",
+     "iopub.status.busy": "2021-03-30T15:06:10.867563Z",
+     "iopub.status.idle": "2021-03-30T15:06:11.397195Z",
+     "shell.execute_reply": "2021-03-30T15:06:11.398003Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -746,7 +746,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "/usr/local/lib/python3.9/site-packages/pandas/plotting/_matplotlib/tools.py:400: MatplotlibDeprecationWarning: \n",
+      "/usr/local/lib/python3.7/site-packages/pandas/plotting/_matplotlib/tools.py:400: MatplotlibDeprecationWarning: \n",
       "The is_first_col function was deprecated in Matplotlib 3.4 and will be removed two minor releases later. Use ax.get_subplotspec().is_first_col() instead.\n",
       "  if ax.is_first_col():\n"
      ]
@@ -798,10 +798,10 @@
    "id": "needed-azerbaijan",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-30T14:26:24.980506Z",
-     "iopub.status.busy": "2021-03-30T14:26:24.977263Z",
-     "iopub.status.idle": "2021-03-30T14:26:25.505290Z",
-     "shell.execute_reply": "2021-03-30T14:26:25.504468Z"
+     "iopub.execute_input": "2021-03-30T15:06:11.404777Z",
+     "iopub.status.busy": "2021-03-30T15:06:11.402195Z",
+     "iopub.status.idle": "2021-03-30T15:06:11.989367Z",
+     "shell.execute_reply": "2021-03-30T15:06:11.988668Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -812,7 +812,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "/usr/local/lib/python3.9/site-packages/pandas/plotting/_matplotlib/tools.py:400: MatplotlibDeprecationWarning: \n",
+      "/usr/local/lib/python3.7/site-packages/pandas/plotting/_matplotlib/tools.py:400: MatplotlibDeprecationWarning: \n",
       "The is_first_col function was deprecated in Matplotlib 3.4 and will be removed two minor releases later. Use ax.get_subplotspec().is_first_col() instead.\n",
       "  if ax.is_first_col():\n"
      ]
@@ -864,10 +864,10 @@
    "id": "colored-committee",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-03-30T14:26:25.513426Z",
-     "iopub.status.busy": "2021-03-30T14:26:25.511952Z",
-     "iopub.status.idle": "2021-03-30T14:26:26.147340Z",
-     "shell.execute_reply": "2021-03-30T14:26:26.146406Z"
+     "iopub.execute_input": "2021-03-30T15:06:11.996673Z",
+     "iopub.status.busy": "2021-03-30T15:06:11.993448Z",
+     "iopub.status.idle": "2021-03-30T15:06:12.548728Z",
+     "shell.execute_reply": "2021-03-30T15:06:12.549669Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -878,7 +878,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "/usr/local/lib/python3.9/site-packages/pandas/plotting/_matplotlib/tools.py:400: MatplotlibDeprecationWarning: \n",
+      "/usr/local/lib/python3.7/site-packages/pandas/plotting/_matplotlib/tools.py:400: MatplotlibDeprecationWarning: \n",
       "The is_first_col function was deprecated in Matplotlib 3.4 and will be removed two minor releases later. Use ax.get_subplotspec().is_first_col() instead.\n",
       "  if ax.is_first_col():\n"
      ]
@@ -953,7 +953,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.9.2"
+   "version": "3.7.10"
   }
  },
  "nbformat": 4,
