@@ -1,4 +1,4 @@
-FROM python:3.9.2-slim-buster
+FROM python:3.7.10-slim-buster
 
 RUN { \
         echo 'deb http://deb.debian.org/debian buster main contrib non-free'; \
