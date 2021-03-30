@@ -15,19 +15,23 @@ class CVaROptimizer(BaseOptimizer):
     """Minimum variance optimizer."""
 
     _span: int
-    _scenarios: int
+    _beta: float
+    _samples: int
     _sampler: Optional[Sampler]
 
-    def __init__(self, span: int = 260, scenarios: int = 10, sampler: Optional[Sampler] = None):
+    def __init__(self, span: int = 260, beta: float = 0.95, samples: int = 10, sampler: Optional[Sampler] = None):
         """Construct this object.
 
         Args:
             sampler: Sampler.
             span: Span for evaluation.
-            scenarios: Count of scenarios.
+            beta: Confidence.
+            samples: Count of scenarios.
+            sampler: Sampler.
         """
         self._span = span
-        self._scenarios = scenarios
+        self._beta = beta
+        self._samples = samples
         self._sampler = sampler
         super().__init__()
 
@@ -42,25 +46,26 @@ class CVaROptimizer(BaseOptimizer):
             Optimized weights
         """
         historical_data = market.extract(market.get_index() < at).tail(self._span)
-        sampler = Sampler(market=historical_data, scenarios=self._scenarios) if self._sampler is None else self._sampler
-        samples = sampler.sample(200, self._span)
-        scenarios = [sample.to_numpy() for sample in samples]
+        sampler = Sampler(market=historical_data, samples=self._samples) if self._sampler is None else self._sampler
+        samples = []
+        for i in range(200):
+            samples += [sampler.sample(self._span).to_numpy()]
 
         n = len(historical_data.get_tickers())
         x = np.ones(n) / n
-        take_bad_scenarios = int(self._scenarios * 0.05 + 1)
+        take_bad_scenarios = int(200 * (1 - self._beta))
 
-        def fn(x: np.ndarray, scenarios: List[np.ndarray]) -> np.float64:
+        def fn(x: np.ndarray, sequence: List[np.ndarray]) -> np.float64:
             ret = []
-            for scenario in scenarios:
+            for s in sequence:
                 assets = np.ones(n)
                 for i in range(self._span):
-                    assets = (1.0 + scenario[i]) * assets
+                    assets = (1.0 + s[i]) * assets
                     assets = x * np.sum(assets)
                 ret += [np.sum(assets)]
             return np.float64(np.mean(np.array(sorted(ret)[:take_bad_scenarios])))
 
         cons = [{"type": "eq", "fun": lambda x: np.sum(x) - 1}]
         bounds = [[0.0, 1.0] for i in range(n)]
-        minout = minimize(fn, x, args=(scenarios), method="SLSQP", bounds=bounds, constraints=cons)
+        minout = minimize(fn, x, args=(samples), method="SLSQP", bounds=bounds, constraints=cons)
         self._weights = safe_cast(minout.x)

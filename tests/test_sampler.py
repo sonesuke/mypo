@@ -16,12 +16,11 @@ MODEL_DATA = os.path.join(os.path.dirname(__file__), "data", "sample.bin")
 def test_save_load() -> None:
     market = Market.load(TEST_DATA)
     market = market.head(10)
-    sampler = Sampler(market, scenarios=5)
+    sampler = Sampler(market, samples=5)
     sampler.save(MODEL_DATA)
 
 
 def test_sample() -> None:
     sampler = Sampler.load(MODEL_DATA)
-    samples = sampler.sample(10, 100)
-    npt.assert_almost_equal(samples[0].mean(), [0.0050394, 0.0021269])
-    npt.assert_almost_equal(samples[9].mean(), [0.0017678, 0.0028698])
+    samples = sampler.sample(100)
+    npt.assert_almost_equal(samples.mean(), [-0.0004724, 0.002723])
