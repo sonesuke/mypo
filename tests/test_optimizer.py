@@ -48,7 +48,6 @@ def test_semi_minimum_variance_optimizer() -> None:
     npt.assert_almost_equal(weights, [0.3239604, 0.6760396], decimal=5)
 
 
-@skip_long_tests
 def test_cvar_optimizer() -> None:
     market = Market.load(TEST_DATA)
     market = market.head(200)

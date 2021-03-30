@@ -25,9 +25,9 @@ class Sampler(object):
             market: Market data.
             samples: Count of samples.
         """
-        self.construct_model(market, samples)
+        self.construct_model(market, samples)  # pragma: no cover
 
-    def save(self, filepath: str) -> None:
+    def save(self, filepath: str) -> None:  # pragma: no cover
         """Save sampler data to file.
 
         Args:
@@ -50,7 +50,7 @@ class Sampler(object):
             value: Sampler = pickle.load(bin_file)
             return value
 
-    def construct_model(self, market: Market, samples: int = 10) -> None:
+    def construct_model(self, market: Market, samples: int = 10) -> None:  # pragma: no cover
         """Construct sampler model.
 
         Args:

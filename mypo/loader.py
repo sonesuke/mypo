@@ -20,12 +20,12 @@ class Loader(object):
     _tickers: Dict[str, pd.DataFrame]
     _expense_ratio: Dict[str, float]
 
-    def __init__(self) -> None:
+    def __init__(self) -> None:  # pragma: no cover
         """Construct this object."""
         self._tickers = OrderedDict()
         self._expense_ratio = OrderedDict()
 
-    def get(self, ticker: str, expense_ratio: float = 0.0) -> None:
+    def get(self, ticker: str, expense_ratio: float = 0.0) -> None:  # pragma: no cover
         """Get stock data of specified ticker.
 
         Args:
@@ -41,7 +41,7 @@ class Loader(object):
         self._tickers[ticker] = df
         self._expense_ratio[ticker] = expense_ratio
 
-    def get_market(self) -> Market:
+    def get_market(self) -> Market:  # pragma: no cover
         """Get Market data.
 
         Returns:
