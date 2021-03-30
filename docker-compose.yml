@@ -4,7 +4,7 @@ services:
   mypo:
     image: 'ghcr.io/sonesuke/mypo:latest'
     volumes:
-      - .:/app
+      - '.:/app:delegated'
     working_dir: /app
     environment:
       PYPI_API_TOKEN: ${PYPI_API_TOKEN}

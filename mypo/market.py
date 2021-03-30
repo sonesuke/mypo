@@ -39,7 +39,7 @@ class Market(object):
         self._closes = closes
         self._price_dividends_yield = price_dividends_yield
 
-    def save(self, filepath: str) -> None:
+    def save(self, filepath: str) -> None:  # pragma: no cover
         """Save market data to file.
 
         Args:

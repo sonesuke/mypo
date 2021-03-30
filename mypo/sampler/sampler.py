@@ -18,16 +18,16 @@ class Sampler(object):
     _chol: np.ndarray
     _columns: List[str]
 
-    def __init__(self, market: Market, scenarios: int = 10) -> None:
+    def __init__(self, market: Market, samples: int = 10) -> None:
         """Construct this object.
 
         Args:
             market: Market data.
-            scenarios: Count of scenarios.
+            samples: Count of samples.
         """
-        self.construct_model(market, scenarios)
+        self.construct_model(market, samples)  # pragma: no cover
 
-    def save(self, filepath: str) -> None:
+    def save(self, filepath: str) -> None:  # pragma: no cover
         """Save sampler data to file.
 
         Args:
@@ -50,12 +50,12 @@ class Sampler(object):
             value: Sampler = pickle.load(bin_file)
             return value
 
-    def construct_model(self, market: Market, scenarios: int = 10) -> None:
+    def construct_model(self, market: Market, samples: int = 10) -> None:  # pragma: no cover
         """Construct sampler model.
 
         Args:
             market: Market data.
-            scenarios: Count of scenarios.
+            samples: Count of scenarios.
         """
         import warnings
 
@@ -76,31 +76,30 @@ class Sampler(object):
             chol = pm.expand_packed_triangular(n, lower_triangular_chol, lower=True)
             pm.MvNormal("observed_returns", mu=mu, chol=chol, observed=observed)
 
-            trace = pm.sample(scenarios, pm.NUTS(), chains=3, return_inferencedata=False, random_seed=32)
+            trace = pm.sample(samples, pm.NUTS(), chains=3, return_inferencedata=False, random_seed=32)
             self._mu = trace["mu"]
             self._chol = trace["lower_triangular_chol"]
             self._columns = list(observed.columns)
 
-    def sample(self, scenarios: int, samples: int, seed: int = 32) -> List[pd.DataFrame]:
+    def sample(self, samples: int, seed: int = 32) -> pd.DataFrame:
         """Generate samples.
 
         Args:
-            scenarios: Count of scenarios.
             samples: Count of samples in a scenario.
             seed: Seed for random.
 
         Returns:
             Scenarios.
         """
-        ret = []
         count_of_mu, _ = self._mu.shape
         np.random.seed(seed=seed)
-        for i in range(scenarios):
-            mu = self._mu[i % count_of_mu]
-            cov = Sampler._get_covariance(self._chol[i % count_of_mu], len(self._columns))
-            prices = multivariate_normal(mu, cov, samples)
-            ret += [pd.DataFrame(prices, columns=self._columns)]
-        return ret
+        series = np.random.randint(0, count_of_mu, samples)
+        prices = np.zeros(shape=(samples, len(self._columns)))
+        for i, seed in enumerate(series):
+            mu = self._mu[seed]
+            cov = Sampler._get_covariance(self._chol[seed], len(self._columns))
+            prices[i] = multivariate_normal(mu, cov, 1)[0]
+        return pd.DataFrame(prices, columns=self._columns)
 
     @staticmethod
     def _get_covariance(elements: np.ndarray, n: int) -> np.ndarray:
