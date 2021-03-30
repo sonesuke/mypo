@@ -1,6 +1,5 @@
 """Simulation."""
 
-from collections.abc import Iterable
 from typing import Any, List
 
 import numpy as np
@@ -132,7 +131,7 @@ class Runner(object):
         """
         target = range(train_span, market.get_length())
 
-        def wrap(x: Iterable[Any]) -> Iterable[Any]:
+        def wrap(x: Any) -> Any:
             """Wrapper for tqdm."""
             return tqdm(x) if verbose else x  # type: ignore
 
