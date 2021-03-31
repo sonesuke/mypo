@@ -6,7 +6,7 @@ on:
       - 'docs.[0-9]+'
 
 jobs:
-  test:
+  docs:
     runs-on: ubuntu-latest
 
     steps:
