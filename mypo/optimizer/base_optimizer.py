@@ -1,5 +1,6 @@
 """Optimizer for weights of portfolio."""
 from datetime import datetime
+from typing import Optional
 
 import numpy as np
 import numpy.typing as npt
@@ -13,7 +14,7 @@ class BaseOptimizer(object):
 
     _weights: np.ndarray
 
-    def __init__(self, weights: npt.ArrayLike = None):
+    def __init__(self, weights: Optional[npt.ArrayLike]):
         """Construct this object.
 
         Args:
