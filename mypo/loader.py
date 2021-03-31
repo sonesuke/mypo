@@ -51,6 +51,6 @@ class Loader(object):
         return Market.create_from_ticker(self._tickers, self._expense_ratio)
 
     def filter(self, since: datetime) -> None:
-        filtered_tickers = [ticker for ticker in self._tickers.keys() if self._tickers[ticker].index[0] > since]
+        filtered_tickers = [ticker for ticker in self._tickers.keys() if self._tickers[ticker].index[0] <= since]
         self._tickers = {key: value for key, value in self._tickers.items() if key in filtered_tickers}
         self._expense_ratio = {key: value for key, value in self._expense_ratio.items() if key in filtered_tickers}
