@@ -1,5 +1,6 @@
 """Optimizer for weights of portfolio."""
 from datetime import datetime
+from typing import Optional
 
 import numpy.typing as npt
 
@@ -10,7 +11,7 @@ from mypo.optimizer import BaseOptimizer
 class NoOptimizer(BaseOptimizer):
     """Base Optimizer."""
 
-    def __init__(self, weights: npt.ArrayLike = None):
+    def __init__(self, weights: Optional[npt.ArrayLike] = None):
         """Construct this object.
 
         Args:

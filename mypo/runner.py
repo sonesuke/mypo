@@ -1,6 +1,6 @@
 """Simulation."""
 
-from typing import Any, List
+from typing import Any, List, Optional
 
 import numpy as np
 import pandas as pd
@@ -30,7 +30,7 @@ class Runner(object):
 
     def __init__(
         self,
-        assets: List[float] = None,
+        assets: Optional[List[float]] = None,
         cash: float = 0.0,
         withdraw: float = 0.0,
         rebalancer: BaseRebalancer = NoRebalancer(),
@@ -133,7 +133,7 @@ class Runner(object):
 
         def wrap(x: Any) -> Any:
             """Wrapper for tqdm."""
-            return tqdm(x) if verbose else x  # type: ignore
+            return tqdm(x) if verbose else x
 
         for i in wrap(target):
             self.apply(market, i)

@@ -33,7 +33,7 @@ class CVaROptimizer(BaseOptimizer):
         self._beta = beta
         self._samples = samples
         self._sampler = sampler
-        super().__init__()
+        super().__init__([1])
 
     def optimize(self, market: Market, at: datetime) -> None:
         """Optimize weights.
@@ -65,7 +65,7 @@ class CVaROptimizer(BaseOptimizer):
                 ret += [np.sum(assets)]
             return np.float64(np.mean(np.array(sorted(ret)[:take_bad_scenarios])))
 
-        cons = [{"type": "eq", "fun": lambda x: np.sum(x) - 1}]
+        cons = {"type": "eq", "fun": lambda x: np.sum(x) - 1}
         bounds = [[0.0, 1.0] for i in range(n)]
         minout = minimize(fn, x, args=(samples), method="SLSQP", bounds=bounds, constraints=cons)
         self._weights = safe_cast(minout.x)

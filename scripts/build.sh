@@ -16,8 +16,7 @@ sed -e "s/assert __version__ == \".*\"/assert __version__ == \"${1}\"/" -i /app/
 poetry install
 
 # test
-flake8 .
-mypy .
+pysen run lint
 pytest
 
 # build and publish

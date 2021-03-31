@@ -142,8 +142,8 @@ class Market(object):
         else:
             assert False  # pragma: no cover
         return Market(
-            closes=market._closes.resample(str(rule)).last(),  # type: ignore
-            price_dividends_yield=market._price_dividends_yield.resample(rule).sum(),  # type: ignore
+            closes=market._closes.resample(str(rule)).last(),
+            price_dividends_yield=market._price_dividends_yield.resample(rule).sum(),
             expense_ratio=market._expense_ratio,
         )
 

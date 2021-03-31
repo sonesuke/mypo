@@ -1,6 +1,7 @@
 """Optimizer for weights of portfolio."""
 
 from datetime import datetime
+from typing import Optional
 
 import numpy as np
 from scipy.optimize import minimize
@@ -21,7 +22,7 @@ class MinimumVarianceOptimizer(BaseOptimizer):
         self,
         span: int = 260,
         with_semi_covariance: bool = False,
-        minimum_return: float = None,
+        minimum_return: Optional[float] = None,
     ):
         """Construct this object.
 
@@ -33,7 +34,7 @@ class MinimumVarianceOptimizer(BaseOptimizer):
         self._span = span
         self._with_semi_covariance = with_semi_covariance
         self._minimum_return = minimum_return
-        super().__init__()
+        super().__init__([1])
 
     def optimize(self, market: Market, at: datetime) -> None:
         """Optimize weights.
@@ -59,13 +60,11 @@ class MinimumVarianceOptimizer(BaseOptimizer):
         if self._minimum_return is not None:
             ret = prices.mean(axis=0)
             daily_risk_free_rate = (1.0 + self._minimum_return) ** (1 / 252) - 1.0
-            print(ret)
-            print(daily_risk_free_rate)
             cons += [
                 {
                     "type": "ineq",
                     "fun": lambda x: np.dot(ret, x) - daily_risk_free_rate,
-                }
+                },
             ]
 
         bounds = [[0.0, 1.0] for i in range(n)]

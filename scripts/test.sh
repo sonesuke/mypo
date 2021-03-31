@@ -1,8 +1,5 @@
 #!/bin/bash
 
 set -eu
-isort .
-black .
-flake8 .
-mypy .
+pysen run lint
 pytest

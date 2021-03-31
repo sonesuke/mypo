@@ -4,9 +4,9 @@ on:
   push:
     tags:
       - 'image.[0-9]+'
-      -
+
 jobs:
-  release:
+  build-image:
     runs-on: ubuntu-latest
 
     steps:

@@ -30,7 +30,7 @@ class SharpRatioOptimizer(BaseOptimizer):
         """
         self._risk_free_rate = risk_free_rate
         self._span = span
-        super().__init__()
+        super().__init__([1])
 
     def optimize(self, market: Market, at: datetime) -> None:
         """Optimize weights.
@@ -58,7 +58,7 @@ class SharpRatioOptimizer(BaseOptimizer):
         ) -> np.float64:
             return -sharp_ratio(np.dot(x, R), np.dot(np.dot(x, Q), x.T), daily_risk_free_rate)
 
-        cons = [{"type": "eq", "fun": lambda x: np.sum(x) - 1}]
+        cons = {"type": "eq", "fun": lambda x: np.sum(x) - 1}
         bounds = [[0.0, 1.0] for i in range(n)]
         minout = minimize(
             fn,
