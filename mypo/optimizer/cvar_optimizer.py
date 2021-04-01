@@ -49,7 +49,7 @@ class CVaROptimizer(BaseOptimizer):
         sampler = Sampler(market=historical_data, samples=self._samples) if self._sampler is None else self._sampler
         samples = []
         for i in range(200):
-            samples += [sampler.sample(self._span).to_numpy()]
+            samples += [sampler.sample(self._span, seed=i).to_numpy()]
 
         n = len(historical_data.get_tickers())
         x = np.ones(n) / n
