@@ -1,6 +1,6 @@
 """Optimizer for weights of portfolio."""
 from datetime import datetime
-from typing import List, Optional
+from typing import Optional
 
 import numpy as np
 from scipy.optimize import minimize
@@ -19,7 +19,7 @@ class CVaROptimizer(BaseOptimizer):
     _samples: int
     _sampler: Optional[Sampler]
 
-    def __init__(self, span: int = 260, beta: float = 0.95, samples: int = 10, sampler: Optional[Sampler] = None):
+    def __init__(self, span: int = 260, beta: float = 0.05, samples: int = 10, sampler: Optional[Sampler] = None):
         """Construct this object.
 
         Args:
@@ -47,25 +47,16 @@ class CVaROptimizer(BaseOptimizer):
         """
         historical_data = market.extract(market.get_index() < at).tail(self._span)
         sampler = Sampler(market=historical_data, samples=self._samples) if self._sampler is None else self._sampler
-        samples = []
-        for i in range(200):
-            samples += [sampler.sample(self._span, seed=i).to_numpy()]
+        sample = sampler.sample(self._span).to_numpy()
 
         n = len(historical_data.get_tickers())
         x = np.ones(n) / n
-        take_bad_scenarios = int(200 * (1 - self._beta))
 
-        def fn(x: np.ndarray, sequence: List[np.ndarray]) -> np.float64:
-            ret = []
-            for s in sequence:
-                assets = np.ones(n)
-                for i in range(self._span):
-                    assets = (1.0 + s[i]) * assets
-                    assets = x * np.sum(assets)
-                ret += [np.sum(assets)]
-            return np.float64(np.mean(np.array(sorted(ret)[:take_bad_scenarios])))
+        def fn(x: np.ndarray, sequence: np.ndarray) -> np.float64:
+            r = np.dot(sequence, x.T) / np.max(sequence)
+            return -np.float64(np.mean(np.where(r < np.quantile(r, self._beta), r, 0)))
 
         cons = {"type": "eq", "fun": lambda x: np.sum(x) - 1}
         bounds = [[0.0, 1.0] for i in range(n)]
-        minout = minimize(fn, x, args=(samples), method="SLSQP", bounds=bounds, constraints=cons)
+        minout = minimize(fn, x, args=(sample), method="SLSQP", bounds=bounds, constraints=cons)
         self._weights = safe_cast(minout.x)
