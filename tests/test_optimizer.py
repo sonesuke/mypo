@@ -18,7 +18,7 @@ def test_minimum_variance_optimizer() -> None:
     optimizer = MinimumVarianceOptimizer()
     optimizer.optimize(market, market.get_last_date())
     weights = optimizer.get_weights()
-    npt.assert_almost_equal(weights, [0.249759, 0.750241])
+    npt.assert_almost_equal(weights, [0.2497605, 0.7502395])
 
 
 def test_minimum_variance_optimizer_with_minimum_return() -> None:

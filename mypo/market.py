@@ -23,18 +23,27 @@ class SamplingMethod(Enum):
 class Market(object):
     """Market class for store and loading stock prices data."""
 
+    _names: Dict[str, str]
     _expense_ratio: Dict[str, float]
     _closes: pd.DataFrame
     _price_dividends_yield: pd.DataFrame
 
-    def __init__(self, closes: pd.DataFrame, price_dividends_yield: pd.DataFrame, expense_ratio: Dict[str, float]):
+    def __init__(
+        self,
+        names: Dict[str, str],
+        closes: pd.DataFrame,
+        price_dividends_yield: pd.DataFrame,
+        expense_ratio: Dict[str, float],
+    ):
         """Construct this object.
 
         Args:
+            names: Names.
             closes: Tickers.
             price_dividends_yield: Price dividends yield.
             expense_ratio: Expense ratio.
         """
+        self._names = names
         self._expense_ratio = expense_ratio
         self._closes = closes
         self._price_dividends_yield = price_dividends_yield
@@ -80,19 +89,24 @@ class Market(object):
         daily_gain = (1.0 + yearly_gain) ** (1 / 365)
         prices = np.ones(n) * (daily_gain ** np.arange(n))
         return Market.create_from_ticker(
+            names={ticker: "None"},
             tickers={ticker: pd.DataFrame({"Close": prices, "Dividends": np.zeros(n)}, index=index)},
             expense_ratio={ticker: 0.0},
         )
 
     @staticmethod
-    def create_from_ticker(tickers: Dict[str, pd.DataFrame], expense_ratio: Dict[str, float]) -> Market:
+    def create_from_ticker(
+        names: Dict[str, str], tickers: Dict[str, pd.DataFrame], expense_ratio: Dict[str, float]
+    ) -> Market:
         """Construct this object.
 
         Args:
+            names: Names.
             tickers: Tickers.
             expense_ratio: Expense ratio.
         """
         return Market(
+            names=names,
             closes=Market.calc_raw(tickers),
             price_dividends_yield=Market.calc_price_dividends_yield(tickers),
             expense_ratio=expense_ratio,
@@ -142,6 +156,7 @@ class Market(object):
         else:
             assert False  # pragma: no cover
         return Market(
+            names=market._names,
             closes=market._closes.resample(str(rule)).last(),
             price_dividends_yield=market._price_dividends_yield.resample(rule).sum(),
             expense_ratio=market._expense_ratio,
@@ -172,6 +187,7 @@ class Market(object):
         else:
             assert False  # pragma: no cover
         return Market(
+            names=self._names,
             closes=self._closes[first:last],
             price_dividends_yield=self._price_dividends_yield[first:last],
             expense_ratio=self._expense_ratio,
@@ -187,9 +203,28 @@ class Market(object):
             Extracted Data
         """
         return Market(
+            names=self._names,
             closes=self._closes.loc[index],
             price_dividends_yield=self._price_dividends_yield.loc[index],
             expense_ratio=self._expense_ratio,
+        )
+
+    def filter(self, tickers: List[str]) -> Market:
+        """Filter tickers.
+
+        Args:
+            tickers: Remaining tickers.
+
+        Returns:
+            Filtered market data.
+        """
+        return Market(
+            names=self._names,
+            closes=self._closes[tickers],
+            price_dividends_yield=self._price_dividends_yield[tickers],
+            expense_ratio={
+                ticker: expense_ratio for ticker, expense_ratio in self._expense_ratio.items() if ticker in tickers
+            },
         )
 
     def tail(self, n: int) -> Market:
@@ -202,6 +237,7 @@ class Market(object):
             Extracted Data
         """
         return Market(
+            names=self._names,
             closes=self._closes.loc[self._closes.tail(n).index],
             price_dividends_yield=self._price_dividends_yield.loc[self._price_dividends_yield.tail(n).index],
             expense_ratio=self._expense_ratio,
@@ -217,6 +253,7 @@ class Market(object):
             Extracted Data
         """
         return Market(
+            names=self._names,
             closes=self._closes.loc[self._closes.head(n).index],
             price_dividends_yield=self._price_dividends_yield.loc[self._price_dividends_yield.head(n).index],
             expense_ratio=self._expense_ratio,

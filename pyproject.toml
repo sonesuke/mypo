@@ -49,7 +49,6 @@ testpaths = [
     "tests"
 ]
 
-
 [tool.pysen]
 version = "0.9.1"
 
