@@ -32,11 +32,18 @@ def test_rate_of_change() -> None:
     npt.assert_almost_equal(df["IEF"][0], -0.00288483)
 
 
+def test_filter() -> None:
+    market = Market.load(TEST_DATA)
+    market = market.filter(["VOO"])
+    df = market.get_rate_of_change()
+    assert df.columns == ["VOO"]
+
+
 def test_raw_price() -> None:
     market = Market.load(TEST_DATA)
     df = market.get_raw()
     npt.assert_almost_equal(df["VOO"][0], 82.1945800)
-    npt.assert_almost_equal(df["IEF"][0], 79.2020874)
+    npt.assert_almost_equal(df["IEF"][0], 79.1529922)
 
 
 def test_normalized_price() -> None:
@@ -70,7 +77,7 @@ def test_resample_yearly() -> None:
     market = market.resample(method=SamplingMethod.YEAR)
     df = market.get_raw()
     npt.assert_almost_equal(df["VOO"][0], 111.507682, decimal=5)
-    npt.assert_almost_equal(df["IEF"][0], 92.6908569, decimal=5)
+    npt.assert_almost_equal(df["IEF"][0], 92.6334533, decimal=5)
 
 
 def test_resample_monthly() -> None:
@@ -78,4 +85,4 @@ def test_resample_monthly() -> None:
     market = market.resample(method=SamplingMethod.MONTH)
     df = market.get_raw()
     npt.assert_almost_equal(df["VOO"][0], 88.2363128, decimal=5)
-    npt.assert_almost_equal(df["IEF"][0], 80.0620346, decimal=5)
+    npt.assert_almost_equal(df["IEF"][0], 80.0124130, decimal=5)
