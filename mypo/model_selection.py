@@ -1,10 +1,13 @@
 """Utility functions for model selection."""
 import itertools
+from datetime import datetime
 from typing import Any, List, Tuple
 
 import numpy as np
 import pandas as pd
+from joblib import Parallel, delayed
 from scipy.cluster.vq import kmeans2
+from tqdm import tqdm
 
 from mypo.market import Market
 
@@ -49,10 +52,11 @@ def clustering_tickers(market: Market, n: int, seed: int = 32) -> pd.DataFrame:
     corr = market.get_rate_of_change().corr()
 
     _, label = kmeans2(corr.to_numpy(), k=n, minit="++")
-    return pd.DataFrame({"class": label}, index=corr.index)
+    df = pd.DataFrame({"class": label}, index=corr.index)
+    return df.sort_values("class")
 
 
-def make_combinations(cluster: pd.DataFrame) -> List[Tuple[str]]:
+def _make_combinations(cluster: pd.DataFrame) -> List[Tuple[str]]:
     """Make combinations.
 
     Args:
@@ -68,23 +72,23 @@ def make_combinations(cluster: pd.DataFrame) -> List[Tuple[str]]:
     return list(itertools.product(*clusters))
 
 
-def evaluate_combinations(market: Market, combinations: List[Tuple[str]], verbose: bool = False) -> pd.DataFrame:
+def evaluate_combinations(market: Market, cluster: pd.DataFrame, verbose: bool = False) -> pd.DataFrame:
     """Evaluate combinations.
 
     Args:
-        combinations: Combinations.
+        market: Market.
+        cluster: Cluster data.
+        verbose: Verbose mode.
 
     Returns:
         Result.
     """
-    import multiprocessing
-    from datetime import datetime
 
-    from tqdm import tqdm
+    combinations = _make_combinations(cluster)
 
-    from mypo.optimizer import MinimumVarianceOptimizer
+    def proc(c: Any) -> Any:  # pragma: no cover
+        from mypo.optimizer import MinimumVarianceOptimizer
 
-    def proc(c: Any) -> Any:
         optimizer = MinimumVarianceOptimizer(span=50000)
         target_market = market.filter(list(c))
         optimizer.optimize(target_market, at=datetime.today())
@@ -96,12 +100,9 @@ def evaluate_combinations(market: Market, combinations: List[Tuple[str]], verbos
 
     def wrap(x: Any, total: Any) -> Any:
         """Wrapper for tqdm."""
-        return tqdm(x, total) if verbose else x
+        return tqdm(x, total=total) if verbose else x
 
-    cores = multiprocessing.cpu_count()
-    with multiprocessing.Pool(cores) as pool:
-        imap = pool.imap(proc, combinations)
-        result = list(wrap(imap, total=len(combinations)))
+    result = Parallel(n_jobs=-1)(delayed(proc)(c) for c in wrap(combinations, total=len(combinations)))
 
     df = pd.DataFrame(
         {

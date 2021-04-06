@@ -104,9 +104,11 @@ class Runner(object):
         self._assets = (1.0 - expense_ratio / WEEK_DAYS) * self._assets
         deal = np.max([diff.sum(where=diff > 0), -diff.sum(where=diff < 0)])
         trading_prices = np.where(diff > 0, 1.0 + prices, self._average_assets_prices)
-        self._average_assets_prices = (
-            self._average_assets_prices * previous_assets + diff * trading_prices
-        ) / self._assets
+        self._average_assets_prices = np.where(
+            self._assets > 10e-6,
+            (self._average_assets_prices * previous_assets + diff * trading_prices) / self._assets,
+            0,
+        )
 
         # record to reporter
         self._reporter.record(

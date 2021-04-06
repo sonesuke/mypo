@@ -24,7 +24,7 @@ def test_apply() -> None:
         withdraw=0.0,
     )
     runner.apply(market, 0)
-    npt.assert_almost_equal(runner.total_assets(), 2.5031694536)
+    npt.assert_almost_equal(runner.total_assets(), 2.50309807503)
 
 
 def test_run_and_report() -> None:

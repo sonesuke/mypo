@@ -46,3 +46,9 @@ def test_total_asset_than() -> None:
 def test_names() -> None:
     loader = Loader.load(LOADER_DATA)
     assert loader._names["VOO"] == "Vanguard S&P 500 ETF"
+
+
+def test_smmary() -> None:
+    loader = Loader.load(LOADER_DATA)
+    summary = loader.summary()
+    assert summary is not None

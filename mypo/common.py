@@ -78,5 +78,5 @@ def calc_fee(diff: npt.ArrayLike, settings: Settings) -> np.float64:
     """
     diff = safe_cast(diff)
     deal = np.abs(diff)
-    fee: np.float64 = -np.sum(deal * settings.fee_rate)
+    fee: np.float64 = np.sum(deal * settings.fee_rate)
     return fee

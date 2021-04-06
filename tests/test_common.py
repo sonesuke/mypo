@@ -19,4 +19,4 @@ def test_income_gain_tax() -> None:
 
 def test_fee() -> None:
     diff = [0.1, -0.2]
-    npt.assert_almost_equal(calc_fee(diff, DEFAULT_SETTINGS), -0.0015)
+    npt.assert_almost_equal(calc_fee(diff, DEFAULT_SETTINGS), 0.0015)
