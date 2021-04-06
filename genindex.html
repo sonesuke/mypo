@@ -79,6 +79,12 @@
  </a>
 </li>
 
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="tutorial/tickers.html">
+  Ticker selections
+ </a>
+</li>
+
         
       </ul>
 
@@ -148,6 +154,7 @@
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
  | <a href="#T"><strong>T</strong></a>
+ | <a href="#V"><strong>V</strong></a>
  | <a href="#Y"><strong>Y</strong></a>
  
 </div>
@@ -196,6 +203,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="mypo.html#mypo.market.Market.calc_raw">calc_raw() (mypo.market.Market static method)</a>
 </li>
+      <li><a href="mypo.html#mypo.model_selection.clustering_tickers">clustering_tickers() (in module mypo.model_selection)</a>
+</li>
       <li><a href="mypo.optimizer.html#mypo.optimizer.objective.covariance">covariance() (in module mypo.optimizer.objective)</a>
 </li>
       <li><a href="mypo.html#mypo.market.Market.create">create() (mypo.market.Market static method)</a>
@@ -208,6 +217,10 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="mypo.html#mypo.model_selection.evaluate_combinations">evaluate_combinations() (in module mypo.model_selection)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="mypo.html#mypo.market.Market.extract">extract() (mypo.market.Market method)</a>
 </li>
   </ul></td>
@@ -217,6 +230,10 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="mypo.html#mypo.settings.Settings.fee_rate">fee_rate (mypo.settings.Settings attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="mypo.html#mypo.market.Market.filter">filter() (mypo.market.Market method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -284,8 +301,12 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="mypo.html#mypo.market.Market.load">load() (mypo.market.Market static method)</a>
+      <li><a href="mypo.html#mypo.loader.Loader.load">load() (mypo.loader.Loader static method)</a>
+
+      <ul>
+        <li><a href="mypo.html#mypo.market.Market.load">(mypo.market.Market static method)</a>
 </li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="mypo.html#mypo.loader.Loader">Loader (class in mypo.loader)</a>
@@ -641,8 +662,12 @@
 </li>
       <li><a href="mypo.html#mypo.market.SamplingMethod">SamplingMethod (class in mypo.market)</a>
 </li>
-      <li><a href="mypo.html#mypo.market.Market.save">save() (mypo.market.Market method)</a>
+      <li><a href="mypo.html#mypo.loader.Loader.save">save() (mypo.loader.Loader method)</a>
+
+      <ul>
+        <li><a href="mypo.html#mypo.market.Market.save">(mypo.market.Market method)</a>
 </li>
+      </ul></li>
       <li><a href="mypo.optimizer.html#mypo.optimizer.objective.semi_covariance">semi_covariance() (in module mypo.optimizer.objective)</a>
 </li>
   </ul></td>
@@ -653,7 +678,11 @@
 </li>
       <li><a href="mypo.optimizer.html#mypo.optimizer.sharp_ratio_optimizer.SharpRatioOptimizer">SharpRatioOptimizer (class in mypo.optimizer.sharp_ratio_optimizer)</a>
 </li>
+      <li><a href="mypo.html#mypo.loader.Loader.since">since() (mypo.loader.Loader method)</a>
+</li>
       <li><a href="mypo.html#mypo.model_selection.split_n_periods">split_n_periods() (in module mypo.model_selection)</a>
+</li>
+      <li><a href="mypo.html#mypo.loader.Loader.summary">summary() (mypo.loader.Loader method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -667,15 +696,25 @@
 </li>
       <li><a href="mypo.rebalancer.html#mypo.rebalancer.threshold_rebalancer.ThresholdRebalancer">ThresholdRebalancer (class in mypo.rebalancer.threshold_rebalancer)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="mypo.trigger.html#mypo.trigger.threshold_trigger.ThresholdTrigger">ThresholdTrigger (class in mypo.trigger.threshold_trigger)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="mypo.html#mypo.runner.Runner.total_assets">total_assets() (mypo.runner.Runner method)</a>
+</li>
+      <li><a href="mypo.html#mypo.loader.Loader.total_assets_than">total_assets_than() (mypo.loader.Loader method)</a>
 </li>
       <li><a href="mypo.indicator.html#mypo.indicator.indicators.total_return">total_return() (in module mypo.indicator.indicators)</a>
 </li>
       <li><a href="mypo.html#mypo.market.Market.trim">trim() (mypo.market.Market method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="mypo.html#mypo.loader.Loader.volume_than">volume_than() (mypo.loader.Loader method)</a>
 </li>
   </ul></td>
 </tr></table>
