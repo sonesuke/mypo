@@ -1,6 +1,6 @@
 import os
 
-from mypo import Market, split_n_periods
+from mypo import Market, clustering_tickers, evaluate_combinations, split_n_periods
 
 TEST_DATA = os.path.join(os.path.dirname(__file__), "data", "test.bin")
 
@@ -15,3 +15,10 @@ def test_split_n_periods() -> None:
 
     for e in eval:
         assert len(e.get_index()) == 20
+
+
+def test_clustering_tickers() -> None:
+    market = Market.load(TEST_DATA)
+    c = clustering_tickers(market, n=2)
+    df = evaluate_combinations(market, c)
+    assert df is not None

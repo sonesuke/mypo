@@ -1,10 +1,13 @@
 """Utility functions for model selection."""
 import itertools
-from typing import List, Tuple
+from datetime import datetime
+from typing import Any, List, Tuple
 
 import numpy as np
 import pandas as pd
+from joblib import Parallel, delayed
 from scipy.cluster.vq import kmeans2
+from tqdm import tqdm
 
 from mypo.market import Market
 
@@ -49,10 +52,11 @@ def clustering_tickers(market: Market, n: int, seed: int = 32) -> pd.DataFrame:
     corr = market.get_rate_of_change().corr()
 
     _, label = kmeans2(corr.to_numpy(), k=n, minit="++")
-    return pd.DataFrame({"class": label}, index=corr.index)
+    df = pd.DataFrame({"class": label}, index=corr.index)
+    return df.sort_values("class")
 
 
-def make_combinations(cluster: pd.DataFrame) -> List[Tuple[str]]:
+def _make_combinations(cluster: pd.DataFrame) -> List[Tuple[str]]:
     """Make combinations.
 
     Args:
@@ -66,3 +70,47 @@ def make_combinations(cluster: pd.DataFrame) -> List[Tuple[str]]:
     for i in range(k):
         clusters += [list(cluster[cluster["class"] == i].index)]
     return list(itertools.product(*clusters))
+
+
+def evaluate_combinations(market: Market, cluster: pd.DataFrame, verbose: bool = False) -> pd.DataFrame:
+    """Evaluate combinations.
+
+    Args:
+        market: Market.
+        cluster: Cluster data.
+        verbose: Verbose mode.
+
+    Returns:
+        Result.
+    """
+
+    combinations = _make_combinations(cluster)
+
+    def proc(c: Any) -> Any:  # pragma: no cover
+        from mypo.optimizer import MinimumVarianceOptimizer
+
+        optimizer = MinimumVarianceOptimizer(span=50000)
+        target_market = market.filter(list(c))
+        optimizer.optimize(target_market, at=datetime.today())
+        w = optimizer.get_weights()
+        r = target_market.get_rate_of_change().to_numpy()
+        q = np.dot(np.dot(w, np.cov(r.T)), w.T)
+        r = np.dot(w, r.mean(axis=0))
+        return target_market.get_tickers(), r, q, w
+
+    def wrap(x: Any, total: Any) -> Any:
+        """Wrapper for tqdm."""
+        return tqdm(x, total=total) if verbose else x
+
+    result = Parallel(n_jobs=-1)(delayed(proc)(c) for c in wrap(combinations, total=len(combinations)))
+
+    df = pd.DataFrame(
+        {
+            "c": [r[0] for r in result],
+            "r": [r[1] for r in result],
+            "q": [r[2] for r in result],
+            "w": [r[3] for r in result],
+        }
+    )
+    df["sharp ratio"] = df["r"] / df["q"]
+    return df
