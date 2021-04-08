@@ -2979,111 +2979,53 @@ div.rendered_html tbody tr:hover {
 <p>76 rows × 76 columns</p>
 </div></div>
 </div>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">evaluates</span> <span class="o">=</span> <span class="n">evaluate_combinations</span><span class="p">(</span><span class="n">market</span><span class="p">,</span> <span class="n">cluster</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span></span><span class="kn">from</span> <span class="nn">mypo</span> <span class="kn">import</span> <span class="n">split_n_periods</span>
+<span class="kn">from</span> <span class="nn">mypo.optimizer</span> <span class="kn">import</span> <span class="n">MinimumVarianceOptimizer</span>
+<span class="kn">from</span> <span class="nn">mypo.indicator</span> <span class="kn">import</span> <span class="n">yearly_total_return</span><span class="p">,</span> <span class="n">max_drawdown</span><span class="p">,</span> <span class="n">max_drawdown_span</span>
+<span class="kn">from</span> <span class="nn">mypo.rebalancer</span> <span class="kn">import</span> <span class="n">MonthlyRebalancer</span>
+<span class="kn">from</span> <span class="nn">mypo</span> <span class="kn">import</span> <span class="n">Runner</span>
+
+<span class="n">trains</span><span class="p">,</span> <span class="n">evals</span> <span class="o">=</span> <span class="n">split_n_periods</span><span class="p">(</span><span class="n">market</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-100%|██████████| 12960/12960 [01:35&lt;00:00, 135.05it/s]
-</pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">del</span> <span class="n">evaluates</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">]</span>
-<span class="n">top_10_sharp_ratio</span> <span class="o">=</span> <span class="n">evaluates</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;sharp ratio&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">top_10_r</span> <span class="o">=</span> <span class="n">evaluates</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">top_10_q</span> <span class="o">=</span> <span class="n">evaluates</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">trains</span><span class="p">)):</span>
+    <span class="n">evaluates</span> <span class="o">=</span> <span class="n">evaluate_combinations</span><span class="p">(</span><span class="n">trains</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">cluster</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">del</span> <span class="n">evaluates</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">]</span>
+    <span class="n">top_10_r</span> <span class="o">=</span> <span class="n">evaluates</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">top_10_r</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">top_10_sharp_ratio</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">top_10_r</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">top_10_q</span><span class="p">)</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">evals</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">filter</span><span class="p">((</span><span class="nb">list</span><span class="p">(</span><span class="n">top_10_r</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">MinimumVarianceOptimizer</span><span class="p">()</span>
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
+        <span class="n">assets</span><span class="o">=</span><span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span>
+        <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="n">cash</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span>
 
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-                           c         r             q  sharp ratio
-8555   [SPYG, SHY, LQD, FXI]  0.000092  5.689978e-07   160.859762
-5654    [QQQ, SHY, AGG, VDC]  0.000094  5.829743e-07   160.713584
-5678    [QQQ, SHY, LQD, VDC]  0.000094  5.829743e-07   160.706434
-10571    [VV, SHY, LQD, FXI]  0.000091  5.649561e-07   160.687803
-3347    [IVV, SHY, AGG, FXI]  0.000091  5.638219e-07   160.668289
-10547    [VV, SHY, AGG, FXI]  0.000091  5.649223e-07   160.659059
-3371    [IVV, SHY, LQD, FXI]  0.000091  5.638540e-07   160.635607
-8531   [SPYG, SHY, AGG, FXI]  0.000091  5.689091e-07   160.584469
-5630    [QQQ, SHY, GLD, VDC]  0.000094  5.829829e-07   160.516194
-10523    [VV, SHY, GLD, FXI]  0.000091  5.649225e-07   160.498620
-                          c         r         q  sharp ratio
-5473   [QQQ, TLT, GLD, BBH]  0.000409  0.000031    13.389883
-11809  [VGT, TLT, GLD, BBH]  0.000408  0.000030    13.445604
-1729   [XLK, TLT, GLD, BBH]  0.000403  0.000030    13.311848
-5480   [QQQ, TLT, GLD, EWZ]  0.000402  0.000031    12.780624
-5481   [QQQ, TLT, GLD, EZA]  0.000402  0.000031    12.777710
-5488   [QQQ, TLT, GLD, ILF]  0.000402  0.000031    12.774091
-5491   [QQQ, TLT, GLD, RWR]  0.000402  0.000031    12.772892
-5482   [QQQ, TLT, GLD, IYR]  0.000402  0.000031    12.770620
-5483   [QQQ, TLT, GLD, FXI]  0.000401  0.000031    12.756838
-5479   [QQQ, TLT, GLD, EWY]  0.000401  0.000031    12.756573
-                          c         r             q  sharp ratio
-1355   [VTV, SHY, LQD, FXI]  0.000089  5.630212e-07   158.740732
-1331   [VTV, SHY, AGG, FXI]  0.000089  5.630240e-07   158.832094
-1307   [VTV, SHY, GLD, FXI]  0.000089  5.632128e-07   158.325593
-8243  [SPYV, SHY, AGG, FXI]  0.000089  5.634772e-07   158.067753
-8267  [SPYV, SHY, LQD, FXI]  0.000089  5.635192e-07   157.986721
-8219  [SPYV, SHY, GLD, FXI]  0.000089  5.635998e-07   157.550731
-3323   [IVV, SHY, GLD, FXI]  0.000090  5.638169e-07   160.484764
-3347   [IVV, SHY, AGG, FXI]  0.000091  5.638219e-07   160.668289
-3371   [IVV, SHY, LQD, FXI]  0.000091  5.638540e-07   160.635607
-4187   [OEF, SHY, GLD, FXI]  0.000090  5.644027e-07   159.931210
-</pre></div></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">mypo.optimizer</span> <span class="kn">import</span> <span class="n">MinimumVarianceOptimizer</span>
-<span class="kn">from</span> <span class="nn">mypo.indicator</span> <span class="kn">import</span> <span class="n">yearly_total_return</span><span class="p">,</span> <span class="n">max_drawdown</span><span class="p">,</span> <span class="n">max_drawdown_span</span>
-<span class="kn">from</span> <span class="nn">mypo.rebalancer</span> <span class="kn">import</span> <span class="n">MonthlyRebalancer</span>
-<span class="kn">from</span> <span class="nn">mypo</span> <span class="kn">import</span> <span class="n">Runner</span>
-
-<span class="n">target</span> <span class="o">=</span> <span class="n">market</span><span class="o">.</span><span class="n">filter</span><span class="p">((</span><span class="nb">list</span><span class="p">(</span><span class="n">top_10_sharp_ratio</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]))</span>
-<span class="n">optimizer</span> <span class="o">=</span> <span class="n">MinimumVarianceOptimizer</span><span class="p">()</span>
-<span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
-    <span class="n">assets</span><span class="o">=</span><span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span>
-    <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-    <span class="n">cash</span><span class="o">=</span><span class="mi">0</span>
-<span class="p">)</span>
-
-<span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="n">market</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
-    <span class="n">train_span</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
-    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
-<span class="p">)</span>
-<span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">optimizer</span><span class="o">.</span><span class="n">get_weights</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">yearly_total_return</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown_span</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+        <span class="n">market</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+        <span class="n">train_span</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">optimizer</span><span class="o">.</span><span class="n">get_weights</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">yearly_total_return</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown_span</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -3092,7 +3034,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 3919/3919 [00:16&lt;00:00, 234.40it/s]
+100%|██████████| 12960/12960 [00:57&lt;00:00, 224.96it/s]
+  6%|▌         | 35/583 [00:00&lt;00:01, 347.41it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3100,17 +3043,556 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[1.08940827e-02 9.89105917e-01 0.00000000e+00 2.16840434e-18]
-1.0360199757155388
-0.9827838940631107
+                         c         r         q  sharp ratio
+9524  [EPP, TLT, GLD, IXC]  0.000521  0.000020    25.736610
+9505  [EPP, TLT, GLD, BBH]  0.000518  0.000020    26.357671
+3457  [EEM, TLT, GLD, BBH]  0.000515  0.000020    25.919526
+9519  [EPP, TLT, GLD, XLU]  0.000510  0.000019    26.206502
+9526  [EPP, TLT, GLD, VPU]  0.000507  0.000020    25.964359
+3476  [EEM, TLT, GLD, IXC]  0.000504  0.000021    24.438764
+9510  [EPP, TLT, GLD, EWW]  0.000502  0.000020    24.884705
+9522  [EPP, TLT, GLD, XLE]  0.000502  0.000020    24.608404
+9525  [EPP, TLT, GLD, OIH]  0.000498  0.000020    24.479251
+9517  [EPP, TLT, GLD, VDE]  0.000495  0.000020    24.207373
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 583/583 [00:01&lt;00:00, 362.83it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.1423237  0.6922958  0.06138576 0.10399473]
+1.1470321598169286
+0.9115823019315082
 102
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_6_4.png" src="../_images/tutorial_tickers_6_4.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 12960/12960 [00:58&lt;00:00, 222.25it/s]
+  6%|▌         | 36/583 [00:00&lt;00:01, 358.58it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+                           c         r         q  sharp ratio
+8785   [SPTM, SHY, GLD, BBH]  0.000158  0.000002    66.001901
+3049    [XLF, SHY, AGG, BBH]  0.000155  0.000002    75.267060
+9097    [DVY, SHY, AGG, BBH]  0.000152  0.000002    71.929477
+3025    [XLF, SHY, GLD, BBH]  0.000152  0.000002    74.218053
+9073    [DVY, SHY, GLD, BBH]  0.000151  0.000002    71.656670
+12265   [VFH, SHY, AGG, BBH]  0.000150  0.000002    73.423391
+8803   [SPTM, SHY, GLD, RWR]  0.000150  0.000002    62.584329
+12241   [VFH, SHY, GLD, BBH]  0.000147  0.000002    72.572580
+6217    [IXJ, SHY, AGG, BBH]  0.000146  0.000002    61.414623
+3073    [XLF, SHY, LQD, BBH]  0.000146  0.000002    71.319316
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 583/583 [00:01&lt;00:00, 360.37it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1.29055923e-02 9.81667772e-01 6.50521303e-19 5.42663545e-03]
+1.0365529193619765
+0.9937746874182035
+44
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_6_9.png" src="../_images/tutorial_tickers_6_9.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 12960/12960 [01:00&lt;00:00, 214.00it/s]
+  6%|▌         | 35/583 [00:00&lt;00:01, 345.37it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+                         c         r         q  sharp ratio
+289   [VBK, TLT, GLD, BBH]  0.001121  0.000032    35.059727
+1441  [IJR, TLT, GLD, BBH]  0.001118  0.000031    35.970719
+5185  [IWM, TLT, GLD, BBH]  0.001101  0.000032    34.957192
+9505  [EPP, TLT, GLD, BBH]  0.001090  0.000032    34.365814
+4609   [VB, TLT, GLD, BBH]  0.001084  0.000031    34.958032
+9793  [EWG, TLT, GLD, BBH]  0.001083  0.000031    34.526388
+3457  [EEM, TLT, GLD, BBH]  0.001074  0.000031    34.170793
+577   [VAW, TLT, GLD, BBH]  0.001069  0.000031    34.051546
+1452  [IJR, TLT, GLD, IBB]  0.001059  0.000035    30.511947
+6337  [VBR, TLT, GLD, BBH]  0.001058  0.000030    34.959154
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 583/583 [00:01&lt;00:00, 362.33it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.32962422 0.52319394 0.14718184 0.        ]
+1.1115117765875597
+0.930248204186665
+116
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_6_14.png" src="../_images/tutorial_tickers_6_14.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 12960/12960 [00:57&lt;00:00, 225.18it/s]
+  6%|▌         | 35/583 [00:00&lt;00:01, 346.79it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+                          c         r         q  sharp ratio
+11539  [VHT, TLT, GLD, RWR]  0.000866  0.000016    55.209564
+11530  [VHT, TLT, GLD, IYR]  0.000843  0.000015    54.803737
+5491   [QQQ, TLT, GLD, RWR]  0.000825  0.000014    59.155575
+11531  [VHT, TLT, GLD, FXI]  0.000818  0.000016    51.369447
+5482   [QQQ, TLT, GLD, IYR]  0.000809  0.000014    58.263252
+11535  [VHT, TLT, GLD, XLU]  0.000797  0.000017    47.010604
+11521  [VHT, TLT, GLD, BBH]  0.000795  0.000017    45.773166
+11532  [VHT, TLT, GLD, IBB]  0.000795  0.000017    45.769378
+11542  [VHT, TLT, GLD, VPU]  0.000793  0.000017    46.938598
+11537  [VHT, TLT, GLD, XLV]  0.000790  0.000017    45.710211
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 583/583 [00:01&lt;00:00, 364.88it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.37077988 0.25688214 0.20889924 0.16343875]
+1.0723282351557646
+0.880109098985688
+225
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_6_19.png" src="../_images/tutorial_tickers_6_19.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 12960/12960 [00:55&lt;00:00, 233.61it/s]
+  6%|▌         | 36/583 [00:00&lt;00:01, 356.36it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+                       c         r         q  sharp ratio
+3   [DIA, TLT, GLD, EWM]  0.000489  0.000013    36.396841
+4   [DIA, TLT, GLD, EWS]  0.000481  0.000014    35.086280
+12  [DIA, TLT, GLD, IBB]  0.000478  0.000014    34.679695
+21  [DIA, TLT, GLD, OIH]  0.000478  0.000014    34.676860
+9   [DIA, TLT, GLD, EZA]  0.000477  0.000014    34.665093
+20  [DIA, TLT, GLD, IXC]  0.000477  0.000014    34.645895
+11  [DIA, TLT, GLD, FXI]  0.000477  0.000014    34.641326
+7   [DIA, TLT, GLD, EWY]  0.000477  0.000014    34.641103
+1   [DIA, TLT, GLD, BBH]  0.000477  0.000014    34.640267
+16  [DIA, TLT, GLD, ILF]  0.000477  0.000014    34.640140
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 583/583 [00:01&lt;00:00, 361.73it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.20229628 0.49098431 0.24417896 0.06254045]
+1.099510078786256
+0.8303309670450653
+164
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_tickers_7_2.png" src="../_images/tutorial_tickers_7_2.png" />
+<img alt="../_images/tutorial_tickers_6_24.png" src="../_images/tutorial_tickers_6_24.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">trains</span><span class="p">)):</span>
+    <span class="n">evaluates</span> <span class="o">=</span> <span class="n">evaluate_combinations</span><span class="p">(</span><span class="n">trains</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">cluster</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">del</span> <span class="n">evaluates</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">]</span>
+    <span class="n">top_10_sharp_ratio</span> <span class="o">=</span> <span class="n">evaluates</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;sharp ratio&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">top_10_sharp_ratio</span><span class="p">)</span>
+
+    <span class="n">target</span> <span class="o">=</span> <span class="n">evals</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">filter</span><span class="p">((</span><span class="nb">list</span><span class="p">(</span><span class="n">top_10_sharp_ratio</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">MinimumVarianceOptimizer</span><span class="p">()</span>
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
+        <span class="n">assets</span><span class="o">=</span><span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span>
+        <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="n">cash</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span>
+
+    <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+        <span class="n">market</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+        <span class="n">train_span</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">optimizer</span><span class="o">.</span><span class="n">get_weights</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">yearly_total_return</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown_span</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 12960/12960 [00:54&lt;00:00, 237.40it/s]
+  6%|▌         | 35/583 [00:00&lt;00:01, 345.86it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+                          c         r             q  sharp ratio
+11677  [VHT, SHY, GLD, VDE]  0.000089  5.830171e-07   152.756743
+11701  [VHT, SHY, AGG, VDE]  0.000089  5.829951e-07   152.688287
+11725  [VHT, SHY, LQD, VDE]  0.000089  5.829939e-07   152.473713
+11675  [VHT, SHY, GLD, FXI]  0.000087  5.691501e-07   152.113441
+11699  [VHT, SHY, AGG, FXI]  0.000086  5.691080e-07   151.966833
+11723  [VHT, SHY, LQD, FXI]  0.000086  5.691080e-07   151.965474
+11706  [VHT, SHY, AGG, XLE]  0.000088  5.836803e-07   151.593971
+11730  [VHT, SHY, LQD, XLE]  0.000088  5.836791e-07   151.385531
+11682  [VHT, SHY, GLD, XLE]  0.000088  5.836791e-07   151.382155
+11684  [VHT, SHY, GLD, IXC]  0.000088  5.844668e-07   150.861317
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 583/583 [00:01&lt;00:00, 362.80it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.08269687 0.89455647 0.         0.02274666]
+1.10023548851687
+0.9820350822220292
+35
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_7_4.png" src="../_images/tutorial_tickers_7_4.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 12960/12960 [00:58&lt;00:00, 221.62it/s]
+  6%|▌         | 35/583 [00:00&lt;00:01, 345.79it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+                          c         r         q  sharp ratio
+3049   [XLF, SHY, AGG, BBH]  0.000155  0.000002    75.267060
+3025   [XLF, SHY, GLD, BBH]  0.000152  0.000002    74.218053
+12265  [VFH, SHY, AGG, BBH]  0.000150  0.000002    73.423391
+12241  [VFH, SHY, GLD, BBH]  0.000147  0.000002    72.572580
+9097   [DVY, SHY, AGG, BBH]  0.000152  0.000002    71.929477
+9073   [DVY, SHY, GLD, BBH]  0.000151  0.000002    71.656670
+3073   [XLF, SHY, LQD, BBH]  0.000146  0.000002    71.319316
+9121   [DVY, SHY, LQD, BBH]  0.000143  0.000002    68.085188
+3060   [XLF, SHY, AGG, IBB]  0.000139  0.000002    67.987073
+12289  [VFH, SHY, LQD, BBH]  0.000135  0.000002    67.367256
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 583/583 [00:01&lt;00:00, 354.98it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[5.91805487e-03 9.83643671e-01 1.14274909e-16 1.04382742e-02]
+1.033814592711859
+0.9931662691018278
+47
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_7_9.png" src="../_images/tutorial_tickers_7_9.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 12960/12960 [00:59&lt;00:00, 216.75it/s]
+  6%|▌         | 35/583 [00:00&lt;00:01, 337.80it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+                          c         r             q  sharp ratio
+12263  [VFH, SHY, GLD, XLP]  0.000091  3.146600e-07   290.360294
+5351   [IWM, SHY, GLD, XLP]  0.000091  3.146062e-07   290.191745
+455    [VBK, SHY, GLD, XLP]  0.000091  3.145839e-07   290.072755
+1607   [IJR, SHY, GLD, XLP]  0.000091  3.145785e-07   290.030756
+4775    [VB, SHY, GLD, XLP]  0.000091  3.145735e-07   289.979402
+6503   [VBR, SHY, GLD, XLP]  0.000091  3.145717e-07   289.954647
+12551  [VXF, SHY, GLD, XLP]  0.000091  3.145688e-07   289.899141
+9383   [IJH, SHY, GLD, XLP]  0.000091  3.145677e-07   289.850924
+11711  [VHT, SHY, AGG, XLP]  0.000091  3.145435e-07   289.743362
+12254  [VFH, SHY, GLD, VDC]  0.000091  3.156368e-07   289.736971
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 583/583 [00:01&lt;00:00, 359.08it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.02579195 0.97420805 0.         0.        ]
+1.0077904281993177
+0.9962794999903063
+63
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_7_14.png" src="../_images/tutorial_tickers_7_14.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 12960/12960 [00:56&lt;00:00, 229.94it/s]
+  6%|▌         | 33/583 [00:00&lt;00:01, 325.72it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+                           c         r             q  sharp ratio
+3083    [XLF, SHY, LQD, FXI]  0.000044  1.888026e-07   235.488229
+3035    [XLF, SHY, GLD, FXI]  0.000044  1.888036e-07   235.105712
+12299   [VFH, SHY, LQD, FXI]  0.000044  1.893179e-07   233.823792
+3059    [XLF, SHY, AGG, FXI]  0.000044  1.888128e-07   233.761401
+12275   [VFH, SHY, AGG, FXI]  0.000044  1.893198e-07   233.281865
+12251   [VFH, SHY, GLD, FXI]  0.000044  1.893202e-07   233.250398
+8555   [SPYG, SHY, LQD, FXI]  0.000046  1.980188e-07   231.008815
+8531   [SPYG, SHY, AGG, FXI]  0.000046  1.980197e-07   230.658928
+8507   [SPYG, SHY, GLD, FXI]  0.000046  1.980266e-07   230.118471
+8267   [SPYV, SHY, LQD, FXI]  0.000045  1.944986e-07   229.736165
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 583/583 [00:01&lt;00:00, 354.39it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.03168816 0.96831184 0.         0.        ]
+1.0152529056078736
+0.9953143039742399
+63
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_7_19.png" src="../_images/tutorial_tickers_7_19.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 12960/12960 [00:54&lt;00:00, 237.96it/s]
+  7%|▋         | 38/583 [00:00&lt;00:01, 373.04it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+                          c         r         q  sharp ratio
+12134  [VFH, TLT, AGG, VDC]  0.000086  0.000002    49.343876
+12356  [VFH, TIP, AGG, IXC]  0.000086  0.000002    49.292619
+12195  [VFH, IEF, AGG, EWM]  0.000086  0.000002    49.291900
+12123  [VFH, TLT, AGG, EWM]  0.000086  0.000002    49.224095
+2979   [XLF, IEF, AGG, EWM]  0.000089  0.000002    49.206405
+12206  [VFH, IEF, AGG, VDC]  0.000086  0.000002    49.195379
+12215  [VFH, IEF, AGG, XLP]  0.000086  0.000002    49.169682
+12143  [VFH, TLT, AGG, XLP]  0.000086  0.000002    49.167566
+12342  [VFH, TIP, AGG, EWW]  0.000086  0.000002    49.156835
+12343  [VFH, TIP, AGG, EWY]  0.000086  0.000002    49.150978
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 583/583 [00:01&lt;00:00, 369.75it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.         0.         0.94142189 0.05857811]
+1.0787382672475576
+0.8896012113467885
+81
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_7_24.png" src="../_images/tutorial_tickers_7_24.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -3118,27 +3600,33 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">target</span> <span class="o">=</span> <span class="n">market</span><span class="o">.</span><span class="n">filter</span><span class="p">((</span><span class="nb">list</span><span class="p">(</span><span class="n">top_10_r</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]))</span>
-<span class="n">optimizer</span> <span class="o">=</span> <span class="n">MinimumVarianceOptimizer</span><span class="p">()</span>
-<span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
-    <span class="n">assets</span><span class="o">=</span><span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span>
-    <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-    <span class="n">cash</span><span class="o">=</span><span class="mi">0</span>
-<span class="p">)</span>
+<span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">trains</span><span class="p">)):</span>
+    <span class="n">evaluates</span> <span class="o">=</span> <span class="n">evaluate_combinations</span><span class="p">(</span><span class="n">trains</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">cluster</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">del</span> <span class="n">evaluates</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">]</span>
+    <span class="n">top_10_q</span> <span class="o">=</span> <span class="n">evaluates</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">top_10_q</span><span class="p">)</span>
 
-<span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="n">market</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
-    <span class="n">train_span</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
-    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
-<span class="p">)</span>
-<span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">optimizer</span><span class="o">.</span><span class="n">get_weights</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">yearly_total_return</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown_span</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">evals</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">filter</span><span class="p">((</span><span class="nb">list</span><span class="p">(</span><span class="n">top_10_q</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">MinimumVarianceOptimizer</span><span class="p">()</span>
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
+        <span class="n">assets</span><span class="o">=</span><span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span>
+        <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="n">cash</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span>
+
+    <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+        <span class="n">market</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+        <span class="n">train_span</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">optimizer</span><span class="o">.</span><span class="n">get_weights</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">yearly_total_return</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown_span</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -3147,7 +3635,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 3919/3919 [00:16&lt;00:00, 240.59it/s]
+100%|██████████| 12960/12960 [00:55&lt;00:00, 232.90it/s]
+  6%|▋         | 37/583 [00:00&lt;00:01, 365.15it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3155,46 +3644,43 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[0.10309512 0.47066586 0.27277159 0.15346743]
-1.120189574668211
-0.8929398777287156
-252
+                         c         r             q  sharp ratio
+2459  [XLI, SHY, GLD, FXI]  0.000073  5.533717e-07   132.031219
+2507  [XLI, SHY, LQD, FXI]  0.000073  5.533745e-07   132.126318
+2483  [XLI, SHY, AGG, FXI]  0.000073  5.533941e-07   132.342828
+2486  [XLI, SHY, AGG, VDC]  0.000070  5.569885e-07   126.467985
+2462  [XLI, SHY, GLD, VDC]  0.000070  5.569909e-07   126.398310
+2510  [XLI, SHY, LQD, VDC]  0.000070  5.569977e-07   126.424943
+2451  [XLI, SHY, GLD, EWM]  0.000068  5.572625e-07   121.894632
+2475  [XLI, SHY, AGG, EWM]  0.000068  5.572638e-07   122.001839
+2499  [XLI, SHY, LQD, EWM]  0.000068  5.572739e-07   122.048124
+203   [DIA, SHY, LQD, FXI]  0.000076  5.575790e-07   136.951418
 </pre></div></div>
 </div>
-<div class="nboutput nblast docutils container">
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 583/583 [00:01&lt;00:00, 372.55it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_tickers_8_2.png" src="../_images/tutorial_tickers_8_2.png" />
+<div class="highlight"><pre>
+[4.76253822e-02 9.36856516e-01 4.33680869e-19 1.55181016e-02]
+1.1037545836608296
+0.9879815835501963
+40
+</pre></div></div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">target</span> <span class="o">=</span> <span class="n">market</span><span class="o">.</span><span class="n">filter</span><span class="p">((</span><span class="nb">list</span><span class="p">(</span><span class="n">top_10_q</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]))</span>
-<span class="n">optimizer</span> <span class="o">=</span> <span class="n">MinimumVarianceOptimizer</span><span class="p">()</span>
-<span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
-    <span class="n">assets</span><span class="o">=</span><span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span>
-    <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-    <span class="n">cash</span><span class="o">=</span><span class="mi">0</span>
-<span class="p">)</span>
-
-<span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="n">market</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
-    <span class="n">train_span</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
-    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
-<span class="p">)</span>
-<span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">optimizer</span><span class="o">.</span><span class="n">get_weights</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">yearly_total_return</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown_span</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_8_4.png" src="../_images/tutorial_tickers_8_4.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -3202,7 +3688,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 3919/3919 [00:16&lt;00:00, 233.06it/s]
+100%|██████████| 12960/12960 [00:57&lt;00:00, 224.42it/s]
+  6%|▋         | 37/583 [00:00&lt;00:01, 367.16it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3210,26 +3697,202 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[1.26118021e-02 9.87388198e-01 0.00000000e+00 1.95156391e-18]
-1.035601870871774
-0.9846958011357173
-66
+                          c         r         q  sharp ratio
+1883   [XLK, SHY, GLD, FXI]  0.000076  0.000002    43.571698
+10571   [VV, SHY, LQD, FXI]  0.000078  0.000002    44.853372
+10547   [VV, SHY, AGG, FXI]  0.000081  0.000002    46.112898
+10523   [VV, SHY, GLD, FXI]  0.000081  0.000002    46.555704
+1907   [XLK, SHY, AGG, FXI]  0.000078  0.000002    44.440903
+1931   [XLK, SHY, LQD, FXI]  0.000079  0.000002    45.136567
+11963  [VGT, SHY, GLD, FXI]  0.000078  0.000002    44.112978
+3315   [IVV, SHY, GLD, EWM]  0.000057  0.000002    32.513109
+3339   [IVV, SHY, AGG, EWM]  0.000057  0.000002    32.565188
+3363   [IVV, SHY, LQD, EWM]  0.000057  0.000002    32.387512
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 583/583 [00:01&lt;00:00, 373.31it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1.81775317e-02 9.81822468e-01 8.67361738e-19 0.00000000e+00]
+1.0360507128782865
+0.9933636719465633
+79
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_8_9.png" src="../_images/tutorial_tickers_8_9.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 12960/12960 [00:59&lt;00:00, 218.71it/s]
+  6%|▌         | 35/583 [00:00&lt;00:01, 321.79it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+                          c         r             q  sharp ratio
+7946   [FEZ, SHY, AGG, EWJ]  0.000072  3.035748e-07   237.534287
+7970   [FEZ, SHY, LQD, EWJ]  0.000072  3.035761e-07   237.775492
+7922   [FEZ, SHY, GLD, EWJ]  0.000072  3.035778e-07   237.969300
+7949   [FEZ, SHY, AGG, EWT]  0.000073  3.042651e-07   238.844191
+7959   [FEZ, SHY, AGG, XLU]  0.000078  3.042854e-07   255.140299
+7925   [FEZ, SHY, GLD, EWT]  0.000073  3.043274e-07   239.934447
+8546  [SPYG, SHY, LQD, EWJ]  0.000077  3.044236e-07   254.480383
+8522  [SPYG, SHY, AGG, EWJ]  0.000078  3.044262e-07   254.883477
+8498  [SPYG, SHY, GLD, EWJ]  0.000078  3.044272e-07   254.853357
+7983   [FEZ, SHY, LQD, XLU]  0.000076  3.044370e-07   250.701700
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 583/583 [00:01&lt;00:00, 364.27it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.00665256 0.98523454 0.         0.0081129 ]
+1.0062916093490124
+0.9955136414294857
+63
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_8_14.png" src="../_images/tutorial_tickers_8_14.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 12960/12960 [00:55&lt;00:00, 234.91it/s]
+  6%|▌         | 34/583 [00:00&lt;00:01, 333.37it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+                          c         r             q  sharp ratio
+3083   [XLF, SHY, LQD, FXI]  0.000044  1.888026e-07   235.488229
+3035   [XLF, SHY, GLD, FXI]  0.000044  1.888036e-07   235.105712
+3059   [XLF, SHY, AGG, FXI]  0.000044  1.888128e-07   233.761401
+3029   [XLF, SHY, GLD, EWT]  0.000042  1.890731e-07   223.001526
+3077   [XLF, SHY, LQD, EWT]  0.000042  1.890755e-07   222.960587
+3053   [XLF, SHY, AGG, EWT]  0.000042  1.890756e-07   222.963229
+12299  [VFH, SHY, LQD, FXI]  0.000044  1.893179e-07   233.823792
+12275  [VFH, SHY, AGG, FXI]  0.000044  1.893198e-07   233.281865
+12251  [VFH, SHY, GLD, FXI]  0.000044  1.893202e-07   233.250398
+12269  [VFH, SHY, AGG, EWT]  0.000042  1.897190e-07   221.908569
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 583/583 [00:01&lt;00:00, 365.19it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.03168816 0.96831184 0.         0.        ]
+1.0152529056078736
+0.9953143039742399
+63
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_8_19.png" src="../_images/tutorial_tickers_8_19.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 12960/12960 [00:53&lt;00:00, 243.30it/s]
+  6%|▋         | 37/583 [00:00&lt;00:01, 365.57it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+                          c         r             q  sharp ratio
+12287  [VFH, SHY, AGG, XLP]  0.000006  1.883168e-07    29.369760
+12311  [VFH, SHY, LQD, XLP]  0.000006  1.883185e-07    29.563610
+12263  [VFH, SHY, GLD, XLP]  0.000006  1.883198e-07    29.736774
+12306  [VFH, SHY, LQD, XLE]  0.000006  1.883325e-07    29.651287
+12258  [VFH, SHY, GLD, XLE]  0.000006  1.883327e-07    29.678062
+12253  [VFH, SHY, GLD, VDE]  0.000006  1.883729e-07    30.433155
+12277  [VFH, SHY, AGG, VDE]  0.000006  1.883730e-07    30.488982
+12282  [VFH, SHY, AGG, XLE]  0.000006  1.883743e-07    33.545414
+12301  [VFH, SHY, LQD, VDE]  0.000006  1.883763e-07    31.351917
+12278  [VFH, SHY, AGG, VDC]  0.000006  1.883812e-07    30.952869
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 583/583 [00:01&lt;00:00, 366.71it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[5.03923398e-03 9.85843625e-01 1.19804340e-17 9.11714142e-03]
+1.0427530191058967
+0.9869601220930793
+38
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_tickers_9_2.png" src="../_images/tutorial_tickers_9_2.png" />
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
-</pre></div>
+<img alt="../_images/tutorial_tickers_8_24.png" src="../_images/tutorial_tickers_8_24.png" />
 </div>
 </div>
 </section>
