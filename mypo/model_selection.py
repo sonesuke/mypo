@@ -87,9 +87,9 @@ def evaluate_combinations(market: Market, cluster: pd.DataFrame, verbose: bool =
     combinations = _make_combinations(cluster)
 
     def proc(c: Any) -> Any:  # pragma: no cover
-        from mypo.optimizer import MinimumVarianceOptimizer
+        from mypo.optimizer import MaximumDiversificationOptimizer
 
-        optimizer = MinimumVarianceOptimizer(span=50000)
+        optimizer = MaximumDiversificationOptimizer(span=50000)
         target_market = market.filter(list(c))
         optimizer.optimize(target_market, at=datetime.today())
         w = optimizer.get_weights()
