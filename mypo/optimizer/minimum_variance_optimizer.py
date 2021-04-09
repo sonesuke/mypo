@@ -17,6 +17,7 @@ class MinimumVarianceOptimizer(BaseOptimizer):
 
     _with_semi_covariance: bool
     _span: int
+    _minimum_return: Optional[float]
 
     def __init__(
         self,

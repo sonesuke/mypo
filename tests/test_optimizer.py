@@ -4,7 +4,13 @@ import numpy.testing as npt
 import pytest
 
 from mypo import Market
-from mypo.optimizer import CVaROptimizer, MaximumDiversificationOptimizer, MinimumVarianceOptimizer, SharpRatioOptimizer
+from mypo.optimizer import (
+    CVaROptimizer,
+    MaximumDiversificationOptimizer,
+    MinimumVarianceOptimizer,
+    RiskParityOptimizer,
+    SharpRatioOptimizer,
+)
 from mypo.sampler import Sampler
 
 skip_long_tests = pytest.mark.skipif(True, reason="This test takes long time.")
@@ -55,6 +61,24 @@ def test_maximum_diversification_optimizer() -> None:
     optimizer.optimize(market, market.get_last_date())
     weights = optimizer.get_weights()
     npt.assert_almost_equal(weights, [0.38076, 0.61924], decimal=5)
+
+
+def test_risk_parity_optimizer() -> None:
+    market = Market.load(TEST_DATA)
+    market = market.head(200)
+    optimizer = RiskParityOptimizer()
+    optimizer.optimize(market, market.get_last_date())
+    weights = optimizer.get_weights()
+    npt.assert_almost_equal(weights, [0.38077, 0.61923], decimal=5)
+
+
+def test_risk_parity_optimizer_with_target() -> None:
+    market = Market.load(TEST_DATA)
+    market = market.head(200)
+    optimizer = RiskParityOptimizer(risk_target=[0.75, 0.25])
+    optimizer.optimize(market, market.get_last_date())
+    weights = optimizer.get_weights()
+    npt.assert_almost_equal(weights, [0.4626, 0.5374], decimal=5)
 
 
 def test_cvar_optimizer() -> None:
