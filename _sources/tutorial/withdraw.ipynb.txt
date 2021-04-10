@@ -17,10 +17,10 @@
    "execution_count": 1,
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-04-08T21:16:31.601349Z",
-     "iopub.status.busy": "2021-04-08T21:16:31.600883Z",
-     "iopub.status.idle": "2021-04-08T21:16:32.015381Z",
-     "shell.execute_reply": "2021-04-08T21:16:32.016088Z"
+     "iopub.execute_input": "2021-04-10T00:10:07.833686Z",
+     "iopub.status.busy": "2021-04-10T00:10:07.832904Z",
+     "iopub.status.idle": "2021-04-10T00:10:08.386067Z",
+     "shell.execute_reply": "2021-04-10T00:10:08.386675Z"
     },
     "pycharm": {
      "is_executing": true
@@ -36,10 +36,10 @@
    "execution_count": 2,
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-04-08T21:16:32.019153Z",
-     "iopub.status.busy": "2021-04-08T21:16:32.018203Z",
-     "iopub.status.idle": "2021-04-08T21:16:33.262745Z",
-     "shell.execute_reply": "2021-04-08T21:16:33.262249Z"
+     "iopub.execute_input": "2021-04-10T00:10:08.390120Z",
+     "iopub.status.busy": "2021-04-10T00:10:08.388860Z",
+     "iopub.status.idle": "2021-04-10T00:10:10.388939Z",
+     "shell.execute_reply": "2021-04-10T00:10:10.389676Z"
     },
     "pycharm": {
      "is_executing": true,
@@ -51,7 +51,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "100%|██████████| 599/599 [00:01<00:00, 502.46it/s]\n"
+      "100%|██████████| 599/599 [00:01<00:00, 310.66it/s]\n"
      ]
     }
    ],
@@ -77,10 +77,10 @@
    "execution_count": 3,
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-04-08T21:16:33.266217Z",
-     "iopub.status.busy": "2021-04-08T21:16:33.265701Z",
-     "iopub.status.idle": "2021-04-08T21:16:33.828930Z",
-     "shell.execute_reply": "2021-04-08T21:16:33.828455Z"
+     "iopub.execute_input": "2021-04-10T00:10:10.396647Z",
+     "iopub.status.busy": "2021-04-10T00:10:10.395292Z",
+     "iopub.status.idle": "2021-04-10T00:10:11.194167Z",
+     "shell.execute_reply": "2021-04-10T00:10:11.193668Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -120,10 +120,10 @@
    "execution_count": 4,
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-04-08T21:16:33.833934Z",
-     "iopub.status.busy": "2021-04-08T21:16:33.833171Z",
-     "iopub.status.idle": "2021-04-08T21:16:35.088402Z",
-     "shell.execute_reply": "2021-04-08T21:16:35.087993Z"
+     "iopub.execute_input": "2021-04-10T00:10:11.200520Z",
+     "iopub.status.busy": "2021-04-10T00:10:11.199695Z",
+     "iopub.status.idle": "2021-04-10T00:10:13.103295Z",
+     "shell.execute_reply": "2021-04-10T00:10:13.104044Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -134,7 +134,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "100%|██████████| 599/599 [00:01<00:00, 495.33it/s]\n"
+      "100%|██████████| 599/599 [00:01<00:00, 324.51it/s]\n"
      ]
     }
    ],
@@ -161,10 +161,10 @@
    "execution_count": 5,
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-04-08T21:16:35.106556Z",
-     "iopub.status.busy": "2021-04-08T21:16:35.093659Z",
-     "iopub.status.idle": "2021-04-08T21:16:35.419597Z",
-     "shell.execute_reply": "2021-04-08T21:16:35.419174Z"
+     "iopub.execute_input": "2021-04-10T00:10:13.125725Z",
+     "iopub.status.busy": "2021-04-10T00:10:13.111310Z",
+     "iopub.status.idle": "2021-04-10T00:10:13.597012Z",
+     "shell.execute_reply": "2021-04-10T00:10:13.596215Z"
     },
     "pycharm": {
      "name": "#%%\n"
