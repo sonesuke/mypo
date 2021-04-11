@@ -28,7 +28,7 @@ class RiskParityOptimizer(BaseOptimizer):
         self._risk_target = safe_cast(risk_target) if risk_target is not None else None
         super().__init__([1])
 
-    def optimize(self, market: Market, at: datetime) -> None:
+    def optimize(self, market: Market, at: datetime) -> np.float64:
         """Optimize weights.
 
         Args:
@@ -65,3 +65,4 @@ class RiskParityOptimizer(BaseOptimizer):
             constraints=cons,
         )
         self._weights = safe_cast(minout.x)
+        return np.float64(minout.fun)
