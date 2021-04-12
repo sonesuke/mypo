@@ -259,6 +259,22 @@ class Market(object):
             expense_ratio=self._expense_ratio,
         )
 
+    def get_summary(self) -> pd.DataFrame:
+        """Get summary.
+
+        Returns:
+            Summary
+        """
+        rate_of_change = self.get_rate_of_change()
+        return pd.DataFrame(
+            {
+                "daily return": rate_of_change.mean(),
+                "variance": rate_of_change.var(),
+                "sharp ratio": rate_of_change.mean() / rate_of_change.var(),
+            },
+            index=self.get_tickers(),
+        )
+
     def get_raw(self) -> pd.DataFrame:
         """Get price data from stored market data.
 
