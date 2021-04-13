@@ -92,4 +92,4 @@ def test_summary() -> None:
     market = Market.load(TEST_DATA)
     summary = market.get_summary()
     print(summary)
-    npt.assert_almost_equal(summary.loc["VOO", "r"], 0.000623, decimal=5)
+    npt.assert_almost_equal(summary.loc["VOO", "daily return"], 0.000623, decimal=5)
