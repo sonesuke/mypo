@@ -19,10 +19,10 @@
    "id": "complicated-personal",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-04-09T23:57:08.359148Z",
-     "iopub.status.busy": "2021-04-09T23:57:08.354775Z",
-     "iopub.status.idle": "2021-04-09T23:57:08.964700Z",
-     "shell.execute_reply": "2021-04-09T23:57:08.963939Z"
+     "iopub.execute_input": "2021-04-16T13:27:28.302542Z",
+     "iopub.status.busy": "2021-04-16T13:27:28.301872Z",
+     "iopub.status.idle": "2021-04-16T13:27:28.877791Z",
+     "shell.execute_reply": "2021-04-16T13:27:28.877075Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -40,10 +40,10 @@
    "id": "flying-penguin",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-04-09T23:57:08.977739Z",
-     "iopub.status.busy": "2021-04-09T23:57:08.973025Z",
-     "iopub.status.idle": "2021-04-09T23:57:11.915424Z",
-     "shell.execute_reply": "2021-04-09T23:57:11.915944Z"
+     "iopub.execute_input": "2021-04-16T13:27:28.889696Z",
+     "iopub.status.busy": "2021-04-16T13:27:28.884883Z",
+     "iopub.status.idle": "2021-04-16T13:27:32.433181Z",
+     "shell.execute_reply": "2021-04-16T13:27:32.432605Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -64,10 +64,10 @@
    "id": "hidden-dinner",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-04-09T23:57:11.921301Z",
-     "iopub.status.busy": "2021-04-09T23:57:11.920620Z",
-     "iopub.status.idle": "2021-04-10T00:00:33.917232Z",
-     "shell.execute_reply": "2021-04-10T00:00:33.917730Z"
+     "iopub.execute_input": "2021-04-16T13:27:32.439963Z",
+     "iopub.status.busy": "2021-04-16T13:27:32.437613Z",
+     "iopub.status.idle": "2021-04-16T13:30:41.997170Z",
+     "shell.execute_reply": "2021-04-16T13:30:41.997702Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -101,7 +101,7 @@
        "            }\n",
        "        </style>\n",
        "      <progress value='1100' class='' max='1100' style='width:300px; height:20px; vertical-align: middle;'></progress>\n",
-       "      100.00% [1100/1100 00:13<00:00 Sampling chain 0, 0 divergences]\n",
+       "      100.00% [1100/1100 00:11<00:00 Sampling chain 0, 0 divergences]\n",
        "    </div>\n",
        "    "
       ],
@@ -130,7 +130,7 @@
        "            }\n",
        "        </style>\n",
        "      <progress value='1100' class='' max='1100' style='width:300px; height:20px; vertical-align: middle;'></progress>\n",
-       "      100.00% [1100/1100 00:11<00:00 Sampling chain 1, 0 divergences]\n",
+       "      100.00% [1100/1100 00:09<00:00 Sampling chain 1, 0 divergences]\n",
        "    </div>\n",
        "    "
       ],
@@ -159,7 +159,7 @@
        "            }\n",
        "        </style>\n",
        "      <progress value='1100' class='' max='1100' style='width:300px; height:20px; vertical-align: middle;'></progress>\n",
-       "      100.00% [1100/1100 00:14<00:00 Sampling chain 2, 0 divergences]\n",
+       "      100.00% [1100/1100 00:11<00:00 Sampling chain 2, 0 divergences]\n",
        "    </div>\n",
        "    "
       ],
@@ -174,7 +174,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws total) took 40 seconds.\n"
+      "Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws total) took 33 seconds.\n"
      ]
     }
    ],
@@ -200,10 +200,10 @@
    "id": "hearing-norfolk",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-04-10T00:00:33.925982Z",
-     "iopub.status.busy": "2021-04-10T00:00:33.922521Z",
-     "iopub.status.idle": "2021-04-10T00:00:34.568644Z",
-     "shell.execute_reply": "2021-04-10T00:00:34.568087Z"
+     "iopub.execute_input": "2021-04-16T13:30:42.005651Z",
+     "iopub.status.busy": "2021-04-16T13:30:42.004672Z",
+     "iopub.status.idle": "2021-04-16T13:30:42.547433Z",
+     "shell.execute_reply": "2021-04-16T13:30:42.548182Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -273,10 +273,10 @@
    "id": "welcome-range",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-04-10T00:00:34.576698Z",
-     "iopub.status.busy": "2021-04-10T00:00:34.572588Z",
-     "iopub.status.idle": "2021-04-10T00:00:35.364367Z",
-     "shell.execute_reply": "2021-04-10T00:00:35.364921Z"
+     "iopub.execute_input": "2021-04-16T13:30:42.556306Z",
+     "iopub.status.busy": "2021-04-16T13:30:42.554548Z",
+     "iopub.status.idle": "2021-04-16T13:30:43.227955Z",
+     "shell.execute_reply": "2021-04-16T13:30:43.226785Z"
     }
    },
    "outputs": [
@@ -336,10 +336,10 @@
    "id": "bibliographic-future",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-04-10T00:00:35.372160Z",
-     "iopub.status.busy": "2021-04-10T00:00:35.368950Z",
-     "iopub.status.idle": "2021-04-10T00:00:35.967341Z",
-     "shell.execute_reply": "2021-04-10T00:00:35.966750Z"
+     "iopub.execute_input": "2021-04-16T13:30:43.233495Z",
+     "iopub.status.busy": "2021-04-16T13:30:43.232157Z",
+     "iopub.status.idle": "2021-04-16T13:30:43.780790Z",
+     "shell.execute_reply": "2021-04-16T13:30:43.780213Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -402,10 +402,10 @@
    "id": "twenty-verification",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-04-10T00:00:35.977501Z",
-     "iopub.status.busy": "2021-04-10T00:00:35.973434Z",
-     "iopub.status.idle": "2021-04-10T00:00:36.584072Z",
-     "shell.execute_reply": "2021-04-10T00:00:36.583033Z"
+     "iopub.execute_input": "2021-04-16T13:30:43.786949Z",
+     "iopub.status.busy": "2021-04-16T13:30:43.785546Z",
+     "iopub.status.idle": "2021-04-16T13:30:44.298376Z",
+     "shell.execute_reply": "2021-04-16T13:30:44.297815Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -468,10 +468,10 @@
    "id": "subject-sapphire",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-04-10T00:00:36.590963Z",
-     "iopub.status.busy": "2021-04-10T00:00:36.589432Z",
-     "iopub.status.idle": "2021-04-10T00:00:37.179280Z",
-     "shell.execute_reply": "2021-04-10T00:00:37.178739Z"
+     "iopub.execute_input": "2021-04-16T13:30:44.306556Z",
+     "iopub.status.busy": "2021-04-16T13:30:44.304321Z",
+     "iopub.status.idle": "2021-04-16T13:30:44.807220Z",
+     "shell.execute_reply": "2021-04-16T13:30:44.807712Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -534,10 +534,10 @@
    "id": "greenhouse-somewhere",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-04-10T00:00:37.189380Z",
-     "iopub.status.busy": "2021-04-10T00:00:37.187425Z",
-     "iopub.status.idle": "2021-04-10T00:00:37.772396Z",
-     "shell.execute_reply": "2021-04-10T00:00:37.771913Z"
+     "iopub.execute_input": "2021-04-16T13:30:44.814055Z",
+     "iopub.status.busy": "2021-04-16T13:30:44.812755Z",
+     "iopub.status.idle": "2021-04-16T13:30:45.316225Z",
+     "shell.execute_reply": "2021-04-16T13:30:45.316717Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -600,10 +600,10 @@
    "id": "grateful-intelligence",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-04-10T00:00:37.790273Z",
-     "iopub.status.busy": "2021-04-10T00:00:37.776635Z",
-     "iopub.status.idle": "2021-04-10T00:00:38.387606Z",
-     "shell.execute_reply": "2021-04-10T00:00:38.387072Z"
+     "iopub.execute_input": "2021-04-16T13:30:45.324109Z",
+     "iopub.status.busy": "2021-04-16T13:30:45.322474Z",
+     "iopub.status.idle": "2021-04-16T13:30:45.864922Z",
+     "shell.execute_reply": "2021-04-16T13:30:45.864345Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -666,10 +666,10 @@
    "id": "agricultural-telescope",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-04-10T00:00:38.394788Z",
-     "iopub.status.busy": "2021-04-10T00:00:38.392665Z",
-     "iopub.status.idle": "2021-04-10T00:00:39.115769Z",
-     "shell.execute_reply": "2021-04-10T00:00:39.116859Z"
+     "iopub.execute_input": "2021-04-16T13:30:45.870741Z",
+     "iopub.status.busy": "2021-04-16T13:30:45.869526Z",
+     "iopub.status.idle": "2021-04-16T13:30:46.518285Z",
+     "shell.execute_reply": "2021-04-16T13:30:46.518776Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -732,10 +732,10 @@
    "id": "piano-radiation",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-04-10T00:00:39.123869Z",
-     "iopub.status.busy": "2021-04-10T00:00:39.121812Z",
-     "iopub.status.idle": "2021-04-10T00:00:39.715012Z",
-     "shell.execute_reply": "2021-04-10T00:00:39.714454Z"
+     "iopub.execute_input": "2021-04-16T13:30:46.524603Z",
+     "iopub.status.busy": "2021-04-16T13:30:46.523196Z",
+     "iopub.status.idle": "2021-04-16T13:30:47.015822Z",
+     "shell.execute_reply": "2021-04-16T13:30:47.015259Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -798,10 +798,10 @@
    "id": "needed-azerbaijan",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-04-10T00:00:39.720335Z",
-     "iopub.status.busy": "2021-04-10T00:00:39.719076Z",
-     "iopub.status.idle": "2021-04-10T00:00:40.309891Z",
-     "shell.execute_reply": "2021-04-10T00:00:40.309344Z"
+     "iopub.execute_input": "2021-04-16T13:30:47.022518Z",
+     "iopub.status.busy": "2021-04-16T13:30:47.020709Z",
+     "iopub.status.idle": "2021-04-16T13:30:47.526083Z",
+     "shell.execute_reply": "2021-04-16T13:30:47.525512Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -864,10 +864,10 @@
    "id": "colored-committee",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-04-10T00:00:40.315740Z",
-     "iopub.status.busy": "2021-04-10T00:00:40.313756Z",
-     "iopub.status.idle": "2021-04-10T00:00:40.910346Z",
-     "shell.execute_reply": "2021-04-10T00:00:40.909704Z"
+     "iopub.execute_input": "2021-04-16T13:30:47.532019Z",
+     "iopub.status.busy": "2021-04-16T13:30:47.529995Z",
+     "iopub.status.idle": "2021-04-16T13:30:48.035302Z",
+     "shell.execute_reply": "2021-04-16T13:30:48.035824Z"
     },
     "pycharm": {
      "name": "#%%\n"

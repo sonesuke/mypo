@@ -417,6 +417,7 @@ div.rendered_html tbody tr:hover {
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">loader</span> <span class="o">=</span> <span class="n">Loader</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;/app/docs/tutorial/all.bin&#39;</span><span class="p">)</span>
 <span class="n">loader</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">since</span><span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2005</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
 <span class="n">market</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">get_market</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -3000,12 +3001,9 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">trains</span><span class="p">)):</span>
-    <span class="n">evaluates</span> <span class="o">=</span> <span class="n">evaluate_combinations</span><span class="p">(</span><span class="n">trains</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">cluster</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="k">del</span> <span class="n">evaluates</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">]</span>
-    <span class="n">top_10_r</span> <span class="o">=</span> <span class="n">evaluates</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">top_10_r</span><span class="p">)</span>
-
-    <span class="n">target</span> <span class="o">=</span> <span class="n">evals</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">filter</span><span class="p">((</span><span class="nb">list</span><span class="p">(</span><span class="n">top_10_r</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">evaluates</span> <span class="o">=</span> <span class="n">evaluate_combinations</span><span class="p">(</span><span class="n">trains</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">cluster</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">MaximumDiversificationOptimizer</span><span class="p">(),</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">evaluates</span><span class="p">[</span><span class="s1">&#39;combinations&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">evals</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">filter</span><span class="p">((</span><span class="nb">list</span><span class="p">(</span><span class="n">evaluates</span><span class="p">[</span><span class="s1">&#39;combinations&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]))</span>
     <span class="n">optimizer</span> <span class="o">=</span> <span class="n">MaximumDiversificationOptimizer</span><span class="p">()</span>
     <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
         <span class="n">assets</span><span class="o">=</span><span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span>
@@ -3034,8 +3032,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 12960/12960 [01:37&lt;00:00, 133.40it/s]
-  4%|▍         | 22/583 [00:00&lt;00:02, 213.62it/s]
+100%|██████████| 12960/12960 [01:13&lt;00:00, 175.17it/s]
+  4%|▎         | 21/583 [00:00&lt;00:02, 206.68it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3043,17 +3041,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-                          c         r         q  sharp ratio
-9520   [EPP, TLT, GLD, ILF]  0.000709  0.000024    29.980434
-7216   [IEV, TLT, GLD, ILF]  0.000692  0.000024    28.800461
-10096  [EFA, TLT, GLD, ILF]  0.000688  0.000024    29.209367
-9522   [EPP, TLT, GLD, XLE]  0.000686  0.000024    29.031630
-9525   [EPP, TLT, GLD, OIH]  0.000680  0.000024    27.961399
-3477   [EEM, TLT, GLD, OIH]  0.000679  0.000025    27.675041
-9517   [EPP, TLT, GLD, VDE]  0.000679  0.000024    28.621952
-3472   [EEM, TLT, GLD, ILF]  0.000678  0.000024    28.347694
-3474   [EEM, TLT, GLD, XLE]  0.000677  0.000024    28.293619
-3469   [EEM, TLT, GLD, VDE]  0.000671  0.000024    28.043641
+[&#39;IXN&#39;, &#39;SHY&#39;, &#39;GLD&#39;, &#39;OIH&#39;]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3061,7 +3049,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 583/583 [00:02&lt;00:00, 229.12it/s]
+100%|██████████| 583/583 [00:02&lt;00:00, 240.18it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3069,10 +3057,10 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[0.0964471  0.66007203 0.10443718 0.13904368]
-1.1470914891179336
-0.888836034300415
-103
+[0.06813748 0.88622321 0.01744152 0.02819779]
+1.098561351084474
+0.9783339582062425
+41
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3087,8 +3075,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 12960/12960 [01:39&lt;00:00, 129.82it/s]
-  4%|▎         | 21/583 [00:00&lt;00:02, 193.45it/s]
+100%|██████████| 12960/12960 [01:16&lt;00:00, 169.57it/s]
+  4%|▍         | 23/583 [00:00&lt;00:02, 225.32it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3096,17 +3084,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-                          c         r         q  sharp ratio
-9097   [DVY, SHY, AGG, BBH]  0.000118  0.000003    47.050023
-3049   [XLF, SHY, AGG, BBH]  0.000110  0.000003    44.025849
-6217   [IXJ, SHY, AGG, BBH]  0.000109  0.000003    37.642352
-12265  [VFH, SHY, AGG, BBH]  0.000108  0.000002    43.928325
-9073   [DVY, SHY, GLD, BBH]  0.000107  0.000003    38.914312
-6193   [IXJ, SHY, GLD, BBH]  0.000107  0.000003    32.006411
-3025   [XLF, SHY, GLD, BBH]  0.000104  0.000003    39.699382
-3073   [XLF, SHY, LQD, BBH]  0.000101  0.000002    40.988013
-12241  [VFH, SHY, GLD, BBH]  0.000099  0.000003    38.295442
-9121   [DVY, SHY, LQD, BBH]  0.000099  0.000002    39.693529
+[&#39;XLF&#39;, &#39;SHY&#39;, &#39;GLD&#39;, &#39;FXI&#39;]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3114,7 +3092,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 583/583 [00:02&lt;00:00, 217.06it/s]
+100%|██████████| 583/583 [00:02&lt;00:00, 238.58it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3122,10 +3100,10 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[0.02868058 0.91650329 0.02248673 0.0323294 ]
-1.0437914433799493
-0.99060606292439
-47
+[0.028567   0.94087574 0.02408096 0.00647631]
+1.0311685283066176
+0.9894432044487373
+48
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3140,8 +3118,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 12960/12960 [01:44&lt;00:00, 124.31it/s]
-  4%|▎         | 21/583 [00:00&lt;00:02, 209.87it/s]
+100%|██████████| 12960/12960 [01:19&lt;00:00, 162.60it/s]
+  4%|▎         | 21/583 [00:00&lt;00:02, 208.13it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3149,17 +3127,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-                          c         r         q  sharp ratio
-1441   [IJR, TLT, GLD, BBH]  0.001038  0.000032    32.073599
-289    [VBK, TLT, GLD, BBH]  0.001024  0.000034    30.479097
-6063   [IXJ, TLT, GLD, XLU]  0.001010  0.000020    49.897552
-11520  [VHT, TLT, GLD, PPH]  0.001008  0.000022    45.514260
-6070   [IXJ, TLT, GLD, VPU]  0.001008  0.000021    48.493559
-8929   [DVY, TLT, GLD, BBH]  0.001007  0.000022    46.102408
-6048   [IXJ, TLT, GLD, PPH]  0.001006  0.000022    45.867318
-6060   [IXJ, TLT, GLD, IBB]  0.001002  0.000023    42.669144
-1455   [IJR, TLT, GLD, XLU]  0.001000  0.000024    42.011558
-5473   [QQQ, TLT, GLD, BBH]  0.001000  0.000030    33.634906
+[&#39;FEZ&#39;, &#39;SHY&#39;, &#39;GLD&#39;, &#39;OIH&#39;]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3167,7 +3135,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 583/583 [00:02&lt;00:00, 232.13it/s]
+100%|██████████| 583/583 [00:02&lt;00:00, 234.43it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3175,10 +3143,10 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[0.24338619 0.45815906 0.18906346 0.10939129]
-1.1287350481870075
-0.9325821388309419
-102
+[0.02064732 0.94996212 0.00787938 0.02151118]
+1.0044952179707747
+0.9887534696562819
+133
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3193,8 +3161,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 12960/12960 [01:41&lt;00:00, 127.23it/s]
-  4%|▍         | 24/583 [00:00&lt;00:02, 230.34it/s]
+100%|██████████| 12960/12960 [01:18&lt;00:00, 165.45it/s]
+  4%|▍         | 22/583 [00:00&lt;00:02, 217.29it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3202,17 +3170,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-                          c         r         q  sharp ratio
-11539  [VHT, TLT, GLD, RWR]  0.000797  0.000016    49.547191
-11531  [VHT, TLT, GLD, FXI]  0.000791  0.000016    48.129668
-11532  [VHT, TLT, GLD, IBB]  0.000776  0.000021    37.538192
-11530  [VHT, TLT, GLD, IYR]  0.000773  0.000016    47.883135
-11521  [VHT, TLT, GLD, BBH]  0.000771  0.000021    37.099571
-5491   [QQQ, TLT, GLD, RWR]  0.000758  0.000014    53.370166
-5484   [QQQ, TLT, GLD, IBB]  0.000757  0.000017    44.285925
-5483   [QQQ, TLT, GLD, FXI]  0.000757  0.000015    50.997673
-5473   [QQQ, TLT, GLD, BBH]  0.000754  0.000017    43.912265
-11535  [VHT, TLT, GLD, XLU]  0.000751  0.000017    43.695444
+[&#39;XLF&#39;, &#39;SHY&#39;, &#39;GLD&#39;, &#39;EWZ&#39;]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3220,7 +3178,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 583/583 [00:02&lt;00:00, 238.57it/s]
+100%|██████████| 583/583 [00:02&lt;00:00, 241.29it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3228,10 +3186,10 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[0.35334839 0.23554567 0.2127387  0.19836724]
-1.071812024324441
-0.8838619973527043
-225
+[0.04344259 0.94158389 0.         0.01497352]
+1.0220698294066133
+0.9927104926134898
+85
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3246,8 +3204,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 12960/12960 [01:41&lt;00:00, 127.86it/s]
-  3%|▎         | 20/583 [00:00&lt;00:02, 197.33it/s]
+100%|██████████| 12960/12960 [01:16&lt;00:00, 168.50it/s]
+  4%|▍         | 22/583 [00:00&lt;00:02, 218.60it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3255,17 +3213,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-                           c         r         q  sharp ratio
-11      [DIA, TLT, GLD, FXI]  0.000550  0.000016    34.556073
-6635    [IXN, TLT, GLD, FXI]  0.000539  0.000021    25.619306
-11819   [VGT, TLT, GLD, FXI]  0.000538  0.000020    26.315679
-1739    [XLK, TLT, GLD, FXI]  0.000531  0.000020    26.274147
-8       [DIA, TLT, GLD, EWZ]  0.000525  0.000019    27.348472
-2891    [XLF, TLT, GLD, FXI]  0.000518  0.000013    38.548294
-8363   [SPYG, TLT, GLD, FXI]  0.000518  0.000018    28.576697
-9       [DIA, TLT, GLD, EZA]  0.000514  0.000018    28.899224
-5483    [QQQ, TLT, GLD, FXI]  0.000514  0.000021    24.921148
-16      [DIA, TLT, GLD, ILF]  0.000513  0.000017    29.728579
+[&#39;VFH&#39;, &#39;SHY&#39;, &#39;GLD&#39;, &#39;EWZ&#39;]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3273,7 +3221,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 583/583 [00:02&lt;00:00, 232.96it/s]
+100%|██████████| 583/583 [00:02&lt;00:00, 242.35it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3281,10 +3229,10 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[0.26562927 0.51071919 0.15329676 0.07035477]
-1.1267404947277075
-0.8426698102339271
-164
+[0.00641356 0.97411801 0.00571856 0.01374987]
+1.0412315500623142
+0.9770225312604802
+93
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
