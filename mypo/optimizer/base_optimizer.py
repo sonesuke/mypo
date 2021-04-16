@@ -32,7 +32,7 @@ class BaseOptimizer(object):
         """
         return self._weights
 
-    def optimize(self, market: Market, at: datetime) -> None:
+    def optimize(self, market: Market, at: datetime) -> np.float64:
         """Optimize weights.
 
         Args:

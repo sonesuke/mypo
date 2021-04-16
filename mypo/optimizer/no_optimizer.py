@@ -2,6 +2,7 @@
 from datetime import datetime
 from typing import Optional
 
+import numpy as np
 import numpy.typing as npt
 
 from mypo import Market
@@ -19,7 +20,7 @@ class NoOptimizer(BaseOptimizer):
         """
         super().__init__(weights)
 
-    def optimize(self, market: Market, at: datetime) -> None:
+    def optimize(self, market: Market, at: datetime) -> np.float64:
         """Optimize weights.
 
         Args:

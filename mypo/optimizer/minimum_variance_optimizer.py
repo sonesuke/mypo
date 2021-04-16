@@ -37,7 +37,7 @@ class MinimumVarianceOptimizer(BaseOptimizer):
         self._minimum_return = minimum_return
         super().__init__([1])
 
-    def optimize(self, market: Market, at: datetime) -> None:
+    def optimize(self, market: Market, at: datetime) -> np.float64:
         """Optimize weights.
 
         Args:
@@ -71,3 +71,4 @@ class MinimumVarianceOptimizer(BaseOptimizer):
         bounds = [[0.0, 1.0] for i in range(n)]
         minout = minimize(fn, x, args=(Q), method="SLSQP", bounds=bounds, constraints=cons)
         self._weights = safe_cast(minout.x)
+        return np.float64(minout.fun)

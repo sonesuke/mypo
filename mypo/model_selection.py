@@ -10,6 +10,7 @@ from scipy.cluster.vq import kmeans2
 from tqdm import tqdm
 
 from mypo.market import Market
+from mypo.optimizer import BaseOptimizer
 
 
 def split_n_periods(market: Market, n: int, train_span: int) -> Tuple[List[Market], List[Market]]:
@@ -72,7 +73,9 @@ def _make_combinations(cluster: pd.DataFrame) -> List[Tuple[str]]:
     return list(itertools.product(*clusters))
 
 
-def evaluate_combinations(market: Market, cluster: pd.DataFrame, verbose: bool = False) -> pd.DataFrame:
+def evaluate_combinations(
+    market: Market, cluster: pd.DataFrame, optimizer: BaseOptimizer, verbose: bool = False
+) -> pd.DataFrame:
     """Evaluate combinations.
 
     Args:
@@ -87,16 +90,10 @@ def evaluate_combinations(market: Market, cluster: pd.DataFrame, verbose: bool =
     combinations = _make_combinations(cluster)
 
     def proc(c: Any) -> Any:  # pragma: no cover
-        from mypo.optimizer import MaximumDiversificationOptimizer
-
-        optimizer = MaximumDiversificationOptimizer(span=50000)
         target_market = market.filter(list(c))
-        optimizer.optimize(target_market, at=datetime.today())
-        w = optimizer.get_weights()
-        r = target_market.get_rate_of_change().to_numpy()
-        q = np.dot(np.dot(w, np.cov(r.T)), w.T)
-        r = np.dot(w, r.mean(axis=0))
-        return target_market.get_tickers(), r, q, w
+        optimized = optimizer.optimize(target_market, at=datetime.today())
+        weights = optimizer.get_weights()
+        return target_market.get_tickers(), optimized, weights
 
     def wrap(x: Any, total: Any) -> Any:
         """Wrapper for tqdm."""
@@ -106,11 +103,9 @@ def evaluate_combinations(market: Market, cluster: pd.DataFrame, verbose: bool =
 
     df = pd.DataFrame(
         {
-            "c": [r[0] for r in result],
-            "r": [r[1] for r in result],
-            "q": [r[2] for r in result],
-            "w": [r[3] for r in result],
+            "combinations": [r[0] for r in result],
+            "optimized": [r[1] for r in result],
+            "weights": [r[2] for r in result],
         }
     )
-    df["sharp ratio"] = df["r"] / df["q"]
-    return df
+    return df.sort_values("optimized")

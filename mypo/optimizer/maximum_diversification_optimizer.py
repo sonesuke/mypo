@@ -28,7 +28,7 @@ class MaximumDiversificationOptimizer(BaseOptimizer):
         self._span = span
         super().__init__([1])
 
-    def optimize(self, market: Market, at: datetime) -> None:
+    def optimize(self, market: Market, at: datetime) -> np.float64:
         """Optimize weights.
 
         Args:
@@ -64,3 +64,4 @@ class MaximumDiversificationOptimizer(BaseOptimizer):
             constraints=cons,
         )
         self._weights = safe_cast(minout.x)
+        return np.float64(minout.fun)
