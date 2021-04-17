@@ -53,11 +53,13 @@ class CVaROptimizer(BaseOptimizer):
         x = np.ones(n) / n
 
         def fn(x: np.ndarray, sequence: np.ndarray) -> np.float64:
-            r = np.dot(sequence, x.T) / np.max(sequence)
+            r = np.dot(sequence, x.T)
             return -np.float64(np.mean(np.where(r < np.quantile(r, self._beta), r, 0)))
 
         cons = {"type": "eq", "fun": lambda x: np.sum(x) - 1}
         bounds = [[0.0, 1.0] for i in range(n)]
-        minout = minimize(fn, x, args=(sample), method="SLSQP", bounds=bounds, constraints=cons)
+        minout = minimize(
+            fn, x, args=(sample), method="SLSQP", bounds=bounds, constraints=cons, tol=1e-6 * np.max(sample)
+        )
         self._weights = safe_cast(minout.x)
         return np.float64(minout.fun)
