@@ -8,6 +8,7 @@ from tqdm import tqdm
 
 from mypo.common import calc_capital_gain_tax, calc_fee, calc_income_gain_tax, safe_cast
 from mypo.market import Market
+from mypo.model_selection import Fold
 from mypo.rebalancer.base_rebalancer import BaseRebalancer
 from mypo.rebalancer.no_rebalancer import NoRebalancer
 from mypo.reporter import Reporter
@@ -140,6 +141,15 @@ class Runner(object):
 
         for i in wrap(target):
             self.apply(market, i)
+
+    def run_fold(self, fold: Fold, verbose: bool = False) -> None:
+        """Run simulation.
+
+        Args:
+            fold: Fold.
+            verbose: Show progress.
+        """
+        self.run(fold.get_valid(), fold.get_train_span(), verbose)
 
     def report(self) -> pd.DataFrame:
         """Report simulation.
