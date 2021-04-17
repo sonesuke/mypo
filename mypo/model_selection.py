@@ -1,4 +1,7 @@
 """Utility functions for model selection."""
+
+from __future__ import annotations
+
 import itertools
 from datetime import datetime
 from typing import Any, List, Tuple
@@ -13,12 +16,63 @@ from mypo.market import Market
 from mypo.optimizer import BaseOptimizer
 
 
-def split_n_periods(market: Market, n: int, train_span: int) -> Tuple[List[Market], List[Market]]:
+class Fold(object):
+
+    _market: Market
+    _train_span: int
+
+    def __init__(self, market: Market, train_span: int):
+        """Construct this object.
+
+        Args:
+            market: Market.
+            train_span: Training span.
+        """
+        self._market = market
+        self._train_span = train_span
+
+    def get_train_span(self) -> int:
+        """Get train span.
+
+        Returns:
+            Train span.
+        """
+        return self._train_span
+
+    def get_train(self) -> Market:
+        """Get train.
+
+        Returns:
+            Train.
+        """
+        return self._market.extract(self._market.get_index()[0 : self._train_span])
+
+    def get_valid(self) -> Market:
+        """Get validation.
+
+        Returns:
+            Validation.
+        """
+        return self._market
+
+    def filter(self, tickers: List[str]) -> Fold:
+        """Filter tickers.
+
+        Args:
+            tickers: Remaining tickers.
+
+        Returns:
+            Filtered Fold.
+        """
+        return Fold(market=self._market.filter(tickers), train_span=self._train_span)
+
+
+def split_k_folds(market: Market, k: int, train_span: int) -> List[Fold]:
     """Split market to n periods.
 
     Args:
         market: Market data
-        n: Count of split
+        k: Count of split
         train_span: Train span if you want to specify.
 
     Returns:
@@ -27,15 +81,13 @@ def split_n_periods(market: Market, n: int, train_span: int) -> Tuple[List[Marke
     index = market.get_index()
     len_index = len(index)
 
-    eval_span = int((len_index - train_span) / n)
-    train_market: List[Market] = []
-    eval_market: List[Market] = []
-    for i in range(n):
+    eval_span = int((len_index - train_span) / k)
+    folds: List[Fold] = []
+    for i in range(k):
         start_eval_index = i * eval_span + train_span
-        train_market += [market.extract(index[start_eval_index - train_span : start_eval_index])]
-        eval_market += [market.extract(index[start_eval_index - train_span : start_eval_index + eval_span])]
+        folds += [Fold(market.extract(index[start_eval_index - train_span : start_eval_index + eval_span]), train_span)]
 
-    return train_market, eval_market
+    return folds
 
 
 def clustering_tickers(market: Market, n: int, seed: int = 32) -> pd.DataFrame:
