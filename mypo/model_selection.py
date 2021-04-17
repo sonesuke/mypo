@@ -33,7 +33,7 @@ def split_n_periods(market: Market, n: int, train_span: int) -> Tuple[List[Marke
     for i in range(n):
         start_eval_index = i * eval_span + train_span
         train_market += [market.extract(index[start_eval_index - train_span : start_eval_index])]
-        eval_market += [market.extract(index[start_eval_index : start_eval_index + eval_span])]
+        eval_market += [market.extract(index[start_eval_index - train_span : start_eval_index + eval_span])]
 
     return train_market, eval_market
 

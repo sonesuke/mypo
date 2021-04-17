@@ -15,7 +15,7 @@ def test_split_n_periods() -> None:
         assert len(t.get_index()) == 10
 
     for e in eval:
-        assert len(e.get_index()) == 20
+        assert len(e.get_index()) == 30
 
 
 def test_clustering_tickers() -> None:
