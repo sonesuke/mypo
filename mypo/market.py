@@ -266,7 +266,7 @@ class Market(object):
             Summary
         """
         rate_of_change = self.get_rate_of_change()
-        return pd.DataFrame(
+        df = pd.DataFrame(
             {
                 "daily return": rate_of_change.mean(),
                 "variance": rate_of_change.var(),
@@ -274,6 +274,7 @@ class Market(object):
             },
             index=self.get_tickers(),
         )
+        return df.sort_index()
 
     def get_raw(self) -> pd.DataFrame:
         """Get price data from stored market data.

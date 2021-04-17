@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import itertools
+from copy import deepcopy
 from datetime import datetime
 from typing import Any, List, Tuple
 
@@ -10,6 +11,7 @@ import numpy as np
 import pandas as pd
 from joblib import Parallel, delayed
 from scipy.cluster.vq import kmeans2
+from scipy.optimize import lsq_linear
 from tqdm import tqdm
 
 from mypo.market import Market
@@ -161,3 +163,50 @@ def evaluate_combinations(
         }
     )
     return df.sort_values("optimized")
+
+
+def select_by_correlation(market: Market, threshold: float) -> List[str]:
+    """Select ticker by correlation.
+
+    Args:
+        market: Market.
+        threshold: Threshold.
+
+    Returns:
+        Selected tickers.
+    """
+    df = market.get_rate_of_change().corr()
+    corr = df.to_numpy()
+    corr = np.tril(corr)
+    corr = corr - np.diag(np.diag(corr))
+    corr = np.where(np.abs(corr) > threshold, 1, 0)
+    return list(df.columns[np.sum(corr, axis=1) > 0])
+
+
+def select_by_regression(market: Market, threshold: float, verbose: bool = False) -> List[str]:
+    """Select ticker by correlation.
+
+    Args:
+        market: Market.
+        threshold: Threshold.
+
+    Returns:
+        Selected tickers.
+    """
+    tickers = select_by_correlation(market, threshold)
+    df = market.get_rate_of_change()
+
+    def wrap(x: Any) -> Any:
+        """Wrapper for tqdm."""
+        return tqdm(x) if verbose else x
+
+    remains = deepcopy(tickers)
+    for t in wrap(reversed(tickers)):
+        remains.remove(t)
+        A = df[remains].to_numpy()
+        b = df[t]
+        res = lsq_linear(A=A, b=b)
+        corr = np.corrcoef(np.dot(A, res.x), b)[0, 1]
+        if np.abs(corr) < threshold:
+            remains.append(t)
+    return remains

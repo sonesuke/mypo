@@ -99,7 +99,12 @@ class Loader(object):
         Returns:
             Market data
         """
-        return Market.create_from_ticker(self._names, self._tickers, self._expense_ratio)
+        sorted_total_assert = [item[0] for item in sorted(self._total_assets.items(), key=lambda x: x[1], reverse=True)]
+        return Market.create_from_ticker(
+            {k: self._names[k] for k in sorted_total_assert},
+            {k: self._tickers[k] for k in sorted_total_assert},
+            {k: self._expense_ratio[k] for k in sorted_total_assert},
+        )
 
     def summary(self) -> pd.DataFrame:
         """Get summary.
@@ -107,7 +112,7 @@ class Loader(object):
         Returns:
             Summary.
         """
-        return pd.DataFrame(
+        df = pd.DataFrame(
             {
                 "established": [self._tickers[t].index[0] for t in self._tickers.keys()],
                 "names": [self._names[t] for t in self._tickers.keys()],
@@ -117,6 +122,7 @@ class Loader(object):
             },
             index=self._tickers.keys(),
         )
+        return df.sort_index()
 
     def since(self, since: datetime) -> Loader:
         """Filter market data.
