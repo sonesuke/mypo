@@ -231,9 +231,15 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="mypo.html#mypo.settings.Settings.fee_rate">fee_rate (mypo.settings.Settings attribute)</a>
 </li>
+      <li><a href="mypo.html#mypo.market.Market.filter">filter() (mypo.market.Market method)</a>
+
+      <ul>
+        <li><a href="mypo.html#mypo.model_selection.Fold.filter">(mypo.model_selection.Fold method)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="mypo.html#mypo.market.Market.filter">filter() (mypo.market.Market method)</a>
+      <li><a href="mypo.html#mypo.model_selection.Fold">Fold (class in mypo.model_selection)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -255,10 +261,10 @@
 </li>
       <li><a href="mypo.html#mypo.loader.Loader.get_market">get_market() (mypo.loader.Loader method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="mypo.html#mypo.market.Market.get_normalized_prices">get_normalized_prices() (mypo.market.Market method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="mypo.html#mypo.market.Market.get_price_dividends_yield">get_price_dividends_yield() (mypo.market.Market method)</a>
 </li>
       <li><a href="mypo.html#mypo.market.Market.get_rate_of_change">get_rate_of_change() (mypo.market.Market method)</a>
@@ -268,6 +274,12 @@
       <li><a href="mypo.html#mypo.market.Market.get_summary">get_summary() (mypo.market.Market method)</a>
 </li>
       <li><a href="mypo.html#mypo.market.Market.get_tickers">get_tickers() (mypo.market.Market method)</a>
+</li>
+      <li><a href="mypo.html#mypo.model_selection.Fold.get_train">get_train() (mypo.model_selection.Fold method)</a>
+</li>
+      <li><a href="mypo.html#mypo.model_selection.Fold.get_train_span">get_train_span() (mypo.model_selection.Fold method)</a>
+</li>
+      <li><a href="mypo.html#mypo.model_selection.Fold.get_valid">get_valid() (mypo.model_selection.Fold method)</a>
 </li>
       <li><a href="mypo.optimizer.html#mypo.optimizer.base_optimizer.BaseOptimizer.get_weights">get_weights() (mypo.optimizer.base_optimizer.BaseOptimizer method)</a>
 </li>
@@ -644,13 +656,15 @@
         <li><a href="mypo.html#mypo.runner.Runner.report">(mypo.runner.Runner method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="mypo.html#mypo.reporter.Reporter">Reporter (class in mypo.reporter)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="mypo.html#mypo.market.Market.resample">resample() (mypo.market.Market method)</a>
 </li>
       <li><a href="mypo.html#mypo.runner.Runner.run">run() (mypo.runner.Runner method)</a>
+</li>
+      <li><a href="mypo.html#mypo.runner.Runner.run_fold">run_fold() (mypo.runner.Runner method)</a>
 </li>
       <li><a href="mypo.html#mypo.runner.Runner">Runner (class in mypo.runner)</a>
 </li>
@@ -670,10 +684,14 @@
         <li><a href="mypo.html#mypo.market.Market.save">(mypo.market.Market method)</a>
 </li>
       </ul></li>
-      <li><a href="mypo.optimizer.html#mypo.optimizer.objective.semi_covariance">semi_covariance() (in module mypo.optimizer.objective)</a>
+      <li><a href="mypo.html#mypo.model_selection.select_by_correlation">select_by_correlation() (in module mypo.model_selection)</a>
+</li>
+      <li><a href="mypo.html#mypo.model_selection.select_by_regression">select_by_regression() (in module mypo.model_selection)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="mypo.optimizer.html#mypo.optimizer.objective.semi_covariance">semi_covariance() (in module mypo.optimizer.objective)</a>
+</li>
       <li><a href="mypo.html#mypo.settings.Settings">Settings (class in mypo.settings)</a>
 </li>
       <li><a href="mypo.optimizer.html#mypo.optimizer.objective.sharp_ratio">sharp_ratio() (in module mypo.optimizer.objective)</a>
@@ -682,7 +700,7 @@
 </li>
       <li><a href="mypo.html#mypo.loader.Loader.since">since() (mypo.loader.Loader method)</a>
 </li>
-      <li><a href="mypo.html#mypo.model_selection.split_n_periods">split_n_periods() (in module mypo.model_selection)</a>
+      <li><a href="mypo.html#mypo.model_selection.split_k_folds">split_k_folds() (in module mypo.model_selection)</a>
 </li>
       <li><a href="mypo.html#mypo.loader.Loader.summary">summary() (mypo.loader.Loader method)</a>
 </li>
@@ -757,7 +775,7 @@
   <div class="container">
     <p>
           &copy; Copyright 2021, sonesuke.<br/>
-        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.3.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
     </p>
   </div>
 </footer>

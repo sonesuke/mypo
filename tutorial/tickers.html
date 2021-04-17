@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ticker selections &#8212; mypo  documentation</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
@@ -384,7 +383,7 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
-<section id="Ticker-selections">
+<div class="section" id="Ticker-selections">
 <h1>Ticker selections<a class="headerlink" href="#Ticker-selections" title="Permalink to this headline">¶</a></h1>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -394,6 +393,7 @@ div.rendered_html tbody tr:hover {
 <span></span><span class="c1"># If you would like to refresh your data, please execute the bellow codes.</span>
 
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 
@@ -1083,9 +1083,109 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">market</span><span class="o">.</span><span class="n">get_summary</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">())</span>
+<span class="n">tickers</span> <span class="o">=</span> <span class="n">market</span><span class="o">.</span><span class="n">get_tickers</span><span class="p">()</span>
+<span class="n">tickers</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;SHY&#39;</span><span class="p">)</span>
+<span class="n">tickers</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;AGG&#39;</span><span class="p">)</span>
+
+<span class="n">market</span> <span class="o">=</span> <span class="n">market</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">tickers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+      daily return      variance  sharp ratio
+AGG       0.000158  9.637003e-06    16.443447
+BBH       0.000651  2.007510e-04     3.243386
+DIA       0.000442  1.426655e-04     3.100646
+DVY       0.000377  1.596410e-04     2.361359
+EEM       0.000476  3.514801e-04     1.355455
+EFA       0.000309  1.965768e-04     1.570381
+EPP       0.000425  2.613880e-04     1.626070
+EWG       0.000383  2.686108e-04     1.427280
+EWJ       0.000265  1.744516e-04     1.518079
+EWM       0.000283  1.752569e-04     1.615122
+EWS       0.000393  2.354161e-04     1.671178
+EWT       0.000464  2.620832e-04     1.768740
+EWW       0.000397  3.290586e-04     1.206546
+EWY       0.000534  3.970241e-04     1.344488
+EWZ       0.000546  6.170905e-04     0.884256
+EZA       0.000482  5.085734e-04     0.948013
+FEZ       0.000316  2.870620e-04     1.100081
+FVD       0.000459  1.222106e-04     3.756687
+FXI       0.000534  4.385859e-04     1.217338
+GLD       0.000380  1.316154e-04     2.889224
+IBB       0.000570  2.267076e-04     2.514207
+IEF       0.000182  1.654876e-05    11.000269
+IEV       0.000307  2.206629e-04     1.390065
+IJH       0.000501  1.959412e-04     2.554967
+IJR       0.000513  2.279349e-04     2.250933
+ILF       0.000486  4.679787e-04     1.037707
+IOO       0.000379  1.598025e-04     2.371471
+IVV       0.000451  1.491158e-04     3.025591
+IWM       0.000486  2.385849e-04     2.037365
+IXC       0.000283  3.179566e-04     0.889195
+IXG       0.000286  2.970164e-04     0.961342
+IXJ       0.000417  1.178992e-04     3.532792
+IXN       0.000569  1.901673e-04     2.994380
+IXP       0.000344  1.466035e-04     2.344615
+IYR       0.000453  3.556125e-04     1.273345
+LQD       0.000214  2.834508e-05     7.551161
+OEF       0.000437  1.442991e-04     3.026941
+OIH       0.000150  6.383172e-04     0.235115
+PPH       0.000348  1.192680e-04     2.916094
+QQQ       0.000637  1.802415e-04     3.533849
+RWR       0.000476  4.081610e-04     1.165556
+SHY       0.000080  6.850880e-07   117.411555
+SPTM      0.000463  1.622981e-04     2.852305
+SPY       0.000450  1.509889e-04     2.982542
+SPYG      0.000507  1.470197e-04     3.447361
+SPYV      0.000382  1.542123e-04     2.478500
+TIP       0.000163  1.505960e-05    10.827642
+TLT       0.000275  8.005042e-05     3.436350
+VAW       0.000473  2.472638e-04     1.912074
+VB        0.000506  2.160129e-04     2.343857
+VBK       0.000547  2.167550e-04     2.524998
+VBR       0.000467  2.289414e-04     2.037969
+VCR       0.000563  1.819834e-04     3.091105
+VDC       0.000424  8.371159e-05     5.068701
+VDE       0.000349  3.761064e-04     0.928096
+VFH       0.000374  3.342361e-04     1.120231
+VGT       0.000632  1.919827e-04     3.293231
+VHT       0.000501  1.229634e-04     4.071340
+VIS       0.000471  1.966598e-04     2.395432
+VO        0.000494  1.847828e-04     2.671346
+VOX       0.000409  1.652136e-04     2.475179
+VPU       0.000424  1.421851e-04     2.982212
+VTI       0.000467  1.533709e-04     3.046810
+VTV       0.000408  1.606209e-04     2.541218
+VUG       0.000524  1.528619e-04     3.428529
+VV        0.000465  1.504542e-04     3.090791
+VXF       0.000527  2.047361e-04     2.573624
+XLB       0.000452  2.356675e-04     1.916580
+XLE       0.000374  3.772360e-04     0.990545
+XLF       0.000367  3.936460e-04     0.932700
+XLI       0.000458  1.876959e-04     2.442273
+XLK       0.000602  1.856154e-04     3.243075
+XLP       0.000408  8.167010e-05     4.998009
+XLU       0.000421  1.437454e-04     2.926052
+XLV       0.000467  1.175851e-04     3.970338
+XLY       0.000534  1.804712e-04     2.958266
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">mypo</span> <span class="kn">import</span> <span class="n">clustering_tickers</span><span class="p">,</span> <span class="n">evaluate_combinations</span>
-<span class="n">cluster</span> <span class="o">=</span> <span class="n">clustering_tickers</span><span class="p">(</span><span class="n">market</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">CLUSTERS</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">cluster</span> <span class="o">=</span> <span class="n">clustering_tickers</span><span class="p">(</span><span class="n">market</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">CLUSTERS</span><span class="p">)</span>
 <span class="n">corr</span> <span class="o">=</span> <span class="n">market</span><span class="o">.</span><span class="n">get_rate_of_change</span><span class="p">()[</span><span class="n">cluster</span><span class="o">.</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -1101,11 +1201,11 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_tickers_4_0.png" src="../_images/tutorial_tickers_4_0.png" />
+<img alt="../_images/tutorial_tickers_5_0.png" src="../_images/tutorial_tickers_5_0.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -1127,1893 +1227,1844 @@ div.rendered_html tbody tr:hover {
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>DIA</th>
-      <th>VBK</th>
-      <th>VAW</th>
-      <th>VUG</th>
-      <th>VTV</th>
-      <th>IJR</th>
-      <th>XLK</th>
-      <th>XLB</th>
-      <th>XLI</th>
-      <th>IOO</th>
-      <th>...</th>
-      <th>VDC</th>
-      <th>XLU</th>
-      <th>ILF</th>
-      <th>XLV</th>
-      <th>XLE</th>
-      <th>RWR</th>
-      <th>IXC</th>
-      <th>OIH</th>
+      <th>VTI</th>
+      <th>SPTM</th>
+      <th>VIS</th>
+      <th>IXN</th>
+      <th>IYR</th>
       <th>VPU</th>
-      <th>XLP</th>
+      <th>VDE</th>
+      <th>FXI</th>
+      <th>EWZ</th>
+      <th>VDC</th>
+      <th>...</th>
+      <th>XLV</th>
+      <th>DIA</th>
+      <th>EEM</th>
+      <th>XLE</th>
+      <th>PPH</th>
+      <th>GLD</th>
+      <th>TIP</th>
+      <th>LQD</th>
+      <th>TLT</th>
+      <th>IEF</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>DIA</th>
-      <td>1.000000</td>
-      <td>0.869771</td>
-      <td>0.859922</td>
-      <td>0.929926</td>
-      <td>0.958851</td>
-      <td>0.866318</td>
-      <td>0.888003</td>
-      <td>0.847780</td>
-      <td>0.923129</td>
-      <td>0.938661</td>
-      <td>...</td>
-      <td>0.851901</td>
-      <td>0.687816</td>
-      <td>0.767659</td>
-      <td>0.822007</td>
-      <td>0.767047</td>
-      <td>0.731212</td>
-      <td>0.790183</td>
-      <td>0.673832</td>
-      <td>0.719169</td>
-      <td>0.806004</td>
-    </tr>
-    <tr>
-      <th>VBK</th>
-      <td>0.869771</td>
-      <td>1.000000</td>
-      <td>0.877067</td>
-      <td>0.927276</td>
-      <td>0.888985</td>
-      <td>0.948652</td>
-      <td>0.856504</td>
-      <td>0.845448</td>
-      <td>0.871164</td>
-      <td>0.871222</td>
-      <td>...</td>
-      <td>0.739583</td>
-      <td>0.585509</td>
-      <td>0.750748</td>
-      <td>0.762026</td>
-      <td>0.736024</td>
-      <td>0.742433</td>
-      <td>0.749881</td>
-      <td>0.682318</td>
-      <td>0.626350</td>
-      <td>0.681020</td>
-    </tr>
-    <tr>
-      <th>VAW</th>
-      <td>0.859922</td>
-      <td>0.877067</td>
-      <td>1.000000</td>
-      <td>0.857148</td>
-      <td>0.881565</td>
-      <td>0.863043</td>
-      <td>0.778800</td>
-      <td>0.979438</td>
-      <td>0.875534</td>
-      <td>0.860293</td>
-      <td>...</td>
-      <td>0.713131</td>
-      <td>0.597504</td>
-      <td>0.801516</td>
-      <td>0.691176</td>
-      <td>0.806604</td>
-      <td>0.689068</td>
-      <td>0.821532</td>
-      <td>0.747929</td>
-      <td>0.633524</td>
-      <td>0.657361</td>
-    </tr>
-    <tr>
-      <th>VUG</th>
-      <td>0.929926</td>
-      <td>0.927276</td>
-      <td>0.857148</td>
-      <td>1.000000</td>
-      <td>0.906242</td>
-      <td>0.858485</td>
-      <td>0.947440</td>
-      <td>0.840877</td>
-      <td>0.875607</td>
-      <td>0.931639</td>
-      <td>...</td>
-      <td>0.813619</td>
-      <td>0.642346</td>
-      <td>0.763365</td>
-      <td>0.821977</td>
-      <td>0.726572</td>
-      <td>0.702638</td>
-      <td>0.749901</td>
-      <td>0.649599</td>
-      <td>0.674983</td>
-      <td>0.763365</td>
-    </tr>
-    <tr>
-      <th>VTV</th>
-      <td>0.958851</td>
-      <td>0.888985</td>
-      <td>0.881565</td>
-      <td>0.906242</td>
-      <td>1.000000</td>
-      <td>0.900183</td>
-      <td>0.847667</td>
-      <td>0.859418</td>
-      <td>0.919426</td>
-      <td>0.935172</td>
-      <td>...</td>
-      <td>0.838729</td>
-      <td>0.701510</td>
-      <td>0.779995</td>
-      <td>0.806847</td>
-      <td>0.793475</td>
-      <td>0.794066</td>
-      <td>0.809794</td>
-      <td>0.703712</td>
-      <td>0.735186</td>
-      <td>0.791998</td>
-    </tr>
-    <tr>
-      <th>IJR</th>
-      <td>0.866318</td>
-      <td>0.948652</td>
-      <td>0.863043</td>
-      <td>0.858485</td>
-      <td>0.900183</td>
-      <td>1.000000</td>
-      <td>0.796108</td>
-      <td>0.827230</td>
-      <td>0.881274</td>
-      <td>0.840896</td>
-      <td>...</td>
-      <td>0.741441</td>
-      <td>0.580604</td>
-      <td>0.727546</td>
-      <td>0.717123</td>
-      <td>0.743758</td>
-      <td>0.768430</td>
-      <td>0.749193</td>
-      <td>0.699281</td>
-      <td>0.624710</td>
-      <td>0.685955</td>
-    </tr>
-    <tr>
-      <th>XLK</th>
-      <td>0.888003</td>
-      <td>0.856504</td>
-      <td>0.778800</td>
-      <td>0.947440</td>
-      <td>0.847667</td>
-      <td>0.796108</td>
-      <td>1.000000</td>
-      <td>0.765053</td>
-      <td>0.812140</td>
-      <td>0.885974</td>
-      <td>...</td>
-      <td>0.754542</td>
-      <td>0.585883</td>
-      <td>0.705930</td>
-      <td>0.743462</td>
-      <td>0.646347</td>
-      <td>0.646965</td>
-      <td>0.672595</td>
-      <td>0.573720</td>
-      <td>0.614441</td>
-      <td>0.712980</td>
-    </tr>
-    <tr>
-      <th>XLB</th>
-      <td>0.847780</td>
-      <td>0.845448</td>
-      <td>0.979438</td>
-      <td>0.840877</td>
-      <td>0.859418</td>
-      <td>0.827230</td>
-      <td>0.765053</td>
-      <td>1.000000</td>
-      <td>0.865323</td>
-      <td>0.845856</td>
-      <td>...</td>
-      <td>0.705967</td>
-      <td>0.589035</td>
-      <td>0.782982</td>
-      <td>0.694629</td>
-      <td>0.786435</td>
-      <td>0.662814</td>
-      <td>0.802208</td>
-      <td>0.723650</td>
-      <td>0.621970</td>
-      <td>0.657360</td>
-    </tr>
-    <tr>
-      <th>XLI</th>
-      <td>0.923129</td>
-      <td>0.871164</td>
-      <td>0.875534</td>
-      <td>0.875607</td>
-      <td>0.919426</td>
-      <td>0.881274</td>
-      <td>0.812140</td>
-      <td>0.865323</td>
-      <td>1.000000</td>
-      <td>0.876364</td>
-      <td>...</td>
-      <td>0.769169</td>
-      <td>0.610453</td>
-      <td>0.737309</td>
-      <td>0.749752</td>
-      <td>0.744118</td>
-      <td>0.718018</td>
-      <td>0.765819</td>
-      <td>0.684192</td>
-      <td>0.646028</td>
-      <td>0.726137</td>
-    </tr>
-    <tr>
-      <th>IOO</th>
-      <td>0.938661</td>
-      <td>0.871222</td>
-      <td>0.860293</td>
-      <td>0.931639</td>
-      <td>0.935172</td>
-      <td>0.840896</td>
-      <td>0.885974</td>
-      <td>0.845856</td>
-      <td>0.876364</td>
-      <td>1.000000</td>
-      <td>...</td>
-      <td>0.817936</td>
-      <td>0.662040</td>
-      <td>0.797623</td>
-      <td>0.799246</td>
-      <td>0.768566</td>
-      <td>0.710299</td>
-      <td>0.814352</td>
-      <td>0.679449</td>
-      <td>0.692349</td>
-      <td>0.771692</td>
-    </tr>
-    <tr>
-      <th>XLF</th>
-      <td>0.831639</td>
-      <td>0.783648</td>
-      <td>0.755998</td>
-      <td>0.764843</td>
-      <td>0.907830</td>
-      <td>0.822647</td>
-      <td>0.720263</td>
-      <td>0.730604</td>
-      <td>0.803006</td>
-      <td>0.810073</td>
-      <td>...</td>
-      <td>0.671156</td>
-      <td>0.525034</td>
-      <td>0.667823</td>
-      <td>0.644902</td>
-      <td>0.644208</td>
-      <td>0.800197</td>
-      <td>0.658132</td>
-      <td>0.581067</td>
-      <td>0.557091</td>
-      <td>0.638170</td>
-    </tr>
-    <tr>
-      <th>IVV</th>
-      <td>0.971586</td>
-      <td>0.920425</td>
-      <td>0.884701</td>
-      <td>0.968585</td>
-      <td>0.974418</td>
-      <td>0.896794</td>
-      <td>0.919108</td>
-      <td>0.866823</td>
-      <td>0.917129</td>
-      <td>0.957534</td>
-      <td>...</td>
-      <td>0.848233</td>
-      <td>0.689193</td>
-      <td>0.784988</td>
-      <td>0.833389</td>
-      <td>0.777848</td>
-      <td>0.762258</td>
-      <td>0.796592</td>
-      <td>0.687790</td>
-      <td>0.720523</td>
-      <td>0.803017</td>
-    </tr>
-    <tr>
-      <th>EEM</th>
-      <td>0.819492</td>
-      <td>0.803214</td>
-      <td>0.822397</td>
-      <td>0.830322</td>
-      <td>0.826697</td>
-      <td>0.763466</td>
-      <td>0.782977</td>
-      <td>0.801941</td>
-      <td>0.773379</td>
-      <td>0.865276</td>
-      <td>...</td>
-      <td>0.692441</td>
-      <td>0.589374</td>
-      <td>0.886876</td>
-      <td>0.651589</td>
-      <td>0.731799</td>
-      <td>0.666497</td>
-      <td>0.771887</td>
-      <td>0.656788</td>
-      <td>0.617117</td>
-      <td>0.636465</td>
-    </tr>
-    <tr>
-      <th>XLY</th>
-      <td>0.881244</td>
-      <td>0.885270</td>
-      <td>0.801418</td>
-      <td>0.906221</td>
-      <td>0.882960</td>
-      <td>0.861917</td>
-      <td>0.846589</td>
-      <td>0.781537</td>
-      <td>0.857393</td>
-      <td>0.862364</td>
-      <td>...</td>
-      <td>0.771852</td>
-      <td>0.573973</td>
-      <td>0.699060</td>
-      <td>0.733719</td>
-      <td>0.647311</td>
-      <td>0.740787</td>
-      <td>0.672994</td>
-      <td>0.580144</td>
-      <td>0.607752</td>
-      <td>0.727073</td>
-    </tr>
-    <tr>
-      <th>OEF</th>
-      <td>0.965464</td>
-      <td>0.891342</td>
-      <td>0.850503</td>
-      <td>0.961625</td>
-      <td>0.958326</td>
-      <td>0.864797</td>
-      <td>0.923967</td>
-      <td>0.834174</td>
-      <td>0.888974</td>
-      <td>0.952887</td>
-      <td>...</td>
-      <td>0.846495</td>
-      <td>0.671823</td>
-      <td>0.764354</td>
-      <td>0.832141</td>
-      <td>0.749575</td>
-      <td>0.733274</td>
-      <td>0.770015</td>
-      <td>0.656535</td>
-      <td>0.703313</td>
-      <td>0.802185</td>
-    </tr>
-    <tr>
       <th>VTI</th>
-      <td>0.966363</td>
-      <td>0.941017</td>
-      <td>0.894665</td>
-      <td>0.970481</td>
-      <td>0.972047</td>
-      <td>0.914822</td>
-      <td>0.914642</td>
-      <td>0.875608</td>
-      <td>0.922064</td>
-      <td>0.952432</td>
-      <td>...</td>
-      <td>0.838075</td>
-      <td>0.682448</td>
-      <td>0.792007</td>
-      <td>0.831363</td>
-      <td>0.783709</td>
-      <td>0.766907</td>
-      <td>0.802183</td>
-      <td>0.702489</td>
+      <td>1.000000</td>
+      <td>0.875482</td>
+      <td>0.938206</td>
+      <td>0.909863</td>
+      <td>0.786737</td>
       <td>0.717966</td>
-      <td>0.786440</td>
-    </tr>
-    <tr>
-      <th>VB</th>
-      <td>0.891463</td>
-      <td>0.979336</td>
-      <td>0.891568</td>
-      <td>0.905037</td>
-      <td>0.925358</td>
-      <td>0.976675</td>
-      <td>0.836658</td>
-      <td>0.858290</td>
-      <td>0.898991</td>
-      <td>0.878085</td>
+      <td>0.785157</td>
+      <td>0.737461</td>
+      <td>0.727394</td>
+      <td>0.838075</td>
       <td>...</td>
-      <td>0.758972</td>
-      <td>0.609675</td>
-      <td>0.762446</td>
-      <td>0.754297</td>
-      <td>0.760114</td>
-      <td>0.791100</td>
-      <td>0.772088</td>
-      <td>0.705429</td>
-      <td>0.650604</td>
-      <td>0.702993</td>
-    </tr>
-    <tr>
-      <th>SPY</th>
-      <td>0.972807</td>
-      <td>0.917364</td>
-      <td>0.882641</td>
-      <td>0.966914</td>
-      <td>0.968890</td>
-      <td>0.891194</td>
-      <td>0.916854</td>
-      <td>0.868573</td>
-      <td>0.913422</td>
-      <td>0.956781</td>
-      <td>...</td>
-      <td>0.844489</td>
-      <td>0.690975</td>
-      <td>0.790458</td>
-      <td>0.834865</td>
-      <td>0.780847</td>
-      <td>0.756738</td>
-      <td>0.800591</td>
-      <td>0.692492</td>
-      <td>0.723065</td>
-      <td>0.796995</td>
-    </tr>
-    <tr>
-      <th>IWM</th>
-      <td>0.872141</td>
-      <td>0.968264</td>
-      <td>0.867357</td>
-      <td>0.881413</td>
-      <td>0.903052</td>
-      <td>0.985255</td>
-      <td>0.818583</td>
-      <td>0.832570</td>
-      <td>0.874518</td>
-      <td>0.855278</td>
-      <td>...</td>
-      <td>0.741009</td>
-      <td>0.585935</td>
-      <td>0.736642</td>
-      <td>0.738085</td>
-      <td>0.739503</td>
-      <td>0.771069</td>
-      <td>0.748146</td>
-      <td>0.687964</td>
-      <td>0.628200</td>
-      <td>0.686802</td>
-    </tr>
-    <tr>
-      <th>QQQ</th>
-      <td>0.866875</td>
-      <td>0.885500</td>
-      <td>0.789130</td>
-      <td>0.960488</td>
-      <td>0.839871</td>
-      <td>0.811052</td>
-      <td>0.960147</td>
-      <td>0.773442</td>
-      <td>0.809378</td>
-      <td>0.880761</td>
-      <td>...</td>
-      <td>0.750314</td>
-      <td>0.564430</td>
-      <td>0.710482</td>
-      <td>0.769879</td>
-      <td>0.638354</td>
-      <td>0.650540</td>
-      <td>0.663526</td>
-      <td>0.571567</td>
-      <td>0.595447</td>
-      <td>0.703784</td>
-    </tr>
-    <tr>
-      <th>IXG</th>
-      <td>0.865690</td>
-      <td>0.830567</td>
-      <td>0.826122</td>
-      <td>0.820145</td>
-      <td>0.922464</td>
-      <td>0.847762</td>
-      <td>0.765499</td>
-      <td>0.802775</td>
-      <td>0.850932</td>
-      <td>0.894452</td>
-      <td>...</td>
-      <td>0.705058</td>
-      <td>0.570849</td>
-      <td>0.764536</td>
-      <td>0.686205</td>
-      <td>0.714973</td>
-      <td>0.767210</td>
-      <td>0.755630</td>
-      <td>0.659475</td>
-      <td>0.603990</td>
-      <td>0.668932</td>
-    </tr>
-    <tr>
-      <th>IXJ</th>
-      <td>0.841680</td>
-      <td>0.781919</td>
-      <td>0.725498</td>
-      <td>0.841681</td>
-      <td>0.835253</td>
-      <td>0.734102</td>
-      <td>0.770850</td>
-      <td>0.715278</td>
-      <td>0.759721</td>
-      <td>0.858580</td>
-      <td>...</td>
-      <td>0.781427</td>
-      <td>0.633119</td>
-      <td>0.655962</td>
-      <td>0.920243</td>
-      <td>0.625845</td>
-      <td>0.612020</td>
-      <td>0.658896</td>
-      <td>0.526075</td>
-      <td>0.660778</td>
-      <td>0.738605</td>
-    </tr>
-    <tr>
-      <th>VBR</th>
-      <td>0.887442</td>
-      <td>0.941219</td>
-      <td>0.877984</td>
-      <td>0.863625</td>
-      <td>0.933668</td>
-      <td>0.976345</td>
-      <td>0.796560</td>
-      <td>0.842868</td>
-      <td>0.899951</td>
-      <td>0.860805</td>
-      <td>...</td>
-      <td>0.755706</td>
-      <td>0.616695</td>
-      <td>0.750486</td>
-      <td>0.724782</td>
-      <td>0.760056</td>
-      <td>0.819711</td>
-      <td>0.770843</td>
-      <td>0.708965</td>
-      <td>0.658700</td>
-      <td>0.702236</td>
-    </tr>
-    <tr>
-      <th>IXN</th>
-      <td>0.871600</td>
-      <td>0.869056</td>
-      <td>0.799441</td>
-      <td>0.940605</td>
-      <td>0.843625</td>
-      <td>0.806089</td>
-      <td>0.961666</td>
-      <td>0.784384</td>
-      <td>0.818938</td>
-      <td>0.892990</td>
-      <td>...</td>
-      <td>0.733284</td>
-      <td>0.562642</td>
-      <td>0.729926</td>
-      <td>0.730146</td>
-      <td>0.658537</td>
-      <td>0.651479</td>
-      <td>0.693423</td>
-      <td>0.597997</td>
-      <td>0.595405</td>
-      <td>0.686984</td>
-    </tr>
-    <tr>
-      <th>VCR</th>
-      <td>0.888394</td>
-      <td>0.914873</td>
-      <td>0.821829</td>
-      <td>0.922156</td>
-      <td>0.888924</td>
-      <td>0.885635</td>
-      <td>0.859062</td>
-      <td>0.800089</td>
-      <td>0.867731</td>
-      <td>0.870748</td>
-      <td>...</td>
-      <td>0.770394</td>
-      <td>0.571286</td>
-      <td>0.713527</td>
-      <td>0.736453</td>
-      <td>0.662717</td>
-      <td>0.748855</td>
-      <td>0.688173</td>
-      <td>0.602885</td>
-      <td>0.606877</td>
-      <td>0.717813</td>
-    </tr>
-    <tr>
-      <th>IEV</th>
-      <td>0.862693</td>
-      <td>0.820125</td>
-      <td>0.838833</td>
-      <td>0.846030</td>
-      <td>0.872323</td>
-      <td>0.801394</td>
-      <td>0.787318</td>
-      <td>0.826854</td>
-      <td>0.831118</td>
-      <td>0.944321</td>
-      <td>...</td>
-      <td>0.734409</td>
-      <td>0.612871</td>
-      <td>0.792979</td>
-      <td>0.718054</td>
-      <td>0.748487</td>
-      <td>0.679454</td>
-      <td>0.811484</td>
-      <td>0.676470</td>
-      <td>0.642329</td>
-      <td>0.690289</td>
-    </tr>
-    <tr>
-      <th>FVD</th>
-      <td>0.901211</td>
-      <td>0.850322</td>
-      <td>0.832414</td>
-      <td>0.856385</td>
-      <td>0.934691</td>
-      <td>0.871691</td>
-      <td>0.795079</td>
-      <td>0.812366</td>
-      <td>0.873052</td>
-      <td>0.878689</td>
-      <td>...</td>
-      <td>0.845053</td>
-      <td>0.756226</td>
-      <td>0.739084</td>
-      <td>0.780426</td>
-      <td>0.728263</td>
-      <td>0.776453</td>
-      <td>0.749267</td>
-      <td>0.640503</td>
-      <td>0.789455</td>
-      <td>0.800937</td>
-    </tr>
-    <tr>
-      <th>FEZ</th>
-      <td>0.833518</td>
-      <td>0.791538</td>
-      <td>0.807229</td>
-      <td>0.816890</td>
-      <td>0.843060</td>
-      <td>0.776010</td>
-      <td>0.760972</td>
-      <td>0.800581</td>
-      <td>0.811930</td>
-      <td>0.920803</td>
-      <td>...</td>
-      <td>0.708883</td>
-      <td>0.584572</td>
-      <td>0.759975</td>
-      <td>0.696500</td>
-      <td>0.714797</td>
-      <td>0.656739</td>
-      <td>0.779993</td>
-      <td>0.648607</td>
-      <td>0.613336</td>
-      <td>0.664106</td>
-    </tr>
-    <tr>
-      <th>SPYV</th>
-      <td>0.931580</td>
-      <td>0.872869</td>
-      <td>0.867751</td>
-      <td>0.884321</td>
-      <td>0.967756</td>
-      <td>0.882300</td>
-      <td>0.824350</td>
-      <td>0.848537</td>
-      <td>0.897823</td>
-      <td>0.913700</td>
-      <td>...</td>
-      <td>0.813409</td>
-      <td>0.678743</td>
-      <td>0.766787</td>
-      <td>0.792578</td>
-      <td>0.781642</td>
-      <td>0.764095</td>
-      <td>0.800059</td>
-      <td>0.695843</td>
-      <td>0.711173</td>
-      <td>0.768008</td>
-    </tr>
-    <tr>
-      <th>SPYG</th>
-      <td>0.921529</td>
-      <td>0.916050</td>
-      <td>0.852974</td>
-      <td>0.978670</td>
-      <td>0.906594</td>
-      <td>0.855805</td>
-      <td>0.934377</td>
-      <td>0.836243</td>
-      <td>0.875577</td>
-      <td>0.925110</td>
-      <td>...</td>
-      <td>0.811578</td>
-      <td>0.638953</td>
-      <td>0.760513</td>
-      <td>0.815486</td>
-      <td>0.723481</td>
-      <td>0.708832</td>
-      <td>0.745329</td>
-      <td>0.649058</td>
-      <td>0.672039</td>
-      <td>0.761069</td>
+      <td>0.831363</td>
+      <td>0.966363</td>
+      <td>0.848465</td>
+      <td>0.783709</td>
+      <td>0.788244</td>
+      <td>0.049922</td>
+      <td>-0.172429</td>
+      <td>0.140007</td>
+      <td>-0.415551</td>
+      <td>-0.407574</td>
     </tr>
     <tr>
       <th>SPTM</th>
-      <td>0.845721</td>
-      <td>0.851057</td>
-      <td>0.809884</td>
-      <td>0.856033</td>
-      <td>0.872768</td>
-      <td>0.845549</td>
-      <td>0.818432</td>
-      <td>0.777248</td>
-      <td>0.820377</td>
-      <td>0.848449</td>
-      <td>...</td>
-      <td>0.740941</td>
-      <td>0.578150</td>
-      <td>0.685892</td>
-      <td>0.705979</td>
-      <td>0.685172</td>
-      <td>0.723721</td>
-      <td>0.698825</td>
-      <td>0.604295</td>
+      <td>0.875482</td>
+      <td>1.000000</td>
+      <td>0.857539</td>
+      <td>0.815245</td>
+      <td>0.741859</td>
       <td>0.609432</td>
-      <td>0.714002</td>
-    </tr>
-    <tr>
-      <th>DVY</th>
-      <td>0.900038</td>
-      <td>0.836840</td>
-      <td>0.820972</td>
-      <td>0.825102</td>
-      <td>0.945476</td>
-      <td>0.884824</td>
-      <td>0.769776</td>
-      <td>0.796161</td>
-      <td>0.867695</td>
-      <td>0.856538</td>
+      <td>0.676777</td>
+      <td>0.658751</td>
+      <td>0.630179</td>
+      <td>0.740941</td>
       <td>...</td>
-      <td>0.822135</td>
-      <td>0.739157</td>
-      <td>0.721916</td>
-      <td>0.740817</td>
-      <td>0.736152</td>
-      <td>0.794935</td>
-      <td>0.745306</td>
-      <td>0.650895</td>
-      <td>0.771562</td>
-      <td>0.781551</td>
-    </tr>
-    <tr>
-      <th>IJH</th>
-      <td>0.912191</td>
-      <td>0.961758</td>
-      <td>0.907199</td>
-      <td>0.911716</td>
-      <td>0.936062</td>
-      <td>0.961529</td>
-      <td>0.841598</td>
-      <td>0.876116</td>
-      <td>0.913353</td>
-      <td>0.887560</td>
-      <td>...</td>
-      <td>0.778744</td>
-      <td>0.645742</td>
-      <td>0.778948</td>
-      <td>0.762385</td>
-      <td>0.786800</td>
-      <td>0.786844</td>
-      <td>0.797746</td>
-      <td>0.730195</td>
-      <td>0.686539</td>
-      <td>0.721557</td>
-    </tr>
-    <tr>
-      <th>EPP</th>
-      <td>0.833605</td>
-      <td>0.796831</td>
-      <td>0.820277</td>
-      <td>0.824322</td>
-      <td>0.839725</td>
-      <td>0.773790</td>
-      <td>0.772561</td>
-      <td>0.799410</td>
-      <td>0.796021</td>
-      <td>0.875208</td>
-      <td>...</td>
-      <td>0.710467</td>
-      <td>0.612158</td>
-      <td>0.800903</td>
-      <td>0.670782</td>
-      <td>0.731836</td>
-      <td>0.674681</td>
-      <td>0.781948</td>
-      <td>0.662192</td>
-      <td>0.639717</td>
-      <td>0.667346</td>
-    </tr>
-    <tr>
-      <th>EWG</th>
-      <td>0.827504</td>
-      <td>0.788500</td>
-      <td>0.801195</td>
-      <td>0.814987</td>
-      <td>0.828581</td>
-      <td>0.770282</td>
-      <td>0.766026</td>
-      <td>0.792735</td>
-      <td>0.804462</td>
-      <td>0.903357</td>
-      <td>...</td>
-      <td>0.697817</td>
-      <td>0.571686</td>
-      <td>0.746776</td>
-      <td>0.687219</td>
-      <td>0.699380</td>
-      <td>0.644139</td>
-      <td>0.759428</td>
-      <td>0.631838</td>
-      <td>0.599603</td>
-      <td>0.655147</td>
-    </tr>
-    <tr>
-      <th>EFA</th>
-      <td>0.879556</td>
-      <td>0.833238</td>
-      <td>0.850525</td>
-      <td>0.864298</td>
-      <td>0.883156</td>
-      <td>0.810525</td>
-      <td>0.807029</td>
-      <td>0.837832</td>
-      <td>0.840483</td>
-      <td>0.950473</td>
-      <td>...</td>
-      <td>0.748103</td>
-      <td>0.629146</td>
-      <td>0.811235</td>
-      <td>0.728027</td>
-      <td>0.757794</td>
-      <td>0.689451</td>
-      <td>0.817653</td>
-      <td>0.684524</td>
-      <td>0.658352</td>
-      <td>0.701142</td>
-    </tr>
-    <tr>
-      <th>VV</th>
-      <td>0.962824</td>
-      <td>0.926589</td>
-      <td>0.887115</td>
-      <td>0.968873</td>
-      <td>0.968543</td>
-      <td>0.895102</td>
-      <td>0.916023</td>
-      <td>0.868416</td>
-      <td>0.913246</td>
-      <td>0.952883</td>
-      <td>...</td>
-      <td>0.842041</td>
-      <td>0.686936</td>
-      <td>0.787679</td>
-      <td>0.830963</td>
-      <td>0.773964</td>
-      <td>0.762172</td>
-      <td>0.794077</td>
-      <td>0.688247</td>
-      <td>0.719682</td>
-      <td>0.793470</td>
-    </tr>
-    <tr>
-      <th>VOX</th>
-      <td>0.829524</td>
-      <td>0.821924</td>
-      <td>0.748846</td>
-      <td>0.848744</td>
-      <td>0.836075</td>
-      <td>0.792056</td>
-      <td>0.818052</td>
-      <td>0.727444</td>
-      <td>0.768812</td>
-      <td>0.829540</td>
-      <td>...</td>
-      <td>0.744374</td>
-      <td>0.606105</td>
-      <td>0.705354</td>
-      <td>0.707345</td>
-      <td>0.639874</td>
-      <td>0.674435</td>
-      <td>0.669103</td>
-      <td>0.575476</td>
-      <td>0.639185</td>
-      <td>0.694872</td>
-    </tr>
-    <tr>
-      <th>VO</th>
-      <td>0.925995</td>
-      <td>0.959562</td>
-      <td>0.917124</td>
-      <td>0.942684</td>
-      <td>0.950781</td>
-      <td>0.931749</td>
-      <td>0.874771</td>
-      <td>0.888976</td>
-      <td>0.915803</td>
-      <td>0.917330</td>
-      <td>...</td>
-      <td>0.799096</td>
-      <td>0.669643</td>
-      <td>0.795317</td>
-      <td>0.783972</td>
-      <td>0.792744</td>
-      <td>0.789303</td>
-      <td>0.805500</td>
-      <td>0.722793</td>
-      <td>0.706282</td>
-      <td>0.743620</td>
+      <td>0.705979</td>
+      <td>0.845721</td>
+      <td>0.741687</td>
+      <td>0.685172</td>
+      <td>0.680704</td>
+      <td>0.022329</td>
+      <td>-0.185696</td>
+      <td>0.043660</td>
+      <td>-0.396070</td>
+      <td>-0.395306</td>
     </tr>
     <tr>
       <th>VIS</th>
-      <td>0.924980</td>
-      <td>0.906856</td>
-      <td>0.898726</td>
-      <td>0.891909</td>
-      <td>0.934202</td>
-      <td>0.915178</td>
-      <td>0.824186</td>
-      <td>0.872988</td>
-      <td>0.978351</td>
-      <td>0.889392</td>
-      <td>...</td>
-      <td>0.771825</td>
-      <td>0.613144</td>
-      <td>0.758244</td>
-      <td>0.744260</td>
-      <td>0.757034</td>
-      <td>0.743540</td>
-      <td>0.780143</td>
-      <td>0.700015</td>
+      <td>0.938206</td>
+      <td>0.857539</td>
+      <td>1.000000</td>
+      <td>0.836061</td>
+      <td>0.755845</td>
       <td>0.651241</td>
-      <td>0.722447</td>
+      <td>0.761983</td>
+      <td>0.689812</td>
+      <td>0.691982</td>
+      <td>0.771825</td>
+      <td>...</td>
+      <td>0.744260</td>
+      <td>0.924980</td>
+      <td>0.794401</td>
+      <td>0.757034</td>
+      <td>0.707186</td>
+      <td>0.029587</td>
+      <td>-0.182244</td>
+      <td>0.109723</td>
+      <td>-0.425476</td>
+      <td>-0.419461</td>
     </tr>
     <tr>
-      <th>VHT</th>
-      <td>0.845192</td>
-      <td>0.816965</td>
-      <td>0.725520</td>
-      <td>0.860907</td>
-      <td>0.833589</td>
-      <td>0.764202</td>
-      <td>0.785249</td>
-      <td>0.715492</td>
-      <td>0.771222</td>
-      <td>0.827059</td>
+      <th>IXN</th>
+      <td>0.909863</td>
+      <td>0.815245</td>
+      <td>0.836061</td>
+      <td>1.000000</td>
+      <td>0.672716</td>
+      <td>0.595405</td>
+      <td>0.662613</td>
+      <td>0.709569</td>
+      <td>0.677147</td>
+      <td>0.733284</td>
       <td>...</td>
-      <td>0.787570</td>
-      <td>0.622719</td>
-      <td>0.627211</td>
-      <td>0.972123</td>
-      <td>0.615737</td>
-      <td>0.601995</td>
-      <td>0.636107</td>
-      <td>0.522213</td>
-      <td>0.650093</td>
-      <td>0.747722</td>
-    </tr>
-    <tr>
-      <th>VGT</th>
-      <td>0.872480</td>
-      <td>0.889528</td>
-      <td>0.796923</td>
-      <td>0.953095</td>
-      <td>0.843923</td>
-      <td>0.821001</td>
-      <td>0.978402</td>
-      <td>0.779594</td>
-      <td>0.818902</td>
-      <td>0.882263</td>
-      <td>...</td>
-      <td>0.734391</td>
-      <td>0.559900</td>
-      <td>0.708972</td>
-      <td>0.738872</td>
-      <td>0.647564</td>
-      <td>0.648398</td>
-      <td>0.674827</td>
-      <td>0.584225</td>
-      <td>0.591758</td>
-      <td>0.685233</td>
-    </tr>
-    <tr>
-      <th>VFH</th>
-      <td>0.844210</td>
-      <td>0.812667</td>
-      <td>0.776239</td>
-      <td>0.781101</td>
-      <td>0.920203</td>
-      <td>0.857421</td>
-      <td>0.731145</td>
-      <td>0.750419</td>
-      <td>0.826888</td>
-      <td>0.818310</td>
-      <td>...</td>
-      <td>0.687824</td>
-      <td>0.541218</td>
-      <td>0.677529</td>
-      <td>0.662515</td>
-      <td>0.662599</td>
-      <td>0.828687</td>
-      <td>0.676528</td>
-      <td>0.603565</td>
-      <td>0.576314</td>
-      <td>0.650003</td>
-    </tr>
-    <tr>
-      <th>VXF</th>
-      <td>0.893055</td>
-      <td>0.984175</td>
-      <td>0.896732</td>
-      <td>0.924254</td>
-      <td>0.920468</td>
-      <td>0.963747</td>
-      <td>0.852105</td>
-      <td>0.862989</td>
-      <td>0.894648</td>
-      <td>0.885221</td>
-      <td>...</td>
-      <td>0.755786</td>
-      <td>0.608857</td>
-      <td>0.770781</td>
-      <td>0.757711</td>
-      <td>0.764835</td>
-      <td>0.780850</td>
-      <td>0.778306</td>
-      <td>0.710835</td>
-      <td>0.650455</td>
-      <td>0.697834</td>
-    </tr>
-    <tr>
-      <th>IXP</th>
-      <td>0.847570</td>
-      <td>0.789873</td>
-      <td>0.765220</td>
-      <td>0.853967</td>
-      <td>0.838630</td>
-      <td>0.751435</td>
-      <td>0.823573</td>
-      <td>0.753738</td>
-      <td>0.767864</td>
-      <td>0.895110</td>
-      <td>...</td>
-      <td>0.755577</td>
-      <td>0.628484</td>
-      <td>0.758843</td>
-      <td>0.716017</td>
-      <td>0.676151</td>
-      <td>0.657760</td>
-      <td>0.723924</td>
-      <td>0.595633</td>
-      <td>0.655424</td>
-      <td>0.709589</td>
-    </tr>
-    <tr>
-      <th>TLT</th>
-      <td>-0.412130</td>
-      <td>-0.383589</td>
-      <td>-0.401993</td>
-      <td>-0.391117</td>
-      <td>-0.429299</td>
-      <td>-0.399002</td>
-      <td>-0.363143</td>
-      <td>-0.393610</td>
-      <td>-0.417262</td>
-      <td>-0.415673</td>
-      <td>...</td>
-      <td>-0.322620</td>
-      <td>-0.186516</td>
-      <td>-0.324013</td>
-      <td>-0.339039</td>
-      <td>-0.363921</td>
-      <td>-0.240999</td>
-      <td>-0.369691</td>
-      <td>-0.345703</td>
-      <td>-0.209599</td>
-      <td>-0.308096</td>
-    </tr>
-    <tr>
-      <th>IEF</th>
-      <td>-0.406660</td>
-      <td>-0.379444</td>
-      <td>-0.387421</td>
-      <td>-0.385468</td>
-      <td>-0.419938</td>
-      <td>-0.391869</td>
-      <td>-0.364150</td>
-      <td>-0.376583</td>
-      <td>-0.409986</td>
-      <td>-0.402275</td>
-      <td>...</td>
-      <td>-0.310257</td>
-      <td>-0.167660</td>
-      <td>-0.309643</td>
-      <td>-0.319384</td>
-      <td>-0.344833</td>
-      <td>-0.242757</td>
-      <td>-0.346013</td>
-      <td>-0.321907</td>
-      <td>-0.191506</td>
-      <td>-0.292495</td>
-    </tr>
-    <tr>
-      <th>SHY</th>
-      <td>-0.349471</td>
-      <td>-0.311633</td>
-      <td>-0.316383</td>
-      <td>-0.333543</td>
-      <td>-0.359426</td>
-      <td>-0.315619</td>
-      <td>-0.324887</td>
-      <td>-0.304115</td>
-      <td>-0.335881</td>
-      <td>-0.334992</td>
-      <td>...</td>
-      <td>-0.259324</td>
-      <td>-0.162849</td>
-      <td>-0.280734</td>
-      <td>-0.250581</td>
-      <td>-0.284270</td>
-      <td>-0.236690</td>
-      <td>-0.280932</td>
-      <td>-0.256859</td>
-      <td>-0.182832</td>
-      <td>-0.233384</td>
-    </tr>
-    <tr>
-      <th>TIP</th>
-      <td>-0.183941</td>
-      <td>-0.143031</td>
-      <td>-0.139897</td>
-      <td>-0.166193</td>
-      <td>-0.187488</td>
-      <td>-0.166024</td>
-      <td>-0.177035</td>
-      <td>-0.137096</td>
-      <td>-0.175474</td>
-      <td>-0.165364</td>
-      <td>...</td>
-      <td>-0.160758</td>
-      <td>-0.037856</td>
-      <td>-0.086913</td>
-      <td>-0.146323</td>
-      <td>-0.080481</td>
-      <td>-0.111835</td>
-      <td>-0.068387</td>
-      <td>-0.061728</td>
-      <td>-0.054383</td>
-      <td>-0.145454</td>
-    </tr>
-    <tr>
-      <th>GLD</th>
-      <td>0.022014</td>
-      <td>0.073867</td>
-      <td>0.183364</td>
-      <td>0.057818</td>
-      <td>0.034450</td>
-      <td>0.034530</td>
-      <td>0.025768</td>
-      <td>0.182071</td>
-      <td>0.034052</td>
-      <td>0.097414</td>
-      <td>...</td>
-      <td>0.026346</td>
-      <td>0.099880</td>
-      <td>0.170134</td>
-      <td>0.006578</td>
-      <td>0.159716</td>
-      <td>0.040488</td>
-      <td>0.184039</td>
-      <td>0.153752</td>
-      <td>0.102011</td>
-      <td>0.005245</td>
-    </tr>
-    <tr>
-      <th>AGG</th>
-      <td>-0.073248</td>
-      <td>-0.076123</td>
-      <td>-0.088326</td>
-      <td>-0.060994</td>
-      <td>-0.103255</td>
-      <td>-0.114474</td>
-      <td>-0.081890</td>
-      <td>-0.069001</td>
-      <td>-0.091007</td>
-      <td>-0.074490</td>
-      <td>...</td>
-      <td>-0.048654</td>
-      <td>0.067850</td>
-      <td>-0.010843</td>
-      <td>-0.036240</td>
-      <td>-0.042224</td>
-      <td>-0.059653</td>
-      <td>-0.018854</td>
-      <td>-0.027207</td>
-      <td>0.053771</td>
-      <td>-0.054706</td>
-    </tr>
-    <tr>
-      <th>LQD</th>
-      <td>0.139391</td>
-      <td>0.122096</td>
-      <td>0.104734</td>
-      <td>0.143108</td>
-      <td>0.112181</td>
-      <td>0.092104</td>
-      <td>0.129717</td>
-      <td>0.099175</td>
-      <td>0.097572</td>
-      <td>0.143377</td>
-      <td>...</td>
-      <td>0.127522</td>
-      <td>0.224748</td>
-      <td>0.174924</td>
-      <td>0.109768</td>
-      <td>0.110562</td>
-      <td>0.114057</td>
-      <td>0.148874</td>
-      <td>0.102070</td>
-      <td>0.216361</td>
-      <td>0.130587</td>
-    </tr>
-    <tr>
-      <th>PPH</th>
-      <td>0.784959</td>
-      <td>0.716610</td>
-      <td>0.660587</td>
-      <td>0.769160</td>
-      <td>0.776409</td>
-      <td>0.686120</td>
-      <td>0.703297</td>
-      <td>0.650291</td>
-      <td>0.701049</td>
-      <td>0.778817</td>
-      <td>...</td>
-      <td>0.739180</td>
-      <td>0.581360</td>
-      <td>0.584951</td>
-      <td>0.906976</td>
-      <td>0.578402</td>
-      <td>0.541828</td>
-      <td>0.600614</td>
-      <td>0.488359</td>
-      <td>0.602682</td>
-      <td>0.706547</td>
-    </tr>
-    <tr>
-      <th>BBH</th>
-      <td>0.600682</td>
-      <td>0.654139</td>
-      <td>0.538169</td>
-      <td>0.677929</td>
-      <td>0.584764</td>
-      <td>0.574277</td>
-      <td>0.610910</td>
-      <td>0.531471</td>
-      <td>0.549940</td>
-      <td>0.607003</td>
-      <td>...</td>
-      <td>0.550332</td>
-      <td>0.402610</td>
-      <td>0.448326</td>
-      <td>0.762625</td>
-      <td>0.445636</td>
-      <td>0.398152</td>
-      <td>0.457879</td>
-      <td>0.388186</td>
-      <td>0.422958</td>
-      <td>0.525791</td>
-    </tr>
-    <tr>
-      <th>EWJ</th>
-      <td>0.755160</td>
-      <td>0.706942</td>
-      <td>0.706155</td>
-      <td>0.740623</td>
-      <td>0.744162</td>
-      <td>0.687823</td>
-      <td>0.695481</td>
-      <td>0.697254</td>
-      <td>0.706278</td>
-      <td>0.794056</td>
-      <td>...</td>
-      <td>0.648108</td>
-      <td>0.543037</td>
-      <td>0.675257</td>
-      <td>0.632914</td>
-      <td>0.627544</td>
-      <td>0.574012</td>
-      <td>0.668578</td>
-      <td>0.565976</td>
-      <td>0.567829</td>
-      <td>0.604296</td>
-    </tr>
-    <tr>
-      <th>EWM</th>
-      <td>0.648649</td>
-      <td>0.627570</td>
-      <td>0.639987</td>
-      <td>0.652809</td>
-      <td>0.658039</td>
-      <td>0.602736</td>
-      <td>0.605064</td>
-      <td>0.626766</td>
-      <td>0.615937</td>
-      <td>0.683353</td>
-      <td>...</td>
-      <td>0.570333</td>
-      <td>0.486255</td>
-      <td>0.676910</td>
-      <td>0.537122</td>
-      <td>0.565548</td>
-      <td>0.518197</td>
-      <td>0.611127</td>
-      <td>0.511232</td>
-      <td>0.508715</td>
-      <td>0.537761</td>
-    </tr>
-    <tr>
-      <th>EWS</th>
-      <td>0.757586</td>
-      <td>0.722028</td>
-      <td>0.734400</td>
-      <td>0.746468</td>
-      <td>0.763601</td>
-      <td>0.702817</td>
-      <td>0.707160</td>
-      <td>0.714523</td>
-      <td>0.716755</td>
-      <td>0.790721</td>
-      <td>...</td>
-      <td>0.638935</td>
-      <td>0.546921</td>
-      <td>0.744543</td>
-      <td>0.597199</td>
-      <td>0.652219</td>
-      <td>0.622553</td>
-      <td>0.691001</td>
-      <td>0.587488</td>
-      <td>0.572683</td>
-      <td>0.597232</td>
-    </tr>
-    <tr>
-      <th>EWT</th>
-      <td>0.715626</td>
-      <td>0.702069</td>
-      <td>0.695235</td>
-      <td>0.729240</td>
-      <td>0.715092</td>
-      <td>0.670561</td>
-      <td>0.707842</td>
-      <td>0.671848</td>
-      <td>0.672334</td>
-      <td>0.752701</td>
-      <td>...</td>
-      <td>0.602605</td>
-      <td>0.492329</td>
-      <td>0.707873</td>
-      <td>0.563018</td>
-      <td>0.605390</td>
-      <td>0.571911</td>
-      <td>0.645630</td>
-      <td>0.540571</td>
-      <td>0.515743</td>
-      <td>0.562492</td>
-    </tr>
-    <tr>
-      <th>EWW</th>
-      <td>0.749473</td>
-      <td>0.737346</td>
-      <td>0.754848</td>
-      <td>0.741360</td>
-      <td>0.764335</td>
-      <td>0.722588</td>
-      <td>0.690342</td>
-      <td>0.745610</td>
-      <td>0.730071</td>
-      <td>0.769715</td>
-      <td>...</td>
-      <td>0.652276</td>
-      <td>0.552944</td>
-      <td>0.868737</td>
-      <td>0.604140</td>
-      <td>0.678201</td>
-      <td>0.624481</td>
-      <td>0.712109</td>
-      <td>0.622968</td>
-      <td>0.583229</td>
-      <td>0.607156</td>
-    </tr>
-    <tr>
-      <th>EWY</th>
-      <td>0.748854</td>
-      <td>0.718169</td>
-      <td>0.729390</td>
-      <td>0.745971</td>
-      <td>0.745754</td>
-      <td>0.688466</td>
-      <td>0.707370</td>
-      <td>0.707866</td>
-      <td>0.704967</td>
-      <td>0.782564</td>
-      <td>...</td>
-      <td>0.631580</td>
-      <td>0.549735</td>
-      <td>0.748879</td>
-      <td>0.596911</td>
-      <td>0.647487</td>
-      <td>0.599072</td>
-      <td>0.687443</td>
-      <td>0.578000</td>
-      <td>0.572454</td>
-      <td>0.590696</td>
-    </tr>
-    <tr>
-      <th>EWZ</th>
-      <td>0.704566</td>
-      <td>0.689759</td>
-      <td>0.742203</td>
-      <td>0.704389</td>
-      <td>0.714451</td>
-      <td>0.662959</td>
-      <td>0.652066</td>
-      <td>0.725048</td>
-      <td>0.675789</td>
-      <td>0.736624</td>
-      <td>...</td>
-      <td>0.599750</td>
-      <td>0.535359</td>
-      <td>0.962983</td>
-      <td>0.547075</td>
-      <td>0.692098</td>
-      <td>0.551737</td>
-      <td>0.733073</td>
-      <td>0.642342</td>
-      <td>0.561677</td>
-      <td>0.551955</td>
-    </tr>
-    <tr>
-      <th>EZA</th>
-      <td>0.732961</td>
-      <td>0.710036</td>
-      <td>0.752886</td>
-      <td>0.735178</td>
-      <td>0.741908</td>
-      <td>0.685686</td>
-      <td>0.690177</td>
-      <td>0.731437</td>
-      <td>0.693037</td>
-      <td>0.783003</td>
-      <td>...</td>
-      <td>0.626994</td>
-      <td>0.531354</td>
-      <td>0.800965</td>
-      <td>0.585760</td>
-      <td>0.679188</td>
-      <td>0.580618</td>
-      <td>0.724985</td>
-      <td>0.610763</td>
-      <td>0.558463</td>
-      <td>0.582822</td>
+      <td>0.730146</td>
+      <td>0.871600</td>
+      <td>0.809465</td>
+      <td>0.658537</td>
+      <td>0.689146</td>
+      <td>0.054102</td>
+      <td>-0.160413</td>
+      <td>0.138347</td>
+      <td>-0.364510</td>
+      <td>-0.362002</td>
     </tr>
     <tr>
       <th>IYR</th>
-      <td>0.745535</td>
-      <td>0.762739</td>
-      <td>0.707305</td>
-      <td>0.727310</td>
-      <td>0.809894</td>
-      <td>0.777310</td>
-      <td>0.669657</td>
-      <td>0.676573</td>
-      <td>0.725958</td>
-      <td>0.730150</td>
-      <td>...</td>
-      <td>0.672800</td>
-      <td>0.607281</td>
-      <td>0.632428</td>
-      <td>0.580295</td>
-      <td>0.568377</td>
-      <td>0.985160</td>
-      <td>0.584143</td>
-      <td>0.493876</td>
+      <td>0.786737</td>
+      <td>0.741859</td>
+      <td>0.755845</td>
+      <td>0.672716</td>
+      <td>1.000000</td>
       <td>0.634718</td>
-      <td>0.629518</td>
-    </tr>
-    <tr>
-      <th>FXI</th>
-      <td>0.714326</td>
-      <td>0.696411</td>
-      <td>0.703718</td>
-      <td>0.724635</td>
-      <td>0.722716</td>
-      <td>0.661186</td>
-      <td>0.686130</td>
-      <td>0.682638</td>
-      <td>0.664017</td>
-      <td>0.753865</td>
+      <td>0.569118</td>
+      <td>0.596207</td>
+      <td>0.570218</td>
+      <td>0.672800</td>
       <td>...</td>
-      <td>0.592935</td>
-      <td>0.494691</td>
-      <td>0.739630</td>
-      <td>0.569668</td>
-      <td>0.622189</td>
-      <td>0.580825</td>
-      <td>0.656638</td>
-      <td>0.553764</td>
-      <td>0.516139</td>
-      <td>0.546950</td>
-    </tr>
-    <tr>
-      <th>IBB</th>
-      <td>0.670925</td>
-      <td>0.773234</td>
-      <td>0.626700</td>
-      <td>0.753445</td>
-      <td>0.673162</td>
-      <td>0.694945</td>
-      <td>0.682552</td>
-      <td>0.614628</td>
-      <td>0.636920</td>
-      <td>0.677039</td>
-      <td>...</td>
-      <td>0.598322</td>
-      <td>0.438360</td>
-      <td>0.524071</td>
-      <td>0.803885</td>
-      <td>0.514679</td>
-      <td>0.498609</td>
-      <td>0.524956</td>
-      <td>0.458810</td>
-      <td>0.466237</td>
-      <td>0.565337</td>
-    </tr>
-    <tr>
-      <th>VDE</th>
-      <td>0.765567</td>
-      <td>0.744098</td>
-      <td>0.809422</td>
-      <td>0.728436</td>
-      <td>0.793160</td>
-      <td>0.750663</td>
-      <td>0.645657</td>
-      <td>0.783941</td>
-      <td>0.746029</td>
-      <td>0.767195</td>
-      <td>...</td>
-      <td>0.596870</td>
-      <td>0.553504</td>
-      <td>0.751532</td>
-      <td>0.583858</td>
-      <td>0.990476</td>
-      <td>0.561408</td>
-      <td>0.969876</td>
-      <td>0.933035</td>
-      <td>0.586600</td>
-      <td>0.538133</td>
-    </tr>
-    <tr>
-      <th>VDC</th>
-      <td>0.851901</td>
-      <td>0.739583</td>
-      <td>0.713131</td>
-      <td>0.813619</td>
-      <td>0.838729</td>
-      <td>0.741441</td>
-      <td>0.754542</td>
-      <td>0.705967</td>
-      <td>0.769169</td>
-      <td>0.817936</td>
-      <td>...</td>
-      <td>1.000000</td>
-      <td>0.734366</td>
-      <td>0.650829</td>
-      <td>0.774610</td>
-      <td>0.601227</td>
-      <td>0.655914</td>
-      <td>0.621855</td>
-      <td>0.497551</td>
-      <td>0.758336</td>
-      <td>0.966169</td>
-    </tr>
-    <tr>
-      <th>XLU</th>
-      <td>0.687816</td>
-      <td>0.585509</td>
-      <td>0.597504</td>
-      <td>0.642346</td>
-      <td>0.701510</td>
-      <td>0.580604</td>
-      <td>0.585883</td>
-      <td>0.589035</td>
-      <td>0.610453</td>
-      <td>0.662040</td>
-      <td>...</td>
-      <td>0.734366</td>
-      <td>1.000000</td>
-      <td>0.566235</td>
-      <td>0.612406</td>
-      <td>0.563300</td>
-      <td>0.588641</td>
-      <td>0.573186</td>
-      <td>0.443753</td>
-      <td>0.983698</td>
-      <td>0.709578</td>
-    </tr>
-    <tr>
-      <th>ILF</th>
-      <td>0.767659</td>
-      <td>0.750748</td>
-      <td>0.801516</td>
-      <td>0.763365</td>
-      <td>0.779995</td>
-      <td>0.727546</td>
-      <td>0.705930</td>
-      <td>0.782982</td>
-      <td>0.737309</td>
-      <td>0.797623</td>
-      <td>...</td>
-      <td>0.650829</td>
-      <td>0.566235</td>
-      <td>1.000000</td>
-      <td>0.597093</td>
-      <td>0.749818</td>
-      <td>0.614648</td>
-      <td>0.790075</td>
-      <td>0.696054</td>
-      <td>0.597546</td>
-      <td>0.595558</td>
-    </tr>
-    <tr>
-      <th>XLV</th>
-      <td>0.822007</td>
-      <td>0.762026</td>
-      <td>0.691176</td>
-      <td>0.821977</td>
-      <td>0.806847</td>
-      <td>0.717123</td>
-      <td>0.743462</td>
-      <td>0.694629</td>
-      <td>0.749752</td>
-      <td>0.799246</td>
-      <td>...</td>
-      <td>0.774610</td>
-      <td>0.612406</td>
-      <td>0.597093</td>
-      <td>1.000000</td>
-      <td>0.584846</td>
-      <td>0.564930</td>
-      <td>0.605084</td>
-      <td>0.489221</td>
-      <td>0.635055</td>
-      <td>0.740423</td>
-    </tr>
-    <tr>
-      <th>XLE</th>
-      <td>0.767047</td>
-      <td>0.736024</td>
-      <td>0.806604</td>
-      <td>0.726572</td>
-      <td>0.793475</td>
-      <td>0.743758</td>
-      <td>0.646347</td>
-      <td>0.786435</td>
-      <td>0.744118</td>
-      <td>0.768566</td>
-      <td>...</td>
-      <td>0.601227</td>
-      <td>0.563300</td>
-      <td>0.749818</td>
-      <td>0.584846</td>
-      <td>1.000000</td>
-      <td>0.559775</td>
-      <td>0.968424</td>
-      <td>0.921508</td>
-      <td>0.593060</td>
-      <td>0.547545</td>
-    </tr>
-    <tr>
-      <th>RWR</th>
-      <td>0.731212</td>
-      <td>0.742433</td>
-      <td>0.689068</td>
-      <td>0.702638</td>
-      <td>0.794066</td>
-      <td>0.768430</td>
-      <td>0.646965</td>
-      <td>0.662814</td>
-      <td>0.718018</td>
-      <td>0.710299</td>
-      <td>...</td>
-      <td>0.655914</td>
-      <td>0.588641</td>
-      <td>0.614648</td>
-      <td>0.564930</td>
-      <td>0.559775</td>
-      <td>1.000000</td>
-      <td>0.575178</td>
-      <td>0.489726</td>
-      <td>0.618624</td>
-      <td>0.611561</td>
-    </tr>
-    <tr>
-      <th>IXC</th>
-      <td>0.790183</td>
-      <td>0.749881</td>
-      <td>0.821532</td>
-      <td>0.749901</td>
-      <td>0.809794</td>
-      <td>0.749193</td>
-      <td>0.672595</td>
-      <td>0.802208</td>
-      <td>0.765819</td>
-      <td>0.814352</td>
-      <td>...</td>
-      <td>0.621855</td>
-      <td>0.573186</td>
-      <td>0.790075</td>
-      <td>0.605084</td>
-      <td>0.968424</td>
-      <td>0.575178</td>
-      <td>1.000000</td>
-      <td>0.899857</td>
-      <td>0.604856</td>
-      <td>0.568858</td>
-    </tr>
-    <tr>
-      <th>OIH</th>
-      <td>0.673832</td>
-      <td>0.682318</td>
-      <td>0.747929</td>
-      <td>0.649599</td>
-      <td>0.703712</td>
-      <td>0.699281</td>
-      <td>0.573720</td>
-      <td>0.723650</td>
-      <td>0.684192</td>
-      <td>0.679449</td>
-      <td>...</td>
-      <td>0.497551</td>
-      <td>0.443753</td>
-      <td>0.696054</td>
-      <td>0.489221</td>
-      <td>0.921508</td>
-      <td>0.489726</td>
-      <td>0.899857</td>
-      <td>1.000000</td>
-      <td>0.476082</td>
-      <td>0.443541</td>
+      <td>0.580295</td>
+      <td>0.745535</td>
+      <td>0.685704</td>
+      <td>0.568377</td>
+      <td>0.557571</td>
+      <td>0.048909</td>
+      <td>-0.101207</td>
+      <td>0.135970</td>
+      <td>-0.241348</td>
+      <td>-0.240959</td>
     </tr>
     <tr>
       <th>VPU</th>
-      <td>0.719169</td>
-      <td>0.626350</td>
-      <td>0.633524</td>
-      <td>0.674983</td>
-      <td>0.735186</td>
-      <td>0.624710</td>
-      <td>0.614441</td>
-      <td>0.621970</td>
-      <td>0.646028</td>
-      <td>0.692349</td>
-      <td>...</td>
-      <td>0.758336</td>
-      <td>0.983698</td>
-      <td>0.597546</td>
-      <td>0.635055</td>
-      <td>0.593060</td>
-      <td>0.618624</td>
-      <td>0.604856</td>
-      <td>0.476082</td>
+      <td>0.717966</td>
+      <td>0.609432</td>
+      <td>0.651241</td>
+      <td>0.595405</td>
+      <td>0.634718</td>
       <td>1.000000</td>
-      <td>0.723289</td>
+      <td>0.586600</td>
+      <td>0.516139</td>
+      <td>0.561677</td>
+      <td>0.758336</td>
+      <td>...</td>
+      <td>0.635055</td>
+      <td>0.719169</td>
+      <td>0.617117</td>
+      <td>0.593060</td>
+      <td>0.602682</td>
+      <td>0.102011</td>
+      <td>-0.054383</td>
+      <td>0.216361</td>
+      <td>-0.209599</td>
+      <td>-0.191506</td>
+    </tr>
+    <tr>
+      <th>VDE</th>
+      <td>0.785157</td>
+      <td>0.676777</td>
+      <td>0.761983</td>
+      <td>0.662613</td>
+      <td>0.569118</td>
+      <td>0.586600</td>
+      <td>1.000000</td>
+      <td>0.620513</td>
+      <td>0.693814</td>
+      <td>0.596870</td>
+      <td>...</td>
+      <td>0.583858</td>
+      <td>0.765567</td>
+      <td>0.730213</td>
+      <td>0.990476</td>
+      <td>0.575267</td>
+      <td>0.160947</td>
+      <td>-0.076502</td>
+      <td>0.112469</td>
+      <td>-0.363996</td>
+      <td>-0.341670</td>
+    </tr>
+    <tr>
+      <th>FXI</th>
+      <td>0.737461</td>
+      <td>0.658751</td>
+      <td>0.689812</td>
+      <td>0.709569</td>
+      <td>0.596207</td>
+      <td>0.516139</td>
+      <td>0.620513</td>
+      <td>1.000000</td>
+      <td>0.687574</td>
+      <td>0.592935</td>
+      <td>...</td>
+      <td>0.569668</td>
+      <td>0.714326</td>
+      <td>0.894271</td>
+      <td>0.622189</td>
+      <td>0.554745</td>
+      <td>0.093298</td>
+      <td>-0.158915</td>
+      <td>0.117727</td>
+      <td>-0.318574</td>
+      <td>-0.342129</td>
+    </tr>
+    <tr>
+      <th>EWZ</th>
+      <td>0.727394</td>
+      <td>0.630179</td>
+      <td>0.691982</td>
+      <td>0.677147</td>
+      <td>0.570218</td>
+      <td>0.561677</td>
+      <td>0.693814</td>
+      <td>0.687574</td>
+      <td>1.000000</td>
+      <td>0.599750</td>
+      <td>...</td>
+      <td>0.547075</td>
+      <td>0.704566</td>
+      <td>0.835251</td>
+      <td>0.692098</td>
+      <td>0.536011</td>
+      <td>0.179145</td>
+      <td>-0.054472</td>
+      <td>0.170463</td>
+      <td>-0.288824</td>
+      <td>-0.276361</td>
+    </tr>
+    <tr>
+      <th>VDC</th>
+      <td>0.838075</td>
+      <td>0.740941</td>
+      <td>0.771825</td>
+      <td>0.733284</td>
+      <td>0.672800</td>
+      <td>0.758336</td>
+      <td>0.596870</td>
+      <td>0.592935</td>
+      <td>0.599750</td>
+      <td>1.000000</td>
+      <td>...</td>
+      <td>0.774610</td>
+      <td>0.851901</td>
+      <td>0.692441</td>
+      <td>0.601227</td>
+      <td>0.739180</td>
+      <td>0.026346</td>
+      <td>-0.160758</td>
+      <td>0.127522</td>
+      <td>-0.322620</td>
+      <td>-0.310257</td>
+    </tr>
+    <tr>
+      <th>EWT</th>
+      <td>0.738969</td>
+      <td>0.652015</td>
+      <td>0.693250</td>
+      <td>0.747773</td>
+      <td>0.590276</td>
+      <td>0.515743</td>
+      <td>0.604979</td>
+      <td>0.778123</td>
+      <td>0.659012</td>
+      <td>0.602605</td>
+      <td>...</td>
+      <td>0.563018</td>
+      <td>0.715626</td>
+      <td>0.851353</td>
+      <td>0.605390</td>
+      <td>0.559639</td>
+      <td>0.096528</td>
+      <td>-0.116670</td>
+      <td>0.137143</td>
+      <td>-0.290736</td>
+      <td>-0.301109</td>
+    </tr>
+    <tr>
+      <th>XLB</th>
+      <td>0.875608</td>
+      <td>0.777248</td>
+      <td>0.872988</td>
+      <td>0.784384</td>
+      <td>0.676573</td>
+      <td>0.621970</td>
+      <td>0.783941</td>
+      <td>0.682638</td>
+      <td>0.725048</td>
+      <td>0.705967</td>
+      <td>...</td>
+      <td>0.694629</td>
+      <td>0.847780</td>
+      <td>0.801941</td>
+      <td>0.786435</td>
+      <td>0.650291</td>
+      <td>0.182071</td>
+      <td>-0.137096</td>
+      <td>0.099175</td>
+      <td>-0.393610</td>
+      <td>-0.376583</td>
+    </tr>
+    <tr>
+      <th>OEF</th>
+      <td>0.979818</td>
+      <td>0.865617</td>
+      <td>0.902709</td>
+      <td>0.908928</td>
+      <td>0.753885</td>
+      <td>0.703313</td>
+      <td>0.748235</td>
+      <td>0.727930</td>
+      <td>0.703025</td>
+      <td>0.846495</td>
+      <td>...</td>
+      <td>0.832141</td>
+      <td>0.965464</td>
+      <td>0.829157</td>
+      <td>0.749575</td>
+      <td>0.793572</td>
+      <td>0.028253</td>
+      <td>-0.185780</td>
+      <td>0.131277</td>
+      <td>-0.412340</td>
+      <td>-0.406057</td>
+    </tr>
+    <tr>
+      <th>EWY</th>
+      <td>0.761169</td>
+      <td>0.680046</td>
+      <td>0.723920</td>
+      <td>0.744899</td>
+      <td>0.614903</td>
+      <td>0.572454</td>
+      <td>0.649157</td>
+      <td>0.798776</td>
+      <td>0.701809</td>
+      <td>0.631580</td>
+      <td>...</td>
+      <td>0.596911</td>
+      <td>0.748854</td>
+      <td>0.886435</td>
+      <td>0.647487</td>
+      <td>0.584158</td>
+      <td>0.123587</td>
+      <td>-0.118930</td>
+      <td>0.128931</td>
+      <td>-0.323885</td>
+      <td>-0.328779</td>
+    </tr>
+    <tr>
+      <th>SPYV</th>
+      <td>0.946358</td>
+      <td>0.868741</td>
+      <td>0.917801</td>
+      <td>0.825147</td>
+      <td>0.777973</td>
+      <td>0.711173</td>
+      <td>0.780372</td>
+      <td>0.695562</td>
+      <td>0.699669</td>
+      <td>0.813409</td>
+      <td>...</td>
+      <td>0.792578</td>
+      <td>0.931580</td>
+      <td>0.796973</td>
+      <td>0.781642</td>
+      <td>0.758423</td>
+      <td>0.040312</td>
+      <td>-0.185409</td>
+      <td>0.113325</td>
+      <td>-0.433884</td>
+      <td>-0.419029</td>
+    </tr>
+    <tr>
+      <th>VCR</th>
+      <td>0.931009</td>
+      <td>0.846764</td>
+      <td>0.892219</td>
+      <td>0.860371</td>
+      <td>0.768119</td>
+      <td>0.606877</td>
+      <td>0.666541</td>
+      <td>0.674441</td>
+      <td>0.647200</td>
+      <td>0.770394</td>
+      <td>...</td>
+      <td>0.736453</td>
+      <td>0.888394</td>
+      <td>0.774786</td>
+      <td>0.662717</td>
+      <td>0.697042</td>
+      <td>-0.000110</td>
+      <td>-0.166434</td>
+      <td>0.117290</td>
+      <td>-0.380224</td>
+      <td>-0.380952</td>
+    </tr>
+    <tr>
+      <th>VOX</th>
+      <td>0.866131</td>
+      <td>0.760775</td>
+      <td>0.794499</td>
+      <td>0.794541</td>
+      <td>0.692569</td>
+      <td>0.639185</td>
+      <td>0.643634</td>
+      <td>0.653090</td>
+      <td>0.648677</td>
+      <td>0.744374</td>
+      <td>...</td>
+      <td>0.707345</td>
+      <td>0.829524</td>
+      <td>0.746280</td>
+      <td>0.639874</td>
+      <td>0.682955</td>
+      <td>0.046883</td>
+      <td>-0.122372</td>
+      <td>0.145063</td>
+      <td>-0.319950</td>
+      <td>-0.316195</td>
+    </tr>
+    <tr>
+      <th>VAW</th>
+      <td>0.894665</td>
+      <td>0.809884</td>
+      <td>0.898726</td>
+      <td>0.799441</td>
+      <td>0.707305</td>
+      <td>0.633524</td>
+      <td>0.809422</td>
+      <td>0.703718</td>
+      <td>0.742203</td>
+      <td>0.713131</td>
+      <td>...</td>
+      <td>0.691176</td>
+      <td>0.859922</td>
+      <td>0.822397</td>
+      <td>0.806604</td>
+      <td>0.660587</td>
+      <td>0.183364</td>
+      <td>-0.139897</td>
+      <td>0.104734</td>
+      <td>-0.401993</td>
+      <td>-0.387421</td>
+    </tr>
+    <tr>
+      <th>IOO</th>
+      <td>0.952432</td>
+      <td>0.848449</td>
+      <td>0.889392</td>
+      <td>0.892990</td>
+      <td>0.730150</td>
+      <td>0.692349</td>
+      <td>0.767195</td>
+      <td>0.753865</td>
+      <td>0.736624</td>
+      <td>0.817936</td>
+      <td>...</td>
+      <td>0.799246</td>
+      <td>0.938661</td>
+      <td>0.865276</td>
+      <td>0.768566</td>
+      <td>0.778817</td>
+      <td>0.097414</td>
+      <td>-0.165364</td>
+      <td>0.143377</td>
+      <td>-0.415673</td>
+      <td>-0.402275</td>
+    </tr>
+    <tr>
+      <th>EZA</th>
+      <td>0.753811</td>
+      <td>0.688163</td>
+      <td>0.715682</td>
+      <td>0.707702</td>
+      <td>0.601381</td>
+      <td>0.558463</td>
+      <td>0.678394</td>
+      <td>0.725135</td>
+      <td>0.751358</td>
+      <td>0.626994</td>
+      <td>...</td>
+      <td>0.585760</td>
+      <td>0.732961</td>
+      <td>0.857528</td>
+      <td>0.679188</td>
+      <td>0.585863</td>
+      <td>0.242308</td>
+      <td>-0.077057</td>
+      <td>0.167703</td>
+      <td>-0.281701</td>
+      <td>-0.275781</td>
+    </tr>
+    <tr>
+      <th>EWM</th>
+      <td>0.670196</td>
+      <td>0.581422</td>
+      <td>0.633408</td>
+      <td>0.634947</td>
+      <td>0.531874</td>
+      <td>0.508715</td>
+      <td>0.567898</td>
+      <td>0.675046</td>
+      <td>0.643329</td>
+      <td>0.570333</td>
+      <td>...</td>
+      <td>0.537122</td>
+      <td>0.648649</td>
+      <td>0.752087</td>
+      <td>0.565548</td>
+      <td>0.521841</td>
+      <td>0.147721</td>
+      <td>-0.099889</td>
+      <td>0.149073</td>
+      <td>-0.283654</td>
+      <td>-0.278384</td>
+    </tr>
+    <tr>
+      <th>IXG</th>
+      <td>0.893005</td>
+      <td>0.814095</td>
+      <td>0.873435</td>
+      <td>0.792638</td>
+      <td>0.776972</td>
+      <td>0.603990</td>
+      <td>0.718135</td>
+      <td>0.727965</td>
+      <td>0.701590</td>
+      <td>0.705058</td>
+      <td>...</td>
+      <td>0.686205</td>
+      <td>0.865690</td>
+      <td>0.813552</td>
+      <td>0.714973</td>
+      <td>0.663419</td>
+      <td>0.034980</td>
+      <td>-0.167888</td>
+      <td>0.125309</td>
+      <td>-0.431998</td>
+      <td>-0.421938</td>
+    </tr>
+    <tr>
+      <th>BBH</th>
+      <td>0.648680</td>
+      <td>0.559142</td>
+      <td>0.562704</td>
+      <td>0.604393</td>
+      <td>0.416177</td>
+      <td>0.422958</td>
+      <td>0.446428</td>
+      <td>0.439180</td>
+      <td>0.415122</td>
+      <td>0.550332</td>
+      <td>...</td>
+      <td>0.762625</td>
+      <td>0.600682</td>
+      <td>0.501406</td>
+      <td>0.445636</td>
+      <td>0.694927</td>
+      <td>0.000781</td>
+      <td>-0.104678</td>
+      <td>0.103776</td>
+      <td>-0.256840</td>
+      <td>-0.248371</td>
+    </tr>
+    <tr>
+      <th>EWS</th>
+      <td>0.771250</td>
+      <td>0.694139</td>
+      <td>0.735941</td>
+      <td>0.729549</td>
+      <td>0.638044</td>
+      <td>0.572683</td>
+      <td>0.652315</td>
+      <td>0.808846</td>
+      <td>0.691209</td>
+      <td>0.638935</td>
+      <td>...</td>
+      <td>0.597199</td>
+      <td>0.757586</td>
+      <td>0.856933</td>
+      <td>0.652219</td>
+      <td>0.578843</td>
+      <td>0.130993</td>
+      <td>-0.126405</td>
+      <td>0.142241</td>
+      <td>-0.322517</td>
+      <td>-0.328475</td>
+    </tr>
+    <tr>
+      <th>OIH</th>
+      <td>0.702489</td>
+      <td>0.604295</td>
+      <td>0.700015</td>
+      <td>0.597997</td>
+      <td>0.493876</td>
+      <td>0.476082</td>
+      <td>0.933035</td>
+      <td>0.553764</td>
+      <td>0.642342</td>
+      <td>0.497551</td>
+      <td>...</td>
+      <td>0.489221</td>
+      <td>0.673832</td>
+      <td>0.656788</td>
+      <td>0.921508</td>
+      <td>0.488359</td>
+      <td>0.153752</td>
+      <td>-0.061728</td>
+      <td>0.102070</td>
+      <td>-0.345703</td>
+      <td>-0.321907</td>
+    </tr>
+    <tr>
+      <th>EWW</th>
+      <td>0.774087</td>
+      <td>0.672331</td>
+      <td>0.745540</td>
+      <td>0.708204</td>
+      <td>0.636758</td>
+      <td>0.583229</td>
+      <td>0.677708</td>
+      <td>0.702794</td>
+      <td>0.773876</td>
+      <td>0.652276</td>
+      <td>...</td>
+      <td>0.604140</td>
+      <td>0.749473</td>
+      <td>0.833658</td>
+      <td>0.678201</td>
+      <td>0.581099</td>
+      <td>0.138642</td>
+      <td>-0.102175</td>
+      <td>0.135562</td>
+      <td>-0.322467</td>
+      <td>-0.312077</td>
+    </tr>
+    <tr>
+      <th>IXC</th>
+      <td>0.802183</td>
+      <td>0.698825</td>
+      <td>0.780143</td>
+      <td>0.693423</td>
+      <td>0.584143</td>
+      <td>0.604856</td>
+      <td>0.969876</td>
+      <td>0.656638</td>
+      <td>0.733073</td>
+      <td>0.621855</td>
+      <td>...</td>
+      <td>0.605084</td>
+      <td>0.790183</td>
+      <td>0.771887</td>
+      <td>0.968424</td>
+      <td>0.600614</td>
+      <td>0.184039</td>
+      <td>-0.068387</td>
+      <td>0.148874</td>
+      <td>-0.369691</td>
+      <td>-0.346013</td>
+    </tr>
+    <tr>
+      <th>RWR</th>
+      <td>0.766907</td>
+      <td>0.723721</td>
+      <td>0.743540</td>
+      <td>0.651479</td>
+      <td>0.985160</td>
+      <td>0.618624</td>
+      <td>0.561408</td>
+      <td>0.580825</td>
+      <td>0.551737</td>
+      <td>0.655914</td>
+      <td>...</td>
+      <td>0.564930</td>
+      <td>0.731212</td>
+      <td>0.666497</td>
+      <td>0.559775</td>
+      <td>0.541828</td>
+      <td>0.040488</td>
+      <td>-0.111835</td>
+      <td>0.114057</td>
+      <td>-0.240999</td>
+      <td>-0.242757</td>
+    </tr>
+    <tr>
+      <th>ILF</th>
+      <td>0.792007</td>
+      <td>0.685892</td>
+      <td>0.758244</td>
+      <td>0.729926</td>
+      <td>0.632428</td>
+      <td>0.597546</td>
+      <td>0.751532</td>
+      <td>0.739630</td>
+      <td>0.962983</td>
+      <td>0.650829</td>
+      <td>...</td>
+      <td>0.597093</td>
+      <td>0.767659</td>
+      <td>0.886876</td>
+      <td>0.749818</td>
+      <td>0.584951</td>
+      <td>0.170134</td>
+      <td>-0.086913</td>
+      <td>0.174924</td>
+      <td>-0.324013</td>
+      <td>-0.309643</td>
+    </tr>
+    <tr>
+      <th>IEV</th>
+      <td>0.881361</td>
+      <td>0.777758</td>
+      <td>0.844644</td>
+      <td>0.810865</td>
+      <td>0.692108</td>
+      <td>0.642329</td>
+      <td>0.747476</td>
+      <td>0.737917</td>
+      <td>0.730719</td>
+      <td>0.734409</td>
+      <td>...</td>
+      <td>0.718054</td>
+      <td>0.862693</td>
+      <td>0.852469</td>
+      <td>0.748487</td>
+      <td>0.715334</td>
+      <td>0.145243</td>
+      <td>-0.124406</td>
+      <td>0.165122</td>
+      <td>-0.393103</td>
+      <td>-0.373863</td>
+    </tr>
+    <tr>
+      <th>FEZ</th>
+      <td>0.851872</td>
+      <td>0.745541</td>
+      <td>0.821255</td>
+      <td>0.788792</td>
+      <td>0.664439</td>
+      <td>0.613336</td>
+      <td>0.714689</td>
+      <td>0.701345</td>
+      <td>0.699192</td>
+      <td>0.708883</td>
+      <td>...</td>
+      <td>0.696500</td>
+      <td>0.833518</td>
+      <td>0.819634</td>
+      <td>0.714797</td>
+      <td>0.689830</td>
+      <td>0.134823</td>
+      <td>-0.137530</td>
+      <td>0.145472</td>
+      <td>-0.392726</td>
+      <td>-0.373946</td>
+    </tr>
+    <tr>
+      <th>EPP</th>
+      <td>0.851095</td>
+      <td>0.751074</td>
+      <td>0.813722</td>
+      <td>0.792198</td>
+      <td>0.690136</td>
+      <td>0.639717</td>
+      <td>0.733081</td>
+      <td>0.814900</td>
+      <td>0.748128</td>
+      <td>0.710467</td>
+      <td>...</td>
+      <td>0.670782</td>
+      <td>0.833605</td>
+      <td>0.882702</td>
+      <td>0.731836</td>
+      <td>0.657921</td>
+      <td>0.164050</td>
+      <td>-0.117283</td>
+      <td>0.177027</td>
+      <td>-0.364830</td>
+      <td>-0.357267</td>
+    </tr>
+    <tr>
+      <th>EWG</th>
+      <td>0.841964</td>
+      <td>0.745780</td>
+      <td>0.815152</td>
+      <td>0.788632</td>
+      <td>0.653441</td>
+      <td>0.599603</td>
+      <td>0.697513</td>
+      <td>0.701803</td>
+      <td>0.685831</td>
+      <td>0.697817</td>
+      <td>...</td>
+      <td>0.687219</td>
+      <td>0.827504</td>
+      <td>0.818744</td>
+      <td>0.699380</td>
+      <td>0.680939</td>
+      <td>0.148006</td>
+      <td>-0.126378</td>
+      <td>0.139739</td>
+      <td>-0.381615</td>
+      <td>-0.362209</td>
+    </tr>
+    <tr>
+      <th>IXJ</th>
+      <td>0.855594</td>
+      <td>0.731127</td>
+      <td>0.769803</td>
+      <td>0.767705</td>
+      <td>0.631770</td>
+      <td>0.660778</td>
+      <td>0.621882</td>
+      <td>0.632191</td>
+      <td>0.600478</td>
+      <td>0.781427</td>
+      <td>...</td>
+      <td>0.920243</td>
+      <td>0.841680</td>
+      <td>0.723690</td>
+      <td>0.625845</td>
+      <td>0.892110</td>
+      <td>0.053027</td>
+      <td>-0.138472</td>
+      <td>0.150541</td>
+      <td>-0.346288</td>
+      <td>-0.324097</td>
+    </tr>
+    <tr>
+      <th>VFH</th>
+      <td>0.873070</td>
+      <td>0.810866</td>
+      <td>0.851249</td>
+      <td>0.735683</td>
+      <td>0.834965</td>
+      <td>0.576314</td>
+      <td>0.662131</td>
+      <td>0.634229</td>
+      <td>0.611846</td>
+      <td>0.687824</td>
+      <td>...</td>
+      <td>0.662515</td>
+      <td>0.844210</td>
+      <td>0.720030</td>
+      <td>0.662599</td>
+      <td>0.637109</td>
+      <td>-0.033032</td>
+      <td>-0.187032</td>
+      <td>0.060730</td>
+      <td>-0.400553</td>
+      <td>-0.394919</td>
+    </tr>
+    <tr>
+      <th>SPYG</th>
+      <td>0.963484</td>
+      <td>0.855915</td>
+      <td>0.892730</td>
+      <td>0.934022</td>
+      <td>0.732495</td>
+      <td>0.672039</td>
+      <td>0.724928</td>
+      <td>0.709744</td>
+      <td>0.701002</td>
+      <td>0.811578</td>
+      <td>...</td>
+      <td>0.815486</td>
+      <td>0.921529</td>
+      <td>0.818301</td>
+      <td>0.723481</td>
+      <td>0.756769</td>
+      <td>0.054915</td>
+      <td>-0.167960</td>
+      <td>0.133828</td>
+      <td>-0.393024</td>
+      <td>-0.387069</td>
     </tr>
     <tr>
       <th>XLP</th>
-      <td>0.806004</td>
-      <td>0.681020</td>
-      <td>0.657361</td>
-      <td>0.763365</td>
-      <td>0.791998</td>
-      <td>0.685955</td>
-      <td>0.712980</td>
-      <td>0.657360</td>
-      <td>0.726137</td>
-      <td>0.771692</td>
-      <td>...</td>
-      <td>0.966169</td>
-      <td>0.709578</td>
-      <td>0.595558</td>
-      <td>0.740423</td>
-      <td>0.547545</td>
-      <td>0.611561</td>
-      <td>0.568858</td>
-      <td>0.443541</td>
+      <td>0.786440</td>
+      <td>0.714002</td>
+      <td>0.722447</td>
+      <td>0.686984</td>
+      <td>0.629518</td>
       <td>0.723289</td>
+      <td>0.538133</td>
+      <td>0.546950</td>
+      <td>0.551955</td>
+      <td>0.966169</td>
+      <td>...</td>
+      <td>0.740423</td>
+      <td>0.806004</td>
+      <td>0.636465</td>
+      <td>0.547545</td>
+      <td>0.706547</td>
+      <td>0.005245</td>
+      <td>-0.145454</td>
+      <td>0.130587</td>
+      <td>-0.308096</td>
+      <td>-0.292495</td>
+    </tr>
+    <tr>
+      <th>FVD</th>
+      <td>0.916216</td>
+      <td>0.835832</td>
+      <td>0.891514</td>
+      <td>0.796766</td>
+      <td>0.788080</td>
+      <td>0.789455</td>
+      <td>0.725465</td>
+      <td>0.656421</td>
+      <td>0.675832</td>
+      <td>0.845053</td>
+      <td>...</td>
+      <td>0.780426</td>
+      <td>0.901211</td>
+      <td>0.760991</td>
+      <td>0.728263</td>
+      <td>0.745867</td>
+      <td>0.040931</td>
+      <td>-0.160604</td>
+      <td>0.145087</td>
+      <td>-0.377956</td>
+      <td>-0.362550</td>
+    </tr>
+    <tr>
+      <th>VBR</th>
+      <td>0.931262</td>
+      <td>0.856250</td>
+      <td>0.932848</td>
+      <td>0.806657</td>
+      <td>0.830373</td>
+      <td>0.658700</td>
+      <td>0.767428</td>
+      <td>0.677314</td>
+      <td>0.683951</td>
+      <td>0.755706</td>
+      <td>...</td>
+      <td>0.724782</td>
+      <td>0.887442</td>
+      <td>0.781610</td>
+      <td>0.760056</td>
+      <td>0.694856</td>
+      <td>0.029754</td>
+      <td>-0.162958</td>
+      <td>0.109705</td>
+      <td>-0.403104</td>
+      <td>-0.393809</td>
+    </tr>
+    <tr>
+      <th>VGT</th>
+      <td>0.917268</td>
+      <td>0.826883</td>
+      <td>0.839281</td>
+      <td>0.970645</td>
+      <td>0.673217</td>
+      <td>0.591758</td>
+      <td>0.650452</td>
+      <td>0.683111</td>
+      <td>0.655305</td>
+      <td>0.734391</td>
+      <td>...</td>
+      <td>0.738872</td>
+      <td>0.872480</td>
+      <td>0.781833</td>
+      <td>0.647564</td>
+      <td>0.690815</td>
+      <td>0.031193</td>
+      <td>-0.182116</td>
+      <td>0.125319</td>
+      <td>-0.375343</td>
+      <td>-0.373138</td>
+    </tr>
+    <tr>
+      <th>EFA</th>
+      <td>0.896344</td>
+      <td>0.778434</td>
+      <td>0.853481</td>
+      <td>0.831675</td>
+      <td>0.703913</td>
+      <td>0.658352</td>
+      <td>0.757749</td>
+      <td>0.775634</td>
+      <td>0.749843</td>
+      <td>0.748103</td>
+      <td>...</td>
+      <td>0.728027</td>
+      <td>0.879556</td>
+      <td>0.883264</td>
+      <td>0.757794</td>
+      <td>0.721806</td>
+      <td>0.146015</td>
+      <td>-0.126910</td>
+      <td>0.181369</td>
+      <td>-0.386668</td>
+      <td>-0.370143</td>
+    </tr>
+    <tr>
+      <th>IJH</th>
+      <td>0.956580</td>
+      <td>0.861543</td>
+      <td>0.941060</td>
+      <td>0.851593</td>
+      <td>0.800320</td>
+      <td>0.686539</td>
+      <td>0.792106</td>
+      <td>0.700062</td>
+      <td>0.714357</td>
+      <td>0.778744</td>
+      <td>...</td>
+      <td>0.762385</td>
+      <td>0.912191</td>
+      <td>0.812467</td>
+      <td>0.786800</td>
+      <td>0.724099</td>
+      <td>0.057920</td>
+      <td>-0.157295</td>
+      <td>0.124459</td>
+      <td>-0.409175</td>
+      <td>-0.398635</td>
+    </tr>
+    <tr>
+      <th>IJR</th>
+      <td>0.914822</td>
+      <td>0.845549</td>
+      <td>0.915178</td>
+      <td>0.806089</td>
+      <td>0.777310</td>
+      <td>0.624710</td>
+      <td>0.750663</td>
+      <td>0.661186</td>
+      <td>0.662959</td>
+      <td>0.741441</td>
+      <td>...</td>
+      <td>0.717123</td>
+      <td>0.866318</td>
+      <td>0.763466</td>
+      <td>0.743758</td>
+      <td>0.686120</td>
+      <td>0.034530</td>
+      <td>-0.166024</td>
+      <td>0.092104</td>
+      <td>-0.399002</td>
+      <td>-0.391869</td>
+    </tr>
+    <tr>
+      <th>IWM</th>
+      <td>0.927537</td>
+      <td>0.853932</td>
+      <td>0.911799</td>
+      <td>0.825406</td>
+      <td>0.783193</td>
+      <td>0.628200</td>
+      <td>0.745749</td>
+      <td>0.686113</td>
+      <td>0.673074</td>
+      <td>0.741009</td>
+      <td>...</td>
+      <td>0.738085</td>
+      <td>0.872141</td>
+      <td>0.785586</td>
+      <td>0.739503</td>
+      <td>0.704613</td>
+      <td>0.039747</td>
+      <td>-0.166706</td>
+      <td>0.104112</td>
+      <td>-0.398788</td>
+      <td>-0.393568</td>
+    </tr>
+    <tr>
+      <th>IXP</th>
+      <td>0.864828</td>
+      <td>0.754605</td>
+      <td>0.784540</td>
+      <td>0.813468</td>
+      <td>0.676028</td>
+      <td>0.655424</td>
+      <td>0.674973</td>
+      <td>0.730426</td>
+      <td>0.699518</td>
+      <td>0.755577</td>
+      <td>...</td>
+      <td>0.716017</td>
+      <td>0.847570</td>
+      <td>0.818451</td>
+      <td>0.676151</td>
+      <td>0.701656</td>
+      <td>0.107095</td>
+      <td>-0.127737</td>
+      <td>0.174232</td>
+      <td>-0.331397</td>
+      <td>-0.323910</td>
+    </tr>
+    <tr>
+      <th>VTV</th>
+      <td>0.972047</td>
+      <td>0.872768</td>
+      <td>0.934202</td>
+      <td>0.843625</td>
+      <td>0.809894</td>
+      <td>0.735186</td>
+      <td>0.793160</td>
+      <td>0.722716</td>
+      <td>0.714451</td>
+      <td>0.838729</td>
+      <td>...</td>
+      <td>0.806847</td>
+      <td>0.958851</td>
+      <td>0.826697</td>
+      <td>0.793475</td>
+      <td>0.776409</td>
+      <td>0.034450</td>
+      <td>-0.187488</td>
+      <td>0.112181</td>
+      <td>-0.429299</td>
+      <td>-0.419938</td>
+    </tr>
+    <tr>
+      <th>VB</th>
+      <td>0.948727</td>
+      <td>0.867152</td>
+      <td>0.932971</td>
+      <td>0.847100</td>
+      <td>0.805935</td>
+      <td>0.650604</td>
+      <td>0.767316</td>
+      <td>0.699577</td>
+      <td>0.696966</td>
+      <td>0.758972</td>
+      <td>...</td>
+      <td>0.754297</td>
+      <td>0.891463</td>
+      <td>0.805176</td>
+      <td>0.760114</td>
+      <td>0.715906</td>
+      <td>0.051937</td>
+      <td>-0.158064</td>
+      <td>0.119754</td>
+      <td>-0.401479</td>
+      <td>-0.393868</td>
+    </tr>
+    <tr>
+      <th>VO</th>
+      <td>0.975539</td>
+      <td>0.876738</td>
+      <td>0.942130</td>
+      <td>0.882689</td>
+      <td>0.808578</td>
+      <td>0.706282</td>
+      <td>0.795294</td>
+      <td>0.728280</td>
+      <td>0.730329</td>
+      <td>0.799096</td>
+      <td>...</td>
+      <td>0.783972</td>
+      <td>0.925995</td>
+      <td>0.840431</td>
+      <td>0.792744</td>
+      <td>0.741890</td>
+      <td>0.066880</td>
+      <td>-0.161897</td>
+      <td>0.138157</td>
+      <td>-0.409298</td>
+      <td>-0.401454</td>
+    </tr>
+    <tr>
+      <th>VUG</th>
+      <td>0.970481</td>
+      <td>0.856033</td>
+      <td>0.891909</td>
+      <td>0.940605</td>
+      <td>0.727310</td>
+      <td>0.674983</td>
+      <td>0.728436</td>
+      <td>0.724635</td>
+      <td>0.704389</td>
+      <td>0.813619</td>
+      <td>...</td>
+      <td>0.821977</td>
+      <td>0.929926</td>
+      <td>0.830322</td>
+      <td>0.726572</td>
+      <td>0.769160</td>
+      <td>0.057818</td>
+      <td>-0.166193</td>
+      <td>0.143108</td>
+      <td>-0.391117</td>
+      <td>-0.385468</td>
+    </tr>
+    <tr>
+      <th>QQQ</th>
+      <td>0.918417</td>
+      <td>0.820850</td>
+      <td>0.827982</td>
+      <td>0.951295</td>
+      <td>0.676491</td>
+      <td>0.595447</td>
+      <td>0.640195</td>
+      <td>0.695897</td>
+      <td>0.656996</td>
+      <td>0.750314</td>
+      <td>...</td>
+      <td>0.769879</td>
+      <td>0.866875</td>
+      <td>0.791193</td>
+      <td>0.638354</td>
+      <td>0.712105</td>
+      <td>0.025197</td>
+      <td>-0.178444</td>
+      <td>0.118011</td>
+      <td>-0.366244</td>
+      <td>-0.367082</td>
+    </tr>
+    <tr>
+      <th>IVV</th>
+      <td>0.993564</td>
+      <td>0.888313</td>
+      <td>0.931543</td>
+      <td>0.910342</td>
+      <td>0.782932</td>
+      <td>0.720523</td>
+      <td>0.775352</td>
+      <td>0.742350</td>
+      <td>0.722037</td>
+      <td>0.848233</td>
+      <td>...</td>
+      <td>0.833389</td>
+      <td>0.971586</td>
+      <td>0.846222</td>
+      <td>0.777848</td>
+      <td>0.792106</td>
+      <td>0.039927</td>
+      <td>-0.183822</td>
+      <td>0.132572</td>
+      <td>-0.419069</td>
+      <td>-0.412891</td>
+    </tr>
+    <tr>
+      <th>SPY</th>
+      <td>0.992731</td>
+      <td>0.865696</td>
+      <td>0.924991</td>
+      <td>0.906737</td>
+      <td>0.775514</td>
+      <td>0.723065</td>
+      <td>0.779051</td>
+      <td>0.742013</td>
+      <td>0.726062</td>
+      <td>0.844489</td>
+      <td>...</td>
+      <td>0.834865</td>
+      <td>0.972807</td>
+      <td>0.849277</td>
+      <td>0.780847</td>
+      <td>0.788734</td>
+      <td>0.040685</td>
+      <td>-0.178572</td>
+      <td>0.151617</td>
+      <td>-0.414783</td>
+      <td>-0.407320</td>
+    </tr>
+    <tr>
+      <th>VXF</th>
+      <td>0.955825</td>
+      <td>0.867757</td>
+      <td>0.930277</td>
+      <td>0.863501</td>
+      <td>0.798245</td>
+      <td>0.650455</td>
+      <td>0.771939</td>
+      <td>0.702912</td>
+      <td>0.706645</td>
+      <td>0.755786</td>
+      <td>...</td>
+      <td>0.757711</td>
+      <td>0.893055</td>
+      <td>0.812207</td>
+      <td>0.764835</td>
+      <td>0.720134</td>
+      <td>0.059932</td>
+      <td>-0.147406</td>
+      <td>0.131150</td>
+      <td>-0.395361</td>
+      <td>-0.388707</td>
+    </tr>
+    <tr>
+      <th>VBK</th>
+      <td>0.941017</td>
+      <td>0.851057</td>
+      <td>0.906856</td>
+      <td>0.869056</td>
+      <td>0.762739</td>
+      <td>0.626350</td>
+      <td>0.744098</td>
+      <td>0.696411</td>
+      <td>0.689759</td>
+      <td>0.739583</td>
+      <td>...</td>
+      <td>0.762026</td>
+      <td>0.869771</td>
+      <td>0.803214</td>
+      <td>0.736024</td>
+      <td>0.716610</td>
+      <td>0.073867</td>
+      <td>-0.143031</td>
+      <td>0.122096</td>
+      <td>-0.383589</td>
+      <td>-0.379444</td>
+    </tr>
+    <tr>
+      <th>XLK</th>
+      <td>0.914642</td>
+      <td>0.818432</td>
+      <td>0.824186</td>
+      <td>0.961666</td>
+      <td>0.669657</td>
+      <td>0.614441</td>
+      <td>0.645657</td>
+      <td>0.686130</td>
+      <td>0.652066</td>
+      <td>0.754542</td>
+      <td>...</td>
+      <td>0.743462</td>
+      <td>0.888003</td>
+      <td>0.782977</td>
+      <td>0.646347</td>
+      <td>0.703297</td>
+      <td>0.025768</td>
+      <td>-0.177035</td>
+      <td>0.129717</td>
+      <td>-0.363143</td>
+      <td>-0.364150</td>
+    </tr>
+    <tr>
+      <th>VV</th>
+      <td>0.990550</td>
+      <td>0.881601</td>
+      <td>0.930846</td>
+      <td>0.911477</td>
+      <td>0.783003</td>
+      <td>0.719682</td>
+      <td>0.773345</td>
+      <td>0.738398</td>
+      <td>0.724996</td>
+      <td>0.842041</td>
+      <td>...</td>
+      <td>0.830963</td>
+      <td>0.962824</td>
+      <td>0.846221</td>
+      <td>0.773964</td>
+      <td>0.788825</td>
+      <td>0.051767</td>
+      <td>-0.183127</td>
+      <td>0.134950</td>
+      <td>-0.419393</td>
+      <td>-0.412820</td>
+    </tr>
+    <tr>
+      <th>XLU</th>
+      <td>0.682448</td>
+      <td>0.578150</td>
+      <td>0.613144</td>
+      <td>0.562642</td>
+      <td>0.607281</td>
+      <td>0.983698</td>
+      <td>0.553504</td>
+      <td>0.494691</td>
+      <td>0.535359</td>
+      <td>0.734366</td>
+      <td>...</td>
+      <td>0.612406</td>
+      <td>0.687816</td>
+      <td>0.589374</td>
+      <td>0.563300</td>
+      <td>0.581360</td>
+      <td>0.099880</td>
+      <td>-0.037856</td>
+      <td>0.224748</td>
+      <td>-0.186516</td>
+      <td>-0.167660</td>
+    </tr>
+    <tr>
+      <th>IBB</th>
+      <td>0.736757</td>
+      <td>0.646244</td>
+      <td>0.653567</td>
+      <td>0.680112</td>
+      <td>0.515864</td>
+      <td>0.466237</td>
+      <td>0.517596</td>
+      <td>0.513504</td>
+      <td>0.482206</td>
+      <td>0.598322</td>
+      <td>...</td>
+      <td>0.803885</td>
+      <td>0.670925</td>
+      <td>0.582630</td>
+      <td>0.514679</td>
+      <td>0.750668</td>
+      <td>0.013407</td>
+      <td>-0.114665</td>
+      <td>0.081392</td>
+      <td>-0.288735</td>
+      <td>-0.282575</td>
+    </tr>
+    <tr>
+      <th>EWJ</th>
+      <td>0.761379</td>
+      <td>0.642396</td>
+      <td>0.714719</td>
+      <td>0.726203</td>
+      <td>0.585464</td>
+      <td>0.567829</td>
+      <td>0.631683</td>
+      <td>0.687122</td>
+      <td>0.626280</td>
+      <td>0.648108</td>
+      <td>...</td>
+      <td>0.632914</td>
+      <td>0.755160</td>
+      <td>0.760021</td>
+      <td>0.627544</td>
+      <td>0.616532</td>
+      <td>0.096831</td>
+      <td>-0.099189</td>
+      <td>0.162138</td>
+      <td>-0.284496</td>
+      <td>-0.278181</td>
+    </tr>
+    <tr>
+      <th>DVY</th>
+      <td>0.908508</td>
+      <td>0.828707</td>
+      <td>0.884859</td>
+      <td>0.764960</td>
+      <td>0.807790</td>
+      <td>0.771562</td>
+      <td>0.733237</td>
+      <td>0.651813</td>
+      <td>0.657709</td>
+      <td>0.822135</td>
+      <td>...</td>
+      <td>0.740817</td>
+      <td>0.900038</td>
+      <td>0.752126</td>
+      <td>0.736152</td>
+      <td>0.717503</td>
+      <td>0.015667</td>
+      <td>-0.152413</td>
+      <td>0.121114</td>
+      <td>-0.374197</td>
+      <td>-0.363675</td>
+    </tr>
+    <tr>
+      <th>VHT</th>
+      <td>0.866296</td>
+      <td>0.749013</td>
+      <td>0.780783</td>
+      <td>0.771703</td>
+      <td>0.620041</td>
+      <td>0.650093</td>
+      <td>0.615198</td>
+      <td>0.601073</td>
+      <td>0.573970</td>
+      <td>0.787570</td>
+      <td>...</td>
+      <td>0.972123</td>
+      <td>0.845192</td>
+      <td>0.688365</td>
+      <td>0.615737</td>
+      <td>0.915062</td>
+      <td>0.013603</td>
+      <td>-0.155496</td>
+      <td>0.125684</td>
+      <td>-0.355242</td>
+      <td>-0.337681</td>
+    </tr>
+    <tr>
+      <th>XLF</th>
+      <td>0.856031</td>
+      <td>0.798221</td>
+      <td>0.826320</td>
+      <td>0.721202</td>
+      <td>0.810471</td>
+      <td>0.557091</td>
+      <td>0.641229</td>
+      <td>0.640503</td>
+      <td>0.605234</td>
+      <td>0.671156</td>
+      <td>...</td>
+      <td>0.644902</td>
+      <td>0.831639</td>
+      <td>0.719710</td>
+      <td>0.644208</td>
+      <td>0.620316</td>
+      <td>-0.045923</td>
+      <td>-0.180847</td>
+      <td>0.075553</td>
+      <td>-0.394064</td>
+      <td>-0.392931</td>
+    </tr>
+    <tr>
+      <th>XLY</th>
+      <td>0.915670</td>
+      <td>0.850084</td>
+      <td>0.876722</td>
+      <td>0.841567</td>
+      <td>0.760260</td>
+      <td>0.607752</td>
+      <td>0.649113</td>
+      <td>0.662146</td>
+      <td>0.633618</td>
+      <td>0.771852</td>
+      <td>...</td>
+      <td>0.733719</td>
+      <td>0.881244</td>
+      <td>0.761320</td>
+      <td>0.647311</td>
+      <td>0.695347</td>
+      <td>-0.011517</td>
+      <td>-0.172600</td>
+      <td>0.090986</td>
+      <td>-0.377135</td>
+      <td>-0.377318</td>
+    </tr>
+    <tr>
+      <th>XLI</th>
+      <td>0.922064</td>
+      <td>0.820377</td>
+      <td>0.978351</td>
+      <td>0.818938</td>
+      <td>0.725958</td>
+      <td>0.646028</td>
+      <td>0.746029</td>
+      <td>0.664017</td>
+      <td>0.675789</td>
+      <td>0.769169</td>
+      <td>...</td>
+      <td>0.749752</td>
+      <td>0.923129</td>
+      <td>0.773379</td>
+      <td>0.744118</td>
+      <td>0.701049</td>
+      <td>0.034052</td>
+      <td>-0.175474</td>
+      <td>0.097572</td>
+      <td>-0.417262</td>
+      <td>-0.409986</td>
+    </tr>
+    <tr>
+      <th>XLV</th>
+      <td>0.831363</td>
+      <td>0.705979</td>
+      <td>0.744260</td>
+      <td>0.730146</td>
+      <td>0.580295</td>
+      <td>0.635055</td>
+      <td>0.583858</td>
+      <td>0.569668</td>
+      <td>0.547075</td>
+      <td>0.774610</td>
+      <td>...</td>
+      <td>1.000000</td>
+      <td>0.822007</td>
+      <td>0.651589</td>
+      <td>0.584846</td>
+      <td>0.906976</td>
+      <td>0.006578</td>
+      <td>-0.146323</td>
+      <td>0.109768</td>
+      <td>-0.339039</td>
+      <td>-0.319384</td>
+    </tr>
+    <tr>
+      <th>DIA</th>
+      <td>0.966363</td>
+      <td>0.845721</td>
+      <td>0.924980</td>
+      <td>0.871600</td>
+      <td>0.745535</td>
+      <td>0.719169</td>
+      <td>0.765567</td>
+      <td>0.714326</td>
+      <td>0.704566</td>
+      <td>0.851901</td>
+      <td>...</td>
+      <td>0.822007</td>
+      <td>1.000000</td>
+      <td>0.819492</td>
+      <td>0.767047</td>
+      <td>0.784959</td>
+      <td>0.022014</td>
+      <td>-0.183941</td>
+      <td>0.139391</td>
+      <td>-0.412130</td>
+      <td>-0.406660</td>
+    </tr>
+    <tr>
+      <th>EEM</th>
+      <td>0.848465</td>
+      <td>0.741687</td>
+      <td>0.794401</td>
+      <td>0.809465</td>
+      <td>0.685704</td>
+      <td>0.617117</td>
+      <td>0.730213</td>
+      <td>0.894271</td>
+      <td>0.835251</td>
+      <td>0.692441</td>
+      <td>...</td>
+      <td>0.651589</td>
+      <td>0.819492</td>
+      <td>1.000000</td>
+      <td>0.731799</td>
+      <td>0.640231</td>
+      <td>0.163617</td>
+      <td>-0.133549</td>
+      <td>0.146765</td>
+      <td>-0.341215</td>
+      <td>-0.349426</td>
+    </tr>
+    <tr>
+      <th>XLE</th>
+      <td>0.783709</td>
+      <td>0.685172</td>
+      <td>0.757034</td>
+      <td>0.658537</td>
+      <td>0.568377</td>
+      <td>0.593060</td>
+      <td>0.990476</td>
+      <td>0.622189</td>
+      <td>0.692098</td>
+      <td>0.601227</td>
+      <td>...</td>
+      <td>0.584846</td>
+      <td>0.767047</td>
+      <td>0.731799</td>
+      <td>1.000000</td>
+      <td>0.578402</td>
+      <td>0.159716</td>
+      <td>-0.080481</td>
+      <td>0.110562</td>
+      <td>-0.363921</td>
+      <td>-0.344833</td>
+    </tr>
+    <tr>
+      <th>PPH</th>
+      <td>0.788244</td>
+      <td>0.680704</td>
+      <td>0.707186</td>
+      <td>0.689146</td>
+      <td>0.557571</td>
+      <td>0.602682</td>
+      <td>0.575267</td>
+      <td>0.554745</td>
+      <td>0.536011</td>
+      <td>0.739180</td>
+      <td>...</td>
+      <td>0.906976</td>
+      <td>0.784959</td>
+      <td>0.640231</td>
+      <td>0.578402</td>
+      <td>1.000000</td>
+      <td>0.022320</td>
+      <td>-0.134771</td>
+      <td>0.115207</td>
+      <td>-0.319244</td>
+      <td>-0.300165</td>
+    </tr>
+    <tr>
+      <th>GLD</th>
+      <td>0.049922</td>
+      <td>0.022329</td>
+      <td>0.029587</td>
+      <td>0.054102</td>
+      <td>0.048909</td>
+      <td>0.102011</td>
+      <td>0.160947</td>
+      <td>0.093298</td>
+      <td>0.179145</td>
+      <td>0.026346</td>
+      <td>...</td>
+      <td>0.006578</td>
+      <td>0.022014</td>
+      <td>0.163617</td>
+      <td>0.159716</td>
+      <td>0.022320</td>
+      <td>1.000000</td>
+      <td>0.239488</td>
+      <td>0.111738</td>
+      <td>0.136924</td>
+      <td>0.170396</td>
+    </tr>
+    <tr>
+      <th>TIP</th>
+      <td>-0.172429</td>
+      <td>-0.185696</td>
+      <td>-0.182244</td>
+      <td>-0.160413</td>
+      <td>-0.101207</td>
+      <td>-0.054383</td>
+      <td>-0.076502</td>
+      <td>-0.158915</td>
+      <td>-0.054472</td>
+      <td>-0.160758</td>
+      <td>...</td>
+      <td>-0.146323</td>
+      <td>-0.183941</td>
+      <td>-0.133549</td>
+      <td>-0.080481</td>
+      <td>-0.134771</td>
+      <td>0.239488</td>
+      <td>1.000000</td>
+      <td>0.469637</td>
+      <td>0.692784</td>
+      <td>0.749742</td>
+    </tr>
+    <tr>
+      <th>LQD</th>
+      <td>0.140007</td>
+      <td>0.043660</td>
+      <td>0.109723</td>
+      <td>0.138347</td>
+      <td>0.135970</td>
+      <td>0.216361</td>
+      <td>0.112469</td>
+      <td>0.117727</td>
+      <td>0.170463</td>
+      <td>0.127522</td>
+      <td>...</td>
+      <td>0.109768</td>
+      <td>0.139391</td>
+      <td>0.146765</td>
+      <td>0.110562</td>
+      <td>0.115207</td>
+      <td>0.111738</td>
+      <td>0.469637</td>
+      <td>1.000000</td>
+      <td>0.439281</td>
+      <td>0.459499</td>
+    </tr>
+    <tr>
+      <th>TLT</th>
+      <td>-0.415551</td>
+      <td>-0.396070</td>
+      <td>-0.425476</td>
+      <td>-0.364510</td>
+      <td>-0.241348</td>
+      <td>-0.209599</td>
+      <td>-0.363996</td>
+      <td>-0.318574</td>
+      <td>-0.288824</td>
+      <td>-0.322620</td>
+      <td>...</td>
+      <td>-0.339039</td>
+      <td>-0.412130</td>
+      <td>-0.341215</td>
+      <td>-0.363921</td>
+      <td>-0.319244</td>
+      <td>0.136924</td>
+      <td>0.692784</td>
+      <td>0.439281</td>
+      <td>1.000000</td>
+      <td>0.911983</td>
+    </tr>
+    <tr>
+      <th>IEF</th>
+      <td>-0.407574</td>
+      <td>-0.395306</td>
+      <td>-0.419461</td>
+      <td>-0.362002</td>
+      <td>-0.240959</td>
+      <td>-0.191506</td>
+      <td>-0.341670</td>
+      <td>-0.342129</td>
+      <td>-0.276361</td>
+      <td>-0.310257</td>
+      <td>...</td>
+      <td>-0.319384</td>
+      <td>-0.406660</td>
+      <td>-0.349426</td>
+      <td>-0.344833</td>
+      <td>-0.300165</td>
+      <td>0.170396</td>
+      <td>0.749742</td>
+      <td>0.459499</td>
+      <td>0.911983</td>
       <td>1.000000</td>
     </tr>
   </tbody>
 </table>
-<p>76 rows × 76 columns</p>
+<p>74 rows × 74 columns</p>
 </div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">mypo</span> <span class="kn">import</span> <span class="n">split_n_periods</span>
+<span></span><span class="kn">from</span> <span class="nn">mypo</span> <span class="kn">import</span> <span class="n">split_k_folds</span><span class="p">,</span> <span class="n">select_by_regression</span>
 <span class="kn">from</span> <span class="nn">mypo.optimizer</span> <span class="kn">import</span> <span class="n">MinimumVarianceOptimizer</span><span class="p">,</span> <span class="n">MaximumDiversificationOptimizer</span>
 <span class="kn">from</span> <span class="nn">mypo.indicator</span> <span class="kn">import</span> <span class="n">yearly_total_return</span><span class="p">,</span> <span class="n">max_drawdown</span><span class="p">,</span> <span class="n">max_drawdown_span</span>
 <span class="kn">from</span> <span class="nn">mypo.rebalancer</span> <span class="kn">import</span> <span class="n">MonthlyRebalancer</span>
 <span class="kn">from</span> <span class="nn">mypo</span> <span class="kn">import</span> <span class="n">Runner</span>
 
-<span class="n">trains</span><span class="p">,</span> <span class="n">evals</span> <span class="o">=</span> <span class="n">split_n_periods</span><span class="p">(</span><span class="n">market</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">folds</span> <span class="o">=</span> <span class="n">split_k_folds</span><span class="p">(</span><span class="n">market</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">trains</span><span class="p">)):</span>
-    <span class="n">evaluates</span> <span class="o">=</span> <span class="n">evaluate_combinations</span><span class="p">(</span><span class="n">trains</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">cluster</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">MaximumDiversificationOptimizer</span><span class="p">(),</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">folds</span><span class="p">)):</span>
+    <span class="n">evaluates</span> <span class="o">=</span> <span class="n">evaluate_combinations</span><span class="p">(</span><span class="n">folds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_train</span><span class="p">(),</span> <span class="n">cluster</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">MaximumDiversificationOptimizer</span><span class="p">(),</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">evaluates</span><span class="p">[</span><span class="s1">&#39;combinations&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">target</span> <span class="o">=</span> <span class="n">evals</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">filter</span><span class="p">((</span><span class="nb">list</span><span class="p">(</span><span class="n">evaluates</span><span class="p">[</span><span class="s1">&#39;combinations&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">fold</span> <span class="o">=</span> <span class="n">folds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">filter</span><span class="p">((</span><span class="nb">list</span><span class="p">(</span><span class="n">evaluates</span><span class="p">[</span><span class="s1">&#39;combinations&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]))</span>
     <span class="n">optimizer</span> <span class="o">=</span> <span class="n">MaximumDiversificationOptimizer</span><span class="p">()</span>
     <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
-        <span class="n">assets</span><span class="o">=</span><span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span>
+        <span class="n">assets</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">CLUSTERS</span><span class="p">)</span><span class="o">/</span><span class="n">CLUSTERS</span><span class="p">,</span>
         <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
         <span class="n">cash</span><span class="o">=</span><span class="mi">0</span>
     <span class="p">)</span>
 
-    <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-        <span class="n">market</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
-        <span class="n">train_span</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+    <span class="n">runner</span><span class="o">.</span><span class="n">run_fold</span><span class="p">(</span>
+        <span class="n">fold</span><span class="o">=</span><span class="n">fold</span><span class="p">,</span>
         <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">)</span>
     <span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
@@ -3032,8 +3083,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 12960/12960 [01:25&lt;00:00, 151.28it/s]
-  3%|▎         | 20/783 [00:00&lt;00:04, 185.86it/s]
+100%|██████████| 414/414 [00:01&lt;00:00, 252.90it/s]
+  4%|▍         | 38/979 [00:00&lt;00:02, 377.71it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3041,7 +3092,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[&#39;IXN&#39;, &#39;SHY&#39;, &#39;GLD&#39;, &#39;OIH&#39;]
+[&#39;EWZ&#39;, &#39;GLD&#39;, &#39;IEF&#39;]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3049,7 +3100,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 783/783 [00:03&lt;00:00, 217.48it/s]
+100%|██████████| 979/979 [00:02&lt;00:00, 378.97it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3057,17 +3108,17 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[0.06813748 0.88622321 0.01744152 0.02819779]
-1.0901009122603218
-0.9789797214497407
-41
+[0.11327665 0.04821509 0.83850826]
+1.141435177464738
+0.8996235573415087
+145
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_tickers_6_4.png" src="../_images/tutorial_tickers_6_4.png" />
+<img alt="../_images/tutorial_tickers_7_4.png" src="../_images/tutorial_tickers_7_4.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -3075,8 +3126,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 12960/12960 [01:28&lt;00:00, 145.69it/s]
-  2%|▏         | 18/783 [00:00&lt;00:04, 173.99it/s]
+100%|██████████| 414/414 [00:01&lt;00:00, 399.58it/s]
+  4%|▎         | 35/979 [00:00&lt;00:02, 349.81it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3084,7 +3135,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[&#39;XLF&#39;, &#39;SHY&#39;, &#39;GLD&#39;, &#39;FXI&#39;]
+[&#39;RWR&#39;, &#39;TIP&#39;, &#39;IEF&#39;]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3092,7 +3143,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 783/783 [00:03&lt;00:00, 213.20it/s]
+100%|██████████| 979/979 [00:02&lt;00:00, 384.97it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3100,17 +3151,17 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[0.028567   0.94087574 0.02408096 0.00647631]
-1.0410695621621953
-0.9837418243477659
-61
+[0.27395917 0.13668419 0.58935664]
+1.1172635699679083
+0.9390845473206298
+115
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_tickers_6_9.png" src="../_images/tutorial_tickers_6_9.png" />
+<img alt="../_images/tutorial_tickers_7_9.png" src="../_images/tutorial_tickers_7_9.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -3118,8 +3169,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 12960/12960 [01:32&lt;00:00, 139.37it/s]
-  2%|▏         | 18/783 [00:00&lt;00:04, 176.10it/s]
+100%|██████████| 414/414 [00:00&lt;00:00, 423.75it/s]
+  4%|▍         | 37/979 [00:00&lt;00:02, 365.66it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3127,7 +3178,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[&#39;FEZ&#39;, &#39;SHY&#39;, &#39;GLD&#39;, &#39;OIH&#39;]
+[&#39;FEZ&#39;, &#39;GLD&#39;, &#39;IEF&#39;]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3135,7 +3186,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 783/783 [00:03&lt;00:00, 213.53it/s]
+100%|██████████| 979/979 [00:02&lt;00:00, 386.36it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3143,17 +3194,17 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[0.02064732 0.94996212 0.00787938 0.02151118]
-1.0063842818793667
-0.9888074624107698
-133
+[0.21760864 0.11007216 0.6723192 ]
+1.054314276298615
+0.9381450078906421
+229
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_tickers_6_14.png" src="../_images/tutorial_tickers_6_14.png" />
+<img alt="../_images/tutorial_tickers_7_14.png" src="../_images/tutorial_tickers_7_14.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -3161,8 +3212,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 12960/12960 [01:31&lt;00:00, 141.04it/s]
-  2%|▏         | 18/783 [00:00&lt;00:04, 178.19it/s]
+100%|██████████| 414/414 [00:00&lt;00:00, 423.10it/s]
+  4%|▍         | 38/979 [00:00&lt;00:02, 372.20it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3170,7 +3221,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[&#39;XLF&#39;, &#39;SHY&#39;, &#39;GLD&#39;, &#39;EWZ&#39;]
+[&#39;XLF&#39;, &#39;GLD&#39;, &#39;IEF&#39;]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3178,7 +3229,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 783/783 [00:03&lt;00:00, 216.85it/s]
+100%|██████████| 979/979 [00:02&lt;00:00, 385.64it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3186,63 +3237,420 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[0.04344259 0.94158389 0.         0.01497352]
-1.017523195598032
-0.9891900985074693
-169
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorial_tickers_6_19.png" src="../_images/tutorial_tickers_6_19.png" />
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-100%|██████████| 12960/12960 [01:29&lt;00:00, 144.56it/s]
-  3%|▎         | 22/783 [00:00&lt;00:03, 218.40it/s]
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-[&#39;VFH&#39;, &#39;SHY&#39;, &#39;GLD&#39;, &#39;EWZ&#39;]
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-100%|██████████| 783/783 [00:03&lt;00:00, 222.73it/s]
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-[0.00641356 0.97411801 0.00571856 0.01374987]
-1.038296712049118
-0.9774001506653931
-93
+[0.13179153 0.04354348 0.82466499]
+1.065098820066836
+0.9082820599769088
+233
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_tickers_6_24.png" src="../_images/tutorial_tickers_6_24.png" />
+<img alt="../_images/tutorial_tickers_7_19.png" src="../_images/tutorial_tickers_7_19.png" />
 </div>
 </div>
-</section>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">folds</span><span class="p">)):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">folds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_train</span><span class="p">()</span><span class="o">.</span><span class="n">get_summary</span><span class="p">(),</span> <span class="n">cluster</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">selected_tickers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="s1">&#39;daily return&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">selected_tickers</span><span class="p">)</span>
+    <span class="n">fold</span> <span class="o">=</span> <span class="n">folds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">selected_tickers</span><span class="p">)</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">MaximumDiversificationOptimizer</span><span class="p">()</span>
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
+        <span class="n">assets</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">CLUSTERS</span><span class="p">)</span><span class="o">/</span><span class="n">CLUSTERS</span><span class="p">,</span>
+        <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="n">cash</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span>
+
+    <span class="n">runner</span><span class="o">.</span><span class="n">run_fold</span><span class="p">(</span>
+        <span class="n">fold</span><span class="o">=</span><span class="n">fold</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">optimizer</span><span class="o">.</span><span class="n">get_weights</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">yearly_total_return</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown_span</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+  4%|▍         | 39/979 [00:00&lt;00:02, 382.91it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;EWZ&#39;, &#39;TIP&#39;, &#39;TLT&#39;]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 979/979 [00:02&lt;00:00, 382.42it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.15097941 0.42237611 0.42664448]
+1.1331395872700303
+0.8583051146512094
+144
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_8_4.png" src="../_images/tutorial_tickers_8_4.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+  4%|▎         | 35/979 [00:00&lt;00:02, 345.86it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;EWZ&#39;, &#39;LQD&#39;, &#39;IEF&#39;]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 979/979 [00:02&lt;00:00, 372.36it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.20545924 0.         0.79454076]
+1.07527304115386
+0.9354653681239119
+140
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_8_9.png" src="../_images/tutorial_tickers_8_9.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+  4%|▍         | 37/979 [00:00&lt;00:02, 367.17it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;BBH&#39;, &#39;LQD&#39;, &#39;IEF&#39;]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 979/979 [00:02&lt;00:00, 383.94it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1.9853364e-01 6.2883726e-18 8.0146636e-01]
+1.0696830997813984
+0.9373182548616429
+244
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_8_14.png" src="../_images/tutorial_tickers_8_14.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+  4%|▍         | 38/979 [00:00&lt;00:02, 379.71it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;IXN&#39;, &#39;TIP&#39;, &#39;IEF&#39;]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 979/979 [00:02&lt;00:00, 388.26it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1.54669916e-01 3.23446177e-15 8.45330084e-01]
+1.0829721747300385
+0.9188567588359721
+111
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_8_19.png" src="../_images/tutorial_tickers_8_19.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">folds</span><span class="p">)):</span>
+    <span class="n">selected_tickers</span> <span class="o">=</span> <span class="n">select_by_regression</span><span class="p">(</span><span class="n">folds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_train</span><span class="p">(),</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">selected_tickers</span><span class="p">)</span>
+    <span class="n">fold</span> <span class="o">=</span> <span class="n">folds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">selected_tickers</span><span class="p">)</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">MaximumDiversificationOptimizer</span><span class="p">()</span>
+    <span class="n">cluster_n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">selected_tickers</span><span class="p">)</span>
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
+        <span class="n">assets</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">cluster_n</span><span class="p">)</span><span class="o">/</span><span class="n">cluster_n</span><span class="p">,</span>
+        <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="n">cash</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span>
+
+    <span class="n">runner</span><span class="o">.</span><span class="n">run_fold</span><span class="p">(</span>
+        <span class="n">fold</span><span class="o">=</span><span class="n">fold</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">optimizer</span><span class="o">.</span><span class="n">get_weights</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">yearly_total_return</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">max_drawdown_span</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+  4%|▍         | 37/979 [00:00&lt;00:02, 362.25it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;ILF&#39;, &#39;EWJ&#39;, &#39;TLT&#39;, &#39;SPY&#39;]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 979/979 [00:02&lt;00:00, 360.70it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[2.11841264e-01 8.03420915e-16 7.88158736e-01 0.00000000e+00]
+1.1315065072612285
+0.8753592082786394
+144
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_9_4.png" src="../_images/tutorial_tickers_9_4.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+  4%|▍         | 40/979 [00:00&lt;00:02, 398.40it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;IEF&#39;, &#39;SPY&#39;]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 979/979 [00:02&lt;00:00, 414.43it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.70865059 0.29134941]
+1.1163672567681175
+0.9568330837882247
+102
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_9_9.png" src="../_images/tutorial_tickers_9_9.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+  4%|▍         | 41/979 [00:00&lt;00:02, 408.45it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;IEF&#39;, &#39;SPY&#39;]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 979/979 [00:02&lt;00:00, 421.41it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.64665401 0.35334599]
+1.0824532183652698
+0.9638855718938872
+120
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_9_14.png" src="../_images/tutorial_tickers_9_14.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+  4%|▍         | 37/979 [00:00&lt;00:02, 366.50it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;EWY&#39;, &#39;TIP&#39;, &#39;SPY&#39;]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 979/979 [00:02&lt;00:00, 382.72it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.10958066 0.79688784 0.09353151]
+1.0895008923195049
+0.870283136591829
+145
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_9_19.png" src="../_images/tutorial_tickers_9_19.png" />
+</div>
+</div>
+</div>
 
 
               </div>
@@ -3268,7 +3676,7 @@ div.rendered_html tbody tr:hover {
   <div class="container">
     <p>
           &copy; Copyright 2021, sonesuke.<br/>
-        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.3.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
     </p>
   </div>
 </footer>

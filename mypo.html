@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>mypo package &#8212; mypo  documentation</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
@@ -190,9 +189,9 @@
               
               <div>
                 
-  <section id="mypo-package">
+  <div class="section" id="mypo-package">
 <h1>mypo package<a class="headerlink" href="#mypo-package" title="Permalink to this headline">¶</a></h1>
-<section id="subpackages">
+<div class="section" id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
@@ -234,11 +233,11 @@
 </li>
 </ul>
 </div>
-</section>
-<section id="submodules">
+</div>
+<div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-</section>
-<section id="module-mypo.common">
+</div>
+<div class="section" id="module-mypo.common">
 <span id="mypo-common-module"></span><h2>mypo.common module<a class="headerlink" href="#module-mypo.common" title="Permalink to this headline">¶</a></h2>
 <p>Utility functions.</p>
 <p>A collection of utlities by using in Runner class.</p>
@@ -310,8 +309,8 @@
 </dl>
 </dd></dl>
 
-</section>
-<section id="module-mypo.loader">
+</div>
+<div class="section" id="module-mypo.loader">
 <span id="mypo-loader-module"></span><h2>mypo.loader module<a class="headerlink" href="#module-mypo.loader" title="Permalink to this headline">¶</a></h2>
 <p>Loader class for downloading stock data.</p>
 <p>Download stock data from yahoo finance.</p>
@@ -428,8 +427,8 @@
 
 </dd></dl>
 
-</section>
-<section id="module-mypo.market">
+</div>
+<div class="section" id="module-mypo.market">
 <span id="mypo-market-module"></span><h2>mypo.market module<a class="headerlink" href="#module-mypo.market" title="Permalink to this headline">¶</a></h2>
 <p>Market object for store and loading stock prices data.</p>
 <dl class="py class">
@@ -745,10 +744,63 @@
 
 </dd></dl>
 
-</section>
-<section id="module-mypo.model_selection">
+</div>
+<div class="section" id="module-mypo.model_selection">
 <span id="mypo-model-selection-module"></span><h2>mypo.model_selection module<a class="headerlink" href="#module-mypo.model_selection" title="Permalink to this headline">¶</a></h2>
 <p>Utility functions for model selection.</p>
+<dl class="py class">
+<dt id="mypo.model_selection.Fold">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mypo.model_selection.</span></code><code class="sig-name descname"><span class="pre">Fold</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">market</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#mypo.market.Market" title="mypo.market.Market"><span class="pre">mypo.market.Market</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_span</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mypo.model_selection.Fold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="mypo.model_selection.Fold.filter">
+<code class="sig-name descname"><span class="pre">filter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tickers</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#mypo.model_selection.Fold" title="mypo.model_selection.Fold"><span class="pre">mypo.model_selection.Fold</span></a><a class="headerlink" href="#mypo.model_selection.Fold.filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter tickers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tickers</strong> – Remaining tickers.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Filtered Fold.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mypo.model_selection.Fold.get_train">
+<code class="sig-name descname"><span class="pre">get_train</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#mypo.market.Market" title="mypo.market.Market"><span class="pre">mypo.market.Market</span></a><a class="headerlink" href="#mypo.model_selection.Fold.get_train" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get train.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Train.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mypo.model_selection.Fold.get_train_span">
+<code class="sig-name descname"><span class="pre">get_train_span</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#mypo.model_selection.Fold.get_train_span" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get train span.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Train span.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="mypo.model_selection.Fold.get_valid">
+<code class="sig-name descname"><span class="pre">get_valid</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#mypo.market.Market" title="mypo.market.Market"><span class="pre">mypo.market.Market</span></a><a class="headerlink" href="#mypo.model_selection.Fold.get_valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get validation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Validation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py function">
 <dt id="mypo.model_selection.clustering_tickers">
 <code class="sig-prename descclassname"><span class="pre">mypo.model_selection.</span></code><code class="sig-name descname"><span class="pre">clustering_tickers</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">market</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#mypo.market.Market" title="mypo.market.Market"><span class="pre">mypo.market.Market</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">32</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">pandas.core.frame.DataFrame</span><a class="headerlink" href="#mypo.model_selection.clustering_tickers" title="Permalink to this definition">¶</a></dt>
@@ -786,14 +838,48 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="mypo.model_selection.split_n_periods">
-<code class="sig-prename descclassname"><span class="pre">mypo.model_selection.</span></code><code class="sig-name descname"><span class="pre">split_n_periods</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">market</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#mypo.market.Market" title="mypo.market.Market"><span class="pre">mypo.market.Market</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_span</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#mypo.market.Market" title="mypo.market.Market"><span class="pre">mypo.market.Market</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#mypo.market.Market" title="mypo.market.Market"><span class="pre">mypo.market.Market</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#mypo.model_selection.split_n_periods" title="Permalink to this definition">¶</a></dt>
+<dt id="mypo.model_selection.select_by_correlation">
+<code class="sig-prename descclassname"><span class="pre">mypo.model_selection.</span></code><code class="sig-name descname"><span class="pre">select_by_correlation</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">market</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#mypo.market.Market" title="mypo.market.Market"><span class="pre">mypo.market.Market</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#mypo.model_selection.select_by_correlation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select ticker by correlation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>market</strong> – Market.</p></li>
+<li><p><strong>threshold</strong> – Threshold.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Selected tickers.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="mypo.model_selection.select_by_regression">
+<code class="sig-prename descclassname"><span class="pre">mypo.model_selection.</span></code><code class="sig-name descname"><span class="pre">select_by_regression</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">market</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#mypo.market.Market" title="mypo.market.Market"><span class="pre">mypo.market.Market</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#mypo.model_selection.select_by_regression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select ticker by correlation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>market</strong> – Market.</p></li>
+<li><p><strong>threshold</strong> – Threshold.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Selected tickers.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="mypo.model_selection.split_k_folds">
+<code class="sig-prename descclassname"><span class="pre">mypo.model_selection.</span></code><code class="sig-name descname"><span class="pre">split_k_folds</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">market</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#mypo.market.Market" title="mypo.market.Market"><span class="pre">mypo.market.Market</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_span</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#mypo.model_selection.Fold" title="mypo.model_selection.Fold"><span class="pre">mypo.model_selection.Fold</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#mypo.model_selection.split_k_folds" title="Permalink to this definition">¶</a></dt>
 <dd><p>Split market to n periods.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>market</strong> – Market data</p></li>
-<li><p><strong>n</strong> – Count of split</p></li>
+<li><p><strong>k</strong> – Count of split</p></li>
 <li><p><strong>train_span</strong> – Train span if you want to specify.</p></li>
 </ul>
 </dd>
@@ -803,8 +889,8 @@
 </dl>
 </dd></dl>
 
-</section>
-<section id="module-mypo.reporter">
+</div>
+<div class="section" id="module-mypo.reporter">
 <span id="mypo-reporter-module"></span><h2>mypo.reporter module<a class="headerlink" href="#module-mypo.reporter" title="Permalink to this headline">¶</a></h2>
 <p>Class for report result.</p>
 <dl class="py class">
@@ -846,8 +932,8 @@
 
 </dd></dl>
 
-</section>
-<section id="module-mypo.runner">
+</div>
+<div class="section" id="module-mypo.runner">
 <span id="mypo-runner-module"></span><h2>mypo.runner module<a class="headerlink" href="#module-mypo.runner" title="Permalink to this headline">¶</a></h2>
 <p>Simulation.</p>
 <dl class="py class">
@@ -896,6 +982,20 @@
 </dd></dl>
 
 <dl class="py method">
+<dt id="mypo.runner.Runner.run_fold">
+<code class="sig-name descname"><span class="pre">run_fold</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fold</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#mypo.model_selection.Fold" title="mypo.model_selection.Fold"><span class="pre">mypo.model_selection.Fold</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#mypo.runner.Runner.run_fold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fold</strong> – Fold.</p></li>
+<li><p><strong>verbose</strong> – Show progress.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="mypo.runner.Runner.total_assets">
 <code class="sig-name descname"><span class="pre">total_assets</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.float64</span><a class="headerlink" href="#mypo.runner.Runner.total_assets" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get current total assets. Total asset is addition of stock assets and cash.</p>
@@ -908,8 +1008,8 @@
 
 </dd></dl>
 
-</section>
-<section id="module-mypo.settings">
+</div>
+<div class="section" id="module-mypo.settings">
 <span id="mypo-settings-module"></span><h2>mypo.settings module<a class="headerlink" href="#module-mypo.settings" title="Permalink to this headline">¶</a></h2>
 <p>Parameters for runner.</p>
 <dl class="py class">
@@ -929,11 +1029,11 @@
 
 </dd></dl>
 
-</section>
-<section id="module-mypo">
+</div>
+<div class="section" id="module-mypo">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mypo" title="Permalink to this headline">¶</a></h2>
-</section>
-</section>
+</div>
+</div>
 
 
               </div>
@@ -958,7 +1058,7 @@
   <div class="container">
     <p>
           &copy; Copyright 2021, sonesuke.<br/>
-        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.3.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
     </p>
   </div>
 </footer>
