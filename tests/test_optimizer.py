@@ -33,7 +33,7 @@ def test_minimum_variance_optimizer_with_minimum_return() -> None:
     optimizer = MinimumVarianceOptimizer(minimum_return=0.10)
     optimizer.optimize(market, market.get_last_date())
     weights = optimizer.get_weights()
-    npt.assert_almost_equal(weights, [0.330534, 0.669466], decimal=5)
+    npt.assert_almost_equal(weights, [0.33055, 0.66945], decimal=5)
 
 
 def test_minimum_sharp_ratio_optimizer() -> None:
@@ -87,7 +87,7 @@ def test_cvar_optimizer() -> None:
     optimizer = CVaROptimizer(sampler=Sampler.load(MODEL_DATA))
     optimizer.optimize(market, market.get_last_date())
     weights = optimizer.get_weights()
-    npt.assert_almost_equal(weights, [0.19345, 0.80655], decimal=5)
+    npt.assert_almost_equal(weights, [0.1942, 0.8058], decimal=5)
 
 
 @skip_long_tests

@@ -54,7 +54,7 @@ class MinimumVarianceOptimizer(BaseOptimizer):
         x = np.ones(n) / n
 
         def fn(x: np.ndarray, Q: np.ndarray) -> np.float64:
-            ret: np.float64 = np.dot(np.dot(x, Q), x.T) / np.max(np.abs(Q))
+            ret: np.float64 = np.dot(np.dot(x, Q), x.T)
             return ret
 
         cons = [{"type": "eq", "fun": lambda x: np.sum(x) - 1}]
@@ -69,6 +69,8 @@ class MinimumVarianceOptimizer(BaseOptimizer):
             ]
 
         bounds = [[0.0, 1.0] for i in range(n)]
-        minout = minimize(fn, x, args=(Q), method="SLSQP", bounds=bounds, constraints=cons)
+        minout = minimize(
+            fn, x, args=(Q), method="SLSQP", bounds=bounds, constraints=cons, tol=1e-6 * np.max(np.abs(Q))
+        )
         self._weights = safe_cast(minout.x)
         return np.float64(minout.fun)
