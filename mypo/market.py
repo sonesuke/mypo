@@ -377,7 +377,7 @@ class Market(object):
         """
         df = self.get_rate_of_change()
         df = df.corr()
-        df = df.sort_values(ticker, ascending=False)[:n]
+        df = df.sort_values(ticker, ascending=False)[:n].copy()
         df = df[[ticker]]
         df.columns = ["correlation"]
         return df
