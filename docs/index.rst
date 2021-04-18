@@ -40,6 +40,7 @@ This tutorial will be helpful for understanding the usage of this module.
    tutorial/optimizer
    tutorial/advanced_explore_market_data
    tutorial/tickers
+   tutorial/relative
 
 Developer guide
 =================
