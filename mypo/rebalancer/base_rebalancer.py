@@ -61,3 +61,11 @@ class BaseRebalancer(object):
     def _do_nothing(self, assets: np.ndarray) -> np.ndarray:
         zero: np.ndarray = assets - assets
         return zero
+
+    def get_optimizer(self) -> BaseOptimizer:
+        """Get optimizer.
+
+        Returns:
+            Optimizer
+        """
+        return self._optimizer

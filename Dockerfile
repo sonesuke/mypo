@@ -23,6 +23,7 @@ RUN echo "/usr/lib/x86_64-linux-gnu"     >  /etc/ld.so.conf.d/mkl.conf
 RUN ldconfig
 
 ADD poetry.toml /
+ADD poetry.lock /
 ADD pyproject.toml /
 
 RUN pip install poetry && \
