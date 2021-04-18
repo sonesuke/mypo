@@ -3,7 +3,6 @@
 from typing import Any, List, Optional
 
 import numpy as np
-import pandas as pd
 from tqdm import tqdm
 
 from mypo.common import calc_capital_gain_tax, calc_fee, calc_income_gain_tax, safe_cast
@@ -31,39 +30,19 @@ class Runner(object):
 
     def __init__(
         self,
-        assets: Optional[List[float]] = None,
-        cash: float = 0.0,
-        withdraw: float = 0.0,
         rebalancer: BaseRebalancer = NoRebalancer(),
         settings: Settings = DEFAULT_SETTINGS,
     ):
         """Construct this object.
 
         Args:
-            assets: Initial asset.
             rebalancer: Rebalance strategy.
-            cash: Initial cash.
-            withdraw: Withdraw.
             settings: Settings.
         """
-        if assets is None:
-            assets = [1e-23]
-        self._assets = safe_cast(assets)
-        self._average_assets_prices = np.ones(len(self._assets))
         self._rebalancer = rebalancer
         self._reporter = Reporter()
-        self._cash = np.float64(cash)
-        self._withdraw = np.float64(withdraw)
         self._settings = settings
         self._month = 0
-
-    def total_assets(self) -> np.float64:
-        """Get current total assets. Total asset is addition of stock assets and cash.
-
-        Returns:
-            Total assets.
-        """
-        return np.float64(np.sum(self._assets) + self._cash)
 
     def apply(self, market: Market, i: int) -> None:
         """Apply current market situation.
@@ -114,25 +93,57 @@ class Runner(object):
 
         # record to reporter
         self._reporter.record(
-            at,
-            self.total_assets(),
-            capital_gain,
-            income_gain,
-            self._cash,
-            deal,
-            fee,
-            capital_gain_tax,
-            income_gain_tax,
+            at=at,
+            total_assets=np.float64(np.sum(self._assets) + self._cash),
+            tickers=market.get_tickers(),
+            weights=self._rebalancer.get_optimizer().get_weights(),
+            capital_gain=capital_gain,
+            income_gain=income_gain,
+            cash=self._cash,
+            deal=deal,
+            fee=fee,
+            capital_gain_tax=capital_gain_tax,
+            income_gain_tax=income_gain_tax,
         )
 
-    def run(self, market: Market, train_span: int = 0, verbose: bool = False) -> None:
+    def run(
+        self,
+        assets: Optional[List[float]] = None,
+        cash: float = 0.0,
+        withdraw: float = 0.0,
+        market: Optional[Market] = None,
+        train_span: int = 0,
+        fold: Optional[Fold] = None,
+        verbose: bool = False,
+    ) -> None:
         """Run simulation.
 
         Args:
+            assets: Initial asset.
+            cash: Initial cash.
+            withdraw: Withdraw.
             market: Market data.
             train_span: Periods of training span.
+            fold: Fold.
             verbose: Show progress.
         """
+        self._cash = np.float64(cash)
+        self._withdraw = np.float64(withdraw)
+
+        if market is None and fold is not None:
+            market = fold.get_valid()
+            train_span = fold.get_train_span()
+
+        if market is None:
+            assert False  # pragma: no cover
+
+        n = len(market.get_tickers())
+        if assets is None:
+            self._assets = safe_cast(np.ones(n) / n)
+        else:
+            self._assets = safe_cast(assets)
+
+        self._average_assets_prices = np.ones(n)
         target = range(train_span, market.get_length())
 
         def wrap(x: Any) -> Any:
@@ -142,19 +153,10 @@ class Runner(object):
         for i in wrap(target):
             self.apply(market, i)
 
-    def run_fold(self, fold: Fold, verbose: bool = False) -> None:
-        """Run simulation.
-
-        Args:
-            fold: Fold.
-            verbose: Show progress.
-        """
-        self.run(fold.get_valid(), fold.get_train_span(), verbose)
-
-    def report(self) -> pd.DataFrame:
+    def report(self) -> Reporter:
         """Report simulation.
 
         Returns:
             result
         """
-        return self._reporter.report()
+        return self._reporter
