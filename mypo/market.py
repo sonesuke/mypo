@@ -333,7 +333,7 @@ class Market(object):
         Returns:
             Normalized prices
         """
-        df = self._closes
+        df = self._closes.copy()
         for c in df.columns:
             df[c] = df[c] / df[c][0]
         return df
@@ -366,18 +366,18 @@ class Market(object):
         rs = [self._expense_ratio[ticker] for ticker in self._closes.columns]
         return safe_cast(rs)
 
-    def get_relative(self, ticker: str, n: int = 10) -> pd.DataFrame:
+    def get_relative(self, ticker: str, n: int = 5) -> pd.DataFrame:
         """Get relative ticker.
 
         Args:
             ticker: Ticker.
+            n: Relative to show.
 
         Returns:
             Relative tickers.
         """
         df = self.get_rate_of_change()
         df = df.corr()
-        df = df.sort_values(ticker, ascending=False)[:n].copy()
-        df = df[[ticker]]
+        df = df[[ticker]].sort_values(ticker, ascending=False)[:n]
         df.columns = ["correlation"]
-        return df
+        return df.copy()
