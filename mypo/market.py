@@ -271,6 +271,7 @@ class Market(object):
                 "daily return": rate_of_change.mean(),
                 "variance": rate_of_change.var(),
                 "sharp ratio": rate_of_change.mean() / rate_of_change.var(),
+                "expense ratio": self.get_expense_ratio(),
             },
             index=self.get_tickers(),
         )
@@ -364,3 +365,19 @@ class Market(object):
         """
         rs = [self._expense_ratio[ticker] for ticker in self._closes.columns]
         return safe_cast(rs)
+
+    def get_relative(self, ticker: str, n: int = 10) -> pd.DataFrame:
+        """Get relative ticker.
+
+        Args:
+            ticker: Ticker.
+
+        Returns:
+            Relative tickers.
+        """
+        df = self.get_rate_of_change()
+        df = df.corr()
+        df = df.sort_values(ticker, ascending=False)[:n].copy()
+        df = df[[ticker]]
+        df.columns = ["correlation"]
+        return df

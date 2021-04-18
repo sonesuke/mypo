@@ -91,5 +91,11 @@ def test_resample_monthly() -> None:
 def test_summary() -> None:
     market = Market.load(TEST_DATA)
     summary = market.get_summary()
-    print(summary)
     npt.assert_almost_equal(summary.loc["VOO", "daily return"], 0.000623, decimal=5)
+
+
+def test_relative() -> None:
+    market = Market.load(TEST_DATA)
+    relative = market.get_relative(ticker="VOO")
+    print(relative)
+    assert relative.index[0] == "VOO"
