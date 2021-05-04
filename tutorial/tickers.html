@@ -3534,7 +3534,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">folds</span><span class="p">)):</span>
-    <span class="n">selected_tickers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span> <span class="s1">&#39;QQQ&#39;</span><span class="p">,</span> <span class="s1">&#39;TLT&#39;</span><span class="p">,</span> <span class="s1">&#39;GLD&#39;</span><span class="p">]</span>
+    <span class="n">selected_tickers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span> <span class="s1">&#39;IYR&#39;</span><span class="p">,</span> <span class="s1">&#39;TLT&#39;</span><span class="p">,</span> <span class="s1">&#39;TIP&#39;</span><span class="p">,</span> <span class="s1">&#39;GLD&#39;</span><span class="p">]</span>
     <span class="n">fold</span> <span class="o">=</span> <span class="n">folds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">selected_tickers</span><span class="p">)</span>
     <span class="n">optimizer</span> <span class="o">=</span> <span class="n">MaximumDiversificationOptimizer</span><span class="p">()</span>
     <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
@@ -3562,7 +3562,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 979/979 [00:03&lt;00:00, 310.57it/s]
+100%|██████████| 979/979 [00:13&lt;00:00, 72.14it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3570,11 +3570,11 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-                tickers  yearly total return  max draw down  \
-0  [GLD, SPY, QQQ, TLT]             1.106777       0.881848
+                     tickers  yearly total return  max draw down  \
+0  [IYR, GLD, SPY, TIP, TLT]             1.105925       0.869278
 
    max draw down span
-0                 144
+0                 214
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3596,7 +3596,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 979/979 [00:03&lt;00:00, 307.80it/s]
+100%|██████████| 979/979 [00:13&lt;00:00, 71.97it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3604,11 +3604,11 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-                tickers  yearly total return  max draw down  \
-0  [GLD, SPY, QQQ, TLT]             1.160907        0.94998
+                     tickers  yearly total return  max draw down  \
+0  [IYR, GLD, SPY, TIP, TLT]             1.140557       0.954534
 
    max draw down span
-0                  84
+0                  77
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3630,7 +3630,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 979/979 [00:03&lt;00:00, 308.78it/s]
+100%|██████████| 979/979 [00:13&lt;00:00, 72.44it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3638,11 +3638,11 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-                tickers  yearly total return  max draw down  \
-0  [GLD, SPY, QQQ, TLT]             1.106218       0.923365
+                     tickers  yearly total return  max draw down  \
+0  [IYR, GLD, SPY, TIP, TLT]             1.073006       0.945545
 
    max draw down span
-0                 268
+0                 221
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3664,7 +3664,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 979/979 [00:03&lt;00:00, 308.07it/s]
+100%|██████████| 979/979 [00:13&lt;00:00, 71.98it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3672,11 +3672,11 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-                tickers  yearly total return  max draw down  \
-0  [GLD, SPY, QQQ, TLT]              1.12373       0.855533
+                     tickers  yearly total return  max draw down  \
+0  [IYR, GLD, SPY, TIP, TLT]             1.088162       0.866449
 
    max draw down span
-0                 259
+0                 253
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3726,8 +3726,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 414/414 [00:01&lt;00:00, 213.06it/s]
-100%|██████████| 979/979 [00:03&lt;00:00, 322.35it/s]
+100%|██████████| 414/414 [00:13&lt;00:00, 31.32it/s]
+100%|██████████| 979/979 [00:11&lt;00:00, 84.01it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3736,7 +3736,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
            tickers  yearly total return  max draw down  max draw down span
-0  [EWZ, GLD, IEF]             1.141435       0.899624                 145
+0  [EWZ, IEF, GLD]             1.141435       0.899624                 145
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3758,8 +3758,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 414/414 [00:01&lt;00:00, 340.74it/s]
-100%|██████████| 979/979 [00:03&lt;00:00, 321.93it/s]
+100%|██████████| 414/414 [00:06&lt;00:00, 67.96it/s]
+100%|██████████| 979/979 [00:11&lt;00:00, 86.03it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3768,7 +3768,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
            tickers  yearly total return  max draw down  max draw down span
-0  [RWR, IEF, TIP]             1.117264       0.939085                 115
+0  [TIP, RWR, IEF]             1.117264       0.939085                 115
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3790,8 +3790,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 414/414 [00:01&lt;00:00, 358.90it/s]
-100%|██████████| 979/979 [00:02&lt;00:00, 326.49it/s]
+100%|██████████| 414/414 [00:05&lt;00:00, 70.66it/s]
+100%|██████████| 979/979 [00:11&lt;00:00, 86.47it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3800,7 +3800,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
            tickers  yearly total return  max draw down  max draw down span
-0  [IEF, GLD, FEZ]             1.054314       0.938145                 229
+0  [IEF, FEZ, GLD]             1.054314       0.938145                 229
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3822,8 +3822,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 414/414 [00:01&lt;00:00, 359.10it/s]
-100%|██████████| 979/979 [00:03&lt;00:00, 325.48it/s]
+100%|██████████| 414/414 [00:06&lt;00:00, 60.99it/s]
+100%|██████████| 979/979 [00:11&lt;00:00, 84.05it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3832,7 +3832,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
            tickers  yearly total return  max draw down  max draw down span
-0  [IEF, GLD, XLF]             1.065099       0.908282                 233
+0  [XLF, IEF, GLD]             1.065099       0.908282                 233
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3883,7 +3883,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 979/979 [00:03&lt;00:00, 324.95it/s]
+100%|██████████| 979/979 [00:11&lt;00:00, 85.00it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3892,7 +3892,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
            tickers  yearly total return  max draw down  max draw down span
-0  [EWZ, TLT, TIP]              1.13314       0.858305                 144
+0  [EWZ, TIP, TLT]              1.13314       0.858305                 144
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3914,7 +3914,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 979/979 [00:02&lt;00:00, 328.69it/s]
+100%|██████████| 979/979 [00:11&lt;00:00, 88.67it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3923,7 +3923,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
            tickers  yearly total return  max draw down  max draw down span
-0  [EWZ, LQD, IEF]             1.075273       0.935465                 140
+0  [LQD, EWZ, IEF]             1.075273       0.935465                 140
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3945,7 +3945,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 979/979 [00:02&lt;00:00, 327.21it/s]
+100%|██████████| 979/979 [00:11&lt;00:00, 87.27it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3954,7 +3954,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
            tickers  yearly total return  max draw down  max draw down span
-0  [IEF, BBH, LQD]             1.069683       0.937318                 244
+0  [LQD, IEF, BBH]             1.069677       0.937317                 244
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3976,7 +3976,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 979/979 [00:03&lt;00:00, 321.43it/s]
+100%|██████████| 979/979 [00:11&lt;00:00, 85.78it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3985,7 +3985,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
            tickers  yearly total return  max draw down  max draw down span
-0  [IEF, IXN, TIP]             1.082972       0.918857                 111
+0  [TIP, IEF, IXN]             1.082781       0.918857                 111
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -4035,7 +4035,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 979/979 [00:03&lt;00:00, 307.41it/s]
+100%|██████████| 979/979 [00:12&lt;00:00, 80.67it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -4044,7 +4044,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
                 tickers  yearly total return  max draw down  \
-0  [EWJ, SPY, ILF, TLT]             1.131507       0.875359
+0  [EWJ, SPY, TLT, ILF]             1.131507       0.875359
 
    max draw down span
 0                 144
@@ -4069,7 +4069,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 979/979 [00:02&lt;00:00, 353.45it/s]
+100%|██████████| 979/979 [00:10&lt;00:00, 96.88it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -4078,7 +4078,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
       tickers  yearly total return  max draw down  max draw down span
-0  [IEF, SPY]             1.116367       0.956833                 102
+0  [SPY, IEF]             1.116367       0.956833                 102
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -4100,7 +4100,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 979/979 [00:02&lt;00:00, 357.52it/s]
+100%|██████████| 979/979 [00:09&lt;00:00, 98.14it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -4109,7 +4109,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
       tickers  yearly total return  max draw down  max draw down span
-0  [IEF, SPY]             1.082453       0.963886                 120
+0  [SPY, IEF]             1.082453       0.963886                 120
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -4131,7 +4131,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 979/979 [00:02&lt;00:00, 327.08it/s]
+100%|██████████| 979/979 [00:11&lt;00:00, 87.54it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -4140,7 +4140,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
            tickers  yearly total return  max draw down  max draw down span
-0  [SPY, EWY, TIP]             1.089501       0.870283                 145
+0  [SPY, TIP, EWY]             1.089501       0.870283                 145
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">

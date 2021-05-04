@@ -441,19 +441,6 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/app/mypo/market.py:338: SettingWithCopyWarning:
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  df[c] = df[c] / df[c][0]
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
@@ -524,46 +511,6 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>3.026941</td>
       <td>0.0020</td>
     </tr>
-    <tr>
-      <th>DIA</th>
-      <td>0.972807</td>
-      <td>0.000442</td>
-      <td>0.000143</td>
-      <td>3.100646</td>
-      <td>0.0016</td>
-    </tr>
-    <tr>
-      <th>VTV</th>
-      <td>0.968890</td>
-      <td>0.000408</td>
-      <td>0.000161</td>
-      <td>2.541218</td>
-      <td>0.0004</td>
-    </tr>
-    <tr>
-      <th>VUG</th>
-      <td>0.966914</td>
-      <td>0.000524</td>
-      <td>0.000153</td>
-      <td>3.428529</td>
-      <td>0.0004</td>
-    </tr>
-    <tr>
-      <th>VO</th>
-      <td>0.962396</td>
-      <td>0.000494</td>
-      <td>0.000185</td>
-      <td>2.671346</td>
-      <td>0.0004</td>
-    </tr>
-    <tr>
-      <th>SPYG</th>
-      <td>0.959672</td>
-      <td>0.000507</td>
-      <td>0.000147</td>
-      <td>3.447361</td>
-      <td>0.0004</td>
-    </tr>
   </tbody>
 </table>
 </div></div>
@@ -572,7 +519,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_relative_3_2.png" src="../_images/tutorial_relative_3_2.png" />
+<img alt="../_images/tutorial_relative_3_1.png" src="../_images/tutorial_relative_3_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -587,19 +534,6 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">relatives</span><span class="p">,</span> <span class="n">summary</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/app/mypo/market.py:338: SettingWithCopyWarning:
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  df[c] = df[c] / df[c][0]
-</pre></div></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -672,46 +606,6 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>2.994380</td>
       <td>0.0046</td>
     </tr>
-    <tr>
-      <th>SPYG</th>
-      <td>0.948292</td>
-      <td>0.000507</td>
-      <td>0.000147</td>
-      <td>3.447361</td>
-      <td>0.0004</td>
-    </tr>
-    <tr>
-      <th>VV</th>
-      <td>0.919241</td>
-      <td>0.000465</td>
-      <td>0.000150</td>
-      <td>3.090791</td>
-      <td>0.0004</td>
-    </tr>
-    <tr>
-      <th>IVV</th>
-      <td>0.919098</td>
-      <td>0.000451</td>
-      <td>0.000149</td>
-      <td>3.025591</td>
-      <td>0.0004</td>
-    </tr>
-    <tr>
-      <th>OEF</th>
-      <td>0.918476</td>
-      <td>0.000437</td>
-      <td>0.000144</td>
-      <td>3.026941</td>
-      <td>0.0020</td>
-    </tr>
-    <tr>
-      <th>VTI</th>
-      <td>0.918417</td>
-      <td>0.000467</td>
-      <td>0.000153</td>
-      <td>3.046810</td>
-      <td>0.0003</td>
-    </tr>
   </tbody>
 </table>
 </div></div>
@@ -720,7 +614,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_relative_4_2.png" src="../_images/tutorial_relative_4_2.png" />
+<img alt="../_images/tutorial_relative_4_1.png" src="../_images/tutorial_relative_4_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -735,19 +629,6 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">relatives</span><span class="p">,</span> <span class="n">summary</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/app/mypo/market.py:338: SettingWithCopyWarning:
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  df[c] = df[c] / df[c][0]
-</pre></div></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
@@ -820,46 +701,6 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>117.411555</td>
       <td>0.0015</td>
     </tr>
-    <tr>
-      <th>LQD</th>
-      <td>0.439281</td>
-      <td>0.000214</td>
-      <td>2.834508e-05</td>
-      <td>7.551161</td>
-      <td>0.0014</td>
-    </tr>
-    <tr>
-      <th>GLD</th>
-      <td>0.136924</td>
-      <td>0.000380</td>
-      <td>1.316154e-04</td>
-      <td>2.889224</td>
-      <td>0.0040</td>
-    </tr>
-    <tr>
-      <th>XLU</th>
-      <td>-0.186516</td>
-      <td>0.000421</td>
-      <td>1.437454e-04</td>
-      <td>2.926052</td>
-      <td>0.0013</td>
-    </tr>
-    <tr>
-      <th>VPU</th>
-      <td>-0.209599</td>
-      <td>0.000424</td>
-      <td>1.421851e-04</td>
-      <td>2.982212</td>
-      <td>0.0010</td>
-    </tr>
-    <tr>
-      <th>RWR</th>
-      <td>-0.240999</td>
-      <td>0.000476</td>
-      <td>4.081610e-04</td>
-      <td>1.165556</td>
-      <td>0.0025</td>
-    </tr>
   </tbody>
 </table>
 </div></div>
@@ -868,7 +709,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_relative_5_2.png" src="../_images/tutorial_relative_5_2.png" />
+<img alt="../_images/tutorial_relative_5_1.png" src="../_images/tutorial_relative_5_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -883,19 +724,6 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">relatives</span><span class="p">,</span> <span class="n">summary</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/app/mypo/market.py:338: SettingWithCopyWarning:
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  df[c] = df[c] / df[c][0]
-</pre></div></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -968,46 +796,6 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>16.443447</td>
       <td>0.0005</td>
     </tr>
-    <tr>
-      <th>LQD</th>
-      <td>0.260461</td>
-      <td>0.000214</td>
-      <td>2.834508e-05</td>
-      <td>7.551161</td>
-      <td>0.0014</td>
-    </tr>
-    <tr>
-      <th>GLD</th>
-      <td>0.158794</td>
-      <td>0.000380</td>
-      <td>1.316154e-04</td>
-      <td>2.889224</td>
-      <td>0.0040</td>
-    </tr>
-    <tr>
-      <th>XLU</th>
-      <td>-0.162849</td>
-      <td>0.000421</td>
-      <td>1.437454e-04</td>
-      <td>2.926052</td>
-      <td>0.0013</td>
-    </tr>
-    <tr>
-      <th>VPU</th>
-      <td>-0.182832</td>
-      <td>0.000424</td>
-      <td>1.421851e-04</td>
-      <td>2.982212</td>
-      <td>0.0010</td>
-    </tr>
-    <tr>
-      <th>BBH</th>
-      <td>-0.194779</td>
-      <td>0.000651</td>
-      <td>2.007510e-04</td>
-      <td>3.243386</td>
-      <td>0.0035</td>
-    </tr>
   </tbody>
 </table>
 </div></div>
@@ -1016,7 +804,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_relative_6_2.png" src="../_images/tutorial_relative_6_2.png" />
+<img alt="../_images/tutorial_relative_6_1.png" src="../_images/tutorial_relative_6_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1029,22 +817,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <span class="n">subset</span><span class="o">.</span><span class="n">get_normalized_prices</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="n">summary</span> <span class="o">=</span> <span class="n">subset</span><span class="o">.</span><span class="n">get_summary</span><span class="p">()</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">relatives</span><span class="p">,</span> <span class="n">summary</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
 </pre></div>
 </div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/app/mypo/market.py:338: SettingWithCopyWarning:
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  df[c] = df[c] / df[c][0]
-</pre></div></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
@@ -1117,45 +891,100 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>1.912074</td>
       <td>0.0010</td>
     </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_relative_7_1.png" src="../_images/tutorial_relative_7_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">relatives</span> <span class="o">=</span> <span class="n">market</span><span class="o">.</span><span class="n">get_relative</span><span class="p">(</span><span class="s1">&#39;IYR&#39;</span><span class="p">)</span>
+<span class="n">subset</span> <span class="o">=</span> <span class="n">market</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">relatives</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">subset</span><span class="o">.</span><span class="n">get_normalized_prices</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">summary</span> <span class="o">=</span> <span class="n">subset</span><span class="o">.</span><span class="n">get_summary</span><span class="p">()</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">relatives</span><span class="p">,</span> <span class="n">summary</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>correlation</th>
+      <th>daily return</th>
+      <th>variance</th>
+      <th>sharp ratio</th>
+      <th>expense ratio</th>
+    </tr>
+  </thead>
+  <tbody>
     <tr>
-      <th>IJH</th>
-      <td>0.730195</td>
-      <td>0.000501</td>
-      <td>0.000196</td>
-      <td>2.554967</td>
-      <td>0.0007</td>
+      <th>IYR</th>
+      <td>1.000000</td>
+      <td>0.000453</td>
+      <td>0.000356</td>
+      <td>1.273345</td>
+      <td>0.0042</td>
     </tr>
     <tr>
-      <th>XLB</th>
-      <td>0.723650</td>
-      <td>0.000452</td>
-      <td>0.000236</td>
-      <td>1.916580</td>
-      <td>0.0013</td>
+      <th>RWR</th>
+      <td>0.985160</td>
+      <td>0.000476</td>
+      <td>0.000408</td>
+      <td>1.165556</td>
+      <td>0.0025</td>
     </tr>
     <tr>
-      <th>VO</th>
-      <td>0.722793</td>
-      <td>0.000494</td>
-      <td>0.000185</td>
-      <td>2.671346</td>
-      <td>0.0004</td>
-    </tr>
-    <tr>
-      <th>VXF</th>
-      <td>0.710835</td>
-      <td>0.000527</td>
-      <td>0.000205</td>
-      <td>2.573624</td>
-      <td>0.0006</td>
+      <th>VFH</th>
+      <td>0.834965</td>
+      <td>0.000374</td>
+      <td>0.000334</td>
+      <td>1.120231</td>
+      <td>0.0010</td>
     </tr>
     <tr>
       <th>VBR</th>
-      <td>0.708965</td>
+      <td>0.830373</td>
       <td>0.000467</td>
       <td>0.000229</td>
       <td>2.037969</td>
       <td>0.0007</td>
+    </tr>
+    <tr>
+      <th>XLF</th>
+      <td>0.810471</td>
+      <td>0.000367</td>
+      <td>0.000394</td>
+      <td>0.932700</td>
+      <td>0.0013</td>
     </tr>
   </tbody>
 </table>
@@ -1165,11 +994,107 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_relative_7_2.png" src="../_images/tutorial_relative_7_2.png" />
+<img alt="../_images/tutorial_relative_8_1.png" src="../_images/tutorial_relative_8_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">relatives</span> <span class="o">=</span> <span class="n">market</span><span class="o">.</span><span class="n">get_relative</span><span class="p">(</span><span class="s1">&#39;TIP&#39;</span><span class="p">)</span>
+<span class="n">subset</span> <span class="o">=</span> <span class="n">market</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">relatives</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">subset</span><span class="o">.</span><span class="n">get_normalized_prices</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">summary</span> <span class="o">=</span> <span class="n">subset</span><span class="o">.</span><span class="n">get_summary</span><span class="p">()</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">relatives</span><span class="p">,</span> <span class="n">summary</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>correlation</th>
+      <th>daily return</th>
+      <th>variance</th>
+      <th>sharp ratio</th>
+      <th>expense ratio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>TIP</th>
+      <td>1.000000</td>
+      <td>0.000163</td>
+      <td>1.505960e-05</td>
+      <td>10.827642</td>
+      <td>0.0019</td>
+    </tr>
+    <tr>
+      <th>IEF</th>
+      <td>0.749742</td>
+      <td>0.000182</td>
+      <td>1.654876e-05</td>
+      <td>11.000269</td>
+      <td>0.0015</td>
+    </tr>
+    <tr>
+      <th>TLT</th>
+      <td>0.692784</td>
+      <td>0.000275</td>
+      <td>8.005042e-05</td>
+      <td>3.436350</td>
+      <td>0.0015</td>
+    </tr>
+    <tr>
+      <th>AGG</th>
+      <td>0.631768</td>
+      <td>0.000158</td>
+      <td>9.637003e-06</td>
+      <td>16.443447</td>
+      <td>0.0005</td>
+    </tr>
+    <tr>
+      <th>SHY</th>
+      <td>0.558922</td>
+      <td>0.000080</td>
+      <td>6.850880e-07</td>
+      <td>117.411555</td>
+      <td>0.0015</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_relative_9_1.png" src="../_images/tutorial_relative_9_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1183,20 +1108,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/app/mypo/market.py:338: SettingWithCopyWarning:
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  df[c] = df[c] / df[c][0]
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -1266,46 +1178,6 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>1.912074</td>
       <td>0.0010</td>
     </tr>
-    <tr>
-      <th>XLB</th>
-      <td>0.182071</td>
-      <td>0.000452</td>
-      <td>0.000236</td>
-      <td>1.916580</td>
-      <td>0.0013</td>
-    </tr>
-    <tr>
-      <th>EWZ</th>
-      <td>0.179145</td>
-      <td>0.000546</td>
-      <td>0.000617</td>
-      <td>0.884256</td>
-      <td>0.0059</td>
-    </tr>
-    <tr>
-      <th>IEF</th>
-      <td>0.170396</td>
-      <td>0.000182</td>
-      <td>0.000017</td>
-      <td>11.000269</td>
-      <td>0.0015</td>
-    </tr>
-    <tr>
-      <th>ILF</th>
-      <td>0.170134</td>
-      <td>0.000486</td>
-      <td>0.000468</td>
-      <td>1.037707</td>
-      <td>0.0048</td>
-    </tr>
-    <tr>
-      <th>AGG</th>
-      <td>0.167996</td>
-      <td>0.000158</td>
-      <td>0.000010</td>
-      <td>16.443447</td>
-      <td>0.0005</td>
-    </tr>
   </tbody>
 </table>
 </div></div>
@@ -1314,7 +1186,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_relative_8_2.png" src="../_images/tutorial_relative_8_2.png" />
+<img alt="../_images/tutorial_relative_10_1.png" src="../_images/tutorial_relative_10_1.png" />
 </div>
 </div>
 </div>
