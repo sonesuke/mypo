@@ -22,6 +22,18 @@ def test_save_load() -> None:
     assert market is not None
 
 
+@skip_long_tests
+def test_constructor() -> None:
+    loader = Loader()
+    loader.get(ticker="VOO")
+    print(loader.summary())
+    assert len(loader.summary()) == 1
+    loader = Loader()
+    loader.get(ticker="IEF")
+    print(loader.summary())
+    assert len(loader.summary()) == 1
+
+
 def test_since() -> None:
     loader = Loader.load(LOADER_DATA)
     loader = loader.since(since=datetime(2009, 12, 31))

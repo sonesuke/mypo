@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import pickle
 from datetime import datetime
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 import pandas as pd
 import yfinance as yf
@@ -27,11 +27,11 @@ class Loader(object):
 
     def __init__(
         self,
-        tickers: Dict[str, pd.DataFrame] = {},
-        names: Dict[str, str] = {},
-        expense_ratio: Dict[str, float] = {},
-        total_assets: Dict[str, int] = {},
-        daily_volume_10_days: Dict[str, int] = {},
+        tickers: Optional[Dict[str, pd.DataFrame]] = None,
+        names: Optional[Dict[str, str]] = None,
+        expense_ratio: Optional[Dict[str, float]] = None,
+        total_assets: Optional[Dict[str, int]] = None,
+        daily_volume_10_days: Optional[Dict[str, int]] = None,
     ) -> None:  # pragma: no cover
         """Construct this object.
 
@@ -42,11 +42,11 @@ class Loader(object):
             total_assets: Total assets.
             daily_volume_10_days: Daily volume 10 days.
         """
-        self._tickers = tickers
-        self._names = names
-        self._expense_ratio = expense_ratio
-        self._total_assets = total_assets
-        self._daily_volume_10_days = daily_volume_10_days
+        self._tickers = {} if tickers is None else tickers
+        self._names = {} if names is None else names
+        self._expense_ratio = {} if expense_ratio is None else expense_ratio
+        self._total_assets = {} if total_assets is None else total_assets
+        self._daily_volume_10_days = {} if daily_volume_10_days is None else daily_volume_10_days
 
     def save(self, filepath: str) -> None:  # pragma: no cover
         """Save market data to file.
@@ -134,7 +134,7 @@ class Loader(object):
             Filtered data.
         """
         tickers = [ticker for ticker in self._tickers.keys() if self._tickers[ticker].index[0] <= since]
-        return self._filter(tickers)
+        return self.filter(tickers)
 
     def volume_than(self, volume: int) -> Loader:
         """Filter market data.
@@ -146,7 +146,7 @@ class Loader(object):
             Filtered data.
         """
         tickers = [ticker for ticker in self._tickers.keys() if self._daily_volume_10_days[ticker] >= volume]
-        return self._filter(tickers)
+        return self.filter(tickers)
 
     def total_assets_than(self, total: int) -> Loader:
         """Filter market data.
@@ -158,9 +158,9 @@ class Loader(object):
             Filtered data.
         """
         tickers = [ticker for ticker in self._tickers.keys() if self._total_assets[ticker] >= total]
-        return self._filter(tickers)
+        return self.filter(tickers)
 
-    def _filter(self, tickers: List[str]) -> Loader:
+    def filter(self, tickers: List[str]) -> Loader:
         """Filter market data.
 
         Args:
