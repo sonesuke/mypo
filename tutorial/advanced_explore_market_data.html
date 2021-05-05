@@ -430,7 +430,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 Only 100 samples in chain.
-Multiprocess sampling (3 chains in 3 jobs)
+Sequential sampling (3 chains in 1 job)
 NUTS: [lower_triangular_chol, mu, prior_mu]
 </pre></div></div>
 </div>
@@ -451,8 +451,50 @@ NUTS: [lower_triangular_chol, mu, prior_mu]
             background: #F44336;
         }
     </style>
-  <progress value='3300' class='' max='3300' style='width:300px; height:20px; vertical-align: middle;'></progress>
-  100.00% [3300/3300 03:18<00:00 Sampling 3 chains, 0 divergences]
+  <progress value='1100' class='' max='1100' style='width:300px; height:20px; vertical-align: middle;'></progress>
+  100.00% [1100/1100 00:11<00:00 Sampling chain 0, 0 divergences]
+</div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+    <style>
+        /* Turns off some styling */
+        progress {
+            /* gets rid of default border in Firefox and Opera. */
+            border: none;
+            /* Needs to be in here for Safari polyfill so background images work as expected. */
+            background-size: auto;
+        }
+        .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+            background: #F44336;
+        }
+    </style>
+  <progress value='1100' class='' max='1100' style='width:300px; height:20px; vertical-align: middle;'></progress>
+  100.00% [1100/1100 00:09<00:00 Sampling chain 1, 0 divergences]
+</div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+    <style>
+        /* Turns off some styling */
+        progress {
+            /* gets rid of default border in Firefox and Opera. */
+            border: none;
+            /* Needs to be in here for Safari polyfill so background images work as expected. */
+            background-size: auto;
+        }
+        .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+            background: #F44336;
+        }
+    </style>
+  <progress value='1100' class='' max='1100' style='width:300px; height:20px; vertical-align: middle;'></progress>
+  100.00% [1100/1100 00:11<00:00 Sampling chain 2, 0 divergences]
 </div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -460,12 +502,12 @@ NUTS: [lower_triangular_chol, mu, prior_mu]
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws total) took 201 seconds.
+Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws total) took 32 seconds.
 </pre></div></div>
 </div>
 <p>Original market data</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -476,7 +518,7 @@ Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws tota
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -500,7 +542,7 @@ Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws tota
 </div>
 <p>Generated market data</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -511,7 +553,7 @@ Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws tota
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -534,7 +576,7 @@ Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws tota
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -545,7 +587,7 @@ Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws tota
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -568,7 +610,7 @@ Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws tota
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -579,7 +621,7 @@ Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws tota
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -602,7 +644,7 @@ Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws tota
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -614,7 +656,7 @@ Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws tota
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -637,7 +679,7 @@ Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws tota
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -648,7 +690,7 @@ Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws tota
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -671,7 +713,7 @@ Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws tota
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -682,7 +724,7 @@ Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws tota
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -705,7 +747,7 @@ Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws tota
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -716,7 +758,7 @@ Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws tota
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -739,7 +781,7 @@ Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws tota
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -750,7 +792,7 @@ Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws tota
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -773,7 +815,7 @@ Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws tota
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -784,7 +826,7 @@ Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws tota
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -807,7 +849,7 @@ Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws tota
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -818,7 +860,7 @@ Sampling 3 chains for 1_000 tune and 100 draw iterations (3_000 + 300 draws tota
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
