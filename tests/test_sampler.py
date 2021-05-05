@@ -23,4 +23,4 @@ def test_save_load() -> None:
 def test_sample() -> None:
     sampler = Sampler.load(MODEL_DATA)
     samples = sampler.sample(100)
-    npt.assert_almost_equal(samples.mean(), [-0.0004724, 0.002723])
+    npt.assert_almost_equal(samples.mean(), [0.0034562, 0.001737])

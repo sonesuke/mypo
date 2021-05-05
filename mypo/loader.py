@@ -83,7 +83,7 @@ class Loader(object):
         """
         ticker = ticker.upper()
         t = yf.Ticker(ticker)
-        df = t.history(period="max")
+        df = t.history(period="max", auto_adjust=False)
         df.index = pd.to_datetime(df.index)
         self._tickers[ticker] = df
         self._names[ticker] = t.info["longName"] if "longName" in t.info else ""

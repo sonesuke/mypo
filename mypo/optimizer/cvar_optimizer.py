@@ -58,8 +58,9 @@ class CVaROptimizer(BaseOptimizer):
 
         cons = {"type": "eq", "fun": lambda x: np.sum(x) - 1}
         bounds = [[0.0, 1.0] for i in range(n)]
+        print(np.max(sample))
         minout = minimize(
-            fn, x, args=(sample), method="SLSQP", bounds=bounds, constraints=cons, tol=1e-6 * np.max(sample)
+            fn, x, args=(sample), method="SLSQP", bounds=bounds, constraints=cons, tol=1e-9 * np.max(sample)
         )
         self._weights = safe_cast(minout.x)
         return np.float64(minout.fun)

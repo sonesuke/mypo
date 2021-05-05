@@ -24,7 +24,7 @@ def test_minimum_variance_optimizer() -> None:
     optimizer = MinimumVarianceOptimizer()
     optimizer.optimize(market, market.get_last_date())
     weights = optimizer.get_weights()
-    npt.assert_almost_equal(weights, [0.2497605, 0.7502395])
+    npt.assert_almost_equal(weights, [0.2488638, 0.7511362])
 
 
 def test_minimum_variance_optimizer_with_minimum_return() -> None:
@@ -33,7 +33,7 @@ def test_minimum_variance_optimizer_with_minimum_return() -> None:
     optimizer = MinimumVarianceOptimizer(minimum_return=0.10)
     optimizer.optimize(market, market.get_last_date())
     weights = optimizer.get_weights()
-    npt.assert_almost_equal(weights, [0.33055, 0.66945], decimal=5)
+    npt.assert_almost_equal(weights, [0.45601, 0.54399], decimal=5)
 
 
 def test_minimum_sharp_ratio_optimizer() -> None:
@@ -42,7 +42,7 @@ def test_minimum_sharp_ratio_optimizer() -> None:
     optimizer = SharpRatioOptimizer(risk_free_rate=0.02)
     optimizer.optimize(market, market.get_last_date())
     weights = optimizer.get_weights()
-    npt.assert_almost_equal(weights, [0.4380607, 0.5619393], decimal=5)
+    npt.assert_almost_equal(weights, [0.48699, 0.51301], decimal=5)
 
 
 def test_semi_minimum_variance_optimizer() -> None:
@@ -51,7 +51,7 @@ def test_semi_minimum_variance_optimizer() -> None:
     optimizer = MinimumVarianceOptimizer(with_semi_covariance=True)
     optimizer.optimize(market, market.get_last_date())
     weights = optimizer.get_weights()
-    npt.assert_almost_equal(weights, [0.3239604, 0.6760396], decimal=5)
+    npt.assert_almost_equal(weights, [0.33704, 0.66296], decimal=5)
 
 
 def test_maximum_diversification_optimizer() -> None:
@@ -60,7 +60,7 @@ def test_maximum_diversification_optimizer() -> None:
     optimizer = MaximumDiversificationOptimizer()
     optimizer.optimize(market, market.get_last_date())
     weights = optimizer.get_weights()
-    npt.assert_almost_equal(weights, [0.38076, 0.61924], decimal=5)
+    npt.assert_almost_equal(weights, [0.38619, 0.61381], decimal=5)
 
 
 def test_risk_parity_optimizer() -> None:
@@ -69,7 +69,7 @@ def test_risk_parity_optimizer() -> None:
     optimizer = RiskParityOptimizer()
     optimizer.optimize(market, market.get_last_date())
     weights = optimizer.get_weights()
-    npt.assert_almost_equal(weights, [0.38077, 0.61923], decimal=5)
+    npt.assert_almost_equal(weights, [0.38617, 0.61383], decimal=5)
 
 
 def test_risk_parity_optimizer_with_target() -> None:
@@ -78,7 +78,7 @@ def test_risk_parity_optimizer_with_target() -> None:
     optimizer = RiskParityOptimizer(risk_target=[0.75, 0.25])
     optimizer.optimize(market, market.get_last_date())
     weights = optimizer.get_weights()
-    npt.assert_almost_equal(weights, [0.4626, 0.5374], decimal=5)
+    npt.assert_almost_equal(weights, [0.46928, 0.53072], decimal=5)
 
 
 def test_cvar_optimizer() -> None:
@@ -87,7 +87,7 @@ def test_cvar_optimizer() -> None:
     optimizer = CVaROptimizer(sampler=Sampler.load(MODEL_DATA))
     optimizer.optimize(market, market.get_last_date())
     weights = optimizer.get_weights()
-    npt.assert_almost_equal(weights, [0.1942, 0.8058], decimal=5)
+    npt.assert_almost_equal(weights, [0.44782, 0.55218], decimal=5)
 
 
 @skip_long_tests
@@ -97,4 +97,4 @@ def test_cvar_optimizer_with_sampling() -> None:
     optimizer = CVaROptimizer(samples=200)
     optimizer.optimize(market, market.get_last_date())
     weights = optimizer.get_weights()
-    npt.assert_almost_equal(weights, [0.36126, 0.63874], decimal=5)
+    npt.assert_almost_equal(weights, [0.37332, 0.62668], decimal=5)
