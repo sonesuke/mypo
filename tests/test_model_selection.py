@@ -45,7 +45,7 @@ def test_select_by_variance() -> None:
 
     market = loader.get_market()
     tickers = select_by_correlation(market, 0.8)
-    npt.assert_equal(len(tickers), 66)
+    npt.assert_equal(len(tickers), 65)
 
 
 def test_select_by_regression() -> None:
@@ -58,4 +58,4 @@ def test_select_by_regression() -> None:
 
     market = loader.get_market()
     tickers = select_by_regression(market, 0.9)
-    npt.assert_equal(len(tickers), 5)
+    npt.assert_equal(len(tickers), 6)
