@@ -23,6 +23,15 @@ def test_save_load() -> None:
 
 
 @skip_long_tests
+def test_nem() -> None:
+    loader = Loader()
+    loader.get(ticker="NEM", expense_ratio=0.00)
+    loader.get(ticker="BHP", expense_ratio=0.00)
+    market = loader.get_market()
+    assert market is not None
+
+
+@skip_long_tests
 def test_constructor() -> None:
     loader = Loader()
     loader.get(ticker="VOO")
