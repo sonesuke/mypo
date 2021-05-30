@@ -3,11 +3,13 @@
 from datetime import datetime
 
 import numpy as np
+import pandas as pd
 from scipy.optimize import minimize
 
 from mypo.common import safe_cast
 from mypo.market import Market
 from mypo.optimizer import BaseOptimizer
+from mypo.optimizer.objective import covariance
 
 
 class MaximumDiversificationOptimizer(BaseOptimizer):
@@ -38,9 +40,9 @@ class MaximumDiversificationOptimizer(BaseOptimizer):
         Returns:
             Optimized weights
         """
-        historical_data = market.extract(market.get_index() < at).get_rate_of_change()
+        historical_data = market.extract(market.get_index() <= pd.to_datetime(at)).get_rate_of_change()
         prices = historical_data.tail(n=self._span).to_numpy()
-        Q = np.cov(prices.T)
+        Q = covariance(prices)
         Q_diag = np.diag(Q)
         n = Q.shape[0]
         x = np.ones(n) / n

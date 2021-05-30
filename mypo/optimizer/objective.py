@@ -12,7 +12,7 @@ def covariance(prices: np.ndarray) -> np.ndarray:
     Returns:
         Covariance matrix.
     """
-    Q = np.cov(prices.T)
+    Q = np.cov(prices.T, ddof=0)
     return np.array(Q)
 
 
@@ -25,7 +25,7 @@ def semi_covariance(prices: np.ndarray) -> np.ndarray:
     Returns:
         Semi-covariance matrix.
     """
-    Q = np.cov(np.where(prices.T < 0, prices.T, 0.0))
+    Q = np.cov(np.where(prices.T < 0, prices.T, 0.0), ddof=0)
     return np.array(Q)
 
 
