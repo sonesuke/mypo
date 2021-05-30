@@ -4,6 +4,7 @@ from datetime import datetime
 from typing import Optional
 
 import numpy as np
+import pandas as pd
 from scipy.optimize import minimize
 
 from mypo.common import safe_cast
@@ -47,7 +48,7 @@ class MinimumVarianceOptimizer(BaseOptimizer):
         Returns:
             Optimized weights
         """
-        historical_data = market.extract(market.get_index() < at).get_rate_of_change()
+        historical_data = market.extract(market.get_index() <= pd.to_datetime(at)).get_rate_of_change()
         prices = historical_data.tail(n=self._span).to_numpy()
         Q = semi_covariance(prices) if self._with_semi_covariance else covariance(prices)
         n = len(historical_data.columns)

@@ -112,7 +112,7 @@ class Runner(object):
         cash: float = 0.0,
         withdraw: float = 0.0,
         market: Optional[Market] = None,
-        train_span: int = 0,
+        train_span: int = 1,
         fold: Optional[Fold] = None,
         verbose: bool = False,
     ) -> None:

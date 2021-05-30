@@ -26,7 +26,7 @@ def test_run_and_report() -> None:
         withdraw=0.06,
     )
     report = runner.report().history()
-    assert report.index[0] == pd.Timestamp("2010-09-09")
+    assert report.index[0] == pd.Timestamp("2010-09-10")
 
 
 def test_run_fold_and_report() -> None:
