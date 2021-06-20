@@ -45,7 +45,7 @@ build-backend = "poetry.masonry.api"
 [tool.pytest.ini_options]
 minversion = "6.0"
 filterwarnings = ["error", "ignore::UserWarning"]
-addopts = "--cov=mypo --cov-fail-under=100"
+addopts = "--cov-report term-missing --cov=mypo --cov-fail-under=100"
 testpaths = [
     "tests"
 ]
@@ -61,7 +61,7 @@ enable_mypy = true
 mypy_preset = "strict"
 line_length = 120
 py_version = "py37"
-isort_known_third_party = ["numpy", "pandas", "yfinance", "pymc3"]
+isort_known_third_party = ["numpy", "pandas", "yfinance", "pymc3", "scipy"]
 isort_known_first_party = ["mypo"]
 mypy_path = ["."]
 
