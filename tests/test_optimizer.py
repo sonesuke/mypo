@@ -7,6 +7,7 @@ from mypo import Market
 from mypo.optimizer import (
     CVaROptimizer,
     MaximumDiversificationOptimizer,
+    MeanVarianceOptimizer,
     MinimumVarianceOptimizer,
     RiskParityOptimizer,
     SharpRatioOptimizer,
@@ -25,6 +26,24 @@ def test_minimum_variance_optimizer() -> None:
     optimizer.optimize(market, market.get_last_date())
     weights = optimizer.get_weights()
     npt.assert_almost_equal(weights, [0.2493157, 0.7506843])
+
+
+def test_mean_variance_optimizer() -> None:
+    market = Market.load(TEST_DATA)
+    market = market.head(300)
+    optimizer = MeanVarianceOptimizer(risk_tolerance=0)
+    optimizer.optimize(market, market.get_last_date())
+    weights = optimizer.get_weights()
+    npt.assert_almost_equal(weights, [0.2493157, 0.7506843])
+
+
+def test_mean_variance_optimizer_with_risk_tolerance() -> None:
+    market = Market.load(TEST_DATA)
+    market = market.head(300)
+    optimizer = MeanVarianceOptimizer(risk_tolerance=1)
+    optimizer.optimize(market, market.get_last_date())
+    weights = optimizer.get_weights()
+    npt.assert_almost_equal(weights, [0.331342, 0.668658])
 
 
 def test_minimum_variance_optimizer_with_minimum_return() -> None:
