@@ -15,7 +15,7 @@ homepage = "https://github.com/sonesuke/mypo"
 [tool.poetry.dependencies]
 python = "^3.7.10"
 pandas = "^1.2.2"
-yfinance = "^0.1.55"
+yfinance = "^0.1.62"
 numpy = "^1.20.1"
 scipy = "^1.6.0"
 pymc3 = "^3.11.1"
