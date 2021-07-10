@@ -28,6 +28,15 @@ def test_minimum_variance_optimizer() -> None:
     npt.assert_almost_equal(weights, [0.2493157, 0.7506843])
 
 
+def test_minimum_variance_optimizer_with_minimum_return() -> None:
+    market = Market.load(TEST_DATA)
+    market = market.head(200)
+    optimizer = MinimumVarianceOptimizer(minimum_return=0.10)
+    optimizer.optimize(market, market.get_last_date())
+    weights = optimizer.get_weights()
+    npt.assert_almost_equal(weights, [0.44973, 0.55027], decimal=5)
+
+
 def test_mean_variance_optimizer() -> None:
     market = Market.load(TEST_DATA)
     market = market.head(300)
@@ -46,13 +55,14 @@ def test_mean_variance_optimizer_with_risk_tolerance() -> None:
     npt.assert_almost_equal(weights, [0.331342, 0.668658])
 
 
-def test_minimum_variance_optimizer_with_minimum_return() -> None:
+def test_mean_variance_optimizer_with_cost_tolerance() -> None:
     market = Market.load(TEST_DATA)
-    market = market.head(200)
-    optimizer = MinimumVarianceOptimizer(minimum_return=0.10)
-    optimizer.optimize(market, market.get_last_date())
+    market = market.head(300)
+    optimizer = MeanVarianceOptimizer(cost_tolerance=0.1)
+    v = optimizer.optimize(market, market.get_last_date())
+    print(v)
     weights = optimizer.get_weights()
-    npt.assert_almost_equal(weights, [0.44973, 0.55027], decimal=5)
+    npt.assert_almost_equal(weights, [0.2721083, 0.7278917])
 
 
 def test_minimum_sharp_ratio_optimizer() -> None:
@@ -80,6 +90,15 @@ def test_maximum_diversification_optimizer() -> None:
     optimizer.optimize(market, market.get_last_date())
     weights = optimizer.get_weights()
     npt.assert_almost_equal(weights, [0.3867, 0.6133], decimal=5)
+
+
+def test_maximum_diversification_optimizer_with_cost_tolerance() -> None:
+    market = Market.load(TEST_DATA)
+    market = market.head(200)
+    optimizer = MaximumDiversificationOptimizer(cost_tolerance=0.01)
+    optimizer.optimize(market, market.get_last_date())
+    weights = optimizer.get_weights()
+    npt.assert_almost_equal(weights, [0.93929, 0.06071], decimal=5)
 
 
 def test_risk_parity_optimizer() -> None:
