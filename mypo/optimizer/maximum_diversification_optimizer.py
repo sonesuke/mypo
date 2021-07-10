@@ -1,6 +1,7 @@
 """Optimizer for weights of portfolio."""
 
 from datetime import datetime
+from typing import Optional
 
 import numpy as np
 import pandas as pd
@@ -17,17 +18,17 @@ class MaximumDiversificationOptimizer(BaseOptimizer):
 
     _span: int
     _risk_free_rate: float
+    _cost_tolerance: Optional[float]
 
-    def __init__(
-        self,
-        span: int = 260,
-    ):
+    def __init__(self, span: int = 260, cost_tolerance: float = 0):
         """Construct this object.
 
         Args:
             span: Span for evaluation.
+            cost_tolerance: Cost tolerance.
         """
         self._span = span
+        self._cost_tolerance = cost_tolerance
         super().__init__([1])
 
     def optimize(self, market: Market, at: datetime) -> np.float64:
@@ -47,11 +48,7 @@ class MaximumDiversificationOptimizer(BaseOptimizer):
         n = Q.shape[0]
         x = np.ones(n) / n
 
-        def fn(
-            x: np.ndarray,
-            Q: np.ndarray,
-            Q_diag: np.ndarray,
-        ) -> np.float64:
+        def fn(x: np.ndarray) -> np.float64:
             ret: np.float64 = -np.dot(x, Q_diag) / np.dot(np.dot(x, Q), x.T)
             return ret
 
@@ -60,10 +57,37 @@ class MaximumDiversificationOptimizer(BaseOptimizer):
         minout = minimize(
             fn,
             x,
-            args=(Q, Q_diag),
             method="SLSQP",
             bounds=bounds,
             constraints=cons,
         )
+
+        if self._cost_tolerance != 0:
+            # Cn = CEo - CEn + TC`|wn - wc| + d(wn - wo)`(wn - wo)
+            previous_weights = safe_cast(self._weights)
+            optimized_weights = safe_cast(minout.x)
+            optimized_value = np.float64(minout.fun)
+
+            def cn(
+                x: np.ndarray,
+            ) -> np.float64:
+                wo_diff = x - optimized_weights
+                wp_diff = x - previous_weights
+                ret: np.float64 = (
+                    optimized_value
+                    - fn(x)
+                    + self._cost_tolerance * np.dot(wp_diff, wp_diff.T)
+                    + np.dot(wo_diff, wo_diff.T)
+                )
+                return ret
+
+            minout = minimize(
+                cn,
+                previous_weights,
+                method="SLSQP",
+                bounds=bounds,
+                constraints=cons,
+                tol=1e-6 * np.max(np.abs(Q)),
+            )
         self._weights = safe_cast(minout.x)
         return np.float64(minout.fun)
