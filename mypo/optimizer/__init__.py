@@ -8,4 +8,5 @@ from mypo.optimizer.minimum_variance_optimizer import MinimumVarianceOptimizer
 from mypo.optimizer.no_optimizer import NoOptimizer
 from mypo.optimizer.objective import covariance, semi_covariance
 from mypo.optimizer.risk_parity_optimizer import RiskParityOptimizer
+from mypo.optimizer.rotation_strategy import RotationStrategy
 from mypo.optimizer.sharp_ratio_optimizer import SharpRatioOptimizer
