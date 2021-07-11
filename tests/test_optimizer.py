@@ -10,6 +10,7 @@ from mypo.optimizer import (
     MeanVarianceOptimizer,
     MinimumVarianceOptimizer,
     RiskParityOptimizer,
+    RotationStrategy,
     SharpRatioOptimizer,
 )
 from mypo.sampler import Sampler
@@ -136,3 +137,12 @@ def test_cvar_optimizer_with_sampling() -> None:
     optimizer.optimize(market, market.get_last_date())
     weights = optimizer.get_weights()
     npt.assert_almost_equal(weights, [0.37332, 0.62668], decimal=5)
+
+
+def test_rotation_strategy() -> None:
+    market = Market.load(TEST_DATA)
+    market = market.head(200)
+    optimizer = RotationStrategy(risk_free_rate=0.02)
+    optimizer.optimize(market, market.get_last_date())
+    weights = optimizer.get_weights()
+    npt.assert_almost_equal(weights, [0, 1], decimal=5)
