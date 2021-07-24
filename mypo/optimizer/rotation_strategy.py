@@ -16,20 +16,17 @@ class RotationStrategy(BaseOptimizer):
     _span: int
     _risk_free_rate: float
 
-    def __init__(
-        self,
-        risk_free_rate: float = 0.02,
-        span: int = 90,
-    ):
+    def __init__(self, risk_free_rate: float = 0.02, span: int = 90, do_re_optimize: bool = False):
         """Construct this object.
 
         Args:
             risk_free_rate: Risk free rate
             span: Span for evaluation.
+            do_re_optimize: Do re-optimize.
         """
         self._risk_free_rate = risk_free_rate
         self._span = span
-        super().__init__([1])
+        super().__init__([1], do_re_optimize)
 
     def optimize(self, market: Market, at: datetime) -> np.float64:
         """Optimize weights.

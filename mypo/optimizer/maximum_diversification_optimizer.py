@@ -20,16 +20,17 @@ class MaximumDiversificationOptimizer(BaseOptimizer):
     _risk_free_rate: float
     _cost_tolerance: Optional[float]
 
-    def __init__(self, span: int = 260, cost_tolerance: float = 0):
+    def __init__(self, span: int = 260, cost_tolerance: float = 0, do_re_optimize: bool = False):
         """Construct this object.
 
         Args:
             span: Span for evaluation.
             cost_tolerance: Cost tolerance.
+            do_re_optimize: Do re-optimize.
         """
         self._span = span
         self._cost_tolerance = cost_tolerance
-        super().__init__([1])
+        super().__init__([1], do_re_optimize)
 
     def optimize(self, market: Market, at: datetime) -> np.float64:
         """Optimize weights.

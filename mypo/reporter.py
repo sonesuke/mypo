@@ -99,6 +99,53 @@ class Reporter(object):
             index=self._index,
         )
 
+    def history_assets(self) -> pd.DataFrame:
+        """Report the result.
+
+        Returns:
+            result
+        """
+        df = pd.DataFrame(
+            {"total_assets": self._total_assets},
+            index=self._index,
+        )
+        return df
+
+    def history_cost(self) -> pd.DataFrame:
+        """Report the result.
+
+        Returns:
+            result
+        """
+        df = pd.DataFrame(
+            {
+                "fee": self._fee,
+                "capital_gain_tax": self._capital_gain_tax,
+                "income_gain_tax": self._income_gain_tax,
+            },
+            index=self._index,
+        )
+        df = df.cumsum()
+        return df
+
+    def history_cash_vs_assets(self) -> pd.DataFrame:
+        """Report the result.
+
+        Returns:
+            result
+        """
+        df = pd.DataFrame(
+            {"total_assets": self._total_assets, "cash": self._cash},
+            index=self._index,
+        )
+        # cancel negative cash
+        df.loc[df["cash"] < 0, "total_assets"] = df["total_assets"] + df["cash"]
+        df.loc[df["cash"] < 0, "cash"] = 0
+        df["assets"] = (df["total_assets"] - df["cash"]) / df["total_assets"]
+        df["cash"] = df["cash"] / df["total_assets"]
+        del df["total_assets"]
+        return df
+
     def get_tickers(self) -> List[str]:
         """Get tickers.
 
