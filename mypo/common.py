@@ -45,7 +45,7 @@ def calc_capital_gain_tax(
     deal_sell = np.where(diff > 0, 0, diff)
     unrealized_gain = prices - average_asset_prices
     plus_unrealized_gain = np.where(unrealized_gain > 0, unrealized_gain, 0)
-    capital_gain_tax: np.float64 = np.sum(plus_unrealized_gain * deal_sell * settings.tax_rate)
+    capital_gain_tax: np.float64 = -np.sum(plus_unrealized_gain * deal_sell * settings.tax_rate)
     return capital_gain_tax
 
 
@@ -62,7 +62,7 @@ def calc_income_gain_tax(assets: npt.ArrayLike, price_dividends_yield: npt.Array
     """
     assets = safe_cast(assets)
     price_dividends_yield = safe_cast(price_dividends_yield)
-    income_gain_tax: np.float64 = -np.sum(assets * price_dividends_yield * settings.tax_rate)
+    income_gain_tax: np.float64 = np.sum(assets * price_dividends_yield * settings.tax_rate)
     return income_gain_tax
 
 

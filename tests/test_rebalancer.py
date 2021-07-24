@@ -76,6 +76,6 @@ def test_rebalance_monthly_fire_with_re_optimize() -> None:
     assets = [1.5, 1]
     weights = [0.3, 0.7]
     market = Market.create(start_date="2021-01-01", end_date="2021-01-02", yearly_gain=0.00)
-    rebalancer = MonthlyRebalancer(NoOptimizer(weights), do_re_optimize=True)
+    rebalancer = MonthlyRebalancer(NoOptimizer(weights, do_re_optimize=True))
     diff = rebalancer.apply(datetime(2021, 3, 1, 0, 0), market, assets, np.float64(0.5))
     npt.assert_almost_equal((assets + diff) / np.sum(assets + diff), weights)

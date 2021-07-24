@@ -13,8 +13,9 @@ class BaseOptimizer(object):
     """Base Optimizer."""
 
     _weights: np.ndarray
+    _do_re_optimize: bool
 
-    def __init__(self, weights: Optional[npt.ArrayLike]):
+    def __init__(self, weights: Optional[npt.ArrayLike], do_re_optimize: bool = False):
         """Construct this object.
 
         Args:
@@ -23,6 +24,15 @@ class BaseOptimizer(object):
         if weights is None:
             weights = [1]
         self._weights = safe_cast(weights)
+        self._do_re_optimize = do_re_optimize
+
+    def do_re_optimize(self) -> bool:
+        """Do re optimize?
+
+        Returns:
+            whether re optimize.
+        """
+        return self._do_re_optimize
 
     def get_weights(self) -> np.ndarray:
         """Get weights.

@@ -19,7 +19,14 @@ class CVaROptimizer(BaseOptimizer):
     _samples: int
     _sampler: Optional[Sampler]
 
-    def __init__(self, span: int = 260, beta: float = 0.05, samples: int = 10, sampler: Optional[Sampler] = None):
+    def __init__(
+        self,
+        span: int = 260,
+        beta: float = 0.05,
+        samples: int = 10,
+        sampler: Optional[Sampler] = None,
+        do_re_optimize: bool = False,
+    ):
         """Construct this object.
 
         Args:
@@ -28,12 +35,13 @@ class CVaROptimizer(BaseOptimizer):
             beta: Confidence.
             samples: Count of scenarios.
             sampler: Sampler.
+            do_re_optimize: do re-optimize.
         """
         self._span = span
         self._beta = beta
         self._samples = samples
         self._sampler = sampler
-        super().__init__([1])
+        super().__init__([1], do_re_optimize)
 
     def optimize(self, market: Market, at: datetime) -> np.float64:
         """Optimize weights.

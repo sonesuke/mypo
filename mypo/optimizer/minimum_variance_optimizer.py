@@ -25,6 +25,7 @@ class MinimumVarianceOptimizer(BaseOptimizer):
         span: int = 260,
         with_semi_covariance: bool = False,
         minimum_return: Optional[float] = None,
+        do_re_optimize: bool = False,
     ):
         """Construct this object.
 
@@ -32,11 +33,12 @@ class MinimumVarianceOptimizer(BaseOptimizer):
             span: Span for evaluation.
             with_semi_covariance: whether use semi covariance mode if it's Ture.
             minimum_return: Minimum return.
+            do_re_optimize: Do re-optimize.
         """
         self._span = span
         self._with_semi_covariance = with_semi_covariance
         self._minimum_return = minimum_return
-        super().__init__([1])
+        super().__init__([1], do_re_optimize)
 
     def optimize(self, market: Market, at: datetime) -> np.float64:
         """Optimize weights.

@@ -28,3 +28,6 @@ def test_run_and_report_run_out_cash() -> None:
     report = runner.report()
     assert report.summary() is not None
     assert report.history_weights() is not None
+    assert report.history_cost() is not None
+    assert report.history_assets() is not None
+    assert report.history_cash_vs_assets() is not None

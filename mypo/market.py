@@ -72,7 +72,7 @@ class Market(object):
             return value
 
     @staticmethod
-    def create(start_date: str, end_date: str, yearly_gain: float, ticker: str = "None") -> Market:
+    def create(start_date: str, end_date: str, yearly_gain: float, ticker: str = "None", n_assets: int = 1) -> Market:
         """Load market data from file.
 
         Args:
@@ -80,19 +80,27 @@ class Market(object):
             start_date: Start date.
             end_date: End date.
             yearly_gain: Yearly gain.
+            n_assets: Number of assets
 
         Returns:
             Market object
         """
-        index = pd.date_range(start_date, end_date, freq="D")
-        n = len(index)
-        daily_gain = (1.0 + yearly_gain) ** (1 / 365)
-        prices = np.ones(n) * (daily_gain ** np.arange(n))
-        return Market.create_from_ticker(
-            names={ticker: "None"},
-            tickers={ticker: pd.DataFrame({"Close": prices, "Dividends": np.zeros(n)}, index=index)},
-            expense_ratio={ticker: 0.0},
-        )
+        names = {}
+        tickers = {}
+        expense_ratios = {}
+        for i in range(n_assets):
+            if n_assets == 1:
+                name = ticker
+            else:
+                name = ticker + str(i)
+            names[name] = name
+            index = pd.date_range(start_date, end_date, freq="D")
+            n = len(index)
+            daily_gain = (1.0 + yearly_gain) ** (1 / 365)
+            prices = np.ones(n) * (daily_gain ** np.arange(n))
+            tickers[name] = pd.DataFrame({"Close": prices, "Dividends": np.zeros(n)}, index=index)
+            expense_ratios[name] = 0.0
+        return Market.create_from_ticker(names=names, tickers=tickers, expense_ratio=expense_ratios)
 
     @staticmethod
     def create_from_ticker(
