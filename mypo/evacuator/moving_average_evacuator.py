@@ -6,6 +6,7 @@ import numpy.typing as npt
 import pandas as pd
 
 from mypo import Market
+from mypo.common import safe_cast
 from mypo.evacuator import BaseEvacuator
 
 
@@ -16,7 +17,7 @@ class MovingAverageEvacuator(BaseEvacuator):
     _risk_off: np.float64
     _risk_on: np.float64
 
-    def __init__(self, span: int = 20, risk_on: np.float64 = 1.0, risk_off: np.float64 = 0.0):
+    def __init__(self, span: int = 20, risk_on: np.float64 = np.float64(1.0), risk_off: np.float64 = np.float64(0.0)):
         """Construct this object.
 
         Args:
@@ -39,6 +40,7 @@ class MovingAverageEvacuator(BaseEvacuator):
         Returns:
             Deal
         """
+        weights = safe_cast(weights)
         historical_data = market.extract(market.get_index() <= pd.to_datetime(at)).get_rate_of_change()
         prices = historical_data.tail(n=self._span).to_numpy() + 1.0
         if prices.size < self._span:
@@ -46,7 +48,7 @@ class MovingAverageEvacuator(BaseEvacuator):
         prices = np.cumprod(np.dot(prices, weights.T))
         moving_average = np.sum(prices) / self._span
         current_asserts = prices[-1]
-        return current_asserts < moving_average
+        return bool(current_asserts < moving_average)
 
     def evacuate(
         self, at: datetime, market: Market, assets: np.ndarray, cash: np.float64, weights: np.ndarray
@@ -66,4 +68,4 @@ class MovingAverageEvacuator(BaseEvacuator):
             new_assets = (np.sum(assets) + cash) * self._risk_off * weights
         else:
             new_assets = (np.sum(assets) + cash) * self._risk_on * weights
-        return new_assets
+        return safe_cast(new_assets)

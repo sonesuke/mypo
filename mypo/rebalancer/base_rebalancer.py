@@ -68,7 +68,7 @@ class BaseRebalancer(object):
         if cash < 0 and np.sum(new_assets) > 0:
             new_assets = new_assets - np.abs(cash) * self._optimizer.get_weights()
 
-        return new_assets - assets
+        return safe_cast(new_assets - assets)
 
     def get_optimizer(self) -> BaseOptimizer:
         """Get optimizer.
