@@ -422,9 +422,9 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">MinimumVarianceOptimizer</span><span class="p">()</span>
+<span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">MinimumVarianceOptimizer</span><span class="p">(</span><span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
-    <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">)</span>
 <span class="p">)</span>
 
 <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
@@ -450,7 +450,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 2526/2526 [00:06&lt;00:00, 409.53it/s]
+100%|██████████| 2536/2536 [00:09&lt;00:00, 273.86it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -459,7 +459,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
       tickers  yearly total return  max draw down  max draw down span
-0  [VOO, EDV]             1.098795       0.865893                 254
+0  [VOO, EDV]             1.092931       0.858171                 267
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -481,9 +481,9 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">MinimumVarianceOptimizer</span><span class="p">(</span><span class="n">with_semi_covariance</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">MinimumVarianceOptimizer</span><span class="p">(</span><span class="n">with_semi_covariance</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
-    <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">)</span>
 
 <span class="p">)</span>
 
@@ -510,7 +510,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 2526/2526 [00:06&lt;00:00, 405.12it/s]
+100%|██████████| 2536/2536 [00:09&lt;00:00, 271.37it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -519,7 +519,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
       tickers  yearly total return  max draw down  max draw down span
-0  [VOO, EDV]             1.093335       0.867851                 292
+0  [VOO, EDV]             1.087187       0.860487                 303
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -541,9 +541,9 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">SharpRatioOptimizer</span><span class="p">()</span>
+<span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">SharpRatioOptimizer</span><span class="p">(</span><span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
-    <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">)</span>
 <span class="p">)</span>
 
 <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
@@ -569,7 +569,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 2526/2526 [00:06&lt;00:00, 413.95it/s]
+100%|██████████| 2536/2536 [00:09&lt;00:00, 275.87it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -578,7 +578,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
       tickers  yearly total return  max draw down  max draw down span
-0  [VOO, EDV]             1.094735       0.843169                 255
+0  [VOO, EDV]              1.08889       0.832747                 255
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -600,9 +600,9 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">MaximumDiversificationOptimizer</span><span class="p">()</span>
+<span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">MaximumDiversificationOptimizer</span><span class="p">(</span><span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
-    <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">)</span>
 <span class="p">)</span>
 
 <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
@@ -629,7 +629,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 2526/2526 [00:06&lt;00:00, 416.78it/s]
+100%|██████████| 2536/2536 [00:09&lt;00:00, 275.14it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -638,7 +638,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
       tickers  yearly total return  max draw down  max draw down span
-0  [VOO, EDV]             1.102305       0.868409                 254
+0  [VOO, EDV]             1.096457       0.860672                 259
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -660,9 +660,9 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">RiskParityOptimizer</span><span class="p">()</span>
+<span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">RiskParityOptimizer</span><span class="p">(</span><span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
-    <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">)</span>
 <span class="p">)</span>
 
 <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
@@ -688,7 +688,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 2526/2526 [00:06&lt;00:00, 405.01it/s]
+100%|██████████| 2536/2536 [00:09&lt;00:00, 268.63it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -697,7 +697,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
       tickers  yearly total return  max draw down  max draw down span
-0  [VOO, EDV]             1.102307       0.868411                 254
+0  [VOO, EDV]             1.096459       0.860674                 259
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">

@@ -3571,9 +3571,9 @@ div.rendered_html tbody tr:hover {
 <span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">folds</span><span class="p">)):</span>
     <span class="n">selected_tickers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span> <span class="s1">&#39;TLT&#39;</span><span class="p">,</span> <span class="s1">&#39;GLD&#39;</span><span class="p">]</span>
     <span class="n">fold</span> <span class="o">=</span> <span class="n">folds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">selected_tickers</span><span class="p">)</span>
-    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">MaximumDiversificationOptimizer</span><span class="p">()</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">MaximumDiversificationOptimizer</span><span class="p">(</span><span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
-        <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">),</span>
     <span class="p">)</span>
 
     <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
@@ -3597,7 +3597,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 984/984 [00:02&lt;00:00, 391.09it/s]
+100%|██████████| 984/984 [00:03&lt;00:00, 262.71it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3606,7 +3606,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
            tickers  yearly total return  max draw down  max draw down span
-0  [SPY, TLT, GLD]             1.065689       0.863834                 174
+0  [GLD, TLT, SPY]             1.054379        0.85498                 174
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3628,7 +3628,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 984/984 [00:02&lt;00:00, 385.73it/s]
+100%|██████████| 984/984 [00:03&lt;00:00, 255.45it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3637,7 +3637,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
            tickers  yearly total return  max draw down  max draw down span
-0  [SPY, TLT, GLD]             1.118007       0.935918                  97
+0  [GLD, TLT, SPY]             1.108893        0.93276                 100
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3659,7 +3659,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 984/984 [00:02&lt;00:00, 389.59it/s]
+100%|██████████| 984/984 [00:03&lt;00:00, 249.70it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3668,7 +3668,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
            tickers  yearly total return  max draw down  max draw down span
-0  [SPY, TLT, GLD]             1.084809       0.924068                 287
+0  [GLD, TLT, SPY]             1.078098       0.919568                 295
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3690,7 +3690,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 984/984 [00:02&lt;00:00, 390.96it/s]
+100%|██████████| 984/984 [00:03&lt;00:00, 254.99it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3699,7 +3699,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
            tickers  yearly total return  max draw down  max draw down span
-0  [SPY, TLT, GLD]             1.092618       0.851297                 287
+0  [GLD, TLT, SPY]             1.086937        0.84886                 291
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3727,9 +3727,9 @@ div.rendered_html tbody tr:hover {
 <span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">folds</span><span class="p">)):</span>
     <span class="n">evaluates</span> <span class="o">=</span> <span class="n">evaluate_combinations</span><span class="p">(</span><span class="n">folds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_train</span><span class="p">(),</span> <span class="n">cluster</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">MaximumDiversificationOptimizer</span><span class="p">(),</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">fold</span> <span class="o">=</span> <span class="n">folds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">filter</span><span class="p">((</span><span class="nb">list</span><span class="p">(</span><span class="n">evaluates</span><span class="p">[</span><span class="s1">&#39;combinations&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]))</span>
-    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">MaximumDiversificationOptimizer</span><span class="p">()</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">MaximumDiversificationOptimizer</span><span class="p">(</span><span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
-        <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">),</span>
     <span class="p">)</span>
 
     <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
@@ -3752,8 +3752,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 414/414 [00:01&lt;00:00, 255.84it/s]
-100%|██████████| 984/984 [00:02&lt;00:00, 380.37it/s]
+100%|██████████| 414/414 [00:02&lt;00:00, 173.98it/s]
+100%|██████████| 984/984 [00:03&lt;00:00, 249.99it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3762,7 +3762,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
            tickers  yearly total return  max draw down  max draw down span
-0  [GLD, IEF, EWZ]             1.091001       0.878491                 304
+0  [IEF, GLD, EWZ]             1.077544       0.869239                 304
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3784,8 +3784,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 414/414 [00:01&lt;00:00, 405.29it/s]
-100%|██████████| 984/984 [00:02&lt;00:00, 385.42it/s]
+100%|██████████| 414/414 [00:01&lt;00:00, 213.52it/s]
+100%|██████████| 984/984 [00:03&lt;00:00, 257.60it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3794,7 +3794,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
            tickers  yearly total return  max draw down  max draw down span
-0  [TIP, IEF, RWR]             1.079471       0.924472                 124
+0  [IEF, RWR, TIP]             1.068908       0.920603                 154
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3816,8 +3816,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 414/414 [00:00&lt;00:00, 425.61it/s]
-100%|██████████| 984/984 [00:02&lt;00:00, 387.35it/s]
+100%|██████████| 414/414 [00:01&lt;00:00, 228.34it/s]
+100%|██████████| 984/984 [00:03&lt;00:00, 255.11it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3826,7 +3826,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
            tickers  yearly total return  max draw down  max draw down span
-0  [GLD, IEF, FEZ]             1.037896       0.933064                 261
+0  [IEF, GLD, FEZ]             1.030963       0.930154                 312
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3848,8 +3848,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 414/414 [00:00&lt;00:00, 429.62it/s]
-100%|██████████| 984/984 [00:02&lt;00:00, 381.81it/s]
+100%|██████████| 414/414 [00:01&lt;00:00, 229.50it/s]
+100%|██████████| 984/984 [00:03&lt;00:00, 246.34it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3858,7 +3858,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
            tickers  yearly total return  max draw down  max draw down span
-0  [GLD, XLF, IEF]             1.046992       0.908427                 265
+0  [IEF, GLD, XLF]             1.040741       0.906438                 289
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3887,9 +3887,9 @@ div.rendered_html tbody tr:hover {
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">folds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_train</span><span class="p">()</span><span class="o">.</span><span class="n">get_summary</span><span class="p">(),</span> <span class="n">cluster</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">selected_tickers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="s1">&#39;daily return&#39;</span><span class="p">])</span>
     <span class="n">fold</span> <span class="o">=</span> <span class="n">folds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">selected_tickers</span><span class="p">)</span>
-    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">MaximumDiversificationOptimizer</span><span class="p">()</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">MaximumDiversificationOptimizer</span><span class="p">(</span><span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
-        <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">),</span>
     <span class="p">)</span>
 
     <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
@@ -3912,7 +3912,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 984/984 [00:02&lt;00:00, 386.27it/s]
+100%|██████████| 984/984 [00:03&lt;00:00, 258.70it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3921,7 +3921,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
            tickers  yearly total return  max draw down  max draw down span
-0  [TIP, TLT, ILF]             1.067794       0.828675                 304
+0  [TLT, TIP, ILF]             1.050952       0.811549                 304
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3943,7 +3943,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 984/984 [00:02&lt;00:00, 383.39it/s]
+100%|██████████| 984/984 [00:03&lt;00:00, 250.42it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3952,7 +3952,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
            tickers  yearly total return  max draw down  max draw down span
-0  [GLD, IEF, EWZ]             1.040114       0.911391                 338
+0  [IEF, GLD, EWZ]              1.02941       0.900265                 338
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3974,7 +3974,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 984/984 [00:02&lt;00:00, 388.46it/s]
+100%|██████████| 984/984 [00:03&lt;00:00, 256.14it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3983,7 +3983,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
            tickers  yearly total return  max draw down  max draw down span
-0  [BBH, IEF, LQD]             1.050185       0.932413                 324
+0  [IEF, BBH, LQD]             1.043715       0.928769                 327
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -4005,7 +4005,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 984/984 [00:02&lt;00:00, 377.91it/s]
+100%|██████████| 984/984 [00:03&lt;00:00, 254.48it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -4014,7 +4014,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
            tickers  yearly total return  max draw down  max draw down span
-0  [IXN, TIP, IEF]             1.063799       0.921104                 165
+0  [IEF, IXN, TIP]             1.057576       0.919638                 165
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -4042,9 +4042,9 @@ div.rendered_html tbody tr:hover {
 <span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">folds</span><span class="p">)):</span>
     <span class="n">selected_tickers</span> <span class="o">=</span> <span class="n">select_by_regression</span><span class="p">(</span><span class="n">folds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_train</span><span class="p">(),</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
     <span class="n">fold</span> <span class="o">=</span> <span class="n">folds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">selected_tickers</span><span class="p">)</span>
-    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">MaximumDiversificationOptimizer</span><span class="p">()</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">MaximumDiversificationOptimizer</span><span class="p">(</span><span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
-        <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">),</span>
     <span class="p">)</span>
 
     <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
@@ -4067,7 +4067,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 984/984 [00:02&lt;00:00, 362.83it/s]
+100%|██████████| 984/984 [00:04&lt;00:00, 241.14it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -4076,7 +4076,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
                 tickers  yearly total return  max draw down  \
-0  [SPY, TLT, EWG, ILF]             1.083217       0.848404
+0  [EWG, TLT, SPY, ILF]             1.068948       0.837406
 
    max draw down span
 0                 156
@@ -4101,7 +4101,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 984/984 [00:02&lt;00:00, 418.87it/s]
+100%|██████████| 984/984 [00:03&lt;00:00, 277.48it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -4110,7 +4110,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
       tickers  yearly total return  max draw down  max draw down span
-0  [SPY, IEF]             1.082788       0.954026                 117
+0  [IEF, SPY]             1.073707       0.951708                 119
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -4132,7 +4132,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 984/984 [00:02&lt;00:00, 422.68it/s]
+100%|██████████| 984/984 [00:03&lt;00:00, 281.18it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -4141,7 +4141,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
       tickers  yearly total return  max draw down  max draw down span
-0  [SPY, IEF]             1.062231       0.957584                 207
+0  [IEF, SPY]              1.05523       0.954674                 210
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -4163,7 +4163,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 984/984 [00:02&lt;00:00, 357.01it/s]
+100%|██████████| 984/984 [00:04&lt;00:00, 234.14it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -4172,10 +4172,10 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
                 tickers  yearly total return  max draw down  \
-0  [SPY, TIP, EWY, ILF]             1.054833       0.862604
+0  [TIP, SPY, EWY, ILF]             1.047854        0.85952
 
    max draw down span
-0                 301
+0                 341
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
