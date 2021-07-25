@@ -11,7 +11,7 @@ from mypo.optimizer import (
     MinimumVarianceOptimizer,
     RiskParityOptimizer,
     RotationStrategy,
-    SharpRatioOptimizer,
+    SharpeRatioOptimizer,
 )
 from mypo.sampler import Sampler
 
@@ -66,13 +66,13 @@ def test_mean_variance_optimizer_with_cost_tolerance() -> None:
     npt.assert_almost_equal(weights, [0.2721083, 0.7278917])
 
 
-def test_minimum_sharp_ratio_optimizer() -> None:
+def test_sharpe_ratio_optimizer() -> None:
     market = Market.load(TEST_DATA)
     market = market.head(200)
-    optimizer = SharpRatioOptimizer(risk_free_rate=0.02)
+    optimizer = SharpeRatioOptimizer(risk_free_rate=0.02)
     optimizer.optimize(market, market.get_last_date())
     weights = optimizer.get_weights()
-    npt.assert_almost_equal(weights, [0.47694, 0.52306], decimal=5)
+    npt.assert_almost_equal(weights, [0.70799, 0.29201], decimal=5)
 
 
 def test_semi_minimum_variance_optimizer() -> None:

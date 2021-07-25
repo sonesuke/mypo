@@ -80,3 +80,48 @@ def calc_fee(diff: npt.ArrayLike, settings: Settings) -> np.float64:
     deal = np.abs(diff)
     fee: np.float64 = np.sum(deal * settings.fee_rate)
     return fee
+
+
+def sharpe_ratio(prices: np.ndarray, risk_free_rate: np.float64 = np.float64(0.02)) -> np.float64:
+    """Calculate Sharpe ratio.
+
+    Args:
+        prices: Prices
+        risk_free_rate: Risk free rate
+
+    Returns:
+        Sharpe ratio.
+    """
+    daily_r = np.prod((1 + prices)) ** (1 / len(prices)) - 1.0
+    daily_q = np.sqrt(np.sum((prices - daily_r) ** 2) / len(prices))
+
+    yearly_r = (1 + daily_r) ** 252 - 1.0
+    yearly_q = daily_q * np.sqrt(252)
+
+    return np.float64((yearly_r - risk_free_rate) / yearly_q)
+
+
+def covariance(prices: np.ndarray) -> np.ndarray:
+    """Calculate covariance matrix.
+
+    Args:
+        prices: Prices of market data.
+
+    Returns:
+        Covariance matrix.
+    """
+    Q = np.cov(prices.T, ddof=0)
+    return np.array(Q)
+
+
+def semi_covariance(prices: np.ndarray) -> np.ndarray:
+    """Calculate semi-covariance matrix.
+
+    Args:
+        prices: Prices of market data.
+
+    Returns:
+        Semi-covariance matrix.
+    """
+    Q = np.cov(np.where(prices.T < 0, prices.T, 0.0), ddof=0)
+    return np.array(Q)

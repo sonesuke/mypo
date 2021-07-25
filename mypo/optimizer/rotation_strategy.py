@@ -5,9 +5,9 @@ from datetime import datetime
 import numpy as np
 import pandas as pd
 
+from mypo.common import sharpe_ratio
 from mypo.market import Market
 from mypo.optimizer import BaseOptimizer
-from mypo.optimizer.objective import covariance, sharp_ratio
 
 
 class RotationStrategy(BaseOptimizer):
@@ -40,14 +40,10 @@ class RotationStrategy(BaseOptimizer):
         """
         historical_data = market.extract(market.get_index() <= pd.to_datetime(at)).get_rate_of_change()
         prices = historical_data.tail(n=self._span).to_numpy()
-        Q = covariance(prices)
-        R = prices.mean(axis=0).T
-        n = Q.shape[0]
+        n = prices.shape[1]
         w = np.zeros(n)
-        daily_risk_free_rate: np.float64 = np.float64((1.0 + self._risk_free_rate) ** (1 / 252) - 1.0)
-
-        sharpe_ratio = [sharp_ratio(R[i], Q[i, i], daily_risk_free_rate) for i in range(n)]
-        w[np.argmax(sharpe_ratio)] = 1.0
+        sharpe_ratios = [sharpe_ratio(prices[i]) for i in range(n)]
+        w[np.argmax(sharpe_ratios)] = 1.0
 
         self._weights = w
         return np.float64(0)

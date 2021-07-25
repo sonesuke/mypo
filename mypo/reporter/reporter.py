@@ -6,7 +6,7 @@ from typing import List
 import numpy as np
 import pandas as pd
 
-from mypo.indicator import max_drawdown, max_drawdown_span, yearly_total_return
+from mypo.reporter.indicators import max_drawdown, max_drawdown_span, sharpe_ratio, yearly_total_return
 
 
 class Reporter(object):
@@ -180,6 +180,7 @@ class Reporter(object):
             {
                 "tickers": [self.get_tickers()],
                 "yearly total return": [yearly_total_return(report)],
+                "sharpe ratio": [sharpe_ratio(report)],
                 "max draw down": [max_drawdown(report)],
                 "max draw down span": [max_drawdown_span(report)],
             }

@@ -3,6 +3,8 @@
 import numpy as np
 import pandas as pd
 
+from mypo import sharpe_ratio as common_sharpe_ratio
+
 
 def total_return(report: pd.DataFrame) -> np.float64:
     """Get negative total return.
@@ -58,3 +60,17 @@ def max_drawdown_span(report: pd.DataFrame) -> int:
     df = df[df["max_total"]]
     ret: int = np.max(df["continuous"])
     return ret
+
+
+def sharpe_ratio(report: pd.DataFrame) -> np.float64:
+    """Get negative total return.
+
+    Args:
+        report: Result of simulation.
+
+    Returns:
+        Negative total return.
+    """
+    df = report[["total_assets"]].copy()
+    prices = df.pct_change().dropna().to_numpy()
+    return common_sharpe_ratio(prices)
