@@ -503,7 +503,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 3416/3416 [00:12&lt;00:00, 276.87it/s]
+100%|██████████| 3416/3416 [00:08&lt;00:00, 405.87it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -511,8 +511,11 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-           tickers  yearly total return  max draw down  max draw down span
-0  [GLD, SPY, EFA]             1.081402       0.452535                1318
+           tickers  yearly total return  sharpe ratio  max draw down  \
+0  [EFA, GLD, SPY]             1.081402      0.313455       0.452535
+
+   max draw down span
+0                1318
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -569,7 +572,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 3416/3416 [00:12&lt;00:00, 264.87it/s]
+100%|██████████| 3416/3416 [00:08&lt;00:00, 390.16it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -577,8 +580,11 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-           tickers  yearly total return  max draw down  max draw down span
-0  [GLD, SPY, EFA]             1.022334       0.463039                1498
+           tickers  yearly total return  sharpe ratio  max draw down  \
+0  [EFA, GLD, SPY]             0.909788     -0.505314       0.187728
+
+   max draw down span
+0                3415
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -649,7 +655,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 3416/3416 [00:24&lt;00:00, 141.50it/s]
+100%|██████████| 3416/3416 [00:16&lt;00:00, 209.15it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -657,8 +663,11 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-           tickers  yearly total return  max draw down  max draw down span
-0  [GLD, SPY, EFA]             0.988378       0.554607                3306
+           tickers  yearly total return  sharpe ratio  max draw down  \
+0  [EFA, GLD, SPY]             0.943948     -0.598128       0.334897
+
+   max draw down span
+0                2844
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -702,7 +711,7 @@ div.rendered_html tbody tr:hover {
 
 <span class="n">optimizer</span> <span class="o">=</span> <span class="n">RotationStrategy</span><span class="p">(</span><span class="n">risk_free_rate</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
-    <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">evacuator</span><span class="o">=</span><span class="n">MovingAverageEvacuator</span><span class="p">(</span><span class="n">span</span><span class="o">=</span><span class="mi">200</span><span class="p">)),</span>
+    <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">evacuator</span><span class="o">=</span><span class="n">MovingAverageEvacuator</span><span class="p">(</span><span class="n">span</span><span class="o">=</span><span class="mi">150</span><span class="p">)),</span>
     <span class="n">settings</span><span class="o">=</span><span class="n">Settings</span><span class="p">(</span><span class="n">tax_rate</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="mf">0.20</span><span class="p">),</span> <span class="n">fee_rate</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="mf">0.00</span><span class="p">))</span>
 <span class="p">)</span>
 
@@ -733,7 +742,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 3416/3416 [00:23&lt;00:00, 143.44it/s]
+100%|██████████| 3416/3416 [00:16&lt;00:00, 209.88it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -741,8 +750,11 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-           tickers  yearly total return  max draw down  max draw down span
-0  [GLD, SPY, EFA]             1.044625       0.680605                 840
+           tickers  yearly total return  sharpe ratio  max draw down  \
+0  [EFA, GLD, SPY]             1.040388      0.162441       0.743349
+
+   max draw down span
+0                1643
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">

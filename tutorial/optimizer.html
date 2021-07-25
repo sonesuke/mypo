@@ -399,8 +399,7 @@ div.rendered_html tbody tr:hover {
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">mypo</span> <span class="kn">import</span> <span class="n">Runner</span><span class="p">,</span> <span class="n">Loader</span>
 <span class="kn">from</span> <span class="nn">mypo.rebalancer</span> <span class="kn">import</span> <span class="n">MonthlyRebalancer</span>
-<span class="kn">from</span> <span class="nn">mypo.optimizer</span> <span class="kn">import</span> <span class="n">MinimumVarianceOptimizer</span><span class="p">,</span> <span class="n">SharpRatioOptimizer</span><span class="p">,</span> <span class="n">MaximumDiversificationOptimizer</span><span class="p">,</span> <span class="n">RiskParityOptimizer</span>
-<span class="kn">from</span> <span class="nn">mypo.indicator</span> <span class="kn">import</span> <span class="n">yearly_total_return</span><span class="p">,</span> <span class="n">max_drawdown</span><span class="p">,</span> <span class="n">max_drawdown_span</span>
+<span class="kn">from</span> <span class="nn">mypo.optimizer</span> <span class="kn">import</span> <span class="n">NoOptimizer</span><span class="p">,</span> <span class="n">MinimumVarianceOptimizer</span><span class="p">,</span> <span class="n">SharpeRatioOptimizer</span><span class="p">,</span> <span class="n">MaximumDiversificationOptimizer</span><span class="p">,</span> <span class="n">RiskParityOptimizer</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
 </div>
@@ -419,6 +418,68 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">NoOptimizer</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
+    <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="n">assets</span><span class="o">=</span><span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+    <span class="n">cash</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">market</span><span class="o">=</span><span class="n">market</span><span class="p">,</span>
+    <span class="n">train_span</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">history</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">history_weights</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 2536/2536 [00:05&lt;00:00, 448.03it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+      tickers  yearly total return  sharpe ratio  max draw down  \
+0  [VOO, EDV]             1.121616      0.715289       0.711339
+
+   max draw down span
+0                 229
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_optimizer_3_2.png" src="../_images/tutorial_optimizer_3_2.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_optimizer_3_3.png" src="../_images/tutorial_optimizer_3_3.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -450,7 +511,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 2536/2536 [00:09&lt;00:00, 273.86it/s]
+100%|██████████| 2536/2536 [00:06&lt;00:00, 398.47it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -458,26 +519,29 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-      tickers  yearly total return  max draw down  max draw down span
-0  [VOO, EDV]             1.092931       0.858171                 267
+      tickers  yearly total return  sharpe ratio  max draw down  \
+0  [VOO, EDV]             1.092931      0.906691       0.858171
+
+   max draw down span
+0                 267
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_optimizer_3_2.png" src="../_images/tutorial_optimizer_3_2.png" />
+<img alt="../_images/tutorial_optimizer_4_2.png" src="../_images/tutorial_optimizer_4_2.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_optimizer_3_3.png" src="../_images/tutorial_optimizer_3_3.png" />
+<img alt="../_images/tutorial_optimizer_4_3.png" src="../_images/tutorial_optimizer_4_3.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -510,7 +574,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 2536/2536 [00:09&lt;00:00, 271.37it/s]
+100%|██████████| 2536/2536 [00:06&lt;00:00, 402.52it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -518,30 +582,33 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-      tickers  yearly total return  max draw down  max draw down span
-0  [VOO, EDV]             1.087187       0.860487                 303
+      tickers  yearly total return  sharpe ratio  max draw down  \
+0  [VOO, EDV]             1.087187      0.820446       0.860487
+
+   max draw down span
+0                 303
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_optimizer_4_2.png" src="../_images/tutorial_optimizer_4_2.png" />
+<img alt="../_images/tutorial_optimizer_5_2.png" src="../_images/tutorial_optimizer_5_2.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_optimizer_4_3.png" src="../_images/tutorial_optimizer_4_3.png" />
+<img alt="../_images/tutorial_optimizer_5_3.png" src="../_images/tutorial_optimizer_5_3.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">SharpRatioOptimizer</span><span class="p">(</span><span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">SharpeRatioOptimizer</span><span class="p">(</span><span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
     <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">)</span>
 <span class="p">)</span>
@@ -569,7 +636,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 2536/2536 [00:09&lt;00:00, 275.87it/s]
+100%|██████████| 2536/2536 [00:06&lt;00:00, 409.18it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -577,26 +644,29 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-      tickers  yearly total return  max draw down  max draw down span
-0  [VOO, EDV]              1.08889       0.832747                 255
+      tickers  yearly total return  sharpe ratio  max draw down  \
+0  [VOO, EDV]             1.075411      0.534259       0.834547
+
+   max draw down span
+0                 356
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_optimizer_5_2.png" src="../_images/tutorial_optimizer_5_2.png" />
+<img alt="../_images/tutorial_optimizer_6_2.png" src="../_images/tutorial_optimizer_6_2.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_optimizer_5_3.png" src="../_images/tutorial_optimizer_5_3.png" />
+<img alt="../_images/tutorial_optimizer_6_3.png" src="../_images/tutorial_optimizer_6_3.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -629,7 +699,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 2536/2536 [00:09&lt;00:00, 275.14it/s]
+100%|██████████| 2536/2536 [00:06&lt;00:00, 410.29it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -637,26 +707,29 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-      tickers  yearly total return  max draw down  max draw down span
-0  [VOO, EDV]             1.096457       0.860672                 259
+      tickers  yearly total return  sharpe ratio  max draw down  \
+0  [VOO, EDV]             1.096457      0.962844       0.860672
+
+   max draw down span
+0                 259
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_optimizer_6_2.png" src="../_images/tutorial_optimizer_6_2.png" />
+<img alt="../_images/tutorial_optimizer_7_2.png" src="../_images/tutorial_optimizer_7_2.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_optimizer_6_3.png" src="../_images/tutorial_optimizer_6_3.png" />
+<img alt="../_images/tutorial_optimizer_7_3.png" src="../_images/tutorial_optimizer_7_3.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -688,7 +761,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 2536/2536 [00:09&lt;00:00, 268.63it/s]
+100%|██████████| 2536/2536 [00:06&lt;00:00, 398.59it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -696,22 +769,25 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-      tickers  yearly total return  max draw down  max draw down span
-0  [VOO, EDV]             1.096459       0.860674                 259
+      tickers  yearly total return  sharpe ratio  max draw down  \
+0  [VOO, EDV]             1.096459      0.962877       0.860674
+
+   max draw down span
+0                 259
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_optimizer_7_2.png" src="../_images/tutorial_optimizer_7_2.png" />
+<img alt="../_images/tutorial_optimizer_8_2.png" src="../_images/tutorial_optimizer_8_2.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_optimizer_7_3.png" src="../_images/tutorial_optimizer_7_3.png" />
+<img alt="../_images/tutorial_optimizer_8_3.png" src="../_images/tutorial_optimizer_8_3.png" />
 </div>
 </div>
 </div>

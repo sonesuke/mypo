@@ -146,8 +146,13 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Select-Tickers-by-dayly-return">
-   Select Tickers by dayly return
+  <a class="reference internal nav-link" href="#Select-Tickers-by-daily-return">
+   Select Tickers by daily return
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Select-Tickers-by-Sharpe-ratio">
+   Select Tickers by Sharpe ratio
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1160,7 +1165,7 @@ div.rendered_html tbody tr:hover {
       <th></th>
       <th>daily return</th>
       <th>variance</th>
-      <th>sharp ratio</th>
+      <th>sharpe ratio</th>
       <th>expense ratio</th>
     </tr>
   </thead>
@@ -3597,7 +3602,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 984/984 [00:03&lt;00:00, 262.71it/s]
+100%|██████████| 984/984 [00:02&lt;00:00, 382.25it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3605,8 +3610,11 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-           tickers  yearly total return  max draw down  max draw down span
-0  [GLD, TLT, SPY]             1.054379        0.85498                 174
+           tickers  yearly total return  sharpe ratio  max draw down  \
+0  [TLT, GLD, SPY]             1.054379      0.371617        0.85498
+
+   max draw down span
+0                 174
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3628,7 +3636,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 984/984 [00:03&lt;00:00, 255.45it/s]
+100%|██████████| 984/984 [00:02&lt;00:00, 381.92it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3636,8 +3644,11 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-           tickers  yearly total return  max draw down  max draw down span
-0  [GLD, TLT, SPY]             1.108893        0.93276                 100
+           tickers  yearly total return  sharpe ratio  max draw down  \
+0  [TLT, GLD, SPY]             1.108893      1.226537        0.93276
+
+   max draw down span
+0                 100
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3659,7 +3670,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 984/984 [00:03&lt;00:00, 249.70it/s]
+100%|██████████| 984/984 [00:02&lt;00:00, 384.42it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3667,8 +3678,11 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-           tickers  yearly total return  max draw down  max draw down span
-0  [GLD, TLT, SPY]             1.078098       0.919568                 295
+           tickers  yearly total return  sharpe ratio  max draw down  \
+0  [TLT, GLD, SPY]             1.078098      0.874904       0.919568
+
+   max draw down span
+0                 295
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3690,7 +3704,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 984/984 [00:03&lt;00:00, 254.99it/s]
+100%|██████████| 984/984 [00:02&lt;00:00, 384.23it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3698,8 +3712,11 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-           tickers  yearly total return  max draw down  max draw down span
-0  [GLD, TLT, SPY]             1.086937        0.84886                 291
+           tickers  yearly total return  sharpe ratio  max draw down  \
+0  [TLT, GLD, SPY]             1.086937      0.764734        0.84886
+
+   max draw down span
+0                 291
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3752,8 +3769,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 414/414 [00:02&lt;00:00, 173.98it/s]
-100%|██████████| 984/984 [00:03&lt;00:00, 249.99it/s]
+100%|██████████| 414/414 [00:01&lt;00:00, 246.86it/s]
+100%|██████████| 984/984 [00:02&lt;00:00, 375.68it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3761,8 +3778,11 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-           tickers  yearly total return  max draw down  max draw down span
-0  [IEF, GLD, EWZ]             1.077544       0.869239                 304
+           tickers  yearly total return  sharpe ratio  max draw down  \
+0  [IEF, GLD, EWZ]             1.077544      0.804881       0.869239
+
+   max draw down span
+0                 304
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3784,8 +3804,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 414/414 [00:01&lt;00:00, 213.52it/s]
-100%|██████████| 984/984 [00:03&lt;00:00, 257.60it/s]
+100%|██████████| 414/414 [00:01&lt;00:00, 394.79it/s]
+100%|██████████| 984/984 [00:02&lt;00:00, 382.22it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3793,8 +3813,11 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-           tickers  yearly total return  max draw down  max draw down span
-0  [IEF, RWR, TIP]             1.068908       0.920603                 154
+           tickers  yearly total return  sharpe ratio  max draw down  \
+0  [IEF, TIP, RWR]             1.068908      0.897267       0.920603
+
+   max draw down span
+0                 154
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3816,8 +3839,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 414/414 [00:01&lt;00:00, 228.34it/s]
-100%|██████████| 984/984 [00:03&lt;00:00, 255.11it/s]
+100%|██████████| 414/414 [00:00&lt;00:00, 421.82it/s]
+100%|██████████| 984/984 [00:02&lt;00:00, 381.68it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3825,8 +3848,11 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-           tickers  yearly total return  max draw down  max draw down span
-0  [IEF, GLD, FEZ]             1.030963       0.930154                 312
+           tickers  yearly total return  sharpe ratio  max draw down  \
+0  [IEF, GLD, FEZ]             1.030963      0.206263       0.930154
+
+   max draw down span
+0                 312
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3848,8 +3874,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 414/414 [00:01&lt;00:00, 229.50it/s]
-100%|██████████| 984/984 [00:03&lt;00:00, 246.34it/s]
+100%|██████████| 414/414 [00:01&lt;00:00, 409.35it/s]
+100%|██████████| 984/984 [00:02&lt;00:00, 377.48it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3857,8 +3883,11 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-           tickers  yearly total return  max draw down  max draw down span
-0  [IEF, GLD, XLF]             1.040741       0.906438                 289
+           tickers  yearly total return  sharpe ratio  max draw down  \
+0  [XLF, IEF, GLD]             1.040741      0.433219       0.906438
+
+   max draw down span
+0                 289
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3876,8 +3905,8 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
-<div class="section" id="Select-Tickers-by-dayly-return">
-<h2>Select Tickers by dayly return<a class="headerlink" href="#Select-Tickers-by-dayly-return" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Select-Tickers-by-daily-return">
+<h2>Select Tickers by daily return<a class="headerlink" href="#Select-Tickers-by-daily-return" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
@@ -3912,7 +3941,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 984/984 [00:03&lt;00:00, 258.70it/s]
+100%|██████████| 984/984 [00:02&lt;00:00, 378.56it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3920,8 +3949,11 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-           tickers  yearly total return  max draw down  max draw down span
-0  [TLT, TIP, ILF]             1.050952       0.811549                 304
+           tickers  yearly total return  sharpe ratio  max draw down  \
+0  [TLT, ILF, TIP]             1.050952      0.365132       0.811549
+
+   max draw down span
+0                 304
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3943,7 +3975,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 984/984 [00:03&lt;00:00, 250.42it/s]
+100%|██████████| 984/984 [00:02&lt;00:00, 377.29it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3951,8 +3983,11 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-           tickers  yearly total return  max draw down  max draw down span
-0  [IEF, GLD, EWZ]              1.02941       0.900265                 338
+           tickers  yearly total return  sharpe ratio  max draw down  \
+0  [IEF, GLD, EWZ]              1.02941      0.161653       0.900265
+
+   max draw down span
+0                 338
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3974,7 +4009,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 984/984 [00:03&lt;00:00, 256.14it/s]
+100%|██████████| 984/984 [00:02&lt;00:00, 382.72it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -3982,8 +4017,11 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-           tickers  yearly total return  max draw down  max draw down span
-0  [IEF, BBH, LQD]             1.043715       0.928769                 327
+           tickers  yearly total return  sharpe ratio  max draw down  \
+0  [IEF, BBH, LQD]             1.043715      0.415953       0.928769
+
+   max draw down span
+0                 327
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -4005,7 +4043,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 984/984 [00:03&lt;00:00, 254.48it/s]
+100%|██████████| 984/984 [00:02&lt;00:00, 373.13it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -4013,8 +4051,11 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-           tickers  yearly total return  max draw down  max draw down span
-0  [IEF, IXN, TIP]             1.057576       0.919638                 165
+           tickers  yearly total return  sharpe ratio  max draw down  \
+0  [IEF, IXN, TIP]             1.057576      0.715872       0.919638
+
+   max draw down span
+0                 165
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -4032,10 +4073,178 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
+<div class="section" id="Select-Tickers-by-Sharpe-ratio">
+<h2>Select Tickers by Sharpe ratio<a class="headerlink" href="#Select-Tickers-by-Sharpe-ratio" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">folds</span><span class="p">)):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">folds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_train</span><span class="p">()</span><span class="o">.</span><span class="n">get_summary</span><span class="p">(),</span> <span class="n">cluster</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">selected_tickers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="s1">&#39;sharpe ratio&#39;</span><span class="p">])</span>
+    <span class="n">fold</span> <span class="o">=</span> <span class="n">folds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">selected_tickers</span><span class="p">)</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">MaximumDiversificationOptimizer</span><span class="p">(</span><span class="n">do_re_optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
+        <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+        <span class="n">fold</span><span class="o">=</span><span class="n">fold</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">history</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">history_weights</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 984/984 [00:02&lt;00:00, 386.57it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+           tickers  yearly total return  sharpe ratio  max draw down  \
+0  [TLT, XLU, TIP]              1.01353     -0.083061       0.846498
+
+   max draw down span
+0                 269
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_16_2.png" src="../_images/tutorial_tickers_16_2.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_16_3.png" src="../_images/tutorial_tickers_16_3.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 984/984 [00:02&lt;00:00, 388.27it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+           tickers  yearly total return  sharpe ratio  max draw down  \
+0  [IEF, LQD, EWM]              1.07147      0.987664       0.933233
+
+   max draw down span
+0                 141
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_16_6.png" src="../_images/tutorial_tickers_16_6.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_16_7.png" src="../_images/tutorial_tickers_16_7.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 984/984 [00:02&lt;00:00, 389.02it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+           tickers  yearly total return  sharpe ratio  max draw down  \
+0  [TLT, GLD, XLV]             1.083471      0.838055       0.876042
+
+   max draw down span
+0                 305
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_16_10.png" src="../_images/tutorial_tickers_16_10.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_16_11.png" src="../_images/tutorial_tickers_16_11.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 984/984 [00:02&lt;00:00, 389.17it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+           tickers  yearly total return  sharpe ratio  max draw down  \
+0  [IXN, TLT, GLD]             1.112774      0.935914       0.859415
+
+   max draw down span
+0                 286
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_16_14.png" src="../_images/tutorial_tickers_16_14.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_tickers_16_15.png" src="../_images/tutorial_tickers_16_15.png" />
+</div>
+</div>
+</div>
 <div class="section" id="Select-Tickers-by-Regression">
 <h2>Select Tickers by Regression<a class="headerlink" href="#Select-Tickers-by-Regression" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -4067,7 +4276,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 984/984 [00:04&lt;00:00, 241.14it/s]
+100%|██████████| 984/984 [00:02&lt;00:00, 360.57it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -4075,8 +4284,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-                tickers  yearly total return  max draw down  \
-0  [EWG, TLT, SPY, ILF]             1.068948       0.837406
+                tickers  yearly total return  sharpe ratio  max draw down  \
+0  [ILF, TLT, EWG, SPY]             1.068661      0.450803       0.837406
 
    max draw down span
 0                 156
@@ -4086,14 +4295,14 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_tickers_16_2.png" src="../_images/tutorial_tickers_16_2.png" />
+<img alt="../_images/tutorial_tickers_18_2.png" src="../_images/tutorial_tickers_18_2.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_tickers_16_3.png" src="../_images/tutorial_tickers_16_3.png" />
+<img alt="../_images/tutorial_tickers_18_3.png" src="../_images/tutorial_tickers_18_3.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -4101,7 +4310,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 984/984 [00:03&lt;00:00, 277.48it/s]
+100%|██████████| 984/984 [00:02&lt;00:00, 414.04it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -4109,22 +4318,25 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-      tickers  yearly total return  max draw down  max draw down span
-0  [IEF, SPY]             1.073707       0.951708                 119
+      tickers  yearly total return  sharpe ratio  max draw down  \
+0  [IEF, SPY]             1.073707       1.13568       0.951708
+
+   max draw down span
+0                 119
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_tickers_16_6.png" src="../_images/tutorial_tickers_16_6.png" />
+<img alt="../_images/tutorial_tickers_18_6.png" src="../_images/tutorial_tickers_18_6.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_tickers_16_7.png" src="../_images/tutorial_tickers_16_7.png" />
+<img alt="../_images/tutorial_tickers_18_7.png" src="../_images/tutorial_tickers_18_7.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -4132,7 +4344,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 984/984 [00:03&lt;00:00, 281.18it/s]
+100%|██████████| 984/984 [00:02&lt;00:00, 417.95it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -4140,22 +4352,25 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-      tickers  yearly total return  max draw down  max draw down span
-0  [IEF, SPY]              1.05523       0.954674                 210
+      tickers  yearly total return  sharpe ratio  max draw down  \
+0  [IEF, SPY]              1.05523      0.801417       0.954674
+
+   max draw down span
+0                 210
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_tickers_16_10.png" src="../_images/tutorial_tickers_16_10.png" />
+<img alt="../_images/tutorial_tickers_18_10.png" src="../_images/tutorial_tickers_18_10.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_tickers_16_11.png" src="../_images/tutorial_tickers_16_11.png" />
+<img alt="../_images/tutorial_tickers_18_11.png" src="../_images/tutorial_tickers_18_11.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -4163,7 +4378,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 984/984 [00:04&lt;00:00, 234.14it/s]
+100%|██████████| 984/984 [00:02&lt;00:00, 353.13it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -4171,8 +4386,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-                tickers  yearly total return  max draw down  \
-0  [TIP, SPY, EWY, ILF]             1.047854        0.85952
+                tickers  yearly total return  sharpe ratio  max draw down  \
+0  [TIP, ILF, EWY, SPY]             1.047857      0.440641        0.85952
 
    max draw down span
 0                 341
@@ -4182,14 +4397,14 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_tickers_16_14.png" src="../_images/tutorial_tickers_16_14.png" />
+<img alt="../_images/tutorial_tickers_18_14.png" src="../_images/tutorial_tickers_18_14.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_tickers_16_15.png" src="../_images/tutorial_tickers_16_15.png" />
+<img alt="../_images/tutorial_tickers_18_15.png" src="../_images/tutorial_tickers_18_15.png" />
 </div>
 </div>
 </div>

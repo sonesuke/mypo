@@ -149,12 +149,12 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#module-mypo.optimizer.objective">
+  <a class="reference internal nav-link" href="#mypo-optimizer-objective-module">
    mypo.optimizer.objective module
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#module-mypo.optimizer.sharp_ratio_optimizer">
+  <a class="reference internal nav-link" href="#mypo-optimizer-sharp-ratio-optimizer-module">
    mypo.optimizer.sharp_ratio_optimizer module
   </a>
  </li>
@@ -285,83 +285,11 @@
 </dd></dl>
 
 </div>
-<div class="section" id="module-mypo.optimizer.objective">
-<span id="mypo-optimizer-objective-module"></span><h2>mypo.optimizer.objective module<a class="headerlink" href="#module-mypo.optimizer.objective" title="Permalink to this headline">¶</a></h2>
-<p>Covariance and semi-covariance.</p>
-<dl class="py function">
-<dt id="mypo.optimizer.objective.covariance">
-<code class="sig-prename descclassname"><span class="pre">mypo.optimizer.objective.</span></code><code class="sig-name descname"><span class="pre">covariance</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prices</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#mypo.optimizer.objective.covariance" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate covariance matrix.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>prices</strong> – Prices of market data.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Covariance matrix.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="mypo.optimizer.objective.semi_covariance">
-<code class="sig-prename descclassname"><span class="pre">mypo.optimizer.objective.</span></code><code class="sig-name descname"><span class="pre">semi_covariance</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prices</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#mypo.optimizer.objective.semi_covariance" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate semi-covariance matrix.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>prices</strong> – Prices of market data.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Semi-covariance matrix.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="mypo.optimizer.objective.sharp_ratio">
-<code class="sig-prename descclassname"><span class="pre">mypo.optimizer.objective.</span></code><code class="sig-name descname"><span class="pre">sharp_ratio</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.float64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.float64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">risk_free_rate</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.float64</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.float64</span><a class="headerlink" href="#mypo.optimizer.objective.sharp_ratio" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate Sharp ratio.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>r</strong> – Return</p></li>
-<li><p><strong>q</strong> – Variance</p></li>
-<li><p><strong>risk_free_rate</strong> – Risk free rate</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Sharp ratio.</p>
-</dd>
-</dl>
-</dd></dl>
-
+<div class="section" id="mypo-optimizer-objective-module">
+<h2>mypo.optimizer.objective module<a class="headerlink" href="#mypo-optimizer-objective-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-mypo.optimizer.sharp_ratio_optimizer">
-<span id="mypo-optimizer-sharp-ratio-optimizer-module"></span><h2>mypo.optimizer.sharp_ratio_optimizer module<a class="headerlink" href="#module-mypo.optimizer.sharp_ratio_optimizer" title="Permalink to this headline">¶</a></h2>
-<p>Optimizer for weights of portfolio.</p>
-<dl class="py class">
-<dt id="mypo.optimizer.sharp_ratio_optimizer.SharpRatioOptimizer">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mypo.optimizer.sharp_ratio_optimizer.</span></code><code class="sig-name descname"><span class="pre">SharpRatioOptimizer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">risk_free_rate</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.02</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">span</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">260</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_re_optimize</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mypo.optimizer.sharp_ratio_optimizer.SharpRatioOptimizer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#mypo.optimizer.base_optimizer.BaseOptimizer" title="mypo.optimizer.base_optimizer.BaseOptimizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">mypo.optimizer.base_optimizer.BaseOptimizer</span></code></a></p>
-<p>Minimum variance optimizer.</p>
-<dl class="py method">
-<dt id="mypo.optimizer.sharp_ratio_optimizer.SharpRatioOptimizer.optimize">
-<code class="sig-name descname"><span class="pre">optimize</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">market</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="mypo.html#mypo.market.Market" title="mypo.market.Market"><span class="pre">mypo.market.Market</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">at</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">datetime.datetime</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.float64</span><a class="headerlink" href="#mypo.optimizer.sharp_ratio_optimizer.SharpRatioOptimizer.optimize" title="Permalink to this definition">¶</a></dt>
-<dd><p>Optimize weights.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>market</strong> – Past market stock prices.</p></li>
-<li><p><strong>at</strong> – Current date.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Optimized weights</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
+<div class="section" id="mypo-optimizer-sharp-ratio-optimizer-module">
+<h2>mypo.optimizer.sharp_ratio_optimizer module<a class="headerlink" href="#mypo-optimizer-sharp-ratio-optimizer-module" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-mypo.optimizer">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mypo.optimizer" title="Permalink to this headline">¶</a></h2>

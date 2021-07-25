@@ -203,8 +203,8 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="mypo.indicator.html">mypo.indicator package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="mypo.indicator.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mypo.indicator.html#module-mypo.indicator.indicators">mypo.indicator.indicators module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mypo.indicator.html#module-mypo.indicator">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mypo.indicator.html#mypo-indicator-indicators-module">mypo.indicator.indicators module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mypo.indicator.html#module-contents">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="mypo.optimizer.html">mypo.optimizer package</a><ul>
@@ -212,8 +212,8 @@
 <li class="toctree-l2"><a class="reference internal" href="mypo.optimizer.html#module-mypo.optimizer.base_optimizer">mypo.optimizer.base_optimizer module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mypo.optimizer.html#module-mypo.optimizer.minimum_variance_optimizer">mypo.optimizer.minimum_variance_optimizer module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mypo.optimizer.html#module-mypo.optimizer.no_optimizer">mypo.optimizer.no_optimizer module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mypo.optimizer.html#module-mypo.optimizer.objective">mypo.optimizer.objective module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mypo.optimizer.html#module-mypo.optimizer.sharp_ratio_optimizer">mypo.optimizer.sharp_ratio_optimizer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mypo.optimizer.html#mypo-optimizer-objective-module">mypo.optimizer.objective module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mypo.optimizer.html#mypo-optimizer-sharp-ratio-optimizer-module">mypo.optimizer.sharp_ratio_optimizer module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mypo.optimizer.html#module-mypo.optimizer">Module contents</a></li>
 </ul>
 </li>
@@ -302,6 +302,20 @@
 </dd></dl>
 
 <dl class="py function">
+<dt id="mypo.common.covariance">
+<code class="sig-prename descclassname"><span class="pre">mypo.common.</span></code><code class="sig-name descname"><span class="pre">covariance</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prices</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#mypo.common.covariance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate covariance matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>prices</strong> – Prices of market data.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Covariance matrix.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt id="mypo.common.safe_cast">
 <code class="sig-prename descclassname"><span class="pre">mypo.common.</span></code><code class="sig-name descname"><span class="pre">safe_cast</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#mypo.common.safe_cast" title="Permalink to this definition">¶</a></dt>
 <dd><p>Cast array like type to numpy array.</p>
@@ -311,6 +325,37 @@
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>casted_value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="mypo.common.semi_covariance">
+<code class="sig-prename descclassname"><span class="pre">mypo.common.</span></code><code class="sig-name descname"><span class="pre">semi_covariance</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prices</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.ndarray</span><a class="headerlink" href="#mypo.common.semi_covariance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate semi-covariance matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>prices</strong> – Prices of market data.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Semi-covariance matrix.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="mypo.common.sharpe_ratio">
+<code class="sig-prename descclassname"><span class="pre">mypo.common.</span></code><code class="sig-name descname"><span class="pre">sharpe_ratio</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prices</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">risk_free_rate</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.float64</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.02</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.float64</span><a class="headerlink" href="#mypo.common.sharpe_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate Sharpe ratio.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prices</strong> – Prices</p></li>
+<li><p><strong>risk_free_rate</strong> – Risk free rate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Sharpe ratio.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -927,114 +972,6 @@
 </div>
 <div class="section" id="module-mypo.reporter">
 <span id="mypo-reporter-module"></span><h2>mypo.reporter module<a class="headerlink" href="#module-mypo.reporter" title="Permalink to this headline">¶</a></h2>
-<p>Class for report result.</p>
-<dl class="py class">
-<dt id="mypo.reporter.Reporter">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mypo.reporter.</span></code><code class="sig-name descname"><span class="pre">Reporter</span></code><a class="headerlink" href="#mypo.reporter.Reporter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Reporter class of simulation.</p>
-<dl class="py method">
-<dt id="mypo.reporter.Reporter.get_tickers">
-<code class="sig-name descname"><span class="pre">get_tickers</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#mypo.reporter.Reporter.get_tickers" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get tickers.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Tickers.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="mypo.reporter.Reporter.history">
-<code class="sig-name descname"><span class="pre">history</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">pandas.core.frame.DataFrame</span><a class="headerlink" href="#mypo.reporter.Reporter.history" title="Permalink to this definition">¶</a></dt>
-<dd><p>Report the result.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>result</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="mypo.reporter.Reporter.history_assets">
-<code class="sig-name descname"><span class="pre">history_assets</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">pandas.core.frame.DataFrame</span><a class="headerlink" href="#mypo.reporter.Reporter.history_assets" title="Permalink to this definition">¶</a></dt>
-<dd><p>Report the result.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>result</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="mypo.reporter.Reporter.history_cash_vs_assets">
-<code class="sig-name descname"><span class="pre">history_cash_vs_assets</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">pandas.core.frame.DataFrame</span><a class="headerlink" href="#mypo.reporter.Reporter.history_cash_vs_assets" title="Permalink to this definition">¶</a></dt>
-<dd><p>Report the result.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>result</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="mypo.reporter.Reporter.history_cost">
-<code class="sig-name descname"><span class="pre">history_cost</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">pandas.core.frame.DataFrame</span><a class="headerlink" href="#mypo.reporter.Reporter.history_cost" title="Permalink to this definition">¶</a></dt>
-<dd><p>Report the result.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>result</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="mypo.reporter.Reporter.history_weights">
-<code class="sig-name descname"><span class="pre">history_weights</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">pandas.core.frame.DataFrame</span><a class="headerlink" href="#mypo.reporter.Reporter.history_weights" title="Permalink to this definition">¶</a></dt>
-<dd><p>Report weights.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Report of weights.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="mypo.reporter.Reporter.record">
-<code class="sig-name descname"><span class="pre">record</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">at</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">datetime.datetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tickers</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_assets</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.float64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capital_gain</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.float64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">income_gain</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.float64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cash</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.float64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deal</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.float64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fee</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.float64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capital_gain_tax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.float64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">income_gain_tax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.float64</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#mypo.reporter.Reporter.record" title="Permalink to this definition">¶</a></dt>
-<dd><p>Record current situation.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>at</strong> – Current date.</p></li>
-<li><p><strong>weights</strong> – Weight of asserts.</p></li>
-<li><p><strong>tickers</strong> – Tickers.</p></li>
-<li><p><strong>total_assets</strong> – Current total assets.</p></li>
-<li><p><strong>capital_gain</strong> – Current capital gain.</p></li>
-<li><p><strong>income_gain</strong> – Current income gain.</p></li>
-<li><p><strong>cash</strong> – Current cash.</p></li>
-<li><p><strong>deal</strong> – Current deal.</p></li>
-<li><p><strong>fee</strong> – Current fee.</p></li>
-<li><p><strong>capital_gain_tax</strong> – Current capital gain tax.</p></li>
-<li><p><strong>income_gain_tax</strong> – Current income gain tax.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="mypo.reporter.Reporter.summary">
-<code class="sig-name descname"><span class="pre">summary</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">pandas.core.frame.DataFrame</span><a class="headerlink" href="#mypo.reporter.Reporter.summary" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get summary.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Summary.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
 </div>
 <div class="section" id="module-mypo.runner">
 <span id="mypo-runner-module"></span><h2>mypo.runner module<a class="headerlink" href="#module-mypo.runner" title="Permalink to this headline">¶</a></h2>
@@ -1060,7 +997,7 @@
 
 <dl class="py method">
 <dt id="mypo.runner.Runner.report">
-<code class="sig-name descname"><span class="pre">report</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#mypo.reporter.Reporter" title="mypo.reporter.Reporter"><span class="pre">mypo.reporter.Reporter</span></a><a class="headerlink" href="#mypo.runner.Runner.report" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">report</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">mypo.reporter.reporter.Reporter</span><a class="headerlink" href="#mypo.runner.Runner.report" title="Permalink to this definition">¶</a></dt>
 <dd><p>Report simulation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
