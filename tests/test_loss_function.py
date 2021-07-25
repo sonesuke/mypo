@@ -2,7 +2,7 @@ import numpy as np
 import numpy.testing as npt
 import pandas as pd
 
-from mypo.indicator import max_drawdown, max_drawdown_span, total_return, yearly_total_return
+from mypo.reporter import max_drawdown, max_drawdown_span, total_return, yearly_total_return
 
 
 def test_total_return() -> None:

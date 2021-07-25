@@ -6,13 +6,12 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import minimize
 
-from mypo.common import safe_cast
+from mypo.common import safe_cast, sharpe_ratio
 from mypo.market import Market
 from mypo.optimizer import BaseOptimizer
-from mypo.optimizer.objective import covariance, sharp_ratio
 
 
-class SharpRatioOptimizer(BaseOptimizer):
+class SharpeRatioOptimizer(BaseOptimizer):
     """Minimum variance optimizer."""
 
     _span: int
@@ -42,26 +41,17 @@ class SharpRatioOptimizer(BaseOptimizer):
         """
         historical_data = market.extract(market.get_index() <= pd.to_datetime(at)).get_rate_of_change()
         prices = historical_data.tail(n=self._span).to_numpy()
-        Q = covariance(prices)
-        R = prices.mean(axis=0).T
-        n = Q.shape[0]
+        n = prices.shape[1]
         x = np.ones(n) / n
-        daily_risk_free_rate = (1.0 + self._risk_free_rate) ** (1 / 252) - 1.0
 
-        def fn(
-            x: np.ndarray,
-            R: np.ndarray,
-            Q: np.ndarray,
-            daily_risk_free_rate: np.float64,
-        ) -> np.float64:
-            return -sharp_ratio(np.dot(x, R), np.dot(np.dot(x, Q), x.T), daily_risk_free_rate)
+        def fn(x: np.ndarray) -> np.float64:
+            return -sharpe_ratio(np.dot(prices, x.T), np.float64(self._risk_free_rate))
 
         cons = {"type": "eq", "fun": lambda x: np.sum(x) - 1}
         bounds = [[0.0, 1.0] for i in range(n)]
         minout = minimize(
             fn,
             x,
-            args=(R, Q, daily_risk_free_rate),
             method="SLSQP",
             bounds=bounds,
             constraints=cons,

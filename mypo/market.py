@@ -278,7 +278,7 @@ class Market(object):
             {
                 "daily return": rate_of_change.mean(),
                 "variance": rate_of_change.var(),
-                "sharp ratio": rate_of_change.mean() / rate_of_change.var(),
+                "sharpe ratio": rate_of_change.mean() / rate_of_change.var(),
                 "expense ratio": self.get_expense_ratio(),
             },
             index=self.get_tickers(),

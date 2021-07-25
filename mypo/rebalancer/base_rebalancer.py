@@ -18,6 +18,7 @@ class BaseRebalancer(object):
     _optimizer: BaseOptimizer
     _evacuate_trigger: BaseTrigger
     _evacuator: BaseEvacuator
+    _first_time: bool
 
     def __init__(
         self,
@@ -38,6 +39,7 @@ class BaseRebalancer(object):
         self._optimizer = optimizer
         self._evacuate_trigger = evacuate_trigger
         self._evacuator = evacuator
+        self._first_time = True
 
     def apply(self, at: datetime, market: Market, assets: npt.ArrayLike, cash: np.float64) -> np.ndarray:
         """Apply rebalance strategy to current situation.
@@ -56,7 +58,8 @@ class BaseRebalancer(object):
 
         # Weights
         if self._trigger.is_fire(at, market, assets, cash, self._optimizer.get_weights()):
-            if self._optimizer.do_re_optimize():
+            if self._optimizer.do_re_optimize() or self._first_time:
+                self._first_time = False
                 self._optimizer.optimize(market, at)
             new_assets = self._optimizer.get_weights() * np.sum(assets)
 

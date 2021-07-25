@@ -7,10 +7,9 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import minimize
 
-from mypo.common import safe_cast
+from mypo.common import covariance, safe_cast, semi_covariance
 from mypo.market import Market
 from mypo.optimizer.base_optimizer import BaseOptimizer
-from mypo.optimizer.objective import covariance, semi_covariance
 
 
 class MinimumVarianceOptimizer(BaseOptimizer):
