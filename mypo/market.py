@@ -227,12 +227,10 @@ class Market(object):
             Filtered market data.
         """
         return Market(
-            names=self._names,
+            names={t: self._names[t] for t in tickers},
             closes=self._closes[tickers],
             price_dividends_yield=self._price_dividends_yield[tickers],
-            expense_ratio={
-                ticker: expense_ratio for ticker, expense_ratio in self._expense_ratio.items() if ticker in tickers
-            },
+            expense_ratio={t: self._expense_ratio[t] for t in tickers},
         )
 
     def tail(self, n: int) -> Market:
@@ -299,7 +297,7 @@ class Market(object):
         Returns:
             Tickers.
         """
-        return list(self._closes.columns)
+        return list(self._names.keys())
 
     def get_length(self) -> int:
         """Get length.
