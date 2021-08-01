@@ -99,14 +99,10 @@ class Loader(object):
         Returns:
             Market data
         """
-        sorted_total_assert = [
-            item[0]
-            for item in sorted(self._total_assets.items(), key=lambda x: x[1] if x[1] is not None else 0, reverse=True)
-        ]
         return Market.create_from_ticker(
-            {k: self._names[k] for k in sorted_total_assert},
-            {k: self._tickers[k] for k in sorted_total_assert},
-            {k: self._expense_ratio[k] for k in sorted_total_assert},
+            self._names,
+            self._tickers,
+            self._expense_ratio,
         )
 
     def summary(self) -> pd.DataFrame:
@@ -167,7 +163,7 @@ class Loader(object):
         """Filter market data.
 
         Args:
-            since: Established date.
+            tickers: to remain tickers.
 
         Returns:
             Filtered data.
