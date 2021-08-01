@@ -43,6 +43,8 @@ This tutorial will be helpful for understanding the usage of this module.
    tutorial/relative
    tutorial/risk_off_strategy
    tutorial/rotation_strategy
+   tutorial/world_balanced
+   tutorial/my_portfolio
 
 Developer guide
 =================

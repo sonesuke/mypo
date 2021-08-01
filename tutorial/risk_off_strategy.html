@@ -105,6 +105,18 @@
  </a>
 </li>
 
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="world_balanced.html">
+  World Balanced Portfolio
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="my_portfolio.html">
+  My Portfolio
+ </a>
+</li>
+
         
       </ul>
 
@@ -160,6 +172,16 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#RiskParityOptimizer-with-cash-filter-(Moving-Average)">
    RiskParityOptimizer with cash filter (Moving Average)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#RiskParityOptimizer-with-cash-filter-(Fixed-Level)">
+   RiskParityOptimizer with cash filter (Fixed Level)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#RiskParityOptimizer-with-cash-filter-(Calendar)">
+   RiskParityOptimizer with cash filter (Calendar)
   </a>
  </li>
 </ul>
@@ -476,7 +498,7 @@ div.rendered_html tbody tr:hover {
 <span></span><span class="kn">from</span> <span class="nn">mypo</span> <span class="kn">import</span> <span class="n">split_k_folds</span>
 <span class="kn">from</span> <span class="nn">mypo.optimizer</span> <span class="kn">import</span> <span class="n">NoOptimizer</span><span class="p">,</span> <span class="n">RiskParityOptimizer</span>
 <span class="kn">from</span> <span class="nn">mypo.rebalancer</span> <span class="kn">import</span> <span class="n">MonthlyRebalancer</span>
-<span class="kn">from</span> <span class="nn">mypo.evacuator</span> <span class="kn">import</span> <span class="n">CovarianceEvacuator</span><span class="p">,</span> <span class="n">MovingAverageEvacuator</span>
+<span class="kn">from</span> <span class="nn">mypo.evacuator</span> <span class="kn">import</span> <span class="n">CovarianceEvacuator</span><span class="p">,</span> <span class="n">MovingAverageEvacuator</span><span class="p">,</span> <span class="n">CalendarEvacuator</span><span class="p">,</span> <span class="n">FixedEvacuator</span>
 <span class="kn">from</span> <span class="nn">mypo</span> <span class="kn">import</span> <span class="n">Runner</span>
 
 <span class="n">folds</span> <span class="o">=</span> <span class="n">split_k_folds</span><span class="p">(</span><span class="n">market</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
@@ -517,7 +539,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 3416/3416 [00:10&lt;00:00, 319.74it/s]
+100%|██████████| 3416/3416 [00:09&lt;00:00, 356.91it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -526,7 +548,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
                      tickers  yearly total return  sharpe ratio  \
-0  [TLT, IEF, GLD, QQQ, SPY]             1.081401      0.313451
+0  [SPY, QQQ, TLT, IEF, GLD]             1.081401      0.313451
 
    max draw down  max draw down span
 0       0.452531                1318
@@ -586,7 +608,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 3416/3416 [00:10&lt;00:00, 320.17it/s]
+100%|██████████| 3416/3416 [00:09&lt;00:00, 358.27it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -595,7 +617,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
                      tickers  yearly total return  sharpe ratio  \
-0  [TLT, IEF, GLD, QQQ, SPY]             1.065496      0.757629
+0  [SPY, QQQ, TLT, IEF, GLD]             1.065496      0.757629
 
    max draw down  max draw down span
 0       0.882856                 265
@@ -669,7 +691,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 3416/3416 [00:20&lt;00:00, 167.80it/s]
+100%|██████████| 3416/3416 [00:18&lt;00:00, 187.47it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -678,7 +700,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
                      tickers  yearly total return  sharpe ratio  \
-0  [TLT, IEF, GLD, QQQ, SPY]             1.043146      0.413398
+0  [SPY, QQQ, TLT, IEF, GLD]             1.043146      0.413398
 
    max draw down  max draw down span
 0       0.885693                 415
@@ -743,7 +765,6 @@ div.rendered_html tbody tr:hover {
 <span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">history_cash_vs_assets</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
 </pre></div>
 </div>
 </div>
@@ -752,7 +773,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 3416/3416 [00:19&lt;00:00, 175.85it/s]
+100%|██████████| 3416/3416 [00:17&lt;00:00, 197.45it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -761,7 +782,7 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
                      tickers  yearly total return  sharpe ratio  \
-0  [TLT, IEF, GLD, QQQ, SPY]             1.062915      0.675591
+0  [SPY, QQQ, TLT, IEF, GLD]             1.062915      0.675591
 
    max draw down  max draw down span
 0       0.886817                 295
@@ -793,6 +814,171 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <img alt="../_images/tutorial_risk_off_strategy_11_5.png" src="../_images/tutorial_risk_off_strategy_11_5.png" />
+</div>
+</div>
+</div>
+<div class="section" id="RiskParityOptimizer-with-cash-filter-(Fixed-Level)">
+<h2>RiskParityOptimizer with cash filter (Fixed Level)<a class="headerlink" href="#RiskParityOptimizer-with-cash-filter-(Fixed-Level)" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">RiskParityOptimizer</span><span class="p">(</span><span class="n">risk_target</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+<span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
+    <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">evacuator</span><span class="o">=</span><span class="n">FixedEvacuator</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)),</span>
+<span class="p">)</span>
+
+<span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="n">fold</span><span class="o">=</span><span class="n">fold</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">history_assets</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">history_weights</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">history_cost</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">history_cash_vs_assets</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 3416/3416 [00:09&lt;00:00, 356.99it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+                     tickers  yearly total return  sharpe ratio  \
+0  [SPY, QQQ, TLT, IEF, GLD]             1.069351      0.789238
+
+   max draw down  max draw down span
+0       0.886051                 265
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_risk_off_strategy_13_2.png" src="../_images/tutorial_risk_off_strategy_13_2.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_risk_off_strategy_13_3.png" src="../_images/tutorial_risk_off_strategy_13_3.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_risk_off_strategy_13_4.png" src="../_images/tutorial_risk_off_strategy_13_4.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_risk_off_strategy_13_5.png" src="../_images/tutorial_risk_off_strategy_13_5.png" />
+</div>
+</div>
+</div>
+<div class="section" id="RiskParityOptimizer-with-cash-filter-(Calendar)">
+<h2>RiskParityOptimizer with cash filter (Calendar)<a class="headerlink" href="#RiskParityOptimizer-with-cash-filter-(Calendar)" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">RiskParityOptimizer</span><span class="p">(</span><span class="n">risk_target</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+<span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
+    <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">evacuator</span><span class="o">=</span><span class="n">CalendarEvacuator</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">risk_off</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)),</span>
+<span class="p">)</span>
+
+<span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="n">fold</span><span class="o">=</span><span class="n">fold</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">history_assets</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">history_weights</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">history_cost</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">history_cash_vs_assets</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 3416/3416 [00:09&lt;00:00, 354.99it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+                     tickers  yearly total return  sharpe ratio  \
+0  [SPY, QQQ, TLT, IEF, GLD]             1.066202      0.706701
+
+   max draw down  max draw down span
+0        0.87697                 268
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_risk_off_strategy_15_2.png" src="../_images/tutorial_risk_off_strategy_15_2.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_risk_off_strategy_15_3.png" src="../_images/tutorial_risk_off_strategy_15_3.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_risk_off_strategy_15_4.png" src="../_images/tutorial_risk_off_strategy_15_4.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_risk_off_strategy_15_5.png" src="../_images/tutorial_risk_off_strategy_15_5.png" />
 </div>
 </div>
 </div>

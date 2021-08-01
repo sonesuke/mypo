@@ -34,6 +34,7 @@
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="World Balanced Portfolio" href="world_balanced.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
   </head>
@@ -100,6 +101,18 @@
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="rotation_strategy.html">
   Rotation Strategy
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="world_balanced.html">
+  World Balanced Portfolio
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="current reference internal nav-link" href="#">
+  My Portfolio
  </a>
 </li>
 
@@ -450,16 +463,9 @@ div.rendered_html tbody tr:hover {
     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">tickers</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="s1">&#39;record&#39;</span><span class="p">)):</span>
         <span class="n">loader</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Ticker&#39;</span><span class="p">],</span> <span class="n">expense_ratio</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;ExpenseRatio&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.01</span><span class="p">)</span>
     <span class="n">loader</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;/app/docs/tutorial/all.bin&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">loader</span> <span class="o">=</span> <span class="n">Loader</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;/app/docs/tutorial/all.bin&#39;</span><span class="p">)</span>
-<span class="n">loader</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">since</span><span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2007</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">loader</span> <span class="o">=</span> <span class="n">Loader</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;/app/docs/tutorial/all.bin&#39;</span><span class="p">)</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">since</span><span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2013</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 <span class="n">market</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">get_market</span><span class="p">()</span>
 
 <span class="n">selected_tickers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span> <span class="s1">&#39;QQQ&#39;</span><span class="p">,</span> <span class="s1">&#39;IEF&#39;</span><span class="p">,</span> <span class="s1">&#39;TLT&#39;</span><span class="p">,</span> <span class="s1">&#39;GLD&#39;</span><span class="p">]</span>
@@ -467,7 +473,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -484,7 +490,7 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="Reference-Performance-(SPY)">
 <h2>Reference Performance (SPY)<a class="headerlink" href="#Reference-Performance-(SPY)" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -514,7 +520,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 3416/3416 [00:10&lt;00:00, 318.03it/s]
+100%|██████████| 1943/1943 [00:05&lt;00:00, 366.80it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -523,31 +529,31 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
                      tickers  yearly total return  sharpe ratio  \
-0  [GLD, SPY, QQQ, TLT, IEF]             1.081401      0.313451
+0  [SPY, QQQ, IEF, TLT, GLD]             1.135155      0.716741
 
    max draw down  max draw down span
-0       0.452531                1318
+0       0.684511                 256
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_my_portfolio_5_2.png" src="../_images/tutorial_my_portfolio_5_2.png" />
+<img alt="../_images/tutorial_my_portfolio_4_2.png" src="../_images/tutorial_my_portfolio_4_2.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_my_portfolio_5_3.png" src="../_images/tutorial_my_portfolio_5_3.png" />
+<img alt="../_images/tutorial_my_portfolio_4_3.png" src="../_images/tutorial_my_portfolio_4_3.png" />
 </div>
 </div>
 </div>
 <div class="section" id="MeanVarianceOptimizer-with-cost-tolerance">
 <h2>MeanVarianceOptimizer with cost tolerance<a class="headerlink" href="#MeanVarianceOptimizer-with-cost-tolerance" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -577,7 +583,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 3416/3416 [00:13&lt;00:00, 257.82it/s]
+100%|██████████| 1943/1943 [00:06&lt;00:00, 290.18it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -586,31 +592,31 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
                      tickers  yearly total return  sharpe ratio  \
-0  [GLD, SPY, QQQ, TLT, IEF]              1.07962      0.689044
+0  [SPY, QQQ, IEF, TLT, GLD]             1.098398      0.857443
 
    max draw down  max draw down span
-0       0.847428                 376
+0       0.869923                 232
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_my_portfolio_7_2.png" src="../_images/tutorial_my_portfolio_7_2.png" />
+<img alt="../_images/tutorial_my_portfolio_6_2.png" src="../_images/tutorial_my_portfolio_6_2.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_my_portfolio_7_3.png" src="../_images/tutorial_my_portfolio_7_3.png" />
+<img alt="../_images/tutorial_my_portfolio_6_3.png" src="../_images/tutorial_my_portfolio_6_3.png" />
 </div>
 </div>
 </div>
 <div class="section" id="MeanVarianceOptimizer-with-static-weight.">
 <h2>MeanVarianceOptimizer with static weight.<a class="headerlink" href="#MeanVarianceOptimizer-with-static-weight." title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -639,7 +645,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 3416/3416 [00:10&lt;00:00, 320.49it/s]
+100%|██████████| 1943/1943 [00:05&lt;00:00, 365.25it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -648,31 +654,31 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
                      tickers  yearly total return  sharpe ratio  \
-0  [GLD, SPY, QQQ, TLT, IEF]             1.098042      0.738705
+0  [SPY, QQQ, IEF, TLT, GLD]             1.130897      0.726915
 
    max draw down  max draw down span
-0        0.72948                 333
+0       0.698946                 228
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_my_portfolio_9_2.png" src="../_images/tutorial_my_portfolio_9_2.png" />
+<img alt="../_images/tutorial_my_portfolio_8_2.png" src="../_images/tutorial_my_portfolio_8_2.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_my_portfolio_9_3.png" src="../_images/tutorial_my_portfolio_9_3.png" />
+<img alt="../_images/tutorial_my_portfolio_8_3.png" src="../_images/tutorial_my_portfolio_8_3.png" />
 </div>
 </div>
 </div>
 <div class="section" id="RiskParityOptimizer-with-static-weight.">
 <h2>RiskParityOptimizer with static weight.<a class="headerlink" href="#RiskParityOptimizer-with-static-weight." title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -701,7 +707,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 3416/3416 [00:10&lt;00:00, 319.18it/s]
+100%|██████████| 1943/1943 [00:05&lt;00:00, 366.26it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -710,24 +716,33 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
                      tickers  yearly total return  sharpe ratio  \
-0  [GLD, SPY, QQQ, TLT, IEF]              1.06746      0.751364
+0  [SPY, QQQ, IEF, TLT, GLD]             1.093135      1.076224
 
    max draw down  max draw down span
-0       0.879253                 268
+0       0.892061                 215
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_my_portfolio_11_2.png" src="../_images/tutorial_my_portfolio_11_2.png" />
+<img alt="../_images/tutorial_my_portfolio_10_2.png" src="../_images/tutorial_my_portfolio_10_2.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_my_portfolio_11_3.png" src="../_images/tutorial_my_portfolio_11_3.png" />
+<img alt="../_images/tutorial_my_portfolio_10_3.png" src="../_images/tutorial_my_portfolio_10_3.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -739,6 +754,7 @@ div.rendered_html tbody tr:hover {
               
               <div class='prev-next-bottom'>
                 
+    <a class='left-prev' id="prev-link" href="world_balanced.html" title="previous page">World Balanced Portfolio</a>
 
               </div>
               
