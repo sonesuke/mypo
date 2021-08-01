@@ -1,6 +1,5 @@
 """Class for report result."""
 import datetime
-import itertools
 from typing import List
 
 import numpy as np
@@ -152,7 +151,7 @@ class Reporter(object):
         Returns:
             Tickers.
         """
-        return list(set(itertools.chain.from_iterable(self._tickers)))
+        return self._tickers[-1]
 
     def history_weights(self) -> pd.DataFrame:
         """Report weights.
