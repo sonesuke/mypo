@@ -195,7 +195,7 @@ class Reporter(object):
         yearly_return = total_assets.resample(rule="Y").prod() - 1
 
         std = total_assets.resample(rule="Y").std() * np.sqrt(252)
-        sharpe = (yearly_return -0.02) / std
+        sharpe = (yearly_return - 0.02) / std
 
         df = pd.concat([yearly_return, std, sharpe, draw_down], axis=1)
         df.columns = ["return", "std", "sharpe ratio", "draw down"]
