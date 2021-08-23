@@ -184,3 +184,19 @@ class Reporter(object):
                 "max draw down span": [max_drawdown_span(report)],
             }
         )
+
+    def annual_summary(self) -> pd.DataFrame:
+
+        history_assets = self.history_assets()
+        total_assets = history_assets.pct_change().dropna() + 1.0
+        draw_down = history_assets / history_assets.cummax()
+
+        draw_down = draw_down.resample(rule="Y").min()
+        yearly_return = total_assets.resample(rule="Y").prod() - 1
+
+        std = total_assets.resample(rule="Y").std() * np.sqrt(252)
+        sharpe = (yearly_return -0.02) / std
+
+        df = pd.concat([yearly_return, std, sharpe, draw_down], axis=1)
+        df.columns = ["return", "std", "sharpe ratio", "draw down"]
+        return df
