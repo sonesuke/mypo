@@ -169,6 +169,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#MaximumDiversificationOptimizer-with-static-weight.">
+   MaximumDiversificationOptimizer with static weight.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#RiskParityOptimizer-with-static-weight.">
    RiskParityOptimizer with static weight.
   </a>
@@ -505,6 +510,7 @@ div.rendered_html tbody tr:hover {
 <span class="p">)</span>
 <span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">annual_summary</span><span class="p">())</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">history</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -520,7 +526,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 1943/1943 [00:05&lt;00:00, 366.80it/s]
+100%|██████████| 1943/1943 [00:07&lt;00:00, 249.30it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -533,6 +539,16 @@ div.rendered_html tbody tr:hover {
 
    max draw down  max draw down span
 0       0.684511                 256
+              return       std  sharpe ratio  draw down
+2013-12-31  0.107717  0.103056      0.851155   0.960065
+2014-12-31  0.137727  0.110831      1.062218   0.927608
+2015-12-31 -0.005750  0.152529     -0.168820   0.883691
+2016-12-31  0.132401  0.125806      0.893444   0.871461
+2017-12-31  0.199125  0.065400      2.738901   0.974260
+2018-12-31 -0.051994  0.159898     -0.450249   0.816259
+2019-12-31  0.292611  0.117284      2.324372   0.847985
+2020-12-31  0.137905  0.307488      0.383445   0.684511
+2021-12-31  0.120158  0.133276      0.751512   0.962113
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -568,6 +584,7 @@ div.rendered_html tbody tr:hover {
 <span class="p">)</span>
 <span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">annual_summary</span><span class="p">())</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">history</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -583,7 +600,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 1943/1943 [00:06&lt;00:00, 290.18it/s]
+100%|██████████| 1943/1943 [00:09&lt;00:00, 197.93it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -596,6 +613,16 @@ div.rendered_html tbody tr:hover {
 
    max draw down  max draw down span
 0       0.869923                 232
+              return       std  sharpe ratio  draw down
+2013-12-31  0.049858  0.073273      0.407494   0.976847
+2014-12-31  0.163515  0.077819      1.844221   0.950022
+2015-12-31  0.016148  0.092734     -0.041538   0.925439
+2016-12-31  0.019372  0.064880     -0.009672   0.931583
+2017-12-31  0.169172  0.055921      2.667557   0.946850
+2018-12-31 -0.016204  0.137672     -0.262974   0.869923
+2019-12-31  0.209965  0.064723      2.935058   0.898005
+2020-12-31  0.219211  0.119918      1.661227   0.884563
+2021-12-31 -0.039619  0.095657     -0.623259   0.917444
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -631,6 +658,7 @@ div.rendered_html tbody tr:hover {
 <span class="p">)</span>
 <span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">annual_summary</span><span class="p">())</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">history</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -645,7 +673,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 1943/1943 [00:05&lt;00:00, 365.25it/s]
+100%|██████████| 1943/1943 [00:07&lt;00:00, 251.85it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -654,10 +682,20 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
                      tickers  yearly total return  sharpe ratio  \
-0  [SPY, QQQ, IEF, TLT, GLD]             1.130897      0.726915
+0  [SPY, QQQ, IEF, TLT, GLD]             1.130856      0.726428
 
    max draw down  max draw down span
-0       0.698946                 228
+0       0.698844                 228
+              return       std  sharpe ratio  draw down
+2013-12-31  0.102697  0.098561      0.839043   0.962031
+2014-12-31  0.135495  0.105047      1.099460   0.932207
+2015-12-31 -0.004908  0.144832     -0.171978   0.889083
+2016-12-31  0.126651  0.119470      0.892701   0.878894
+2017-12-31  0.190738  0.061958      2.755694   0.976233
+2018-12-31 -0.049209  0.152159     -0.454845   0.824820
+2019-12-31  0.283012  0.111223      2.364737   0.855889
+2020-12-31  0.137572  0.291835      0.402872   0.698844
+2021-12-31  0.112710  0.128019      0.724189   0.962641
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -675,14 +713,14 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
-<div class="section" id="RiskParityOptimizer-with-static-weight.">
-<h2>RiskParityOptimizer with static weight.<a class="headerlink" href="#RiskParityOptimizer-with-static-weight." title="Permalink to this headline">¶</a></h2>
+<div class="section" id="MaximumDiversificationOptimizer-with-static-weight.">
+<h2>MaximumDiversificationOptimizer with static weight.<a class="headerlink" href="#MaximumDiversificationOptimizer-with-static-weight." title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">RiskParityOptimizer</span><span class="p">(</span><span class="n">risk_target</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+<span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">MaximumDiversificationOptimizer</span><span class="p">()</span>
 <span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
     <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">),</span>
 <span class="p">)</span>
@@ -693,6 +731,7 @@ div.rendered_html tbody tr:hover {
 <span class="p">)</span>
 <span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">annual_summary</span><span class="p">())</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">history</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -707,7 +746,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 1943/1943 [00:05&lt;00:00, 366.26it/s]
+100%|██████████| 1943/1943 [00:07&lt;00:00, 253.22it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -716,10 +755,20 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
                      tickers  yearly total return  sharpe ratio  \
-0  [SPY, QQQ, IEF, TLT, GLD]             1.093135      1.076224
+0  [SPY, QQQ, IEF, TLT, GLD]             1.079862      1.001871
 
    max draw down  max draw down span
-0       0.892061                 215
+0       0.905712                 208
+              return       std  sharpe ratio  draw down
+2013-12-31  0.028140  0.062172      0.130934   0.979056
+2014-12-31  0.120739  0.042745      2.356716   0.978884
+2015-12-31  0.002994  0.060039     -0.283255   0.955068
+2016-12-31  0.047358  0.051631      0.529880   0.939045
+2017-12-31  0.106709  0.038936      2.226948   0.953078
+2018-12-31 -0.009015  0.057246     -0.506841   0.947027
+2019-12-31  0.173863  0.046732      3.292462   0.969278
+2020-12-31  0.176529  0.094393      1.658267   0.905712
+2021-12-31 -0.013697  0.079387     -0.424458   0.946686
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -734,6 +783,79 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <img alt="../_images/tutorial_my_portfolio_10_3.png" src="../_images/tutorial_my_portfolio_10_3.png" />
+</div>
+</div>
+</div>
+<div class="section" id="RiskParityOptimizer-with-static-weight.">
+<h2>RiskParityOptimizer with static weight.<a class="headerlink" href="#RiskParityOptimizer-with-static-weight." title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">RiskParityOptimizer</span><span class="p">(</span><span class="n">risk_target</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+<span class="n">runner</span> <span class="o">=</span> <span class="n">Runner</span><span class="p">(</span>
+    <span class="n">rebalancer</span><span class="o">=</span><span class="n">MonthlyRebalancer</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="n">fold</span><span class="o">=</span><span class="n">fold</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">annual_summary</span><span class="p">())</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">history</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">history_weights</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 1943/1943 [00:07&lt;00:00, 252.71it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+                     tickers  yearly total return  sharpe ratio  \
+0  [SPY, QQQ, IEF, TLT, GLD]             1.093135      1.076224
+
+   max draw down  max draw down span
+0       0.892061                 215
+              return       std  sharpe ratio  draw down
+2013-12-31  0.041628  0.064155      0.337119   0.979843
+2014-12-31  0.147718  0.046590      2.741298   0.977876
+2015-12-31  0.006648  0.067435     -0.197998   0.947683
+2016-12-31  0.052485  0.057582      0.564154   0.937878
+2017-12-31  0.123943  0.041829      2.484950   0.955310
+2018-12-31 -0.010950  0.069110     -0.447845   0.930286
+2019-12-31  0.194481  0.052118      3.347817   0.953596
+2020-12-31  0.192753  0.109959      1.571073   0.892061
+2021-12-31 -0.009504  0.090315     -0.326678   0.942610
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_my_portfolio_12_2.png" src="../_images/tutorial_my_portfolio_12_2.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_my_portfolio_12_3.png" src="../_images/tutorial_my_portfolio_12_3.png" />
 </div>
 </div>
 <div class="nbinput nblast docutils container">

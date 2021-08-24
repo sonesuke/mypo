@@ -17,10 +17,10 @@
    "execution_count": 1,
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-08-01T12:16:16.545278Z",
-     "iopub.status.busy": "2021-08-01T12:16:16.544784Z",
-     "iopub.status.idle": "2021-08-01T12:16:16.960976Z",
-     "shell.execute_reply": "2021-08-01T12:16:16.961398Z"
+     "iopub.execute_input": "2021-08-24T12:00:10.787731Z",
+     "iopub.status.busy": "2021-08-24T12:00:10.787072Z",
+     "iopub.status.idle": "2021-08-24T12:00:11.310699Z",
+     "shell.execute_reply": "2021-08-24T12:00:11.311637Z"
     },
     "pycharm": {
      "is_executing": true
@@ -36,10 +36,10 @@
    "execution_count": 2,
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-08-01T12:16:16.964647Z",
-     "iopub.status.busy": "2021-08-01T12:16:16.963584Z",
-     "iopub.status.idle": "2021-08-01T12:16:18.762331Z",
-     "shell.execute_reply": "2021-08-01T12:16:18.761849Z"
+     "iopub.execute_input": "2021-08-24T12:00:11.315934Z",
+     "iopub.status.busy": "2021-08-24T12:00:11.314569Z",
+     "iopub.status.idle": "2021-08-24T12:00:13.913430Z",
+     "shell.execute_reply": "2021-08-24T12:00:13.914008Z"
     },
     "pycharm": {
      "is_executing": true,
@@ -51,7 +51,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "100%|██████████| 598/598 [00:01<00:00, 502.64it/s]\n"
+      "100%|██████████| 598/598 [00:01<00:00, 336.77it/s]\n"
      ]
     },
     {
@@ -100,10 +100,10 @@
    "execution_count": 3,
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2021-08-01T12:16:18.767149Z",
-     "iopub.status.busy": "2021-08-01T12:16:18.766460Z",
-     "iopub.status.idle": "2021-08-01T12:16:20.331063Z",
-     "shell.execute_reply": "2021-08-01T12:16:20.331721Z"
+     "iopub.execute_input": "2021-08-24T12:00:13.921765Z",
+     "iopub.status.busy": "2021-08-24T12:00:13.920883Z",
+     "iopub.status.idle": "2021-08-24T12:00:16.245056Z",
+     "shell.execute_reply": "2021-08-24T12:00:16.244426Z"
     },
     "pycharm": {
      "name": "#%%\n"
@@ -114,7 +114,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "100%|██████████| 598/598 [00:01<00:00, 498.98it/s]\n"
+      "100%|██████████| 598/598 [00:01<00:00, 331.30it/s]\n"
      ]
     },
     {
