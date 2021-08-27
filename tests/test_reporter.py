@@ -31,3 +31,14 @@ def test_run_and_report_run_out_cash() -> None:
     assert report.history_cost() is not None
     assert report.history_assets() is not None
     assert report.history_cash_vs_assets() is not None
+
+
+def test_run_and_report_annual() -> None:
+    market = Market.create(start_date="2021-01-01", end_date="2023-12-31", yearly_gain=0.01)
+
+    runner = Runner(
+        settings=Settings(tax_rate=np.float64(0.0), fee_rate=np.float64(0.0)),
+    )
+    runner.run(assets=[1.0], market=market, cash=0.0, withdraw=0)
+    report = runner.report()
+    assert report.annual_summary() is not None
