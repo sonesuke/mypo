@@ -44,6 +44,7 @@ This tutorial will be helpful for understanding the usage of this module.
    tutorial/risk_off_strategy
    tutorial/rotation_strategy
    tutorial/world_balanced
+   tutorial/factor_investment
    tutorial/my_portfolio
 
 Developer guide

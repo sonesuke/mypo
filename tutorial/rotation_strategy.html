@@ -112,6 +112,12 @@
 </li>
 
 <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="factor_investment.html">
+  World Balanced Portfolio
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="my_portfolio.html">
   My Portfolio
  </a>
@@ -530,7 +536,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 3416/3416 [00:12&lt;00:00, 279.42it/s]
+100%|██████████| 3416/3416 [00:48&lt;00:00, 71.08it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -616,7 +622,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 3416/3416 [00:12&lt;00:00, 268.24it/s]
+100%|██████████| 3416/3416 [00:52&lt;00:00, 65.51it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -679,7 +685,7 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="RotationStrategy-with-cash-filter">
 <h2>RotationStrategy with cash filter<a class="headerlink" href="#RotationStrategy-with-cash-filter" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -711,75 +717,19 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
+<div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 3416/3416 [00:23&lt;00:00, 143.40it/s]
+  3%|▎         | 106/3416 [00:02&lt;01:32, 35.61it/s]
 </pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-           tickers  yearly total return  sharpe ratio  max draw down  \
-0  [SPY, EFA, GLD]             0.943948     -0.598128       0.334897
-
-   max draw down span
-0                2844
-              return       std  sharpe ratio  draw down
-2007-12-31 -0.102259  0.151723     -0.805806   0.897741
-2008-12-31 -0.074656  0.090083     -1.050764   0.830720
-2009-12-31  0.307261  0.184841      1.554101   0.776971
-2010-12-31 -0.152780  0.154158     -1.120795   0.738348
-2011-12-31 -0.221795  0.150836     -1.603028   0.650800
-2012-12-31 -0.007677  0.119845     -0.230942   0.598564
-2013-12-31  0.045895  0.111262      0.232741   0.614272
-2014-12-31 -0.021390  0.083544     -0.495425   0.634053
-2015-12-31 -0.216041  0.093412     -2.526888   0.518193
-2016-12-31 -0.202747  0.135651     -1.642056   0.413131
-2017-12-31  0.025319  0.072948      0.072917   0.399464
-2018-12-31 -0.098043  0.111663     -1.057134   0.368677
-2019-12-31 -0.057554  0.117105     -0.662254   0.336782
-2020-12-31  0.096227  0.167892      0.454024   0.334897
-2021-12-31  0.053552  0.113979      0.294368   0.388399
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorial_rotation_strategy_9_2.png" src="../_images/tutorial_rotation_strategy_9_2.png" />
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorial_rotation_strategy_9_3.png" src="../_images/tutorial_rotation_strategy_9_3.png" />
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorial_rotation_strategy_9_4.png" src="../_images/tutorial_rotation_strategy_9_4.png" />
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorial_rotation_strategy_9_5.png" src="../_images/tutorial_rotation_strategy_9_5.png" />
-</div>
 </div>
 </div>
 <div class="section" id="If-it-is-no-fee.">
 <h2>If it is no fee.<a class="headerlink" href="#If-it-is-no-fee." title="Permalink to this headline">¶</a></h2>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -813,70 +763,6 @@ div.rendered_html tbody tr:hover {
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 </pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-100%|██████████| 3416/3416 [00:23&lt;00:00, 143.44it/s]
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-           tickers  yearly total return  sharpe ratio  max draw down  \
-0  [SPY, EFA, GLD]             1.040388      0.162441       0.743349
-
-   max draw down span
-0                1643
-              return       std  sharpe ratio  draw down
-2007-12-31 -0.079296  0.149276     -0.665184   0.920704
-2008-12-31 -0.016826  0.087408     -0.421310   0.879190
-2009-12-31  0.440252  0.184963      2.272084   0.845383
-2010-12-31 -0.052568  0.153525     -0.472679   0.792885
-2011-12-31 -0.134628  0.146924     -1.052440   0.801147
-2012-12-31  0.125562  0.119210      0.885510   0.763317
-2013-12-31  0.111948  0.109034      0.843300   0.891880
-2014-12-31  0.039912  0.081680      0.243777   0.913412
-2015-12-31 -0.101522  0.091351     -1.330271   0.855571
-2016-12-31 -0.126527  0.132251     -1.107948   0.747318
-2017-12-31  0.107165  0.069299      1.257812   0.743349
-2018-12-31 -0.031004  0.108349     -0.470741   0.773666
-2019-12-31  0.064498  0.116315      0.382564   0.769403
-2020-12-31  0.262969  0.168053      1.445786   0.809955
-2021-12-31  0.086104  0.115305      0.573295   0.962733
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorial_rotation_strategy_11_2.png" src="../_images/tutorial_rotation_strategy_11_2.png" />
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorial_rotation_strategy_11_3.png" src="../_images/tutorial_rotation_strategy_11_3.png" />
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorial_rotation_strategy_11_4.png" src="../_images/tutorial_rotation_strategy_11_4.png" />
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorial_rotation_strategy_11_5.png" src="../_images/tutorial_rotation_strategy_11_5.png" />
 </div>
 </div>
 </div>
