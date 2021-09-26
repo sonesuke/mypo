@@ -169,9 +169,9 @@ class Loader(object):
             Filtered data.
         """
         return Loader(
-            tickers={key: value for key, value in self._tickers.items() if key in tickers},
-            names={key: value for key, value in self._names.items() if key in tickers},
-            expense_ratio={key: value for key, value in self._expense_ratio.items() if key in tickers},
-            total_assets={key: value for key, value in self._total_assets.items() if key in tickers},
-            daily_volume_10_days={key: value for key, value in self._daily_volume_10_days.items() if key in tickers},
+            tickers={key: self._tickers[key] for key in tickers},
+            names={key: self._names[key] for key in tickers},
+            expense_ratio={key: self._expense_ratio[key] for key in tickers},
+            total_assets={key: self._total_assets[key] for key in tickers},
+            daily_volume_10_days={key: self._daily_volume_10_days[key] for key in tickers},
         )
