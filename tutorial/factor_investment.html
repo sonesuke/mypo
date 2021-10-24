@@ -171,8 +171,8 @@
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#US-Market">
-   US Market
+  <a class="reference internal nav-link" href="#Traditonal-Asset-Class">
+   Traditonal Asset Class
   </a>
  </li>
 </ul>
@@ -443,7 +443,7 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="World-Balanced-Portfolio">
 <h1>World Balanced Portfolio<a class="headerlink" href="#World-Balanced-Portfolio" title="Permalink to this headline">¶</a></h1>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -498,7 +498,120 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="Factor-Investement">
 <h1>Factor Investement<a class="headerlink" href="#Factor-Investement" title="Permalink to this headline">¶</a></h1>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">corr</span> <span class="o">=</span> <span class="n">factor_market</span><span class="o">.</span><span class="n">get_rate_of_change</span><span class="p">()</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span><span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">corr</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_factor_investment_3_0.png" src="../_images/tutorial_factor_investment_3_0.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>VTI</th>
+      <th>VBR</th>
+      <th>MTUM</th>
+      <th>QUAL</th>
+      <th>TLT</th>
+      <th>DBV</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>VTI</th>
+      <td>1.000000</td>
+      <td>0.899456</td>
+      <td>0.912506</td>
+      <td>0.978668</td>
+      <td>-0.369992</td>
+      <td>0.326423</td>
+    </tr>
+    <tr>
+      <th>VBR</th>
+      <td>0.899456</td>
+      <td>1.000000</td>
+      <td>0.725450</td>
+      <td>0.862737</td>
+      <td>-0.372436</td>
+      <td>0.359811</td>
+    </tr>
+    <tr>
+      <th>MTUM</th>
+      <td>0.912506</td>
+      <td>0.725450</td>
+      <td>1.000000</td>
+      <td>0.895919</td>
+      <td>-0.270928</td>
+      <td>0.258185</td>
+    </tr>
+    <tr>
+      <th>QUAL</th>
+      <td>0.978668</td>
+      <td>0.862737</td>
+      <td>0.895919</td>
+      <td>1.000000</td>
+      <td>-0.367195</td>
+      <td>0.307280</td>
+    </tr>
+    <tr>
+      <th>TLT</th>
+      <td>-0.369992</td>
+      <td>-0.372436</td>
+      <td>-0.270928</td>
+      <td>-0.367195</td>
+      <td>1.000000</td>
+      <td>-0.096827</td>
+    </tr>
+    <tr>
+      <th>DBV</th>
+      <td>0.326423</td>
+      <td>0.359811</td>
+      <td>0.258185</td>
+      <td>0.307280</td>
+      <td>-0.096827</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -538,7 +651,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 1842/1842 [00:23&lt;00:00, 76.82it/s]
+100%|██████████| 1842/1842 [00:25&lt;00:00, 73.60it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -573,7 +686,7 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>[VTI, VBR, MTUM, QUAL, DBV, TLT]</td>
+      <td>[VTI, VBR, MTUM, QUAL, TLT, DBV]</td>
       <td>1.076783</td>
       <td>0.697602</td>
       <td>0.815822</td>
@@ -676,35 +789,120 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_factor_investment_3_3.png" src="../_images/tutorial_factor_investment_3_3.png" />
+<img alt="../_images/tutorial_factor_investment_4_3.png" src="../_images/tutorial_factor_investment_4_3.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_factor_investment_3_4.png" src="../_images/tutorial_factor_investment_3_4.png" />
+<img alt="../_images/tutorial_factor_investment_4_4.png" src="../_images/tutorial_factor_investment_4_4.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_factor_investment_3_5.png" src="../_images/tutorial_factor_investment_3_5.png" />
+<img alt="../_images/tutorial_factor_investment_4_5.png" src="../_images/tutorial_factor_investment_4_5.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_factor_investment_3_6.png" src="../_images/tutorial_factor_investment_3_6.png" />
+<img alt="../_images/tutorial_factor_investment_4_6.png" src="../_images/tutorial_factor_investment_4_6.png" />
 </div>
 </div>
 </div>
-<div class="section" id="US-Market">
-<h1>US Market<a class="headerlink" href="#US-Market" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Traditonal-Asset-Class">
+<h1>Traditonal Asset Class<a class="headerlink" href="#Traditonal-Asset-Class" title="Permalink to this headline">¶</a></h1>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">corr</span> <span class="o">=</span> <span class="n">us_market</span><span class="o">.</span><span class="n">get_rate_of_change</span><span class="p">()</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span><span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">corr</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorial_factor_investment_6_0.png" src="../_images/tutorial_factor_investment_6_0.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SPY</th>
+      <th>IEF</th>
+      <th>TLT</th>
+      <th>GLD</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>SPY</th>
+      <td>1.000000</td>
+      <td>-0.401425</td>
+      <td>-0.412393</td>
+      <td>0.042148</td>
+    </tr>
+    <tr>
+      <th>IEF</th>
+      <td>-0.401425</td>
+      <td>1.000000</td>
+      <td>0.910479</td>
+      <td>0.171212</td>
+    </tr>
+    <tr>
+      <th>TLT</th>
+      <td>-0.412393</td>
+      <td>0.910479</td>
+      <td>1.000000</td>
+      <td>0.137708</td>
+    </tr>
+    <tr>
+      <th>GLD</th>
+      <td>0.042148</td>
+      <td>0.171212</td>
+      <td>0.137708</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -745,7 +943,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 4021/4021 [00:49&lt;00:00, 81.52it/s]
+100%|██████████| 4021/4021 [00:49&lt;00:00, 80.49it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -780,11 +978,11 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>[IEF, SPY, TLT, GLD]</td>
-      <td>1.049424</td>
-      <td>0.549103</td>
-      <td>0.921385</td>
-      <td>679</td>
+      <td>[SPY, IEF, TLT, GLD]</td>
+      <td>1.08535</td>
+      <td>0.612311</td>
+      <td>0.690173</td>
+      <td>725</td>
     </tr>
   </tbody>
 </table>
@@ -821,122 +1019,122 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>2005-12-31</th>
-      <td>0.009973</td>
-      <td>0.043124</td>
-      <td>-0.232524</td>
-      <td>0.972777</td>
+      <td>0.038527</td>
+      <td>0.065600</td>
+      <td>0.282424</td>
+      <td>0.967056</td>
     </tr>
     <tr>
       <th>2006-12-31</th>
-      <td>0.039166</td>
-      <td>0.043348</td>
-      <td>0.442148</td>
-      <td>0.968263</td>
+      <td>0.099910</td>
+      <td>0.069779</td>
+      <td>1.145188</td>
+      <td>0.934181</td>
     </tr>
     <tr>
       <th>2007-12-31</th>
-      <td>0.105173</td>
-      <td>0.045344</td>
-      <td>1.878371</td>
-      <td>0.963520</td>
+      <td>0.091324</td>
+      <td>0.093349</td>
+      <td>0.764063</td>
+      <td>0.951485</td>
     </tr>
     <tr>
       <th>2008-12-31</th>
-      <td>0.075799</td>
-      <td>0.076424</td>
-      <td>0.730122</td>
-      <td>0.930194</td>
+      <td>-0.166027</td>
+      <td>0.210794</td>
+      <td>-0.882507</td>
+      <td>0.708218</td>
     </tr>
     <tr>
       <th>2009-12-31</th>
-      <td>-0.007858</td>
-      <td>0.077276</td>
-      <td>-0.360504</td>
-      <td>0.925369</td>
+      <td>0.143934</td>
+      <td>0.148219</td>
+      <td>0.836153</td>
+      <td>0.690173</td>
     </tr>
     <tr>
       <th>2010-12-31</th>
-      <td>0.095268</td>
-      <td>0.061128</td>
-      <td>1.231330</td>
-      <td>0.942788</td>
+      <td>0.134603</td>
+      <td>0.096308</td>
+      <td>1.189962</td>
+      <td>0.907491</td>
     </tr>
     <tr>
       <th>2011-12-31</th>
-      <td>0.132627</td>
-      <td>0.058660</td>
-      <td>1.919989</td>
-      <td>0.940709</td>
+      <td>0.085352</td>
+      <td>0.112998</td>
+      <td>0.578347</td>
+      <td>0.927817</td>
     </tr>
     <tr>
       <th>2012-12-31</th>
-      <td>0.046253</td>
-      <td>0.042774</td>
-      <td>0.613765</td>
-      <td>0.970388</td>
+      <td>0.110067</td>
+      <td>0.070698</td>
+      <td>1.273962</td>
+      <td>0.957250</td>
     </tr>
     <tr>
       <th>2013-12-31</th>
-      <td>-0.047459</td>
-      <td>0.057437</td>
-      <td>-1.174481</td>
-      <td>0.923509</td>
+      <td>0.080048</td>
+      <td>0.073903</td>
+      <td>0.812523</td>
+      <td>0.943075</td>
     </tr>
     <tr>
       <th>2014-12-31</th>
-      <td>0.083588</td>
-      <td>0.041535</td>
-      <td>1.530971</td>
-      <td>0.935864</td>
+      <td>0.114662</td>
+      <td>0.059627</td>
+      <td>1.587555</td>
+      <td>0.960703</td>
     </tr>
     <tr>
       <th>2015-12-31</th>
-      <td>-0.001382</td>
-      <td>0.055427</td>
-      <td>-0.385766</td>
-      <td>0.952332</td>
+      <td>-0.014895</td>
+      <td>0.085806</td>
+      <td>-0.406674</td>
+      <td>0.927119</td>
     </tr>
     <tr>
       <th>2016-12-31</th>
-      <td>0.020021</td>
-      <td>0.049421</td>
-      <td>0.000424</td>
-      <td>0.921385</td>
+      <td>0.092692</td>
+      <td>0.068092</td>
+      <td>1.067567</td>
+      <td>0.928556</td>
     </tr>
     <tr>
       <th>2017-12-31</th>
-      <td>0.044219</td>
-      <td>0.039180</td>
-      <td>0.618138</td>
-      <td>0.934250</td>
+      <td>0.146133</td>
+      <td>0.039275</td>
+      <td>3.211535</td>
+      <td>0.982981</td>
     </tr>
     <tr>
       <th>2018-12-31</th>
-      <td>-0.000534</td>
-      <td>0.033833</td>
-      <td>-0.606922</td>
-      <td>0.940449</td>
+      <td>-0.033733</td>
+      <td>0.094302</td>
+      <td>-0.569793</td>
+      <td>0.895115</td>
     </tr>
     <tr>
       <th>2019-12-31</th>
-      <td>0.107386</td>
-      <td>0.046848</td>
-      <td>1.865332</td>
-      <td>0.971629</td>
+      <td>0.235172</td>
+      <td>0.066241</td>
+      <td>3.248323</td>
+      <td>0.922280</td>
     </tr>
     <tr>
       <th>2020-12-31</th>
-      <td>0.113462</td>
-      <td>0.059229</td>
-      <td>1.577980</td>
-      <td>0.939567</td>
+      <td>0.165120</td>
+      <td>0.181476</td>
+      <td>0.799664</td>
+      <td>0.809834</td>
     </tr>
     <tr>
       <th>2021-12-31</th>
-      <td>-0.006796</td>
-      <td>0.049916</td>
-      <td>-0.536823</td>
-      <td>0.937059</td>
+      <td>0.100322</td>
+      <td>0.085622</td>
+      <td>0.938092</td>
+      <td>0.957415</td>
     </tr>
   </tbody>
 </table>
@@ -946,28 +1144,28 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_factor_investment_5_3.png" src="../_images/tutorial_factor_investment_5_3.png" />
+<img alt="../_images/tutorial_factor_investment_7_3.png" src="../_images/tutorial_factor_investment_7_3.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_factor_investment_5_4.png" src="../_images/tutorial_factor_investment_5_4.png" />
+<img alt="../_images/tutorial_factor_investment_7_4.png" src="../_images/tutorial_factor_investment_7_4.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_factor_investment_5_5.png" src="../_images/tutorial_factor_investment_5_5.png" />
+<img alt="../_images/tutorial_factor_investment_7_5.png" src="../_images/tutorial_factor_investment_7_5.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorial_factor_investment_5_6.png" src="../_images/tutorial_factor_investment_5_6.png" />
+<img alt="../_images/tutorial_factor_investment_7_6.png" src="../_images/tutorial_factor_investment_7_6.png" />
 </div>
 </div>
 </div>
