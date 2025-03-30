@@ -71,12 +71,13 @@ class Loader(object):
             value: Loader = pickle.load(bin_file)
             return value
 
-    def get(self, ticker: str, expense_ratio: float = 0.0) -> None:  # pragma: no cover
+    def get(self, ticker: str, expense_ratio: float = 0.0, inverse=False) -> None:  # pragma: no cover
         """Get stock data of specified ticker.
 
         Args:
             ticker: Ticker that you want to download stock data.
             expense_ratio: Expense ratio of ticker. The default value is 0.0.
+            inverse: If you have short positions, it should be True
 
         Returns:
             Nothing
@@ -85,6 +86,8 @@ class Loader(object):
         t = yf.Ticker(ticker)
         df = t.history(period="max", auto_adjust=False)
         df.index = pd.to_datetime(df.index)
+        if inverse:
+            ticker = '^' + ticker
         self._tickers[ticker] = df
         self._names[ticker] = t.info["longName"] if "longName" in t.info else ""
         self._total_assets[ticker] = t.info["totalAssets"] if "totalAssets" in t.info else None

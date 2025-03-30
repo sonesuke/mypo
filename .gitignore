@@ -133,3 +133,4 @@ dmypy.json
 
 # pytest-cov
 htmlcov
+.DS_Store

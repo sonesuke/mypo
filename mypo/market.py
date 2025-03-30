@@ -121,6 +121,14 @@ class Market(object):
         )
 
     @staticmethod
+    def is_inverse(ticker: str) -> bool:
+        return ticker[0] == "^"
+
+    @staticmethod
+    def sign_by_position(ticker: str):
+        return -1 if Market.is_inverse(ticker) else 1
+
+    @staticmethod
     def calc_raw(tickers: Dict[str, pd.DataFrame]) -> pd.DataFrame:
         """Get price data from stored market data.
 
@@ -130,7 +138,7 @@ class Market(object):
         Returns:
             Prices
         """
-        rs = [tickers[ticker][["Close"]] for ticker in tickers.keys()]
+        rs = [Market.sign_by_position(ticker) * tickers[ticker]["Close"] for ticker in tickers.keys()]
         df = pd.concat(rs, axis=1, join="inner")
         df.columns = tickers.keys()
         return df
@@ -142,7 +150,7 @@ class Market(object):
         Returns:
             price dividends yield data
         """
-        rs = [tickers[ticker]["Dividends"] / tickers[ticker]["Close"] for ticker in tickers.keys()]
+        rs = [Market.sign_by_position(ticker) * tickers[ticker]["Dividends"] / tickers[ticker]["Close"] for ticker in tickers.keys()]
         df = pd.concat(rs, axis=1, join="inner")
         df.columns = tickers.keys()
         return df
@@ -352,6 +360,9 @@ class Market(object):
         """
         df = self._closes
         df = df.pct_change(axis=0)
+        for ticker in df.columns:
+            if Market.is_inverse(ticker):
+                df[ticker] = -df[ticker]
         df.dropna(inplace=True)
         return df
 
